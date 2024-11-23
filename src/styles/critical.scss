@@ -1,0 +1,145 @@
+
+@font-face {
+    font-family: "GTWalsheimPro";
+    src: url("../fonts/GTWalsheimPro-Regular.woff2") format("woff2"),
+    url("../fonts/GTWalsheimPro-Regular.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "GTWalsheimPro";
+    src: url("../fonts/GTWalsheimPro-Medium.woff2") format("woff2"),
+    url("../fonts/GTWalsheimPro-Medium.woff") format("woff");
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "GTWalsheimPro";
+    src: url("../fonts/GTWalsheimPro-Bold.woff2") format("woff2"),
+    url("../fonts/GTWalsheimPro-Bold.woff") format("woff");
+    font-weight: 700;
+    font-style: normal;
+}
+
+
+
+
+
+:root {
+    --color-white: #fff;
+    --color-black: #023D27;
+    --color-grey:#F2F3F0;
+    --color-primary:#089946 ;
+    --color-yellow:#FFD800;
+    --color-light:#EEF7EB;
+    --color-yellow-gradient:linear-gradient(45.78deg, #FFE13C 0%, #FDC201 80%);
+    --GT:'GTWalsheimPro', sans-serif;
+
+
+}
+
+*, *:before,
+*:after {
+    box-sizing: border-box;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+*, body, html {
+    -webkit-text-size-adjust: none;
+    -webkit-appearance: none;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    border: none;
+}
+
+mark {
+    -webkit-text-fill-color: initial;
+    text-fill-color: transparent;
+    background: none;
+}
+
+.img {
+    display: block;
+}
+
+.img.contain img {
+    -o-object-fit: contain;
+    object-fit: contain;
+}
+
+.img > img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    display: block;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+button {
+    background: transparent;
+}
+
+h1 {
+    margin: 0;
+}
+
+html {
+    font-size: 10px;
+    scroll-behavior: smooth;
+}
+
+
+
+@media only screen and (max-width: 1366px) {
+    html {
+        font-size: 9.49px;
+    }
+}
+
+@media only screen and (max-width: 1280px) {
+    html {
+        font-size: 8.88px;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    html {
+        font-size: 7.11px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    html {
+        font-size: 5.33px;
+    }
+}
+
+@media only screen and (max-width: 666px) {
+    html {
+        font-size: 10px;
+    }
+}
+
