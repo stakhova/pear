@@ -289,7 +289,7 @@
     position: relative;
     font: 500 2.4rem / 2.4rem var(--GT) ;
     white-space: nowrap;
-    letter-spacing: -0.2rem;
+    letter-spacing: -0.02em;
     position: relative;
     &:hover{
       transition: 0.2s all ease;
@@ -332,18 +332,18 @@
   }
   &__title{
     font: 700 8rem / 7.2rem var(--GT) ;
-    letter-spacing: -0.6rem;
+    letter-spacing: -0.02em;
     &.white{
       color:white;
     }
   }
   &__subtitle{
     font: 700 2rem / 2.4rem var(--GT) ;
-    letter-spacing: -0.1rem;
+    letter-spacing: -0.02em;
   }
   &__text{
     font: 400 1.6rem / 2.4rem var(--GT) ;
-    //letter-spacing: -0.02rem;
+    letter-spacing: -0.01em;
     &.white{
       color:white;
     }
@@ -441,7 +441,7 @@
     }
   }
   &__search{
-    padding: 0.8rem 2rem 0.8rem 2rem;
+    padding: 0.6rem 2rem 0.6rem 2rem;
     position: relative;
     display: flex;
     &-input{
@@ -699,10 +699,9 @@
     z-index: 0;
   }
   &__text{
-    font: 400 2rem/2.4rem var(--GT);
-    letter-spacing: -0.1rem;
+    font: 400 2.4rem / 3.4rem var(--GT);
+    //letter-spacing: -0.1rem;
     color:white;
-
   }
   &__campus{
     .section__title{
@@ -846,12 +845,12 @@
 .place{
   margin-top: 0;
   position: relative;
-  .section__form-content > *:nth-child(n+3){
-    display: block;
-  }
-  .section__form-content > *:nth-child(n+5){
-    display: none;
-  }
+  //.section__form-content > *:nth-child(n+3){
+  //  display: block;
+  //}
+  //.section__form-content > *:nth-child(n+5){
+  //  display: none;
+  //}
 
   .card__block{
     margin-bottom: 2.4rem;
@@ -1170,7 +1169,7 @@
     flex-grow: 1;
   }
   &__title{
-    letter-spacing: -0.2rem;
+    //letter-spacing: -0.2rem;
     font: 700 3.2rem / 3.8rem var(--GT) ;
   }
   &__text{
@@ -1180,14 +1179,110 @@
 }
 
 .campus{
+  &__form{
+    background-color: var(--color-grey);
+    position: relative;
+    &-back{
+      position: absolute;
+      z-index: 0;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      max-width: 144rem;
+      width: 100%;
+      height: 11.6rem;
+    }
+    .container{
+      padding: 8rem 3rem 16.8rem;
+      position: relative;
+      &:after{
+        content:'';
+        position: absolute;
+        right: -48vw;
+        width: 50vw;
+        height: 5rem;
+        top: 0;
+        z-index: 0;
+        background-color: white;
+      }
+      &:before{
+        content:'';
+        position: absolute;
+        left: -48vw;
+        width: 50vw;
+        height: 8rem;
+        top: 0;
+        z-index: 0;
+        background-color: white;
+      }
+    }
+    .section__form{
+      max-width:120rem ;
+      margin: 0 auto;
+      gap:2.4rem;
+      padding: 0;
+      position: relative;
+      z-index: 1;
+      background: transparent;
+      & > *{
+        width: calc(50% - 1.2rem);
+      }
+    }
+    &-title{
+      font: 700 4rem / 4.4rem var(--GT);
+    }
+    .section__form-info{
+      gap:2.4rem;
+      display: flex;
+      flex-direction: column;
+    }
+    &-email{
+      display: flex;
+      flex-direction: column;
+      gap:0.4rem;
+      span{
+        text-transform: uppercase;
+        font: 400 1.2rem / 1.3rem var(--GT);
+        opacity: 0.8;
+      }
+      a{
+        font: 700 2rem / 2.4rem var(--GT);
+        color:var(--color-primary);
+      }
+    }
+    &-person{
+      display: flex;
+      margin-top: 1.6rem;
+      align-items: center;
+      gap:1.6rem;
+      h4{
+        font: 700 2rem / 2.4rem var(--GT);
+      }
+      .section__text{
+        opacity: 0.8;
+      }
+      .img{
+        width: 6rem;
+        height: 6rem;
+        min-width: 6rem;
+        img{
+          border-radius: 50%;
+        }
+      }
+
+    }
+  }
   .container{
     padding: 5.6rem 3rem;
+    position: relative;
   }
   .card__item{
     width: calc((100% - 4.8rem )/3);
   }
   .card__img{
     position: relative;
+    height: 16rem;
+    clip-path: ellipse(65% 54% at 50% 45%);
     background-color: var(--color-light)!important;
   }
   .competence__img{
@@ -1279,6 +1374,7 @@
       width: 100%;
       height: 100%;
       border: 0.8rem solid #EEF7EB ;
+      pointer-events: none;
     }
     &:nth-child(even){
       .card__img{
@@ -1574,6 +1670,7 @@
       font: 400 1.2rem / 1.3rem var(--GT);
       text-transform: uppercase;
       letter-spacing: 0.06rem;
+      opacity: 0.8;
     }
     input{
       padding: 2rem 2.4rem;
@@ -1606,6 +1703,9 @@
   &__checkbox{
     margin: 1.6rem 0;
     position: relative;
+    label{
+      opacity: 0.8;
+    }
     a{
       text-decoration: underline;
     }
@@ -1787,12 +1887,13 @@ label.error{
   left: 0!important;
   font: 400 1.2rem / 2rem var(--GT)!important;
   text-transform: unset;
+  opacity: 1;
 }
 .hidden{
   overflow: hidden;
 }
 @media only screen and (max-width: 1440px) {
-.promise .container:before, .promise .container:after{
+.promise .container:before, .promise .container:after, .campus__form .container:before, .campus__form .container:after{
   display: none;
 }
 }
@@ -2409,5 +2510,31 @@ label.error{
   }
   .campus .card__nav{
    margin-top: 1.6rem;
+  }
+  .banner__text{
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+  }
+  .campus__form .section__form > *{
+    width: 100%;
+  }
+  .campus__form-back{
+    height: 4rem;
+  }
+  .campus__form .container{
+    padding: 5.6rem 2rem 8rem;
+  }
+  .campus__form-title{
+    font-size: 3.2rem;
+    line-height: 3.2rem;
+  }
+  .campus__form .section__form{
+    gap:4.8rem;
+  }
+  .campus__form-person{
+    margin: 0;
+  }
+  .campus .container{
+    padding-top: 4.8rem;
   }
 }
