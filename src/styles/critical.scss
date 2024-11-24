@@ -1,30 +1,36 @@
 
 @font-face {
     font-family: "GTWalsheimPro";
-    src: url("../fonts/GTWalsheimPro-Regular.woff2") format("woff2"),
-    url("../fonts/GTWalsheimPro-Regular.woff") format("woff");
+    src: url("../font/GTWalsheimPro-Regular.woff2") format("woff2"),
+    url("../font/GTWalsheimPro-Regular.woff") format("woff");
     font-weight: 400;
     font-style: normal;
 }
 
 @font-face {
     font-family: "GTWalsheimPro";
-    src: url("../fonts/GTWalsheimPro-Medium.woff2") format("woff2"),
-    url("../fonts/GTWalsheimPro-Medium.woff") format("woff");
+    src: url("../font/GTWalsheimPro-Medium.woff2") format("woff2"),
+    url("../font/GTWalsheimPro-Medium.woff") format("woff");
     font-weight: 500;
     font-style: normal;
 }
 
+//@font-face {
+//    font-family: "GTWalsheimPro";
+//    src: url("../font/GT-Walsheim-Pro-Bold.woff2") format("woff2"),
+//    url("../font/GT-Walsheim-Pro-Bold.woff") format("woff");
+//    font-weight: 700;
+//    font-style: normal;
+//}
+
+
 @font-face {
     font-family: "GTWalsheimPro";
-    src: url("../fonts/GTWalsheimPro-Bold.woff2") format("woff2"),
-    url("../fonts/GTWalsheimPro-Bold.woff") format("woff");
+    src: url("../font/GTWalsheimPro-Bold.eot");
+    src: url("../font/GTWalsheimPro-Bold.eot?#iefix") format("embedded-opentype"), url("../font/GTWalsheimPro-Bold.woff") format("woff"), url("../font/GTWalsheimPro-Bold.ttf") format("truetype"), url("/font/Montserrat-Bold.svg#Montserrat") format("svg");
     font-weight: 700;
     font-style: normal;
 }
-
-
-
 
 
 :root {

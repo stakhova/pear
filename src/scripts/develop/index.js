@@ -67,9 +67,10 @@ function validateForm(form, func, noreset){
             },
             phone: {
                 required: true,
-                goodEmail: true,
-                email: true
             },
+            policy_terms: {
+                required: true
+            }
 
         },
         messages: {
@@ -84,15 +85,26 @@ function validateForm(form, func, noreset){
             phone: {
                 required: "Dieses Feld ist erforderlich",
             },
+            policy_terms: {
+                required: "Sie müssen die Datenschutzerklärung akzeptieren"
+            }
+        },
+        errorPlacement: function (error, element) {
+            if (element.attr("type") === "checkbox") {
+                error.insertBefore(element.closest(".form__checkbox").find("input"));
+            } else {
+                error.insertBefore(element);
+            }
         },
         submitHandler: function () {
-
+            func()
             noreset ? null : form[0].reset();
+
         }
     });
-    form.find('select').on('change', function () {
-        $(this).valid();
-    });
+    // form.find('select').on('change', function () {
+    //     $(this).valid();
+    // });
 };
 function ajaxSend(form, funcSuccess, funcError) {
     let data = form.serialize();
@@ -126,8 +138,13 @@ function tab() {
 function showSearch() {
 
     $(document).on('click','.header__search-icon',function (){
-        $('.header__search-wrap').addClass('active')
-        $(this).hide()
+        if (window.innerWidth <= 666) {
+            $('.header__search-wrap').toggleClass('active')
+            $(this).toggleClass('active')
+        }else{
+            $('.header__search-wrap').addClass('active')
+            $(this).hide()
+        }
     })
     let searchInput = '.header__search input[name="search"]'
     $(document).on('keydown',searchInput , function () {
@@ -146,8 +163,11 @@ function showSearch() {
     $(document).on('click', '.header__search-clean', function () {
         $('.header__search').removeClass('focused');
         $(searchInput).val('')
-        $('.header__search-wrap').removeClass('active')
+
         $('.header__search-icon').show()
+        if (window.innerWidth > 666) {
+            $('.header__search-wrap').removeClass('active')
+        }
         search();
     });
 }
@@ -200,7 +220,8 @@ function toogleModal(modal, btn ) {
     if(!btn){
         modal.show();
         $('body').addClass('hidden');
-        return false;
+        console.log(1111)
+        // return false;
     } else{
         btn.click(function () {
             button = $(this);
