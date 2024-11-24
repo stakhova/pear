@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css"/>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+    <!--    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">-->
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="styles/critical.css">
+    <link rel="stylesheet" href="styles/index.css">
+</head>
+<body>
+
+<div class="wrap">
+    <header class="header" >
+        <div class="container">
+            <div class="header__flex">
+                <div class="header__block">
+                    <a class="header__logo img " href="./../index.html">
+                        <img src="../img/logo.svg" alt="Logo">
+                    </a>
+                    <a class="header__logo header__logo-mob img " href="./../index.html">
+                        <img src="../img/logo-mob.svg" alt="Logo">
+                    </a>
+                    <div class="header__menu">
+                        <div class="header__menu-list">
+                            <a href="" class="section__text white">Kalender</a>
+                            <a href="" class="section__text white">Seminare</a>
+                            <a href="" class="section__text white">Exklusiv</a>
+                            <a href="" class="section__text white">Auditoren</a>
+                        </div>
+                    </div>
+                </div>
+               <div class="header__right">
+                   <div class="header__search-wrap">
+                       <form class="header__search">
+                           <input type="hidden" name="action" value="search_header">
+                           <div class="header__search-input">
+                               <input type="text" name="search" placeholder="Suche auf der Website...">
+                           </div>
+                           <button class="header__search-clean" type="button"></button>
+                       </form>
+                       <div class="header__search-result">
+                           <div class="header__search-list">
+                               <a href="" class="header__search-item">
+                                   <div class="header__search-info">
+                                       <span>Schulungen</span>
+                                       <h3 >Qualitätsmanagement</h3>
+                                   </div>
+                               </a>
+                               <a href="" class="header__search-item">
+                                   <div class="header__search-info">
+                                       <span >Schulungen</span>
+                                       <h3 >Qualitätsmanagement</h3>
+                                   </div>
+                               </a>
+                               <a href="" class="header__search-item">
+                                   <div class="header__search-info">
+                                       <span >Schulungen</span>
+                                       <h3 >Qualitätsmanagement</h3>
+                                   </div>
+                               </a>
+    
+                           </div>
+                           <div class="header__search-empty ">
+                               <p class="section__text ">No result found</p>
+                           </div>
+                       </div>
+                   </div>
+                   <button class="header__search-icon ">
+                       <span class="img"> <img src="./../img/search.svg" alt=""></span>
+                   </button>
+                   <a href="" class="section__button primary">Online Campus</a>
+                   <div class="header__burger"><span></span><span></span></div>
+    
+               </div>
+            </div>
+        </div>
+    </header>
+    <div class="modal modal__thank">
+        <div class="modal__wrap">
+            <div class="modal__content ">
+                <div class="modal__close img">
+                    <img src="./../img/clear.svg" alt="">
+                </div>
+                <div class="modal__overflow">
+                    <div class="modal__block">
+                        <h3 class="modal__title">Danke! </h3>
+                        <p class="modal__text">Wir werden Sie kontaktieren</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="banner">
+        <div class="banner__img img">
+            <img src="./img/banner.png" alt="">
+        </div>
+        <div class="container">
+            <div class="banner__flex section__flex">
+                <div class="banner__info">
+                    <h1 class="section__title white">Wir bringen Ihre Expertise auf das nächste Level </h1>
+                    <h3 class="banner__subtitle">Maßgeschneiderte, praxisorientierte Seminare für Ihren Erfolg</h3>
+                    <div class="banner__button">
+                        <a href="" class="section__button primary">Kalender</a>
+                        <a href="" class="section__button ">Seminare</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <section class="section promise">
+
+        <div class="container">
+            <div class="promise__block section__flex" >
+                <div class="promise__img img">
+                    <img src="./img/promise.png" alt="">
+                </div>
+                <div class="promise__info">
+                    <div class="promise__back img">
+                        <img src="./img/top.png" alt="">
+                    </div>
+                    <p class="section__category">Unser Versprechen</p>
+                    <h2 class="promise__title">Unsere hochqualifizierten, erfahrenen Referenten vermitteln komplexe Themen verständlich mit klarem Fokus auf die praktische Umsetzung</h2>
+                    <div class="section__flex promise__count-wrap">
+                        <div class="promise__count">
+                            <h4><span class="counter" data-target="120">0</span>+</h4>
+                            <p class="section__text">Erfolgreiche Seminare und Schulungen</p>
+                        </div>
+                        <div class="promise__count">
+                            <h4><span class="counter" data-target="300">0</span>+</h4>
+                            <p class="section__text">Zufriedene Kunden</p>
+                        </div>
+                        <div class="promise__count">
+                            <h4><span class="counter" data-target="35">0</span>+</h4>
+                            <p class="section__text">Expert lecturers</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section grey place">
+
+        <div class="place__back img">
+            <img src="./img/bottom.png" alt="">
+        </div>
+        <div class="container">
+            <div class="section__top">
+                <div class="section__top-left">
+                    <p class="section__category">kommende seminare</p>
+                    <h2 class="section__title"> Sichern Sie sich Ihren Platz</h2>
+                </div>
+                <div class="section__top-search">
+                    <form class="section__search">
+                        <input type="hidden" name="action" value="search">
+                        <div class="section__search-input">
+                            <input type="text" name="search" placeholder="Seminar suchen…">
+                        </div>
+                        <button><span>Suche</span></button>
+                    </form>
+                    <a href="" class="section__button primary">Kalender</a>
+                </div>
+            </div>
+            <div class="card__block">
+                <div class="swiper card__slider">
+                    <div class="card__list swiper-wrapper">
+                        <a href="" class="card__item green swiper-slide">
+                            <div class="card__img img">
+                                <img src="./img/card1.png" alt="">
+                                <span class="card__flag right"> Noch 11 Tage</span>
+                                <span class="card__flag left"> in Kürze</span>
+                            </div>
+                            <div class="card__info">
+                                <div class="card__date">
+                                    <span>03 OKT. 24</span>
+                                    <span class="card__date-loc">Bamberg</span>
+                                </div>
+                                <h3 class="card__title"> Seminar: QSV - Risk minimization and liability distribution </h3>
+                            </div>
+                        </a>
+                        <a href="" class="card__item swiper-slide">
+                            <div class="card__img img">
+                                <img src="./img/card1.png" alt="">
+                                <span class="card__flag right"> Noch 11 Tage</span>
+                                <span class="card__flag left"> in Kürze</span>
+                            </div>
+                            <div class="card__info">
+                                <div class="card__date ">
+                                    <span>03 OKT. 24</span>
+                                    <span class="card__date-loc online">online</span>
+                                </div>
+                                <h3 class="card__title"> Seminar: QSV - Risk minimization and liability distribution </h3>
+                            </div>
+                        </a>
+                        <a href="" class="card__item swiper-slide">
+                            <div class="card__img img">
+                                <img src="./img/card1.png" alt="">
+                                <span class="card__flag right"> Noch 11 Tage</span>
+                                <span class="card__flag left"> in Kürze</span>
+                            </div>
+                            <div class="card__info">
+                                <div class="card__date ">
+                                    <span>03 OKT. 24</span>
+                                    <span class="card__date-loc online">online</span>
+                                </div>
+                                <h3 class="card__title"> Seminar: QSV - Risk minimization and liability distribution </h3>
+                            </div>
+                        </a>
+                        <a href="" class="card__item swiper-slide">
+                            <div class="card__img img">
+                                <img src="./img/card1.png" alt="">
+                                <span class="card__flag right"> Noch 11 Tage</span>
+                                <span class="card__flag left"> in Kürze</span>
+                            </div>
+                            <div class="card__info">
+                                <div class="card__date ">
+                                    <span>03 OKT. 24</span>
+                                    <span class="card__date-loc online">online</span>
+                                </div>
+                                <h3 class="card__title"> Seminar: QSV - Risk minimization and liability distribution </h3>
+                            </div>
+                        </a>
+                        <a href="" class="card__item swiper-slide">
+                            <div class="card__img img">
+                                <img src="./img/card1.png" alt="">
+                                <span class="card__flag right"> Noch 11 Tage</span>
+                                <span class="card__flag left"> in Kürze</span>
+                            </div>
+                            <div class="card__info">
+                                <div class="card__date ">
+                                    <span>03 OKT. 24</span>
+                                    <span class="card__date-loc online">online</span>
+                                </div>
+                                <h3 class="card__title"> Seminar: QSV - Risk minimization and liability distribution </h3>
+                            </div>
+                        </a>
+                        <a href="" class="card__item swiper-slide">
+                            <div class="card__img img">
+                                <img src="./img/card1.png" alt="">
+                                <span class="card__flag right"> Noch 11 Tage</span>
+                                <span class="card__flag left"> in Kürze</span>
+                            </div>
+                            <div class="card__info">
+                                <div class="card__date ">
+                                    <span>03 OKT. 24</span>
+                                    <span class="card__date-loc online">online</span>
+                                </div>
+                                <h3 class="card__title"> Seminar: QSV - Risk minimization and liability distribution </h3>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="card__nav">
+                    <button class="swiper-button-prev card__prev"></button>
+                    <button class="swiper-button-next card__next"></button>
+                </div>
+            </div>
+            <div class="section__form">
+                <div class="section__form-info">
+                    <div class="section__more">
+                        <div class="section__form-content content">
+                            <h3>Sie haben nicht das richtige Thema oder Datum gefunden - Kontaktieren Sie uns für ein Inhouse Seminar</h3>
+                            <p>Jedes unserer Seminare können Sie auch direkt bei Ihnen im Unternehmen buchen – maßgeschneidert und perfekt auf Ihre Bedürfnisse abgestimmt. Der größte Vorteil: Wir passen die Inhalte im Vorfeld exakt an Ihre Unternehmensanforderungen an, sodass Sie nicht nur Standardwissen, sondern Lösungen erhalten, die für Ihr Geschäft relevant sind.</p>
+                            <p>Mit unseren Inhouse-Seminaren sparen Sie sich Anfahrtswege und Schulungsräume – wir kommen zu Ihnen! Dadurch können Ihre Mitarbeiter in ihrer gewohnten Umgebung gezielt weitergebildet werden, mit Inhalten, die individuell auf Ihre Branche, Abläufe und Herausforderungen zugeschnitten sind. So stellen wir sicher, dass das Gelernte sofort in die Praxis umgesetzt werden kann.</p>
+                            <p>Maximale Flexibilität, maßgeschneiderte Inhalte und direkter Praxisbezug – machen Sie den nächsten Schritt und buchen Sie Ihr Inhouse-Seminar noch heute!</p>
+                            <p>Maximale Flexibilität, maßgeschneiderte Inhalte und direkter Praxisbezug – machen Sie den nächsten Schritt und buchen Sie Ihr Inhouse-Seminar noch heute!</p>
+                            <p>Maximale Flexibilität, maßgeschneiderte Inhalte und direkter Praxisbezug – machen Sie den nächsten Schritt und buchen Sie Ihr Inhouse-Seminar noch heute!</p>
+                        </div>
+                     <button class="section__more-btn">Mehr Information</button>
+                    </div>
+
+                </div>
+                <form action="" class="form form__seminar">
+                    <input type="hidden" name="action" value="seminar">
+                    <div class="form__input">
+                        <label>voller Name</label>
+                        <input type="text" name="name" placeholder="Max Mustermann">
+                    </div>
+                    <div class="form__input">
+                        <label>E-Mail</label>
+                        <input type="text" name="email" placeholder="example@mail.com">
+                    </div>
+                    <div class="form__input">
+                        <label>Telefonnummer</label>
+                        <input type="text" name="phone" placeholder="+49 XXX XXXXXXXX">
+                    </div>
+                    <div class="form__input textarea">
+                        <label>Deine Anfrage</label>
+                        <textarea name="message" placeholder="Ich möchte..."></textarea>
+                    </div>
+                    <div class="form__checkbox">
+                        <input type="checkbox" id="check"  name="policy_terms">
+                        <label for="check">Ich habe die <a href="">Datenschutzerklärung </a> gelesen und stimme der Verarbeitung meiner Daten zur Kontaktaufnahme und Bearbeitung meiner Anfrage zu.</label>
+                    </div>
+                   <button class="section__button primary">Senden</button>
+                </form>
+            </div>
+
+       </div>
+    </section>
+    <section class="section exclusive  ">
+        <div class="container">
+            <div class="section__top">
+                <div class="section__top-left">
+                    <h2 class="section__title"> Exclusive Seminare </h2>
+                    <div class="section__more">
+                        <div class="section__form-content content ">
+                            <p>Unsere exklusiven Seminare bieten Ihnen die einzigartige Möglichkeit, in einer kleinen Runde von maximal drei Teilnehmern individuell betreut zu werden. In dieser intensiven Lernumgebung gehen wir gezielt auf Ihre speziellen Fragestellungen ein und entwickeln maßgeschneiderte Lösungen. Sie profitieren von direktem Austausch, praxisnahen Beispielen und persönlichen Empfehlungen.</p>
+                            <p>In einem exklusiven Seminar erhalten Sie die volle Aufmerksamkeit unserer Experten. Dies ermöglicht es uns, tiefer in Ihre spezifischen Themen einzutauchen und individuelle Strategien zu erarbeiten, die Sie sofort in Ihrem Unternehmen umsetzen können. Exklusive Seminare bieten den Vorteil, dass wir Ihre Zeit effizient nutzen, um Ihnen den größtmöglichen Mehrwert zu bieten.</p>
+                            <p>Wenn Sie ein Seminar exklusiv buchen möchten, das nicht entsprechend gekennzeichnet ist, sprechen Sie uns gerne an.</p>
+                            <p>Wenn Sie ein Seminar exklusiv buchen möchten, das nicht entsprechend gekennzeichnet ist, sprechen Sie uns gerne an.</p>
+
+                        </div>
+                        <button class="section__more-btn">Mehr Information</button>
+                    </div>
+                </div>
+
+                <div class="section__top-search">
+                    <form class="section__search">
+                        <input type="hidden" name="action" value="search">
+                        <div class="section__search-input">
+                            <input type="text" name="search" placeholder="Seminar suchen…">
+                        </div>
+                        <button><span>Suche</span></button>
+                    </form>
+                    <a href="" class="section__button primary">Alle Exclusiven</a>
+                </div>
+            </div>
+            <div class="card__block">
+                <div class="swiper card__slider">
+                    <div class="card__list swiper-wrapper">
+                        <a href="" class="card__item yellow swiper-slide">
+                            <div class="card__img img">
+                                <img src="./img/card1.png" alt="">
+                                <span class="card__flag right"> Noch 11 Tage</span>
+                            </div>
+                            <div class="card__info">
+                                <div class="card__date">
+                                    <span>03 OKT. 24</span>
+                                    <span class="card__date-loc">Bamberg</span>
+                                </div>
+                                <h3 class="card__title"> Seminar: QSV - Risk minimization and liability distribution </h3>
+                            </div>
+                        </a>
+                        <a href="" class="card__item yellow swiper-slide">
+                            <div class="card__img img">
+                                <img src="./img/card1.png" alt="">
+                                <span class="card__flag right"> Noch 11 Tage</span>
+                            </div>
+                            <div class="card__info">
+                                <div class="card__date ">
+                                    <span>03 OKT. 24</span>
+                                    <span class="card__date-loc online">online</span>
+                                </div>
+                                <h3 class="card__title"> Seminar: QSV - Risk minimization and liability distribution </h3>
+                            </div>
+                        </a>
+                        <a href="" class="card__item yellow swiper-slide">
+                            <div class="card__img img">
+                                <img src="./img/card1.png" alt="">
+                                <span class="card__flag right"> Noch 11 Tage</span>
+                            </div>
+                            <div class="card__info">
+                                <div class="card__date ">
+                                    <span>03 OKT. 24</span>
+                                    <span class="card__date-loc online">online</span>
+                                </div>
+                                <h3 class="card__title"> Seminar: QSV - Risk minimization and liability distribution </h3>
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+                <div class="card__nav">
+                    <button class="swiper-button-prev card__prev"></button>
+                    <button class="swiper-button-next card__next"></button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <section class="section improve">
+        <div class="container">
+            <div class="section__top">
+                <div class="section__top-left">
+                    <h2 class="section__title"> Weiterbildungen <br> für Auditoren</h2>
+                    <p class="section__text">Auditoren müssen regelmäßig Weiterbildungen absolvieren – buchen Sie noch heute Ihren flexiblen Kurs im Selbststudium und bleiben Sie zertifiziert!</p>
+                </div>
+
+                <div class="section__top-search">
+                    <form class="section__search">
+                        <input type="hidden" name="action" value="search">
+                        <div class="section__search-input">
+                            <input type="text" name="search" placeholder="Seminar suchen…">
+                        </div>
+                        <button><span>Suche</span></button>
+                    </form>
+                    <a href="" class="section__button primary">Alle Exclusiven</a>
+                </div>
+            </div>
+            <div class="card__block">
+                <div class="swiper card__slider">
+                    <div class="card__list swiper-wrapper">
+                        <a href="" class="card__item grey swiper-slide">
+                            <div class="card__img img">
+                                <img src="./img/banner.png" alt="">
+                                <span class="card__flag right"> Noch 11 Tage</span>
+                            </div>
+                            <div class="card__info">
+                                <div class="card__info-top">
+                                    <span class="card__iso">ISO 50001</span>
+                                    <div class="card__star" data-star="5"><span>(23)</span></div>
+                                </div>
+                                <h3 class="card__title">Energiemanagement</h3>
+                            </div>
+                        </a>
+                        <a href="" class="card__item grey swiper-slide">
+                            <div class="card__img img">
+                                <img src="./img/card1.png" alt="">
+                                <span class="card__flag right"> Noch 11 Tage</span>
+                            </div>
+                            <div class="card__info">
+                                <div class="card__info-top">
+                                    <span class="card__iso">ISO 50001</span>
+                                    <div class="card__star" data-star="3"><span>(23)</span></div>
+                                </div>
+                                <h3 class="card__title">Energiemanagement</h3>
+                            </div>
+                        </a>
+                        <a href="" class="card__item grey swiper-slide">
+                            <div class="card__img img">
+                                <img src="./img/card1.png" alt="">
+                                <span class="card__flag right"> Noch 11 Tage</span>
+                            </div>
+                            <div class="card__info">
+                                <div class="card__info-top">
+                                    <span class="card__iso">ISO 50001</span>
+                                    <div class="card__star" data-star="4"><span>(23)</span></div>
+                                </div>
+                                <h3 class="card__title">Energiemanagement</h3>
+                            </div>
+                        </a>
+                        <a href="" class="card__item grey swiper-slide">
+                            <div class="card__img img">
+                                <img src="./img/card1.png" alt="">
+                                <span class="card__flag right"> Noch 11 Tage</span>
+                            </div>
+                            <div class="card__info">
+                                <div class="card__info-top">
+                                    <span class="card__iso">ISO 50001</span>
+                                    <div class="card__star" data-star="5"><span>(23)</span></div>
+                                </div>
+                                <h3 class="card__title">Energiemanagement</h3>
+                            </div>
+                        </a>
+                        <a href="" class="card__item grey swiper-slide">
+                            <div class="card__img img">
+                                <img src="./img/card1.png" alt="">
+                                <span class="card__flag right"> Noch 11 Tage</span>
+                            </div>
+                            <div class="card__info">
+                                <div class="card__info-top">
+                                    <span class="card__iso">ISO 50001</span>
+                                    <div class="card__star" data-star="1"><span>(23)</span></div>
+                                </div>
+                                <h3 class="card__title">Energiemanagement</h3>
+                            </div>
+                        </a>
+                        <a href="" class="card__item grey swiper-slide">
+                            <div class="card__img img">
+                                <img src="./img/card1.png" alt="">
+                                <span class="card__flag right"> Noch 11 Tage</span>
+                            </div>
+                            <div class="card__info">
+                                <div class="card__info-top">
+                                    <span class="card__iso">ISO 50001</span>
+                                    <div class="card__star" data-star="3"><span>(23)</span></div>
+                                </div>
+                                <h3 class="card__title">Energiemanagement</h3>
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+                <div class="card__nav">
+                    <button class="swiper-button-prev card__prev"></button>
+                    <button class="swiper-button-next card__next"></button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <section class="section competence">
+        <div class="container">
+            <div class="section__center">
+                <h2 class="section__title"> Unsere Kompetenz</h2>
+                <p class="section__text">Wir sind ein engagiertes Team, das Bildung als Schlüssel zum Erfolg sieht und Seminare gestaltet, die informieren und inspirieren – mit Fachwissen und einem offenen Ohr für Ihre Bedürfnisse.</p>
+            </div>
+            <div class="card__block">
+                <div class="swiper card__slider">
+                    <div class="card__list swiper-wrapper">
+                        <div  class="card__item competence__item swiper-slide">
+                            <div class="card__img">
+                                <div class="competence__img img">
+                                    <img src="./img/u1.svg" alt="">
+                                </div>
+                            </div>
+                            <div class="card__info">
+                                <h3 class="card__title">Energiemanagement</h3>
+                                <p class="card__text">Wir nutzen modernste Technologien und interaktive Methoden, um Teilnehmer aktiv einzubinden und das Lernen zu fördern.</p>
+                            </div>
+                        </div>
+                        <div  class="card__item competence__item swiper-slide">
+                            <div class="card__img">
+                                <div class="competence__img img">
+                                    <img src="./img/u2.svg" alt="">
+                                </div>
+                            </div>
+                            <div class="card__info">
+                                <h3 class="card__title">Maßgeschneiderte Seminare</h3>
+                                <p class="card__text">Wir nutzen modernste Technologien und interaktive Methoden, um Teilnehmer aktiv einzubinden und das Lernen zu fördern.</p>
+                            </div>
+                        </div>
+                        <div  class="card__item competence__item swiper-slide">
+                            <div class="card__img">
+                                <div class="competence__img img">
+                                    <img src="./img/u3.svg" alt="">
+                                </div>
+                            </div>
+                            <div class="card__info">
+                                <h3 class="card__title">Anerkannte Kompetenz</h3>
+                                <p class="card__text">Wir nutzen modernste Technologien und interaktive Methoden, um Teilnehmer aktiv einzubinden und das Lernen zu fördern.</p>
+                            </div>
+                        </div>
+                        <div  class="card__item competence__item swiper-slide">
+                            <div class="card__img">
+                                <div class="competence__img img">
+                                    <img src="./img/u4.svg" alt="">
+                                </div>
+                            </div>
+                            <div class="card__info">
+                                <h3 class="card__title">Ausbildung für Auditoren</h3>
+                                <p class="card__text">Wir nutzen modernste Technologien und interaktive Methoden, um Teilnehmer aktiv einzubinden und das Lernen zu fördern.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card__nav">
+                    <button class="swiper-button-prev card__prev"></button>
+                    <button class="swiper-button-next card__next"></button>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <section class="section partners">
+        <div class="container">
+            <div class="partners__block">
+                <div class="section__center">
+                    <h2 class="section__title">Unsere Partner</h2>
+                </div>
+
+                <div class="swiper partners__slide">
+                    <div class="partners__list swiper-wrapper">
+                        <div  class="partners__item swiper-slide">
+                            <div class="partners__img img ">
+                                <img src="./img/slider1.png" alt="">
+                            </div>
+                        </div>
+                        <div  class="partners__item swiper-slide">
+                            <div class="partners__img img ">
+                                <img src="./img/slider2.png" alt="">
+                            </div>
+                        </div>
+                        <div  class="partners__item swiper-slide">
+                            <div class="partners__img img ">
+                                <img src="./img/slider3.png" alt="">
+                            </div>
+                        </div>
+                        <div  class="partners__item swiper-slide">
+                            <div class="partners__img img ">
+                                <img src="./img/slider1.png" alt="">
+                            </div>
+                        </div>
+                        <div  class="partners__item swiper-slide">
+                            <div class="partners__img img ">
+                                <img src="./img/slider2.png" alt="">
+                            </div>
+                        </div>
+                        <div  class="partners__item swiper-slide">
+                            <div class="partners__img img ">
+                                <img src="./img/slider3.png" alt="">
+                            </div>
+                        </div>
+                        <div  class="partners__item swiper-slide">
+                            <div class="partners__img img ">
+                                <img src="./img/slider1.png" alt="">
+                            </div>
+                        </div>
+                        <div  class="partners__item swiper-slide">
+                            <div class="partners__img img ">
+                                <img src="./img/slider2.png" alt="">
+                            </div>
+                        </div>
+                        <div  class="partners__item swiper-slide">
+                            <div class="partners__img img ">
+                                <img src="./img/slider3.png" alt="">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+    <section class="section contact">
+        <div class="container">
+            <div class="section__flex contact__flex">
+                <div class="contact__info">
+                    <h2 class="contact__title">Kontakt</h2>
+                    <div class="contact__list">
+                        <div class="contact__item">
+                            <span>Standort</span>
+                            <a class="section__subtitle" href="https://maps.app.goo.gl/roeum5czKPbspdAE8">Edelfrauengrab 33
+                                <br> 77883 Ottenhöfen im Schwarzwald</a>
+                        </div>
+                        <div class="contact__item">
+                            <span>Rufnummer</span>
+                            <a class="section__subtitle" href="tel:+49017683342260">+49 (0)176 83342260 </a>
+                        </div>
+                        <div class="contact__item">
+                            <span>E-Mail</span>
+                            <a class="section__subtitle" href="mailto:jmhecker@pear-academy.de">jmhecker@pear-academy.de</a>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="contact__map">
+                    <div class="map__item" id="map"></div>
+
+                    <script>
+                        let mapIcon = '../img/map-loc.svg';
+
+                        let positionMaps = {lat:32.051586, lng:34.768923, text:'<p>Eexplore on google maps</p>'}
+                        console.log(positionMaps);
+                        (g => {
+                            var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary",
+                                q = "__ib__", m = document, b = window;
+                            b = b[c] || (b[c] = {});
+                            var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams,
+                                u = () => h || (h = new Promise(async (f, n) => {
+                                    await (a = m.createElement("script"));
+                                    e.set("libraries", [...r] + "");
+                                    for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]);
+                                    e.set("callback", c + ".maps." + q);
+                                    a.src = `https://maps.${c}apis.com/maps/api/js?` + e;
+                                    d[q] = f;
+                                    a.onerror = () => h = n(Error(p + " could not load."));
+                                    a.nonce = m.querySelector("script[nonce]")?.nonce || "";
+                                    m.head.append(a)
+                                }));
+                            d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n))
+                        })({
+                            key: "AIzaSyDgGhu7gVtSqKxCC9tSywaqlPIpufe0CHs",
+                            v: "weekly",
+                        });
+                    </script>
+
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer" >
+        <div class="container">
+            <div class="footer__back img">
+                <img src="./../img/footer-bg.svg" alt="">
+            </div>
+            <div class="footer__block">
+                <div class="footer__item">
+                    <a class="footer__logo img" href="">
+                        <img src="./../img/footer-logo.svg" alt="">
+                    </a>
+                    <h2 class="footer__title">A<span>p</span>pear for success!</h2>
+                    <div class="footer__btn">
+                        <a href="" class="section__button primary">Online Campus</a>
+                        <a href="" class="section__button">Kalender</a>
+                    </div>
+                </div>
+                <div class="footer__menu-wrap">
+                    <div class="footer__menu">
+                        <h2 class="section__subtitle">Navigation</h2>
+                        <div class="footer__list">
+                            <a class="section__text" href="">Kalender</a>
+                            <a class="section__text" href="">Seminare</a>
+                            <a class="section__text" href="">Exklusiv</a>
+                            <a class="section__text" href="">Auditoren</a>
+                            <a class="section__text" href="">Online Campus</a>
+                        </div>
+                    </div>
+                    <div class="footer__menu">
+                        <h2 class="section__subtitle">Kontaktinformationen</h2>
+                        <div class="footer__list">
+                            <a class="section__text" href="https://maps.app.goo.gl/roeum5czKPbspdAE8">Edelfrauengrab 33
+                                77883 Ottenhöfen im Schwarzwald</a>
+                            <a class="section__text" href="tel:+49017683342260">+49 (0)176 83342260</a>
+                            <a class="section__text" href="mailto:jmhecker@pear-academy.de">jmhecker@pear-academy.de</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <div class="footer__block">
+                    <p class="section__text" >© 2024 Copyright | All right reserved</p>
+                    <div class="footer__menu-wrap">
+                        <a class="section__text" href="">Datenschutzerklärung</a>
+                        <a class="section__text" href="">Impressum</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    </footer>
+    <!-- /FOOTER -->
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type="text/javascript" src="scripts/plagins/device.js" ></script>
+<script type="text/javascript" src="scripts/plagins/jquery.validate.min.js" ></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+<script type="text/javascript" src="scripts/develop/index.js" ></script>
+
+</body>
+</html>

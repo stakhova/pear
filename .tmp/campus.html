@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css"/>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+    <!--    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">-->
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="styles/critical.css">
+    <link rel="stylesheet" href="styles/index.css">
+</head>
+<body>
+
+<div class="wrap ">
+    <header class="header" >
+        <div class="container">
+            <div class="header__flex">
+                <div class="header__block">
+                    <a class="header__logo img " href="./../index.html">
+                        <img src="../img/logo.svg" alt="Logo">
+                    </a>
+                    <a class="header__logo header__logo-mob img " href="./../index.html">
+                        <img src="../img/logo-mob.svg" alt="Logo">
+                    </a>
+                    <div class="header__menu">
+                        <div class="header__menu-list">
+                            <a href="" class="section__text white">Kalender</a>
+                            <a href="" class="section__text white">Seminare</a>
+                            <a href="" class="section__text white">Exklusiv</a>
+                            <a href="" class="section__text white">Auditoren</a>
+                        </div>
+                    </div>
+                </div>
+               <div class="header__right">
+                   <div class="header__search-wrap">
+                       <form class="header__search">
+                           <input type="hidden" name="action" value="search_header">
+                           <div class="header__search-input">
+                               <input type="text" name="search" placeholder="Suche auf der Website...">
+                           </div>
+                           <button class="header__search-clean" type="button"></button>
+                       </form>
+                       <div class="header__search-result">
+                           <div class="header__search-list">
+                               <a href="" class="header__search-item">
+                                   <div class="header__search-info">
+                                       <span>Schulungen</span>
+                                       <h3 >Qualitätsmanagement</h3>
+                                   </div>
+                               </a>
+                               <a href="" class="header__search-item">
+                                   <div class="header__search-info">
+                                       <span >Schulungen</span>
+                                       <h3 >Qualitätsmanagement</h3>
+                                   </div>
+                               </a>
+                               <a href="" class="header__search-item">
+                                   <div class="header__search-info">
+                                       <span >Schulungen</span>
+                                       <h3 >Qualitätsmanagement</h3>
+                                   </div>
+                               </a>
+    
+                           </div>
+                           <div class="header__search-empty ">
+                               <p class="section__text ">No result found</p>
+                           </div>
+                       </div>
+                   </div>
+                   <button class="header__search-icon ">
+                       <span class="img"> <img src="./../img/search.svg" alt=""></span>
+                   </button>
+                   <a href="" class="section__button primary">Online Campus</a>
+                   <div class="header__burger"><span></span><span></span></div>
+    
+               </div>
+            </div>
+        </div>
+    </header>
+    <div class="modal modal__thank">
+        <div class="modal__wrap">
+            <div class="modal__content ">
+                <div class="modal__close img">
+                    <img src="./../img/clear.svg" alt="">
+                </div>
+                <div class="modal__overflow">
+                    <div class="modal__block">
+                        <h3 class="modal__title">Danke! </h3>
+                        <p class="modal__text">Wir werden Sie kontaktieren</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="banner banner__campus">
+        <div class="banner__img img">
+            <img src="./img/banner.png" alt="">
+        </div>
+        <div class="container">
+            <div class="banner__flex section__flex">
+                <div class="banner__info">
+                    <h1 class="section__title white">Online Campus </h1>
+                    <h3 class="banner__text">Unser Online Campus bietet flexible Weiterbildung: Eigene Schulungen hochladen oder aus der Bibliothek wählen, abschließende Quiz, monatliche Reports und automatisierte Administration. Inhalte sind anpassbar und in mehreren Sprachen verfügbar.</h3>
+                    <button class="section__button primary arrow">Online Campus </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="section  campus">
+        <div class="container">
+            <div class="card__block">
+                <div class="swiper card__slider">
+                    <div class="card__list swiper-wrapper">
+                        <div  class="card__item competence__item swiper-slide">
+                            <div class="card__img">
+                                <div class="competence__img img">
+                                    <img src="./img/c1.svg" alt="">
+                                </div>
+                            </div>
+                            <div class="card__info">
+                                <h3 class="card__title">Individuelle Anpassung</h3>
+                                <p class="card__text">Wir passen Schulungen und Unterweisungen an die spezifischen Anforderungen Ihres Unternehmens an.</p>
+                            </div>
+                        </div>
+                        <div  class="card__item competence__item swiper-slide">
+                            <div class="card__img">
+                                <div class="competence__img img">
+                                    <img src="./img/c2.svg" alt="">
+                                </div>
+                            </div>
+                            <div class="card__info">
+                                <h3 class="card__title">Automatisierte Prozesse</h3>
+                                <p class="card__text">Stellen Sie sicher, dass alle Mitarbeiter die erforderlichen Schulungen und Unterweisungen rechtzeitig absolvieren.</p>
+                            </div>
+                        </div>
+                        <div  class="card__item competence__item swiper-slide">
+                            <div class="card__img">
+                                <div class="competence__img img">
+                                    <img src="./img/c3.svg" alt="">
+                                </div>
+                            </div>
+                            <div class="card__info">
+                                <h3 class="card__title">Flexibilität</h3>
+                                <p class="card__text">Schulungen können zu jedem beliebigen Zeitpunkt, von jedem Ort aus und mit jedem Endgerät durchgeführt werden.</p>
+                            </div>
+                        </div>
+                        <div  class="card__item competence__item swiper-slide">
+                            <div class="card__img">
+                                <div class="competence__img img">
+                                    <img src="./img/c4.svg" alt="">
+                                </div>
+                            </div>
+                            <div class="card__info">
+                                <h3 class="card__title">Monatliches Reporting</h3>
+                                <p class="card__text">Verfolgen Sie den aktuellen Schulungsstatus Ihrer Mitarbeiter mit detaillierten Berichten.</p>
+                            </div>
+                        </div>
+                        <div  class="card__item competence__item swiper-slide">
+                            <div class="card__img">
+                                <div class="competence__img img">
+                                    <img src="./img/c5.svg" alt="">
+                                </div>
+                            </div>
+                            <div class="card__info">
+                                <h3 class="card__title">Mehrsprachige Plattform</h3>
+                                <p class="card__text">Unser Campus ist in vielen verschiedenen Sprachen verfügbar. Wir können Ihnen Schulungen in den folgenden Sprachen anbieten: Deutsch, Englisch, Französisch, Spanisch und Italienisch verfügbar – auf Wunsch auch in weiteren Sprachen.</p>
+                            </div>
+                        </div>
+                        <div  class="card__item competence__item swiper-slide">
+                            <div class="card__img">
+                                <div class="competence__img img">
+                                    <img src="./img/c6.svg" alt="">
+                                </div>
+                            </div>
+                            <div class="card__info">
+                                <h3 class="card__title">Full Service</h3>
+                                <p class="card__text">Wir übernehmen die gesamte Administration, damit Sie sich voll auf Ihr Kerngeschäft konzentrieren können.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card__nav">
+                    <button class="swiper-button-prev card__prev"></button>
+                    <button class="swiper-button-next card__next"></button>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="section  campus__form ">
+        <div class="campus__form-back img">
+            <img src="./img/campus-top.png" alt="">
+        </div>
+        <div class="container">
+            <div class="section__form">
+                <div class="section__form-info">
+                    <h3 class="campus__form-title">Erhalten Sie eine kostenlose Campus-Demo</h3>
+                    <p class="section__text">Haben Sie Fragen zum Online Campus oder möchten eine Vorführung? Nutzen Sie unser Kontaktformular – wir melden uns schnell bei Ihnen und helfen gerne weiter!</p>
+                    <div class="campus__form-email">
+                        <span>E-Mail</span>
+                        <a href="mailto:vmunteanu@pear-academy.de">vmunteanu@pear-academy.de</a>
+                    </div>
+                    <div class="campus__form-person">
+                        <div class="img">
+                            <img src="./img/person.png" alt="">
+                        </div>
+                        <div class="campus__form-person-info">
+                            <h4>Victoria</h4>
+                            <p class="section__text">Koordinatorin Online Campus</p>
+                        </div>
+                    </div>
+
+                </div>
+                <form action="" class="form form__seminar" novalidate="novalidate">
+                    <input type="hidden" name="action" value="seminar">
+                    <div class="form__input">
+                        <label>voller Name</label>
+                        <input type="text" name="name" placeholder="Max Mustermann">
+                    </div>
+                    <div class="form__input">
+                        <label>Telefonnummer</label>
+                        <input type="text" name="phone" placeholder="+49 XXX XXXXXXXX">
+                    </div>
+                    <div class="form__input">
+                        <label>E-Mail</label>
+                        <input type="text" name="email" placeholder="example@mail.com">
+                    </div>
+                    <div class="form__input textarea">
+                        <label>Deine Anfrage</label>
+                        <textarea name="message" placeholder="Ich möchte..."></textarea>
+                    </div>
+                    <div class="form__checkbox">
+                        <input type="checkbox" id="check" name="policy_terms">
+                        <label for="check">Ich habe die <a href="">Datenschutzerklärung </a> gelesen und stimme der Verarbeitung meiner Daten zur Kontaktaufnahme und Bearbeitung meiner Anfrage zu.</label>
+                    </div>
+                    <button class="section__button primary">Senden</button>
+                </form>
+            </div>
+
+        </div>
+
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer" >
+        <div class="container">
+            <div class="footer__back img">
+                <img src="./../img/footer-bg.svg" alt="">
+            </div>
+            <div class="footer__block">
+                <div class="footer__item">
+                    <a class="footer__logo img" href="">
+                        <img src="./../img/footer-logo.svg" alt="">
+                    </a>
+                    <h2 class="footer__title">A<span>p</span>pear for success!</h2>
+                    <div class="footer__btn">
+                        <a href="" class="section__button primary">Online Campus</a>
+                        <a href="" class="section__button">Kalender</a>
+                    </div>
+                </div>
+                <div class="footer__menu-wrap">
+                    <div class="footer__menu">
+                        <h2 class="section__subtitle">Navigation</h2>
+                        <div class="footer__list">
+                            <a class="section__text" href="">Kalender</a>
+                            <a class="section__text" href="">Seminare</a>
+                            <a class="section__text" href="">Exklusiv</a>
+                            <a class="section__text" href="">Auditoren</a>
+                            <a class="section__text" href="">Online Campus</a>
+                        </div>
+                    </div>
+                    <div class="footer__menu">
+                        <h2 class="section__subtitle">Kontaktinformationen</h2>
+                        <div class="footer__list">
+                            <a class="section__text" href="https://maps.app.goo.gl/roeum5czKPbspdAE8">Edelfrauengrab 33
+                                77883 Ottenhöfen im Schwarzwald</a>
+                            <a class="section__text" href="tel:+49017683342260">+49 (0)176 83342260</a>
+                            <a class="section__text" href="mailto:jmhecker@pear-academy.de">jmhecker@pear-academy.de</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <div class="footer__block">
+                    <p class="section__text" >© 2024 Copyright | All right reserved</p>
+                    <div class="footer__menu-wrap">
+                        <a class="section__text" href="">Datenschutzerklärung</a>
+                        <a class="section__text" href="">Impressum</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    </footer>
+    <!-- /FOOTER -->
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type="text/javascript" src="scripts/plagins/device.js" ></script>
+<script type="text/javascript" src="scripts/plagins/jquery.validate.min.js" ></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+<script type="text/javascript" src="scripts/develop/index.js" ></script>
+
+</body>
+</html>
