@@ -1,6 +1,6 @@
 <?php
 
-class Page_Failed_Payment
+class Page_Successful_Payment
 {
 
     public static function init()
@@ -12,7 +12,7 @@ class Page_Failed_Payment
     {
         $page = get_pages([
             'meta_key' => '_wp_page_template',
-            'meta_value' => 'failed-payment-page.php',
+            'meta_value' => 'successful-payment-page.php',
         ]);
 
         return ($page && 'publish' === $page[0]->post_status) ? $page[0]->ID : false;
@@ -23,11 +23,11 @@ class Page_Failed_Payment
         if (function_exists('acf_add_local_field_group')):
 
             acf_add_local_field_group(array(
-                'key' => 'group_674e341e66f85',
-                'title' => 'Failed payment page',
+                'key' => 'group_674e341easfasf66f85',
+                'title' => 'Successful payment page',
                 'fields' => array(
                     array(
-                        'key' => 'field_674e341e5c226',
+                        'key' => 'field_674e34asfasf1e5c226',
                         'label' => 'Section "Content"',
                         'name' => '',
                         'aria-label' => '',
@@ -45,7 +45,7 @@ class Page_Failed_Payment
                         'selected' => 0,
                     ),
                     array(
-                        'key' => 'field_674e343a5c227',
+                        'key' => 'field_674e343aasfasf5c227',
                         'label' => '',
                         'name' => 'section_content',
                         'aria-label' => '',
@@ -61,7 +61,7 @@ class Page_Failed_Payment
                         'layout' => 'block',
                         'sub_fields' => array(
                             array(
-                                'key' => 'field_674e343e5c228',
+                                'key' => 'field_674easfsaf343e5c228',
                                 'label' => 'Title',
                                 'name' => 'title',
                                 'aria-label' => '',
@@ -82,7 +82,7 @@ class Page_Failed_Payment
                                 'append' => '',
                             ),
                             array(
-                                'key' => 'field_674e34495c229',
+                                'key' => 'field_674e3sfasfasf4495c229',
                                 'label' => 'Text',
                                 'name' => 'text',
                                 'aria-label' => '',
@@ -103,7 +103,7 @@ class Page_Failed_Payment
                                 'append' => '',
                             ),
                             array(
-                                'key' => 'field_674e344d5c22a',
+                                'key' => 'field_674e3asfasf44d5c22a',
                                 'label' => 'Left button',
                                 'name' => 'left_button',
                                 'aria-label' => '',
@@ -120,7 +120,7 @@ class Page_Failed_Payment
                                 'allow_in_bindings' => 0,
                             ),
                             array(
-                                'key' => 'field_674e34555c22b',
+                                'key' => 'field_674e34asfasf555c22b',
                                 'label' => 'Rigth button',
                                 'name' => 'rigth_button',
                                 'aria-label' => '',
@@ -144,7 +144,7 @@ class Page_Failed_Payment
                         array(
                             'param' => 'page_template',
                             'operator' => '==',
-                            'value' => 'failed-payment-page.php',
+                            'value' => 'successful-payment-page.php',
                         ),
                     ),
                 ),

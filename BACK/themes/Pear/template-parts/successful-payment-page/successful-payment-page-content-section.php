@@ -1,6 +1,6 @@
 <?php
 
-class Failed_Payment_Page_Content_Section
+class Successful_Payment_Page_Content_Section
 {
     public function __construct() {
         $section_content = get_field('section_content');
@@ -16,8 +16,8 @@ class Failed_Payment_Page_Content_Section
         <section class="section__white">
             <div class="container">
                 <div class="section__white-block">
-                    <div class="section__white-icon error img">
-                        <img src="<?=TEMPLATE_PATH?>/img/error.svg" alt="">
+                    <div class="section__white-icon success img">
+                        <img src="<?=TEMPLATE_PATH?>/img/check.svg" alt="">
                     </div>
                     <?php if (!empty($this->title)) : ?>
                         <h1 class="section__title"><?php echo $this->title; ?></h1>

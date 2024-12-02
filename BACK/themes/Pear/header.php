@@ -21,7 +21,11 @@ $green_image = $header['green_image'];
 $menu = $header['menu'];
 $button = $header['button'];
 ?>
-<div class="wrap">
+<?php if (Page_Failed_Payment::get_ID() == get_the_ID() or Page_Successful_Payment::get_ID() == get_the_ID()) : ?>
+    <div class="wrap wrap__black">
+<?php else : ?>
+    <div class="wrap">
+<?php endif; ?>
   <header class="header" >
       <div class="container">
           <div class="header__flex">
