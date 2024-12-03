@@ -1,6 +1,6 @@
 <?php
 
-class Type_campus_request
+class Type_Campus_Request
 {
 
     public static function init()
