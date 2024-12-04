@@ -124,6 +124,33 @@ function ajaxSend(form, funcSuccess, funcError) {
     });
 }
 
+function counter() {
+    let price = $('[data-price]').data('price');
+    $(document).on("click", ".form__button-count-minus", function () {
+        const counter = $(".form__button-counter span ");
+        let currentValue = parseInt(counter.text());
+
+        console.log(1111);
+        if (currentValue > 1) {
+            let newValue = currentValue - 1;
+            counter.text(newValue);
+            $('input[name="count"]').val(newValue);
+            $('.price span').text(newValue * price);
+        }
+    });
+
+    $(document).on("click", ".form__button-count-plus", function () {
+        console.log(2222);
+        const counter = $(".form__button-counter span");
+        let currentValue = parseInt(counter.text());
+        let newValue = currentValue + 1;
+
+        counter.text(newValue);
+        $('input[name="count"]').val(newValue);
+        $('.price span').text(newValue * price);
+    });
+}
+
 function tab() {
     $(".tab__header-item").click(function () {
         $(".tab__header-item").removeClass("active").eq($(this).index()).addClass("active");
@@ -336,6 +363,37 @@ function frontSlider() {
     });
 }
 
+function sliders() {
+
+    const review = new Swiper('.review__slider', {
+        slidesPerView: 4.2,
+        spaceBetween: 40,
+        // loop: true,
+        // speed: 1000,
+        // effect: 'slide',
+        // autoplay: {
+        //     delay: 2000,
+        //     disableOnInteraction: false
+        // },
+
+        navigation: {
+            nextEl: ".card__next",
+            prevEl: ".card__prev"
+        },
+        breakpoints: {
+            '0': {
+                slidesPerView: 1,
+                spaceBetween: 30
+            },
+            '667': {
+                slidesPerView: 4.2,
+                spaceBetween: 40
+            }
+        }
+
+    });
+}
+
 function filterAjax() {
     page = 1;
     $('.filter__form input[name="page"]').val(page);
@@ -541,6 +599,8 @@ $(document).ready(function () {
     loadMore();
     appendStar();
     partnersSlider();
+    counter();
+    sliders();
     $(window).on('load scroll', checkCounters);
 });
 

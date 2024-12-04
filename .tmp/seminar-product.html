@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css"/>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+    <!--    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">-->
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="styles/critical.css">
+    <link rel="stylesheet" href="styles/index.css">
+</head>
+<body>
+
+<div class="wrap wrap__black">
+  <header class="header" >
+      <div class="container">
+          <div class="header__flex">
+              <div class="header__block">
+                  <a class="header__logo img " href="./../index.html">
+                      <img src="../img/logo.svg" alt="Logo">
+                  </a>
+                  <a class="header__logo header__logo-mob img " href="./../index.html">
+                      <img src="../img/logo-mob.svg" alt="Logo">
+                  </a>
+                  <div class="header__menu">
+                      <div class="header__menu-list">
+                          <a href="" class="section__text white">Kalender</a>
+                          <a href="" class="section__text white">Seminare</a>
+                          <a href="" class="section__text white">Exklusiv</a>
+                          <a href="" class="section__text white">Auditoren</a>
+                      </div>
+                  </div>
+              </div>
+             <div class="header__right">
+                 <div class="header__search-wrap">
+                     <form class="header__search">
+                         <input type="hidden" name="action" value="search_header">
+                         <div class="header__search-input">
+                             <input type="text" name="search" placeholder="Suche auf der Website...">
+                         </div>
+                         <button class="header__search-clean" type="button"></button>
+                     </form>
+                     <div class="header__search-result">
+                         <div class="header__search-list">
+                             <a href="" class="header__search-item">
+                                 <div class="header__search-info">
+                                     <span>Schulungen</span>
+                                     <h3 >Qualitätsmanagement</h3>
+                                 </div>
+                             </a>
+                             <a href="" class="header__search-item">
+                                 <div class="header__search-info">
+                                     <span >Schulungen</span>
+                                     <h3 >Qualitätsmanagement</h3>
+                                 </div>
+                             </a>
+                             <a href="" class="header__search-item">
+                                 <div class="header__search-info">
+                                     <span >Schulungen</span>
+                                     <h3 >Qualitätsmanagement</h3>
+                                 </div>
+                             </a>
+  
+                         </div>
+                         <div class="header__search-empty ">
+                             <p class="section__text ">No result found</p>
+                         </div>
+                     </div>
+                 </div>
+                 <button class="header__search-icon ">
+                     <span class="img"> <img src="./../img/search.svg" alt=""></span>
+                 </button>
+                 <a href="" class="section__button primary">Online Campus</a>
+                 <div class="header__burger"><span></span><span></span></div>
+  
+             </div>
+          </div>
+      </div>
+  </header>
+  <div class="modal modal__thank">
+      <div class="modal__wrap">
+          <div class="modal__content ">
+              <div class="modal__close img">
+                  <img src="./../img/clear.svg" alt="">
+              </div>
+              <div class="modal__overflow">
+                  <div class="modal__block">
+                      <h3 class="modal__title">Danke! </h3>
+                      <p class="modal__text">Wir werden Sie kontaktieren</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <section class="section__banner grey">
+    <div class="container">
+      <div class="section__banner-flex">
+        <div class="section__banner-info">
+          <h2>Seminar: QSV - Risk minimization and liability distribution</h2>
+          <div class="registration__flex">
+            <div class="registration__item">
+              <span class="registration__item-title">Dates</span>
+              <p class="registration__item-text disabled">04 Okt 24</p>
+              <p class="registration__item-text ">05 Okt 24</p>
+              <p class="registration__item-text ">06 Okt 24</p>
+            </div>
+
+            <div class="registration__item">
+              <span class="registration__item-title">Time</span>
+              <p class="registration__item-text disabled">08:00 - 09:30</p>
+              <p class="registration__item-text">14:00 - 16:30</p>
+              <p class="registration__item-text">09:00 - 10:30</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section__banner-block">
+        <h1 class="section__title white">Seminare</h1>
+        <p class="section__text white">Entdecken Sie unser vielfältiges Seminarangebot! Ob Managementsysteme, Nachhaltigkeit oder Arbeitssicherheit – bei uns finden Sie praxisorientierte Schulungen, die Sie weiterbringen. Wählen Sie einfach das passende Seminar und sichern Sie sich Ihren Platz!</p>
+        <button class="section__button transparent">Kalender</button>
+      </div>
+    </div>
+  </section>
+
+
+
+  <section class="section">
+    <div class="container">
+      <div class="section__form grey registration">
+      <div class="section__form-info">
+        <h3 class="section__form-title">Anmeldung</h3>
+        <div class="registration__list">
+          <div class="registration__item">
+            <span class="registration__item-title">Thema</span>
+            <p class="registration__item-text">Seminar: QSV - Risk minimization and liability distribution</p>
+          </div>
+          <div class="registration__item">
+            <span class="registration__item-title">Kategorie</span>
+            <p class="registration__item-text">Arbeitssicherheit</p>
+          </div>
+          <div class="registration__flex">
+            <div class="registration__item">
+              <span class="registration__item-title">Dates</span>
+              <p class="registration__item-text disabled">04 Okt 24</p>
+              <p class="registration__item-text ">05 Okt 24</p>
+              <p class="registration__item-text ">06 Okt 24</p>
+            </div>
+
+            <div class="registration__item">
+              <span class="registration__item-title">Time</span>
+              <p class="registration__item-text disabled">08:00 - 09:30</p>
+              <p class="registration__item-text">14:00 - 16:30</p>
+              <p class="registration__item-text">09:00 - 10:30</p>
+            </div>
+          </div>
+          <div class="registration__item">
+            <span class="registration__item-title">Standort</span>
+            <p class="registration__item-text">Hotel National, Luitpoldstraße 37, 96052 Bamberg</p>
+          </div>
+          <div class="registration__item">
+            <span class="registration__item-title">Kosten</span>
+            <p class="registration__item-text">50 Euro / Person</p>
+          </div>
+        </div>
+
+
+      </div>
+      <form action="" class="form form__seminar">
+        <input type="hidden" name="action" value="seminar">
+        <input type="hidden" name="count" value="1">
+        <div class="form__input">
+          <label>voller Name</label>
+          <input type="text" name="name" placeholder="Max Mustermann">
+        </div>
+        <div class="form__flex">
+          <div class="form__input">
+            <label>Firmenname</label>
+            <input type="text" name="name" placeholder="Firma">
+          </div>
+          <div class="form__input">
+            <label>Adresse der Firma</label>
+            <input type="text" name="name" placeholder="Geschäftsadresse">
+          </div>
+          <div class="form__input">
+            <label>Stadt</label>
+            <input type="text" name="name" placeholder="München">
+          </div>
+          <div class="form__input">
+            <label>Postleitzahl</label>
+            <input type="text" name="name" placeholder="XXXXX">
+          </div>
+          <div class="form__input">
+            <label>Telefonnummer</label>
+            <input type="text" name="phone" placeholder="+49 XXX XXXXXXXX">
+          </div>
+          <div class="form__input">
+            <label>E-Mail</label>
+            <input type="text" name="email" placeholder="example@mail.com">
+          </div>
+        </div>
+
+        <div class="form__checkbox">
+          <input type="checkbox" id="check"  name="policy_terms">
+          <label for="check">Ich habe die <a href="">Datenschutzerklärung </a> gelesen und stimme der Verarbeitung meiner Daten zur Kontaktaufnahme und Bearbeitung meiner Anfrage zu.</label>
+        </div>
+        <div class="form__button">
+          <button class="section__button primary " data-price="50"><p>Platz sichern</p><div class="price"><span>50</span> Euro</div></button>
+          <div class="form__button-counter">
+            <div class="form__button-count form__button-count-minus"></div>
+            <span>1</span>
+            <div class="form__button-count form__button-count-plus"></div>
+          </div>
+
+        </div>
+      </form>
+    </div>
+    </div>
+  </section>
+  <section class="section review ">
+    <div class="container">
+      <div class="review__block ">
+        <div class="swiper review__slider">
+          <div class="review__list swiper-wrapper">
+            <div class="review__item swiper-slide">
+              <div class="card__star" data-star="5"></div>
+              <p class="section__text">Der Kurs hat mir geholfen, unsere Energieeffizienzstrategien deutlich zu verbessern. Die Inhalte waren praxisnah und der Dozent hat alles verständlich erklärt. Jetzt fühle ich mich gut vorbereitet auf die Zertifizierung.</p>
+              <p class="review__author">– Andreas M.s</p>
+            </div>
+            <div class="review__item swiper-slide">
+              <div class="card__star" data-star="5"></div>
+              <p class="section__text">Der Kurs hat mir geholfen, unsere Energieeffizienzstrategien deutlich zu verbessern. Die Inhalte waren praxisnah und der Dozent hat alles verständlich erklärt. Jetzt fühle ich mich gut vorbereitet auf die Zertifizierung.</p>
+              <p class="review__author">– Andreas M.s</p>
+            </div>
+            <div class="review__item swiper-slide">
+              <div class="card__star" data-star="5"></div>
+              <p class="section__text">Der Kurs hat mir geholfen, unsere Energieeffizienzstrategien deutlich zu verbessern. Die Inhalte waren praxisnah und der Dozent hat alles verständlich erklärt. Jetzt fühle ich mich gut vorbereitet auf die Zertifizierung.</p>
+              <p class="review__author">– Andreas M.s</p>
+            </div>
+            <div class="review__item swiper-slide">
+              <div class="card__star" data-star="5"></div>
+              <p class="section__text">Der Kurs hat mir geholfen, unsere Energieeffizienzstrategien deutlich zu verbessern. Die Inhalte waren praxisnah und der Dozent hat alles verständlich erklärt. Jetzt fühle ich mich gut vorbereitet auf die Zertifizierung.</p>
+              <p class="review__author">– Andreas M.s</p>
+            </div>
+            <div class="review__item swiper-slide">
+              <div class="card__star" data-star="5"></div>
+              <p class="section__text">Der Kurs hat mir geholfen, unsere Energieeffizienzstrategien deutlich zu verbessern. Die Inhalte waren praxisnah und der Dozent hat alles verständlich erklärt. Jetzt fühle ich mich gut vorbereitet auf die Zertifizierung.</p>
+              <p class="review__author">– Andreas M.s</p>
+            </div>
+
+          </div>
+        </div>
+        <div class="card__nav review__nav ">
+          <button class="swiper-button-prev card__prev"></button>
+          <button class="swiper-button-next card__next"></button>
+        </div>
+      </div>
+    </div>
+
+  </section>
+  <section class="section alternative">
+    <div class="container">
+      <div class="section__top">
+        <div class="section__top-left">
+          <h2 class="section__title">Alternative Daten</h2>
+        </div>
+        <div class="tab">
+          <div class="tab__header ">
+            <button class="tab__header-item">Alle Typen</button>
+            <button class="tab__header-item">Regulär</button>
+            <button class="tab__header-item">Exklusiv</button>
+          </div>
+        </div>
+      </div>
+      <div class="card__block">
+        <div class="tab__content ">
+          <div class="tab__content-item">
+            <div class="card__list ">
+              <a href="" class="card__item ">
+                <div class="card__img img">
+                  <img src="./img/card1.png" alt="">
+                  <span class="card__flag right"> Noch 11 Tage</span>
+                  <span class="card__flag left"> in Kürze</span>
+                </div>
+                <div class="card__info">
+                  <div class="card__date">
+                    <span>03 OKT. 24</span>
+                    <span class="card__date-loc">Bamberg</span>
+                  </div>
+                  <h3 class="card__title"> Seminar: QSV - Risk minimization and liability distribution </h3>
+                </div>
+              </a>
+              <a href="" class="card__item ">
+                <div class="card__img img">
+                  <img src="./img/card1.png" alt="">
+                  <span class="card__flag right"> Noch 11 Tage</span>
+                  <span class="card__flag left"> in Kürze</span>
+                </div>
+                <div class="card__info">
+                  <div class="card__date ">
+                    <span>03 OKT. 24</span>
+                    <span class="card__date-loc online">online</span>
+                  </div>
+                  <h3 class="card__title"> Seminar: QSV - Risk minimization and liability distribution </h3>
+                </div>
+              </a>
+              <a href="" class="card__item yellow ">
+                <div class="card__img img">
+                  <img src="./img/card1.png" alt="">
+                  <span class="card__flag right"> Noch 11 Tage</span>
+                  <span class="card__flag left"> in Kürze</span>
+                </div>
+                <div class="card__info">
+                  <div class="card__date ">
+                    <span>03 OKT. 24</span>
+                    <span class="card__date-loc online">online</span>
+                  </div>
+                  <h3 class="card__title"> Seminar: QSV - Risk minimization and liability distribution </h3>
+                </div>
+              </a>
+
+            </div>
+            <a href="" class="section__button grey">Mehr anzeigen</a>
+          </div>
+          <div class="tab__content-item">
+            <div class="card__list ">
+              <a href="" class="card__item ">
+                <div class="card__img img">
+                  <img src="./img/card1.png" alt="">
+                  <span class="card__flag right"> Noch 11 Tage</span>
+                  <span class="card__flag left"> in Kürze</span>
+                </div>
+                <div class="card__info">
+                  <div class="card__date">
+                    <span>03 OKT. 24</span>
+                    <span class="card__date-loc">Bamberg</span>
+                  </div>
+                  <h3 class="card__title"> Seminar: QSV - Risk minimization and liability distribution </h3>
+                </div>
+              </a>
+              <a href="" class="card__item ">
+                <div class="card__img img">
+                  <img src="./img/card1.png" alt="">
+                  <span class="card__flag right"> Noch 11 Tage</span>
+                  <span class="card__flag left"> in Kürze</span>
+                </div>
+                <div class="card__info">
+                  <div class="card__date ">
+                    <span>03 OKT. 24</span>
+                    <span class="card__date-loc online">online</span>
+                  </div>
+                  <h3 class="card__title"> Seminar: QSV - Risk minimization and liability distribution </h3>
+                </div>
+              </a>
+              <a href="" class="card__item yellow ">
+                <div class="card__img img">
+                  <img src="./img/card1.png" alt="">
+                  <span class="card__flag right"> Noch 11 Tage</span>
+                  <span class="card__flag left"> in Kürze</span>
+                </div>
+                <div class="card__info">
+                  <div class="card__date ">
+                    <span>03 OKT. 24</span>
+                    <span class="card__date-loc online">online</span>
+                  </div>
+                  <h3 class="card__title"> Seminar: QSV - Risk minimization and liability distribution </h3>
+                </div>
+              </a>
+
+            </div>
+            <a href="" class="section__button grey">Mehr anzeigen</a>
+          </div>
+          <div class="tab__content-item">
+            <div class="card__list ">
+              <a href="" class="card__item ">
+                <div class="card__img img">
+                  <img src="./img/card1.png" alt="">
+                  <span class="card__flag right"> Noch 11 Tage</span>
+                  <span class="card__flag left"> in Kürze</span>
+                </div>
+                <div class="card__info">
+                  <div class="card__date">
+                    <span>03 OKT. 24</span>
+                    <span class="card__date-loc">Bamberg</span>
+                  </div>
+                  <h3 class="card__title"> Seminar: QSV - Risk minimization and liability distribution </h3>
+                </div>
+              </a>
+              <a href="" class="card__item ">
+                <div class="card__img img">
+                  <img src="./img/card1.png" alt="">
+                  <span class="card__flag right"> Noch 11 Tage</span>
+                  <span class="card__flag left"> in Kürze</span>
+                </div>
+                <div class="card__info">
+                  <div class="card__date ">
+                    <span>03 OKT. 24</span>
+                    <span class="card__date-loc online">online</span>
+                  </div>
+                  <h3 class="card__title"> Seminar: QSV - Risk minimization and liability distribution </h3>
+                </div>
+              </a>
+              <a href="" class="card__item yellow ">
+                <div class="card__img img">
+                  <img src="./img/card1.png" alt="">
+                  <span class="card__flag right"> Noch 11 Tage</span>
+                  <span class="card__flag left"> in Kürze</span>
+                </div>
+                <div class="card__info">
+                  <div class="card__date ">
+                    <span>03 OKT. 24</span>
+                    <span class="card__date-loc online">online</span>
+                  </div>
+                  <h3 class="card__title"> Seminar: QSV - Risk minimization and liability distribution </h3>
+                </div>
+              </a>
+
+            </div>
+            <a href="" class="section__button grey">Mehr anzeigen</a>
+
+
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+  <section class="section seminar__form-bottom">
+    <div class="container">
+      <div class="section__form">
+      <div class="section__form-info">
+        <div class="section__more">
+          <div class="section__form-content content">
+            <h3>Sie haben nicht das richtige Thema oder Datum gefunden - Kontaktieren Sie uns für ein Inhouse Seminar</h3>
+            <p>Jedes unserer Seminare können Sie auch direkt bei Ihnen im Unternehmen buchen – maßgeschneidert und perfekt auf Ihre Bedürfnisse abgestimmt. Der größte Vorteil: Wir passen die Inhalte im Vorfeld exakt an Ihre Unternehmensanforderungen an, sodass Sie nicht nur Standardwissen, sondern Lösungen erhalten, die für Ihr Geschäft relevant sind.</p>
+            <p>Mit unseren Inhouse-Seminaren sparen Sie sich Anfahrtswege und Schulungsräume – wir kommen zu Ihnen! Dadurch können Ihre Mitarbeiter in ihrer gewohnten Umgebung gezielt weitergebildet werden, mit Inhalten, die individuell auf Ihre Branche, Abläufe und Herausforderungen zugeschnitten sind. So stellen wir sicher, dass das Gelernte sofort in die Praxis umgesetzt werden kann.</p>
+            <p>Maximale Flexibilität, maßgeschneiderte Inhalte und direkter Praxisbezug – machen Sie den nächsten Schritt und buchen Sie Ihr Inhouse-Seminar noch heute!</p>
+          </div>
+          <button class="section__more-btn">Weniger Information</button>
+        </div>
+
+      </div>
+      <form action="" class="form form__seminar">
+        <input type="hidden" name="action" value="seminar">
+        <div class="form__input">
+          <label>voller Name</label>
+          <input type="text" name="name" placeholder="Max Mustermann">
+        </div>
+        <div class="form__input">
+          <label>E-Mail</label>
+          <input type="text" name="email" placeholder="example@mail.com">
+        </div>
+        <div class="form__input">
+          <label>Telefonnummer</label>
+          <input type="text" name="phone" placeholder="+49 XXX XXXXXXXX">
+        </div>
+        <div class="form__input textarea">
+          <label>Deine Anfrage</label>
+          <textarea name="message" placeholder="Ich möchte..."></textarea>
+        </div>
+        <div class="form__checkbox">
+          <input type="checkbox" id="check1"  name="policy_terms">
+          <label for="check1">Ich habe die <a href="">Datenschutzerklärung </a> gelesen und stimme der Verarbeitung meiner Daten zur Kontaktaufnahme und Bearbeitung meiner Anfrage zu.</label>
+        </div>
+        <button class="section__button primary">Senden</button>
+      </form>
+    </div>
+    </div>
+  </section>
+  <!-- FOOTER -->
+  <footer class="footer" >
+      <div class="container">
+          <div class="footer__back img">
+              <img src="./../img/footer-bg.svg" alt="">
+          </div>
+          <div class="footer__block">
+              <div class="footer__item">
+                  <a class="footer__logo img" href="">
+                      <img src="./../img/footer-logo.svg" alt="">
+                  </a>
+                  <h2 class="footer__title">A<span>p</span>pear for success!</h2>
+                  <div class="footer__btn">
+                      <a href="" class="section__button primary">Online Campus</a>
+                      <a href="" class="section__button">Kalender</a>
+                  </div>
+              </div>
+              <div class="footer__menu-wrap">
+                  <div class="footer__menu">
+                      <h2 class="section__subtitle">Navigation</h2>
+                      <div class="footer__list">
+                          <a class="section__text" href="">Kalender</a>
+                          <a class="section__text" href="">Seminare</a>
+                          <a class="section__text" href="">Exklusiv</a>
+                          <a class="section__text" href="">Auditoren</a>
+                          <a class="section__text" href="">Online Campus</a>
+                      </div>
+                  </div>
+                  <div class="footer__menu">
+                      <h2 class="section__subtitle">Kontaktinformationen</h2>
+                      <div class="footer__list">
+                          <a class="section__text" href="https://maps.app.goo.gl/roeum5czKPbspdAE8">Edelfrauengrab 33
+                              77883 Ottenhöfen im Schwarzwald</a>
+                          <a class="section__text" href="tel:+49017683342260">+49 (0)176 83342260</a>
+                          <a class="section__text" href="mailto:jmhecker@pear-academy.de">jmhecker@pear-academy.de</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="footer__bottom">
+              <div class="footer__block">
+                  <p class="section__text" >© 2024 Copyright | All right reserved</p>
+                  <div class="footer__menu-wrap">
+                      <a class="section__text" href="">Datenschutzerklärung</a>
+                      <a class="section__text" href="">Impressum</a>
+                  </div>
+              </div>
+          </div>
+      </div>
+  
+  </footer>
+  <!-- /FOOTER -->
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type="text/javascript" src="scripts/plagins/device.js" ></script>
+<script type="text/javascript" src="scripts/plagins/jquery.validate.min.js" ></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+<script type="text/javascript" src="scripts/develop/index.js" ></script>
+
+</body>
+</html>
