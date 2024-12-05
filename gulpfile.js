@@ -73,8 +73,8 @@ gulp.task('images', () => {
 });
 
 gulp.task('fonts', () => {
-  return gulp.src('src/fonts/*.{eot,svg,ttf,woff,woff2}')
-    .pipe($.if(dev, gulp.dest('.tmp/fonts/'), gulp.dest('build/fonts/')));
+  return gulp.src('src/font/*.{eot,svg,ttf,woff,woff2}')
+    .pipe($.if(dev, gulp.dest('.tmp/font/'), gulp.dest('build/font/')));
 });
 
 gulp.task('extras', () => {
@@ -116,7 +116,7 @@ gulp.task('serve', () => {
     // gulp.watch([
     //   'src/*.html',
     //   'src/images/**/*',
-    //   '.tmp/fonts/**/*'
+    //   '.tmp/font/**/*'
     // ]).on('change', reload);
 
     //gulp.watch('src/styles/**/*.scss', ['styles']);
@@ -125,7 +125,7 @@ gulp.task('serve', () => {
 
    // gulp.watch('src/**/*.html', ['pre-html']);
 
-    //gulp.watch('src/fonts/**/*', ['fonts']);
+    //gulp.watch('src/font/**/*', ['font']);
 
 
   });
@@ -141,13 +141,13 @@ gulp.task('watch', function(){
     gulp.watch('src/**/*.html', function(event, cb) {
         gulp.start('pre-html');
     });
-    gulp.watch('src/fonts/**/*', function(event, cb) {
+    gulp.watch('src/font/**/*', function(event, cb) {
         gulp.start('fonts');
     });
 
     gulp.watch([
       'src/images/**/*',
-      'src/fonts/**/*'
+      'src/font/**/*'
     ]).on('change', browserSync.reload);
 
 });
