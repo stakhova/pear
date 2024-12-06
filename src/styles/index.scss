@@ -126,6 +126,13 @@
   &__banner{
     background-color: var(--color-primary);
     position: relative;
+
+    &-flex{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap:2.4rem;
+    }
     &:after {
       content: '';
       position: absolute;
@@ -158,6 +165,7 @@
         background: url("../img/pear-section.svg") center/51.6rem 40.4rem no-repeat;
         z-index: 1;
       }
+
     }
     &-block{
       display: flex;
@@ -176,6 +184,55 @@
     .section__text{
       margin: 0 auto;
       max-width: 68rem;
+    }
+    &-seminar{
+      .section__banner-info{
+        display: flex;
+        flex-direction: column;
+        gap:3.2rem;
+        width: 50%;
+      }
+      .registration__item-text{
+       font: 500 1.6rem /2rem var(--GT) ;
+        color:var(--color-black);
+      }
+      .container{
+        padding: 12.4rem 3rem 3.2rem ;
+      }
+      &-img{
+        width: 50%;
+        margin-bottom: 6rem;
+        max-height: 43.2rem;
+        height: max-content;
+        img{
+          border-radius: 3.2rem;
+        }
+      }
+      &-button{
+        display: flex;
+        gap:1.6rem;
+        align-items: center;
+        span{
+          font: 700 2rem / 2.4rem var(--GT) ;
+
+        }
+
+
+      }
+    }
+    &-course{
+      .card__star{
+        padding: 0;
+      }
+      .banner__tag-item{
+        padding: 0.4rem 1.6rem;
+      }
+      .section__banner-flex{
+        align-items: flex-start;
+      }
+      .section__banner-seminar-img{
+        margin: 0;
+      }
     }
   }
   &__center{
@@ -699,6 +756,46 @@
   .container{
     padding-top: 11.2rem ;
     padding-bottom: 5.6rem ;
+  }
+  &__tag{
+    display: flex;
+    gap:0.8rem;
+    margin-bottom: -1.2rem;
+    &-item{
+      padding:0.8rem 1.6rem ;
+      border-radius: 10rem;
+      background-color: white;
+      display: flex;
+      gap:0.2rem;
+      align-items: center;
+      &.green{
+        background-color: var(--color-primary);
+        color:white;
+      }
+      &.grey{
+        background-color: transparent;
+        position: relative;
+        &:after{
+          content: '';
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          border-radius: 10rem;
+          border: 1px solid rgba(0, 41, 25, 0.24)
+        }
+      }
+      & > *{
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        font: 400 1.6rem / 1.6rem var(--GT) ;
+      }
+      .img{
+        width: 1.4rem;
+        height: 1.4rem;
+      }
+    }
   }
   &__info{
     max-width: 67.8rem;
@@ -1568,6 +1665,27 @@
       }
     }
   }
+  &__editor{
+    .container{
+      padding: 16rem 3rem 6rem;
+    }
+  }
+  &__user{
+    display: flex;
+    gap:1.8rem;
+    align-items: center;
+    margin-bottom: 2.4rem;
+    .img{
+      width: 6.4rem;
+      min-width: 6.4rem;
+      height: 6.4rem;
+      border-radius: 50%;
+    }
+     h3{
+       font: 500 2.8rem / 3.6rem var(--GT);
+       letter-spacing: -0.01em;
+     }
+  }
 }
 
 .contact{
@@ -1705,7 +1823,7 @@
     label{
       font: 400 1.2rem / 1.3rem var(--GT);
       text-transform: uppercase;
-      letter-spacing: 0.06rem;
+      letter-spacing: 0.06em;
       opacity: 0.8;
     }
     input{
@@ -1884,10 +2002,10 @@
       font: 400 2rem/2.8rem var(--GT);
     }
     ol, ul{
-      padding-left: 1.6rem;
+      padding-left: 2.4rem;
       display: flex;
       flex-direction: column;
-      gap:1rem;
+      gap:2rem;
     }
     ul{
       padding-left: 2.4rem;
@@ -1896,11 +2014,11 @@
         &:after{
           content: '';
           position: absolute;
-          top: 0.4rem;
+          top: 0.8rem;
           left: -2.4rem;
           width: 1.2rem;
           height: 1.2rem;
-          border: 0.2rem solid var(--color-primary);
+          border: 0.4rem solid var(--color-primary);
           border-radius: 50%;
         }
       }
@@ -1917,6 +2035,32 @@
   &__title{
     font: 500 4rem / 4.4rem var(--GT);
     letter-spacing: -0.01em;
+    overflow-wrap: break-word; /* або word-wrap: break-word; для старих браузерів */
+    word-break: break-word;
+  }
+  &__back{
+    padding: 4rem;
+    position: relative;
+    .img{
+      z-index: -1;
+      position: absolute;
+      width: 100%;
+      top: 0;
+      left: 0;
+      height: 100%;
+      img{
+        border-radius: 1.6rem;
+      }
+    }
+    .editor__title{
+      text-align: center;
+      font-weight: 700;
+
+    }
+  }
+  &__map{
+    border-radius: 3.2rem;
+    height: 32rem;
   }
 }
 .alternative{
@@ -1958,7 +2102,6 @@
     color:white;
     font: 700 5.6rem / 5.6rem var(--GT);
     margin-bottom: 3.2rem;
-    letter-spacing: -0.4rem;
     span{
       color:#39ad6b;
     }
@@ -2057,6 +2200,8 @@
     }
     .registration__item-title{
       margin-bottom: 1.6rem;
+      font-size: 1.6rem;
+      line-height: 1.6rem;
     }
     .registration__item{
       &:first-child{
@@ -2089,7 +2234,7 @@
 
 .review{
   .container{
-    padding: 5.6rem 3rem;
+    padding: 8.9rem 3rem 5.6rem;
   }
   &__item{
     display: flex;
@@ -2116,6 +2261,19 @@
     height: 2.4rem;
     background: url(../img/star-little.svg) center / 2.4rem 2.4rem no-repeat;
   }
+  &__course{
+    .container{
+      padding-bottom: 12rem;
+    }
+  }
+}
+
+
+#course-form .section__form-info{
+  width: 45%;
+}
+#course-form .form__seminar-full{
+  width: 65%;
 }
 
 .swiper-button-next, .swiper-button-prev{
@@ -2207,6 +2365,11 @@ label.error{
 .hidden{
   overflow: hidden;
 }
+
+
+.section__banner-seminar .container:before{
+  display: none;
+}
 @media only screen and (max-width: 1440px) {
 .promise .container:before, .promise .container:after, .campus__form .container:before, .campus__form .container:after{
   display: none;
@@ -2282,6 +2445,7 @@ label.error{
       width: 34.8rem;
       height:72rem;
       background: url(../img/menu-pear.svg) center/34.8rem 72rem no-repeat;
+      z-index: -1;
 
     }
   }
@@ -2532,6 +2696,8 @@ label.error{
     line-height: 3.2rem;
   }
   .section__form .section__button{
+    max-width: 33.6rem;
+    margin: 0 auto;
     width: 100%;
   }
   .form__input input, .form__input textarea{
@@ -2686,6 +2852,7 @@ label.error{
     border-top-left-radius: 1.6rem;
     border-top-right-radius: 1.6rem;
     height: 107vw;
+    width: 100%;
   }
   .footer__menu:first-child .section__text{
     white-space: nowrap;
@@ -2763,6 +2930,7 @@ label.error{
   .section__white .banner__button{
     width: 100%;
   }
+
   .header__search-wrap.active{
     width: 100vw;
     position: absolute;
@@ -2869,10 +3037,133 @@ label.error{
   }
   .editor__title{
     font-size: 3.2rem ;
-    line-height: 3.8rem;
+    line-height: 3.2rem;
   }
   .editor__content h2, .editor__content h3, .editor__content h4, .editor__content h5, .editor__content h6{
     font-size: 2.2rem;
     line-height: 2.6rem;
+  }
+  .registration .form__seminar{
+    width: 100%;
+  }
+  .form__flex{
+    gap:1.2rem;
+  }
+  .form__button{
+    flex-direction: column;
+    justify-content: center;
+    gap:1.6rem;
+  }
+  .form__flex > *{
+    width: 100%;
+  }
+  .form__button-counter{
+    width: max-content;
+    margin: 0 auto;
+    padding: 1rem 1.2rem;
+  }
+  .section__banner-flex{
+    flex-direction: column-reverse;
+    & >*{
+      width: 100%;
+    }
+  }
+  .section__banner-seminar-img{
+    margin: 0;
+  }
+  .section__banner-seminar .container{
+    padding: 0 0 4.8rem;
+  }
+  .section__banner-seminar-img img{
+    border-radius: 0;
+    clip-path: ellipse(92% 54% at 50% 45%);
+  }
+  .section__banner-seminar-img{
+   height: 59vw;
+  }
+  .section__banner-seminar .section__banner-info{
+    width: 100%;
+  }
+  .section__banner-seminar .section__banner-info{
+    padding: 0 2rem;
+  }
+  .banner__tag-item > *{
+    white-space: nowrap;
+  }
+  .banner__tag{
+    margin-right: -2rem;
+    overflow-x: scroll;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;
+  }
+  .section__middle{
+    font-size: 3.2rem ;
+    line-height: 3.2rem;
+  }
+  .section__banner-seminar-button{
+    flex-direction: column;
+    gap:1.6rem;
+  }
+  .section__banner-seminar-button .section__button{
+    max-width: 33.6rem;
+    width: 100%;
+  }
+  .editor__map{
+    height: 85vw;
+  }
+  .section__form-title{
+    font-size: 4.8rem;
+    line-height: 4.8rem;
+  }
+  .registration__list{
+    margin-top: 3.2rem;
+  }
+  .tab{
+    width: 100%;
+  }
+  .tab__header > * {
+    width: calc((100% - 1.6rem)/3);
+    font-size: 1.6rem;
+    line-height: 1.9rem;
+    padding: 1rem;
+  }
+  .alternative .card__list{
+    flex-wrap: wrap;
+    gap:1.6rem;
+    & > *{
+      width: 100%;
+    }
+  }
+  .alternative .section__button{
+    margin: 3.2rem auto 0;
+    max-width:33.6rem ;
+    width: 100%;
+  }
+  .section__banner.grey:after{
+    display: none;
+  }
+  .editor .container{
+    padding: 3.2rem 2rem 4rem;
+  }
+  .alternative .section__top{
+    gap:1.6rem;
+    margin-bottom: 3.2rem;
+  }
+  .seminar__form-bottom .container{
+    padding: 4.4rem 2rem 8rem;
+  }
+  .section__banner-course .section__text{
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+  }
+  #course-form .section__form > *{
+    width: 100%;
+  }
+  .review__course .container{
+    padding: 4.4rem 2rem 8rem;
+  }
+  .review .section__text{
+    font-size: 1.6rem;
+    line-height: 2.4rem;
   }
 }

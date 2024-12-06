@@ -98,11 +98,24 @@
       </div>
   </div>
 
-  <section class="section__banner grey">
+  <section class="section__banner section__banner-seminar grey">
     <div class="container">
       <div class="section__banner-flex">
         <div class="section__banner-info">
-          <h2>Seminar: QSV - Risk minimization and liability distribution</h2>
+          <div class="banner__tag">
+            <div class="banner__tag-item green">
+              <div class="img"> <img src="./img/loc-white.svg" alt=""></div>
+              <span>Bamberg</span>
+
+            </div>
+            <div class="banner__tag-item green">
+              <span>Arbeitssicherheit</span>
+            </div>
+            <div class="banner__tag-item ">
+              <span>Noch 11 Tage</span>
+            </div>
+          </div>
+          <h1 class="section__middle">Seminar: QSV - Risk minimization and liability distribution</h1>
           <div class="registration__flex">
             <div class="registration__item">
               <span class="registration__item-title">Dates</span>
@@ -118,20 +131,117 @@
               <p class="registration__item-text">09:00 - 10:30</p>
             </div>
           </div>
+          <div class="section__banner-seminar-button">
+            <a href="#form" class="section__button primary">Registrieren</a>
+            <span>50 Euro / Person</span>
+          </div>
+
+        </div>
+        <div class="section__banner-seminar-img img">
+          <img src="./img/sem.png" alt="">
         </div>
       </div>
 
-      <div class="section__banner-block">
-        <h1 class="section__title white">Seminare</h1>
-        <p class="section__text white">Entdecken Sie unser vielfältiges Seminarangebot! Ob Managementsysteme, Nachhaltigkeit oder Arbeitssicherheit – bei uns finden Sie praxisorientierte Schulungen, die Sie weiterbringen. Wählen Sie einfach das passende Seminar und sichern Sie sich Ihren Platz!</p>
-        <button class="section__button transparent">Kalender</button>
-      </div>
+
     </div>
   </section>
 
+  <section class="section seminar__editor editor">
+    <div class="container">
+      <div class="editor__list">
+        <div class="editor__item">
+          <div class="editor__title">Zielgruppe</div>
+          <div class="editor__content">
+            <p>Text that defines the target group of the seminar</p>
+          </div>
+        </div>
+        <div class="editor__item">
+          <div class="editor__title">Nutzen</div>
+          <div class="editor__content">
+            <p>Text that summarizes...</p>
+            <p>the objective of the seminar.</p>
+          </div>
+        </div>
+        <div class="editor__item">
+          <div class="editor__title">Inhalt</div>
+          <div class="editor__content">
+            <ul>
+              <li>Bullet point list</li>
+              <li>with the main topics of the seminar</li>
+            </ul>
+          </div>
+        </div>
+        <div class="editor__item">
+          <div class="editor__title">Zertifikat</div>
+          <div class="editor__back">
+            <div class="img">
+              <img src="./img/content.png" alt="">
+            </div>
+            <h2 class="editor__title">Im Anschluss an das Seminar erhalten Sie eine Teilnahmebescheinigung</h2>
+          </div>
+        </div>
+        <div class="editor__item">
+          <div class="editor__title">Referent</div>
+          <div>
+            <div class="seminar__user">
+              <div class="img">
+                <img src="./img/img.png" alt="">
+              </div>
+              <h3>Dr. Spilker</h3>
+            </div>
+
+            <div class="editor__content">
+              <p>Als Diensteanbieter sind wir für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach Artikel 7 DSA sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.</p>
+              <p> Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.</p>
+            </div>
+          </div>
+        </div>
+        <div class="editor__item">
+          <div class="editor__title">Veranstaltungsort</div>
+          <div class="editor__content">
+            <p>Hotel National, Luitpoldstraße 37, 96052 Bamberg=ung nicht erkennbar.</p>
+            <div class="contact__map editor__map">
+              <div class="map__item" id="map"></div>
+
+              <script>
+                let mapIcon = '../img/map-loc.svg';
+
+                let positionMaps = {lat:32.051586, lng:34.768923, text:'<p>Eexplore on google maps</p>'}
+                console.log(positionMaps);
+                (g => {
+                  var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary",
+                          q = "__ib__", m = document, b = window;
+                  b = b[c] || (b[c] = {});
+                  var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams,
+                          u = () => h || (h = new Promise(async (f, n) => {
+                            await (a = m.createElement("script"));
+                            e.set("libraries", [...r] + "");
+                            for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]);
+                            e.set("callback", c + ".maps." + q);
+                            a.src = `https://maps.${c}apis.com/maps/api/js?` + e;
+                            d[q] = f;
+                            a.onerror = () => h = n(Error(p + " could not load."));
+                            a.nonce = m.querySelector("script[nonce]")?.nonce || "";
+                            m.head.append(a)
+                          }));
+                  d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n))
+                })({
+                  key: "AIzaSyDgGhu7gVtSqKxCC9tSywaqlPIpufe0CHs",
+                  v: "weekly",
+                });
+              </script>
 
 
-  <section class="section">
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="section" id="form">
     <div class="container">
       <div class="section__form grey registration">
       <div class="section__form-info">
@@ -172,7 +282,7 @@
 
 
       </div>
-      <form action="" class="form form__seminar">
+      <form action="" class="form form__seminar-full">
         <input type="hidden" name="action" value="seminar">
         <input type="hidden" name="count" value="1">
         <div class="form__input">
@@ -182,19 +292,19 @@
         <div class="form__flex">
           <div class="form__input">
             <label>Firmenname</label>
-            <input type="text" name="name" placeholder="Firma">
+            <input type="text" name="company" placeholder="Firma">
           </div>
           <div class="form__input">
             <label>Adresse der Firma</label>
-            <input type="text" name="name" placeholder="Geschäftsadresse">
+            <input type="text" name="address" placeholder="Geschäftsadresse">
           </div>
           <div class="form__input">
             <label>Stadt</label>
-            <input type="text" name="name" placeholder="München">
+            <input type="text" name="state" placeholder="München">
           </div>
           <div class="form__input">
             <label>Postleitzahl</label>
-            <input type="text" name="name" placeholder="XXXXX">
+            <input type="text" name="post" placeholder="XXXXX">
           </div>
           <div class="form__input">
             <label>Telefonnummer</label>
@@ -282,7 +392,7 @@
         <div class="tab__content ">
           <div class="tab__content-item">
             <div class="card__list ">
-              <a href="" class="card__item ">
+              <a href="" class="card__item grey">
                 <div class="card__img img">
                   <img src="./img/card1.png" alt="">
                   <span class="card__flag right"> Noch 11 Tage</span>
@@ -296,7 +406,7 @@
                   <h3 class="card__title"> Seminar: QSV - Risk minimization and liability distribution </h3>
                 </div>
               </a>
-              <a href="" class="card__item ">
+              <a href="" class="card__item grey ">
                 <div class="card__img img">
                   <img src="./img/card1.png" alt="">
                   <span class="card__flag right"> Noch 11 Tage</span>
@@ -330,7 +440,7 @@
           </div>
           <div class="tab__content-item">
             <div class="card__list ">
-              <a href="" class="card__item ">
+              <a href="" class="card__item grey ">
                 <div class="card__img img">
                   <img src="./img/card1.png" alt="">
                   <span class="card__flag right"> Noch 11 Tage</span>
@@ -344,7 +454,7 @@
                   <h3 class="card__title"> Seminar: QSV - Risk minimization and liability distribution </h3>
                 </div>
               </a>
-              <a href="" class="card__item ">
+              <a href="" class="card__item grey ">
                 <div class="card__img img">
                   <img src="./img/card1.png" alt="">
                   <span class="card__flag right"> Noch 11 Tage</span>
@@ -378,7 +488,7 @@
           </div>
           <div class="tab__content-item">
             <div class="card__list ">
-              <a href="" class="card__item ">
+              <a href="" class="card__item grey ">
                 <div class="card__img img">
                   <img src="./img/card1.png" alt="">
                   <span class="card__flag right"> Noch 11 Tage</span>
@@ -392,7 +502,7 @@
                   <h3 class="card__title"> Seminar: QSV - Risk minimization and liability distribution </h3>
                 </div>
               </a>
-              <a href="" class="card__item ">
+              <a href="" class="card__item grey ">
                 <div class="card__img img">
                   <img src="./img/card1.png" alt="">
                   <span class="card__flag right"> Noch 11 Tage</span>

@@ -70,6 +70,18 @@ function validateForm(form, func, noreset) {
             },
             policy_terms: {
                 required: true
+            },
+            company: {
+                required: true
+            },
+            address: {
+                required: true
+            },
+            state: {
+                required: true
+            },
+            post: {
+                required: true
             }
 
         },
@@ -87,6 +99,18 @@ function validateForm(form, func, noreset) {
             },
             policy_terms: {
                 required: "Sie müssen die Datenschutzerklärung akzeptieren"
+            },
+            company: {
+                required: "Dieses Feld ist erforderlich"
+            },
+            address: {
+                required: "Dieses Feld ist erforderlich"
+            },
+            state: {
+                required: "Dieses Feld ist erforderlich"
+            },
+            post: {
+                required: "Dieses Feld ist erforderlich"
             }
         },
         errorPlacement: function (error, element) {
@@ -590,6 +614,15 @@ $(document).ready(function () {
             toogleModal($('.modal__thank'));
         });
     });
+    let seminar = $('.form__seminar-full\n');
+    validateForm(seminar, function () {
+        ajaxSend(seminar, function (res) {
+            toogleModal($('.modal__thank'));
+        }, function (error) {
+            toogleModal($('.modal__thank'));
+        });
+    });
+
     showMore();
     menuOpen();
     changeMob();
