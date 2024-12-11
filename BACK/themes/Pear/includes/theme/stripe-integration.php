@@ -23,11 +23,10 @@ class Stripe_Integration
         }
     }
 
-    public static function create_payment_link($customer_id, $order_id, $price, $success_url, $cancel_url)
+    public static function create_payment_link($order_id, $price, $success_url, $cancel_url)
     {
         $session = \Stripe\Checkout\Session::create([
             'payment_method_types' => ['card'],
-            'customer' => $customer_id,
             'line_items' => [
                 [
                     'price_data' => [
@@ -75,7 +74,31 @@ class Stripe_Integration
         switch ($event->type) {
             case 'checkout.session.completed':
                 $checkout = $event->data->object->metadata;
-               
+                $order_id = $checkout->course_id;
+
+                update_field('status', 'paid', $order_id);
+
+                $name = get_field('name', $order_id);
+                $company = get_field('company', $order_id);
+                $address = get_field('address', $order_id);
+                $state = get_field('state', $order_id);
+                $post_code = get_field('post_code', $order_id);
+                $phone = get_field('phone', $order_id);
+                $email = get_field('email', $order_id);
+                $course_name = get_field('course_name', $order_id);
+
+                $headers = 'content-type: text/html';
+                $massages =
+                    'Course name: ' . $course_name . '<br>' .
+                    'Company: ' . $company . '<br>' .
+                    'Address: ' . $address . '<br>' .
+                    'Name: ' . $name . '<br>' .
+                    'State: ' . $state . '<br>' .
+                    'Post code: ' . $post_code . '<br>' .
+                    'Post code: ' . $post_code . '<br>' .
+                    'Phone: ' . $phone . '<br>' .
+                    'Email: ' . $email . '<br>';
+                wp_mail(get_field('managers', Page_Option::get_ID())['emails'], 'New course request #' . $order_id, $massages, $headers);
         }
     }
 }

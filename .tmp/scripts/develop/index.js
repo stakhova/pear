@@ -614,7 +614,7 @@ $(document).ready(function () {
             toogleModal($('.modal__thank'));
         });
     });
-    let seminar = $('.form__seminar-full\n');
+    let seminar = $('.form__seminar-full');
     validateForm(seminar, function () {
         ajaxSend(seminar, function (res) {
             toogleModal($('.modal__thank'));

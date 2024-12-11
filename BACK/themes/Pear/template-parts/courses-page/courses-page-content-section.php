@@ -48,9 +48,6 @@ class Courses_Page_Content_Section
                                 <a href="<?php echo get_the_permalink($post->ID)?>" class="card__item grey">
                                     <div class="card__img img">
                                         <img src="<?php echo get_the_post_thumbnail_url($post->ID); ?>" alt="">
-                                        <?php if (!empty(get_field('main_options',$post->ID)['date'])) : ?>
-                                            <span class="card__flag right"><?php echo get_field('main_options',$post->ID)['date']; ?></span>
-                                        <?php endif; ?>
                                     </div>
                                     <div class="card__info">
                                         <div class="card__info-top">

@@ -21,7 +21,7 @@ $green_image = $header['green_image'];
 $menu = $header['menu'];
 $button = $header['button'];
 ?>
-<?php if (Page_Failed_Payment::get_ID() == get_the_ID() or Page_Successful_Payment::get_ID() == get_the_ID() or (in_array(get_the_ID(),Page_Text::get_IDs()))) : ?>
+<?php if (Page_Failed_Payment::get_ID() == get_the_ID() or Page_Successful_Payment::get_ID() == get_the_ID() or (in_array(get_the_ID(),Page_Text::get_IDs())) or is_singular('course')) : ?>
     <div class="wrap wrap__black">
 <?php else : ?>
     <div class="wrap">
