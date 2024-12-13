@@ -2,7 +2,14 @@
 
 class Front_Page_Contact_Section
 {
-    public function __construct() {}
+    public function __construct() {
+        $section_contact = get_field('section_contact');
+        $this->address = $section_contact['address'];
+        $this->phone = $section_contact['phone'];
+        $this->email = $section_contact['email'];
+        $this->map_link = $section_contact['map_link'];
+        $this->map = $section_contact['map'];
+    }
 
     public function render()
     { ?>
@@ -13,21 +20,26 @@ class Front_Page_Contact_Section
                     <div class="contact__info">
                         <h2 class="contact__title">Kontakt</h2>
                         <div class="contact__list">
-                            <div class="contact__item">
-                                <span>Standort</span>
-                                <a class="section__subtitle"
-                                    href="https://maps.app.goo.gl/roeum5czKPbspdAE8">Edelfrauengrab 33
-                                    <br> 77883 Ottenhöfen im Schwarzwald</a>
-                            </div>
-                            <div class="contact__item">
-                                <span>Rufnummer</span>
-                                <a class="section__subtitle" href="tel:+49017683342260">+49 (0)176 83342260 </a>
-                            </div>
-                            <div class="contact__item">
-                                <span>E-Mail</span>
-                                <a class="section__subtitle"
-                                    href="mailto:jmhecker@pear-academy.de">jmhecker@pear-academy.de</a>
-                            </div>
+                            <?php if (!empty($this->address)) : ?>
+                                <div class="contact__item">
+                                    <span>Standort</span>
+                                    <a class="section__subtitle"
+                                        href="<?php echo $this->map_link; ?>"><?php echo $this->address; ?></a>
+                                </div>
+                            <?php endif; ?>
+                            <?php if (!empty($this->phone)) : ?>
+                                <div class="contact__item">
+                                    <span>Rufnummer</span>
+                                    <a class="section__subtitle" href="tel:+<?=preg_replace('/[^\d]/', '', $this->phone); ?>"><?php echo $this->phone; ?></a>
+                                </div>
+                            <?php endif; ?>
+                            <?php if (!empty($this->email)) : ?>
+                                <div class="contact__item">
+                                    <span>E-Mail</span>
+                                    <a class="section__subtitle"
+                                        href="mailto:<?php echo $this->email; ?>"><?php echo $this->email; ?></a>
+                                </div>
+                            <?php endif; ?>
                         </div>
 
                     </div>
@@ -38,9 +50,9 @@ class Front_Page_Contact_Section
                             let mapIcon = '<?=TEMPLATE_PATH?>/img/map-loc.svg';
 
                             let positionMaps = {
-                                lat: 32.051586,
-                                lng: 34.768923,
-                                text: '<p>Eexplore on google maps</p>'
+                                lat: <?php echo $this->map['lat']; ?>,
+                                lng: <?php echo $this->map['lng']; ?>,
+                                text: '<a href="<?php echo $this->map_link; ?>">Eexplore on google maps</a>'
                             }
                             console.log(positionMaps);
                             (g => {

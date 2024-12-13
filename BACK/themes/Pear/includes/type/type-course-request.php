@@ -41,9 +41,7 @@ class Type_Course_Request
         update_field('status', 'new', $post_id);
 
         $price = get_field('main_options', $course_id)['price'];
-        $success_url = get_the_permalink(Page_Successful_Payment::get_ID());
-        $cancel_url = get_the_permalink(Page_Failed_Payment::get_ID());
-        $redirect_url = Stripe_Integration::create_payment_link($post_id, $price, $success_url, $cancel_url);
+        $redirect_url = Stripe_Integration::create_payment_link($post_id, $price);
         wp_send_json_success(['redirect_url' => $redirect_url], 200);
     }
 

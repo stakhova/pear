@@ -2,7 +2,17 @@
 
 class Front_Page_Place_Section
 {
-    public function __construct() {}
+    public function __construct() {
+        $section_seminars = get_field('section_seminars');
+        $this->subtitle = $section_seminars['subtitle'];
+        $this->title = $section_seminars['title'];
+        $this->button = $section_seminars['button'];
+
+        $section_form = get_field('section_form');
+        $this->form_title = $section_form['title'];
+        $this->form_text = $section_form['text'];
+        $this->policy_text = $section_form['policy_text'];
+    }
 
     public function render()
     { ?>
@@ -10,13 +20,17 @@ class Front_Page_Place_Section
         <section class="section grey place">
 
             <div class="place__back img">
-                <img src="./img/bottom.png" alt="">
+                <img src="<?=TEMPLATE_PATH?>/img/bottom.png" alt="">
             </div>
             <div class="container">
                 <div class="section__top">
                     <div class="section__top-left">
-                        <p class="section__category">kommende seminare</p>
-                        <h2 class="section__title"> Sichern Sie sich Ihren Platz</h2>
+                        <?php if (!empty($this->subtitle)) : ?>
+                            <p class="section__category"><?php echo $this->subtitle; ?></p>
+                        <?php endif; ?>
+                        <?php if (!empty($this->title)) : ?>
+                            <h2 class="section__title"><?php echo $this->title; ?></h2>
+                        <?php endif; ?>
                     </div>
                     <div class="section__top-search">
                         <form class="section__search">
@@ -26,7 +40,9 @@ class Front_Page_Place_Section
                             </div>
                             <button><span>Suche</span></button>
                         </form>
-                        <a href="" class="section__button primary">Kalender</a>
+                        <?php if (!empty($this->button)) : ?>
+                            <a href="<?php echo $this->button['url']; ?>" class="section__button primary"><?php echo $this->button['title']; ?></a>
+                        <?php endif; ?>
                     </div>
                 </div>
                 <div class="card__block">
@@ -133,31 +149,19 @@ class Front_Page_Place_Section
                     <div class="section__form-info">
                         <div class="section__more">
                             <div class="section__form-content content">
-                                <h3>Sie haben nicht das richtige Thema oder Datum gefunden - Kontaktieren Sie uns für
-                                    ein Inhouse Seminar</h3>
-                                <p>Jedes unserer Seminare können Sie auch direkt bei Ihnen im Unternehmen buchen –
-                                    maßgeschneidert und perfekt auf Ihre Bedürfnisse abgestimmt. Der größte Vorteil: Wir
-                                    passen die Inhalte im Vorfeld exakt an Ihre Unternehmensanforderungen an, sodass Sie
-                                    nicht nur Standardwissen, sondern Lösungen erhalten, die für Ihr Geschäft relevant
-                                    sind.</p>
-                                <p>Mit unseren Inhouse-Seminaren sparen Sie sich Anfahrtswege und Schulungsräume – wir
-                                    kommen zu Ihnen! Dadurch können Ihre Mitarbeiter in ihrer gewohnten Umgebung gezielt
-                                    weitergebildet werden, mit Inhalten, die individuell auf Ihre Branche, Abläufe und
-                                    Herausforderungen zugeschnitten sind. So stellen wir sicher, dass das Gelernte
-                                    sofort in die Praxis umgesetzt werden kann.</p>
-                                <p>Maximale Flexibilität, maßgeschneiderte Inhalte und direkter Praxisbezug – machen Sie
-                                    den nächsten Schritt und buchen Sie Ihr Inhouse-Seminar noch heute!</p>
-                                <p>Maximale Flexibilität, maßgeschneiderte Inhalte und direkter Praxisbezug – machen Sie
-                                    den nächsten Schritt und buchen Sie Ihr Inhouse-Seminar noch heute!</p>
-                                <p>Maximale Flexibilität, maßgeschneiderte Inhalte und direkter Praxisbezug – machen Sie
-                                    den nächsten Schritt und buchen Sie Ihr Inhouse-Seminar noch heute!</p>
+                                <?php if (!empty($this->form_title)) : ?>
+                                    <h3><?php echo $this->form_title; ?></h3>
+                                <?php endif; ?>
+                                <?php if (!empty($this->form_text)) : ?>
+                                    <?php echo $this->form_text; ?>
+                                <?php endif; ?>
                             </div>
                             <button class="section__more-btn">Mehr Information</button>
                         </div>
 
                     </div>
                     <form action="" class="form form__seminar">
-                        <input type="hidden" name="action" value="seminar">
+                        <input type="hidden" name="action" value="front_request">
                         <div class="form__input">
                             <label>voller Name</label>
                             <input type="text" name="name" placeholder="Max Mustermann">
@@ -176,8 +180,7 @@ class Front_Page_Place_Section
                         </div>
                         <div class="form__checkbox">
                             <input type="checkbox" id="check" name="policy_terms">
-                            <label for="check">Ich habe die <a href="">Datenschutzerklärung </a> gelesen und stimme der
-                                Verarbeitung meiner Daten zur Kontaktaufnahme und Bearbeitung meiner Anfrage zu.</label>
+                            <label for="check"><?php echo str_replace(['<p>','</p>'],['',''],$this->policy_text); ?></label>
                         </div>
                         <button class="section__button primary">Senden</button>
                     </form>

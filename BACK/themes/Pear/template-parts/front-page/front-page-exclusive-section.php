@@ -2,7 +2,12 @@
 
 class Front_Page_Exclusive_Section
 {
-    public function __construct() {}
+    public function __construct() {
+        $section_exclusive = get_field('section_exclusive');
+        $this->title = $section_exclusive['title'];
+        $this->text = $section_exclusive['text'];
+        $this->button = $section_exclusive['button'];
+    }
 
     public function render()
     { ?>
@@ -11,27 +16,18 @@ class Front_Page_Exclusive_Section
             <div class="container">
                 <div class="section__top">
                     <div class="section__top-left">
-                        <h2 class="section__title"> Exclusive Seminare </h2>
-                        <div class="section__more">
-                            <div class="section__form-content content ">
-                                <p>Unsere exklusiven Seminare bieten Ihnen die einzigartige Möglichkeit, in einer
-                                    kleinen Runde von maximal drei Teilnehmern individuell betreut zu werden. In dieser
-                                    intensiven Lernumgebung gehen wir gezielt auf Ihre speziellen Fragestellungen ein
-                                    und entwickeln maßgeschneiderte Lösungen. Sie profitieren von direktem Austausch,
-                                    praxisnahen Beispielen und persönlichen Empfehlungen.</p>
-                                <p>In einem exklusiven Seminar erhalten Sie die volle Aufmerksamkeit unserer Experten.
-                                    Dies ermöglicht es uns, tiefer in Ihre spezifischen Themen einzutauchen und
-                                    individuelle Strategien zu erarbeiten, die Sie sofort in Ihrem Unternehmen umsetzen
-                                    können. Exklusive Seminare bieten den Vorteil, dass wir Ihre Zeit effizient nutzen,
-                                    um Ihnen den größtmöglichen Mehrwert zu bieten.</p>
-                                <p>Wenn Sie ein Seminar exklusiv buchen möchten, das nicht entsprechend gekennzeichnet
-                                    ist, sprechen Sie uns gerne an.</p>
-                                <p>Wenn Sie ein Seminar exklusiv buchen möchten, das nicht entsprechend gekennzeichnet
-                                    ist, sprechen Sie uns gerne an.</p>
+                        <?php if (!empty($this->title)) : ?>
+                            <h2 class="section__title"><?php echo $this->title; ?></h2>
+                        <?php endif; ?>
+                        <?php if (!empty($this->text)) : ?>
+                            <div class="section__more">
+                                    <div class="section__form-content content ">
+                                        <?php echo $this->text; ?>
 
+                                    </div>
+                                <button class="section__more-btn">Mehr Information</button>
                             </div>
-                            <button class="section__more-btn">Mehr Information</button>
-                        </div>
+                        <?php endif; ?>
                     </div>
 
                     <div class="section__top-search">
@@ -42,7 +38,9 @@ class Front_Page_Exclusive_Section
                             </div>
                             <button><span>Suche</span></button>
                         </form>
-                        <a href="" class="section__button primary">Alle Exclusiven</a>
+                        <?php if (!empty($this->button)) : ?>
+                            <a href="<?php echo $this->button['url']; ?>" class="section__button primary"><?php echo $this->button['title']; ?></a>
+                        <?php endif; ?>
                     </div>
                 </div>
                 <div class="card__block">

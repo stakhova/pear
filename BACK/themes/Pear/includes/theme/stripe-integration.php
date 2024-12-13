@@ -23,7 +23,7 @@ class Stripe_Integration
         }
     }
 
-    public static function create_payment_link($order_id, $price, $success_url, $cancel_url)
+    public static function create_payment_link($order_id, $price)
     {
         $session = \Stripe\Checkout\Session::create([
             'payment_method_types' => ['card'],
@@ -40,8 +40,8 @@ class Stripe_Integration
                 ],
             ],
             'mode' => 'payment',
-            'success_url' => $success_url,
-            'cancel_url' => $cancel_url,
+            'success_url' => Page_Successful_Payment::get_ID(),
+            'cancel_url' => Page_Failed_Payment::get_ID(),
             'metadata' => [
                 'order_id' => $order_id,
             ],
