@@ -31,9 +31,9 @@ class Single_Course_Page_Banner_Section
                         </div>
                         <h1 class="section__middle"><?php echo get_the_title(); ?></h1>
                         <?php if (!empty($this->description)) : ?>
-                            <div class="registration__flex">
-                                <p><?php echo $this->description; ?></p>
-                            </div>
+<!--                            <div class="registration__flex">-->
+                                <p class="section__text"><?php echo $this->description; ?></p>
+<!--                            </div>-->
                         <?php endif; ?>
                         <div class="section__banner-seminar-button">
                             <a href="#form" class="section__button primary">Registrieren</a>
@@ -45,8 +45,6 @@ class Single_Course_Page_Banner_Section
                         <img src="<?php echo get_the_post_thumbnail_url(); ?>" alt="">
                     </div>
                 </div>
-
-
             </div>
         </section>
 <? }

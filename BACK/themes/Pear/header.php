@@ -113,3 +113,21 @@ $button = $header['button'];
           </div>
       </div>
   </div>
+
+        <div class="policy">
+            <button class="policy__close img">
+                <img src="<?=TEMPLATE_PATH?>/img/close.svg" alt="">
+            </button>
+            <div class="policy__head">
+                <div class="policy__head-icon img">
+                    <img src="<?=TEMPLATE_PATH?>/img/policy.svg" alt="">
+                </div>
+                <p>Wir verwenden Cookies</p>
+            </div>
+            <p class="policy__text">Diese Website verwendet Cookies, um Ihnen das beste Erlebnis zu bieten.</p>
+            <div class="policy__button">
+                <button id="accept" class="section__button primary">Alle akzeptieren</button>
+                <button class="reject">Einstellungen</button>
+            </div>
+
+        </div>

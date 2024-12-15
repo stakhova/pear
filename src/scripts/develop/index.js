@@ -1,13 +1,38 @@
 let page = 1
 
 let map;
+
+function policy() {
+    function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+    }
+
+
+    if (!getCookie('policyAccepted')) {
+        $('.policy').addClass('show').fadeIn(); // Показати банер
+    }
+
+
+    $('#accept').click(function () {
+        const expires = new Date();
+        expires.setFullYear(expires.getFullYear() + 1);
+        document.cookie = `policyAccepted=true; expires=${expires.toUTCString()}; path=/`;
+        $('.policy').fadeOut();
+    });
+    $('.policy__close, .reject').click(function () {
+        $('.policy').fadeOut();
+    })
+}
+
 async function initMap() {
     const { Map } = await google.maps.importLibrary("maps");
     const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
 
     map = new Map(document.getElementById("map"), {
-        center: { lat: 40.730610, lng: -73.935242 },
-        zoom: 6.8,
+        center: { lat: 32.051586, lng: 34.768923 },
+        zoom: 5,
         linksControl: false,
         panControl: false,
         addressControl: false,
@@ -651,6 +676,7 @@ function showMore(){
 
 $(document).ready(function () {
     $('select').select2({})
+    policy()
     filter()
     let subsForm = $('.form__seminar');
     validateForm(subsForm, function () {
@@ -680,6 +706,7 @@ $(document).ready(function () {
     partnersSlider();
     counter();
     sliders()
+    initMap()
     $(window).on('load scroll', checkCounters);
 });
 

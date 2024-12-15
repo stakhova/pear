@@ -1,13 +1,36 @@
 let page = 1;
 
 let map;
+
+function policy() {
+    function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+    }
+
+    if (!getCookie('policyAccepted')) {
+        $('.policy').addClass('show').fadeIn(); // Показати банер
+    }
+
+    $('#accept').click(function () {
+        const expires = new Date();
+        expires.setFullYear(expires.getFullYear() + 1);
+        document.cookie = `policyAccepted=true; expires=${expires.toUTCString()}; path=/`;
+        $('.policy').fadeOut();
+    });
+    $('.policy__close, .reject').click(function () {
+        $('.policy').fadeOut();
+    });
+}
+
 async function initMap() {
     const { Map } = await google.maps.importLibrary("maps");
     const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
 
     map = new Map(document.getElementById("map"), {
-        center: { lat: 40.730610, lng: -73.935242 },
-        zoom: 6.8,
+        center: { lat: 32.051586, lng: 34.768923 },
+        zoom: 5,
         linksControl: false,
         panControl: false,
         addressControl: false,
@@ -70,6 +93,18 @@ function validateForm(form, func, noreset) {
             },
             policy_terms: {
                 required: true
+            },
+            company: {
+                required: true
+            },
+            address: {
+                required: true
+            },
+            state: {
+                required: true
+            },
+            post: {
+                required: true
             }
 
         },
@@ -87,6 +122,18 @@ function validateForm(form, func, noreset) {
             },
             policy_terms: {
                 required: "Sie müssen die Datenschutzerklärung akzeptieren"
+            },
+            company: {
+                required: "Dieses Feld ist erforderlich"
+            },
+            address: {
+                required: "Dieses Feld ist erforderlich"
+            },
+            state: {
+                required: "Dieses Feld ist erforderlich"
+            },
+            post: {
+                required: "Dieses Feld ist erforderlich"
             }
         },
         errorPlacement: function (error, element) {
@@ -581,6 +628,7 @@ function showMore() {
 
 $(document).ready(function () {
     $('select').select2({});
+    policy();
     filter();
     let subsForm = $('.form__seminar');
     validateForm(subsForm, function () {
@@ -590,6 +638,15 @@ $(document).ready(function () {
             toogleModal($('.modal__thank'));
         });
     });
+    let seminar = $('.form__seminar-full\n');
+    validateForm(seminar, function () {
+        ajaxSend(seminar, function (res) {
+            toogleModal($('.modal__thank'));
+        }, function (error) {
+            toogleModal($('.modal__thank'));
+        });
+    });
+
     showMore();
     menuOpen();
     changeMob();
@@ -601,6 +658,7 @@ $(document).ready(function () {
     partnersSlider();
     counter();
     sliders();
+    initMap();
     $(window).on('load scroll', checkCounters);
 });
 
