@@ -36,7 +36,7 @@ $button = $header['button'];
                     </a>
                   <?php endif; ?>
                   <?php if (!empty($green_image)) : ?>
-                    <a class="header__logo header__logo-mob img " href="./../index.html">
+                    <a class="header__logo header__logo-mob img " href="<?php echo home_url(); ?>">
                         <img src="<?php echo $green_image; ?>" alt="Logo">
                     </a>
                   <?php endif; ?>

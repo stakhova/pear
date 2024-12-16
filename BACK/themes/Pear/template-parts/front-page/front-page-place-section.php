@@ -2,11 +2,13 @@
 
 class Front_Page_Place_Section
 {
-    public function __construct() {
+    public function __construct()
+    {
         $section_seminars = get_field('section_seminars');
         $this->subtitle = $section_seminars['subtitle'];
         $this->title = $section_seminars['title'];
         $this->button = $section_seminars['button'];
+        $this->seminars = $section_seminars['seminars'];
 
         $section_form = get_field('section_form');
         $this->form_title = $section_form['title'];
@@ -20,7 +22,7 @@ class Front_Page_Place_Section
         <section class="section grey place">
 
             <div class="place__back img">
-                <img src="<?=TEMPLATE_PATH?>/img/bottom.png" alt="">
+                <img src="<?= TEMPLATE_PATH ?>/img/bottom.png" alt="">
             </div>
             <div class="container">
                 <div class="section__top">
@@ -45,106 +47,72 @@ class Front_Page_Place_Section
                         <?php endif; ?>
                     </div>
                 </div>
-                <div class="card__block">
-                    <div class="swiper card__slider">
-                        <div class="card__list swiper-wrapper">
-                            <a href="" class="card__item green swiper-slide">
-                                <div class="card__img img">
-                                    <img src="./img/card1.png" alt="">
-                                    <span class="card__flag right"> Noch 11 Tage</span>
-                                    <span class="card__flag left"> in Kürze</span>
-                                </div>
-                                <div class="card__info">
-                                    <div class="card__date">
-                                        <span>03 OKT. 24</span>
-                                        <span class="card__date-loc">Bamberg</span>
-                                    </div>
-                                    <h3 class="card__title"> Seminar: QSV - Risk minimization and liability distribution
-                                    </h3>
-                                </div>
-                            </a>
-                            <a href="" class="card__item swiper-slide">
-                                <div class="card__img img">
-                                    <img src="./img/card1.png" alt="">
-                                    <span class="card__flag right"> Noch 11 Tage</span>
-                                    <span class="card__flag left"> in Kürze</span>
-                                </div>
-                                <div class="card__info">
-                                    <div class="card__date ">
-                                        <span>03 OKT. 24</span>
-                                        <span class="card__date-loc online">online</span>
-                                    </div>
-                                    <h3 class="card__title"> Seminar: QSV - Risk minimization and liability distribution
-                                    </h3>
-                                </div>
-                            </a>
-                            <a href="" class="card__item swiper-slide">
-                                <div class="card__img img">
-                                    <img src="./img/card1.png" alt="">
-                                    <span class="card__flag right"> Noch 11 Tage</span>
-                                    <span class="card__flag left"> in Kürze</span>
-                                </div>
-                                <div class="card__info">
-                                    <div class="card__date ">
-                                        <span>03 OKT. 24</span>
-                                        <span class="card__date-loc online">online</span>
-                                    </div>
-                                    <h3 class="card__title"> Seminar: QSV - Risk minimization and liability distribution
-                                    </h3>
-                                </div>
-                            </a>
-                            <a href="" class="card__item swiper-slide">
-                                <div class="card__img img">
-                                    <img src="./img/card1.png" alt="">
-                                    <span class="card__flag right"> Noch 11 Tage</span>
-                                    <span class="card__flag left"> in Kürze</span>
-                                </div>
-                                <div class="card__info">
-                                    <div class="card__date ">
-                                        <span>03 OKT. 24</span>
-                                        <span class="card__date-loc online">online</span>
-                                    </div>
-                                    <h3 class="card__title"> Seminar: QSV - Risk minimization and liability distribution
-                                    </h3>
-                                </div>
-                            </a>
-                            <a href="" class="card__item swiper-slide">
-                                <div class="card__img img">
-                                    <img src="./img/card1.png" alt="">
-                                    <span class="card__flag right"> Noch 11 Tage</span>
-                                    <span class="card__flag left"> in Kürze</span>
-                                </div>
-                                <div class="card__info">
-                                    <div class="card__date ">
-                                        <span>03 OKT. 24</span>
-                                        <span class="card__date-loc online">online</span>
-                                    </div>
-                                    <h3 class="card__title"> Seminar: QSV - Risk minimization and liability distribution
-                                    </h3>
-                                </div>
-                            </a>
-                            <a href="" class="card__item swiper-slide">
-                                <div class="card__img img">
-                                    <img src="./img/card1.png" alt="">
-                                    <span class="card__flag right"> Noch 11 Tage</span>
-                                    <span class="card__flag left"> in Kürze</span>
-                                </div>
-                                <div class="card__info">
-                                    <div class="card__date ">
-                                        <span>03 OKT. 24</span>
-                                        <span class="card__date-loc online">online</span>
-                                    </div>
-                                    <h3 class="card__title"> Seminar: QSV - Risk minimization and liability distribution
-                                    </h3>
-                                </div>
-                            </a>
+                <?php if (!empty($this->seminars)) : ?>
+                    <div class="card__block">
+                        <div class="swiper card__slider">
+                            <div class="card__list swiper-wrapper">
+                                <?php foreach ($this->seminars as $post) : ?>
+                                    <a href="<?php echo get_the_permalink($post->ID); ?>" class="card__item <?php echo (get_field('main_options', $post->ID)['shortly'] ? 'green' : '') ?> swiper-slide">
+                                        <div class="card__img img">
+                                            <img src="<?php echo get_the_post_thumbnail_url($post->ID); ?>" alt="">
+                                            <span class="card__flag right"> Noch <?php echo get_field('main_options', $post->ID)['number_of_seats']; ?> Tage</span>
+                                            <?php if (get_field('shortly', $post->ID)['shortly']) : ?>
+                                                <span class="card__flag left"> in Kürze</span>
+                                            <?php endif; ?>
+                                        </div>
+                                        <?php
+                                        $germanMonths = [
+                                            1 => 'JAN.',
+                                            'FEB.',
+                                            'MÄR.',
+                                            'APR.',
+                                            'MAI',
+                                            'JUN.',
+                                            'JUL.',
+                                            'AUG.',
+                                            'SEP.',
+                                            'OKT.',
+                                            'NOV.',
+                                            'DEZ.'
+                                        ];
+                                        $dates = get_field('main_options', $post->ID)['dates'];
+                                        if (count($dates) == 1) {
+                                            list($day, $month, $year) = explode('/', $dates[0]['date']);
+
+                                            $formattedDate = sprintf("%02d %s %02d", $day, $germanMonths[(int)$month], $year % 100);
+                                        } else {
+
+                                            $formatDate = function ($date) use ($germanMonths) {
+                                                list($day, $month, $year) = explode('/', $date);
+                                                return sprintf("%02d %s", $day, $germanMonths[(int)$month]);
+                                            };
+
+                                            $formattedDate1 = $formatDate($dates[0]['date']);
+                                            $formattedDate2 = $formatDate($dates[count($dates) - 1]['date']);
+
+                                            $year = explode('/', $dates[count($dates) - 1]['date'])[2] % 100;
+
+                                            $formattedDate = "{$formattedDate1} - {$formattedDate2} {$year}";
+                                        }
+                                        ?>
+                                        <div class="card__info">
+                                            <div class="card__date">
+                                                <span><?php echo $formattedDate; ?></span>
+                                                <span class="card__date-loc"><?php echo get_field('main_options', $post->ID)['venue']; ?></span>
+                                            </div>
+                                            <h3 class="card__title"><?php echo get_the_title($post->ID); ?>
+                                            </h3>
+                                        </div>
+                                    </a>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                        <div class="card__nav">
+                            <button class="swiper-button-prev card__prev"></button>
+                            <button class="swiper-button-next card__next"></button>
                         </div>
                     </div>
-                    <div class="card__nav">
-                        <button class="swiper-button-prev card__prev"></button>
-                        <button class="swiper-button-next card__next"></button>
-                    </div>
-                </div>
+                <?php endif; ?>
                 <div class="section__form">
                     <div class="section__form-info">
                         <div class="section__more">
@@ -180,7 +148,7 @@ class Front_Page_Place_Section
                         </div>
                         <div class="form__checkbox">
                             <input type="checkbox" id="check" name="policy_terms">
-                            <label for="check"><?php echo str_replace(['<p>','</p>'],['',''],$this->policy_text); ?></label>
+                            <label for="check"><?php echo str_replace(['<p>', '</p>'], ['', ''], $this->policy_text); ?></label>
                         </div>
                         <button class="section__button primary">Senden</button>
                     </form>

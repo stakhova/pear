@@ -11,7 +11,6 @@ class Courses_Page_Content_Section
 
         $args = array(
             'post_type' => 'course',
-            'posts_per_page' => get_field('main_options')['reviews_count'],
         );
 
         if (!empty($this->queried_object->slug)) {
@@ -42,7 +41,7 @@ class Courses_Page_Content_Section
                     </div>
                 </div>
                 <div class="card__block seminar__card">
-                    <?php if (!empty($this->query)) : ?>
+                    <?php if (!empty($this->query->posts)) : ?>
                         <div class="card__list ">
                             <?php foreach ($this->query->posts as $post) : ?>
                                 <a href="<?php echo get_the_permalink($post->ID)?>" class="card__item grey">
