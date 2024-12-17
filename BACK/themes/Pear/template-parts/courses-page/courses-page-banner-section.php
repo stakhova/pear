@@ -20,10 +20,10 @@ class Courses_Page_Banner_Section
                     <?php if (!empty($this->text)) : ?>
                     <p class="section__text white"><?php echo $this->text; ?></p>
                     <?php endif; ?>
-                    <form class="section__search">
-                        <input type="hidden" name="action" value="search">
+                    <form class="section__search" action="<?php echo get_the_permalink(get_option('page_on_front')); ?>">
+                        <input type="hidden" name="post_type" value="course">
                         <div class="section__search-input">
-                            <input type="text" name="search" placeholder="Seminar suchen…">
+                            <input type="text" name="s" placeholder="Seminar suchen…">
                         </div>
                         <button><span>Suche</span></button>
                     </form>

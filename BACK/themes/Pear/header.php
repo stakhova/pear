@@ -21,7 +21,7 @@ $green_image = $header['green_image'];
 $menu = $header['menu'];
 $button = $header['button'];
 ?>
-<?php if (Page_Failed_Payment::get_ID() == get_the_ID() or Page_Successful_Payment::get_ID() == get_the_ID() or (in_array(get_the_ID(),Page_Text::get_IDs())) or is_singular('course')) : ?>
+<?php if (Page_Failed_Payment::get_ID() == get_the_ID() or Page_Successful_Payment::get_ID() == get_the_ID() or (in_array(get_the_ID(),Page_Text::get_IDs())) or is_singular('course') or is_singular('seminar')) : ?>
     <div class="wrap wrap__black">
 <?php else : ?>
     <div class="wrap">
@@ -60,30 +60,8 @@ $button = $header['button'];
                          <button class="header__search-clean" type="button"></button>
                      </form>
                      <div class="header__search-result">
-                         <div class="header__search-list">
-                             <a href="" class="header__search-item">
-                                 <div class="header__search-info">
-                                     <span>Schulungen</span>
-                                     <h3 >Qualitätsmanagement</h3>
-                                 </div>
-                             </a>
-                             <a href="" class="header__search-item">
-                                 <div class="header__search-info">
-                                     <span >Schulungen</span>
-                                     <h3 >Qualitätsmanagement</h3>
-                                 </div>
-                             </a>
-                             <a href="" class="header__search-item">
-                                 <div class="header__search-info">
-                                     <span >Schulungen</span>
-                                     <h3 >Qualitätsmanagement</h3>
-                                 </div>
-                             </a>
-  
-                         </div>
-                         <div class="header__search-empty ">
-                             <p class="section__text ">No result found</p>
-                         </div>
+                         
+                         
                      </div>
                  </div>
                  <button class="header__search-icon ">

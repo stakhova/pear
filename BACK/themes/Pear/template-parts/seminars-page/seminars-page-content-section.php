@@ -164,10 +164,10 @@ class Seminars_Page_Content_Section
                                 <?php endif; ?>
                             </div>
                         </div>
-                        <form class="section__search">
-                            <input type="hidden" name="action" value="search">
+                        <form class="section__search" action="<?php echo get_the_permalink(get_option('page_on_front')); ?>">
+                            <input type="hidden" name="post_type" value="seminar">
                             <div class="section__search-input">
-                                <input type="text" name="search" placeholder="Seminar suchen…">
+                                <input type="text" name="s" placeholder="Seminar suchen…">
                             </div>
                             <button><span>Suche</span></button>
                         </form>

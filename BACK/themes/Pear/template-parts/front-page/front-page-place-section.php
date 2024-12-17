@@ -36,9 +36,9 @@ class Front_Page_Place_Section
                     </div>
                     <div class="section__top-search">
                         <form class="section__search">
-                            <input type="hidden" name="action" value="search">
+                            <input type="hidden" name="post_type" value="seminar">
                             <div class="section__search-input">
-                                <input type="text" name="search" placeholder="Seminar suchen…">
+                                <input type="text" name="s" placeholder="Seminar suchen…">
                             </div>
                             <button><span>Suche</span></button>
                         </form>
