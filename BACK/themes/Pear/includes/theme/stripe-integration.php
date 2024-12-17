@@ -41,8 +41,8 @@ class Stripe_Integration
                 ],
             ],
             'mode' => 'payment',
-            'success_url' => Page_Successful_Payment::get_ID(),
-            'cancel_url' => Page_Failed_Payment::get_ID(),
+            'success_url' => get_the_permalink(Page_Successful_Payment::get_ID()),
+            'cancel_url' => get_the_permalink(Page_Failed_Payment::get_ID()),
             'metadata' => [
                 'order_id' => $order_id,
                 'order_type' => $order_type,
