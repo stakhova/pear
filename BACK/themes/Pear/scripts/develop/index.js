@@ -28,9 +28,12 @@ async function initMap() {
     const { Map } = await google.maps.importLibrary("maps");
     const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
 
-    map = new Map(document.getElementById("map"), {
-        center: { lat: 32.051586, lng: 34.768923 },
-        zoom: 5,
+    // Встановлення центра карти за першою точкою
+    const mapCenter = positionMaps[0];
+
+    const map = new Map(document.getElementById("map"), {
+        center: { lat: mapCenter.lat, lng: mapCenter.lng },
+        zoom: 10, // Рівень збільшення
         linksControl: false,
         panControl: false,
         addressControl: false,
@@ -43,24 +46,31 @@ async function initMap() {
     positionMaps.forEach(position => {
         const customMarkerImg = document.createElement("img");
         customMarkerImg.src = mapIcon;
+
         const marker = new AdvancedMarkerElement({
             position: { lat: position.lat, lng: position.lng },
             map: map,
             content: customMarkerImg
         });
+
+        // Створення інформаційного вікна
         const info = new google.maps.InfoWindow({
             content: position.text
         });
-        google.maps.event.addListener(marker, "mouseover", () => {
+
+        // Завжди відкривати інформаційне вікно
+        info.open(map, marker);
+
+        // Додаткові події (опціонально, можна видалити якщо непотрібно)
+        marker.addListener("mouseover", () => {
             info.open(map, marker);
         });
-        google.maps.event.addListener(marker, "click", () => {
-            info.open(map, marker);
-        });
-        google.maps.event.addListener(map, "click", function (event) {
+
+        marker.addListener("mouseout", () => {
             info.close(map, marker);
         });
-        google.maps.event.addListener(marker, "mouseout", () => {
+
+        map.addListener("click", () => {
             info.close(map, marker);
         });
     });
@@ -641,9 +651,8 @@ $(document).ready(function () {
     let seminar = $('.form__seminar-full\n');
     validateForm(seminar, function () {
         ajaxSend(seminar, function (res) {
-            toogleModal($('.modal__thank'));
+            window.location.href = `${res.data.redirect_url}`;
         }, function (error) {
-            toogleModal($('.modal__thank'));
         });
     });
 

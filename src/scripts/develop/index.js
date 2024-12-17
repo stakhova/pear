@@ -1,4 +1,4 @@
-let page = 1
+let page = 1;
 
 let map;
 
@@ -9,11 +9,9 @@ function policy() {
         if (parts.length === 2) return parts.pop().split(';').shift();
     }
 
-
     if (!getCookie('policyAccepted')) {
         $('.policy').addClass('show').fadeIn(); // Показати банер
     }
-
 
     $('#accept').click(function () {
         const expires = new Date();
@@ -23,16 +21,19 @@ function policy() {
     });
     $('.policy__close, .reject').click(function () {
         $('.policy').fadeOut();
-    })
+    });
 }
 
 async function initMap() {
     const { Map } = await google.maps.importLibrary("maps");
     const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
 
-    map = new Map(document.getElementById("map"), {
-        center: { lat: 32.051586, lng: 34.768923 },
-        zoom: 5,
+    // Встановлення центра карти за першою точкою
+    const mapCenter = positionMaps[0];
+
+    const map = new Map(document.getElementById("map"), {
+        center: { lat: mapCenter.lat, lng: mapCenter.lng },
+        zoom: 10, // Рівень збільшення
         linksControl: false,
         panControl: false,
         addressControl: false,
@@ -45,29 +46,36 @@ async function initMap() {
     positionMaps.forEach(position => {
         const customMarkerImg = document.createElement("img");
         customMarkerImg.src = mapIcon;
+
         const marker = new AdvancedMarkerElement({
             position: { lat: position.lat, lng: position.lng },
             map: map,
             content: customMarkerImg
         });
+
+        // Створення інформаційного вікна
         const info = new google.maps.InfoWindow({
             content: position.text
         });
-        google.maps.event.addListener(marker, "mouseover", () => {
+
+        // Завжди відкривати інформаційне вікно
+        info.open(map, marker);
+
+        // Додаткові події (опціонально, можна видалити якщо непотрібно)
+        marker.addListener("mouseover", () => {
             info.open(map, marker);
         });
-        google.maps.event.addListener(marker, "click", () => {
-            info.open(map, marker);
-        });
-        google.maps.event.addListener(map, "click", function (event) {
+
+        marker.addListener("mouseout", () => {
             info.close(map, marker);
         });
-        google.maps.event.addListener(marker, "mouseout", () => {
+
+        map.addListener("click", () => {
             info.close(map, marker);
         });
     });
 }
-function validateForm(form, func, noreset){
+function validateForm(form, func, noreset) {
     form.on("submit", function (e) {
         e.preventDefault();
     });
@@ -91,23 +99,23 @@ function validateForm(form, func, noreset){
                 email: true
             },
             phone: {
-                required: true,
+                required: true
             },
             policy_terms: {
                 required: true
             },
             company: {
-                required: true,
+                required: true
             },
             address: {
-                required: true,
+                required: true
             },
             state: {
-                required: true,
+                required: true
             },
             post: {
-                required: true,
-            },
+                required: true
+            }
 
         },
         messages: {
@@ -120,23 +128,23 @@ function validateForm(form, func, noreset){
                 email: "Falsche E-Mail"
             },
             phone: {
-                required: "Dieses Feld ist erforderlich",
+                required: "Dieses Feld ist erforderlich"
             },
             policy_terms: {
                 required: "Sie müssen die Datenschutzerklärung akzeptieren"
             },
             company: {
-                required: "Dieses Feld ist erforderlich",
+                required: "Dieses Feld ist erforderlich"
             },
             address: {
-                required: "Dieses Feld ist erforderlich",
+                required: "Dieses Feld ist erforderlich"
             },
             state: {
-                required: "Dieses Feld ist erforderlich",
+                required: "Dieses Feld ist erforderlich"
             },
             post: {
-                required: "Dieses Feld ist erforderlich",
-            },
+                required: "Dieses Feld ist erforderlich"
+            }
         },
         errorPlacement: function (error, element) {
             if (element.attr("type") === "checkbox") {
@@ -146,9 +154,8 @@ function validateForm(form, func, noreset){
             }
         },
         submitHandler: function () {
-            func()
+            func();
             noreset ? null : form[0].reset();
-
         }
     });
     // form.find('select').on('change', function () {
@@ -157,7 +164,7 @@ function validateForm(form, func, noreset){
 };
 function ajaxSend(form, funcSuccess, funcError) {
     let data = form.serialize();
-    console.log(data)
+    console.log(data);
     $.ajax({
         url: '/wp-admin/admin-ajax.php',
         data: data,
@@ -174,32 +181,30 @@ function ajaxSend(form, funcSuccess, funcError) {
     });
 }
 
-function counter(){
-    let price = $('[data-price]').data('price')
-    $(document).on("click", ".form__button-count-minus",function () {
+function counter() {
+    let price = $('[data-price]').data('price');
+    $(document).on("click", ".form__button-count-minus", function () {
         const counter = $(".form__button-counter span ");
         let currentValue = parseInt(counter.text());
 
-        console.log(1111)
+        console.log(1111);
         if (currentValue > 1) {
-            let newValue = currentValue - 1
+            let newValue = currentValue - 1;
             counter.text(newValue);
-            $('input[name="count"]').val(newValue)
-            $('.price span').text(newValue*price)
+            $('input[name="count"]').val(newValue);
+            $('.price span').text(newValue * price);
         }
-
     });
 
-    $(document).on("click",".form__button-count-plus", function () {
-        console.log(2222)
+    $(document).on("click", ".form__button-count-plus", function () {
+        console.log(2222);
         const counter = $(".form__button-counter span");
         let currentValue = parseInt(counter.text());
-        let newValue = currentValue + 1
+        let newValue = currentValue + 1;
 
         counter.text(newValue);
-        $('input[name="count"]').val(newValue)
-        $('.price span').text(newValue*price)
-
+        $('input[name="count"]').val(newValue);
+        $('.price span').text(newValue * price);
     });
 }
 
@@ -210,22 +215,19 @@ function tab() {
     }).eq(0).addClass("active");
 }
 
-
-
-
 function showSearch() {
 
-    $(document).on('click','.header__search-icon',function (){
+    $(document).on('click', '.header__search-icon', function () {
         if (window.innerWidth <= 666) {
-            $('.header__search-wrap').toggleClass('active')
-            $(this).toggleClass('active')
-        }else{
-            $('.header__search-wrap').addClass('active')
-            $(this).hide()
+            $('.header__search-wrap').toggleClass('active');
+            $(this).toggleClass('active');
+        } else {
+            $('.header__search-wrap').addClass('active');
+            $(this).hide();
         }
-    })
-    let searchInput = '.header__search input[name="search"]'
-    $(document).on('keydown',searchInput , function () {
+    });
+    let searchInput = '.header__search input[name="search"]';
+    $(document).on('keydown', searchInput, function () {
         clearTimeout($(this).data('timer'));
         let timer = setTimeout(function () {
             search();
@@ -240,27 +242,23 @@ function showSearch() {
 
     $(document).on('click', '.header__search-clean', function () {
         $('.header__search').removeClass('focused');
-        $(searchInput).val('')
+        $(searchInput).val('');
 
-        $('.header__search-icon').show()
+        $('.header__search-icon').show();
         if (window.innerWidth > 666) {
-            $('.header__search-wrap').removeClass('active')
+            $('.header__search-wrap').removeClass('active');
         }
         search();
     });
 }
 
-
-
-
-
-function menuOpen(){
-    $(document).on('click','.header__burger', function (){
-        console.log(1111)
-        $('.header__menu').toggleClass('active')
-        $(this).toggleClass('header__burger-open')
-        $('body').toggleClass('hidden')
-    })
+function menuOpen() {
+    $(document).on('click', '.header__burger', function () {
+        console.log(1111);
+        $('.header__menu').toggleClass('active');
+        $(this).toggleClass('header__burger-open');
+        $('body').toggleClass('hidden');
+    });
 }
 
 function search() {
@@ -269,7 +267,6 @@ function search() {
     if (searchText.length < 1) {
         $('.header__search-result').hide();
         $('.header__search-clean').hide();
-
     } else {
         $('.header__search-result').show();
         $('.header__search-clean').show();
@@ -284,23 +281,19 @@ function search() {
         },
         error: function (error) {
             console.log('error ajax');
-        },
+        }
     });
 }
 
-function resetModal() {
+function resetModal() {}
 
-}
-
-
-
-function toogleModal(modal, btn ) {
-    if(!btn){
+function toogleModal(modal, btn) {
+    if (!btn) {
         modal.show();
         $('body').addClass('hidden');
-        console.log(1111)
+        console.log(1111);
         // return false;
-    } else{
+    } else {
         btn.click(function () {
             button = $(this);
             modal.show();
@@ -337,39 +330,26 @@ function toogleModal(modal, btn ) {
     });
 }
 
-
 function loadMore() {
     $(document).on('click', '.load__more', function () {
         page++;
-        $('.filter__form input[name="page"]').val(page)
+        $('.filter__form input[name="page"]').val(page);
         // $(this).hide()
-        let form = $('.filter__form')
-        ajaxSend(form,function (res){
-            console.log(111)
-            $('.post__list ').append(res)
-        }, function (){
-            console.log(2222)
-        })
+        let form = $('.filter__form');
+        ajaxSend(form, function (res) {
+            console.log(111);
+            $('.post__list ').append(res);
+        }, function () {
+            console.log(2222);
+        });
     });
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
 function accordion() {
-    console.log(2223333)
+    console.log(2223333);
     $(document).on('click', '.shop__header', function () {
-        $('.shop__header').show()
-        $(this).hide()
+        $('.shop__header').show();
+        $(this).hide();
         let wrap = $(this).closest('.shop__item');
         wrap.prevAll().removeClass('shop__open');
         wrap.nextAll().removeClass('shop__open');
@@ -381,7 +361,6 @@ function accordion() {
         }
     });
 }
-
 
 // const shop = new Swiper('.shop__slider', {
 //     slidesPerView: 1,
@@ -424,27 +403,24 @@ function accordion() {
 // }
 
 
-
-function frontSlider(){
+function frontSlider() {
     $('.shop__item-slider').each(function (index, element) {
         new Swiper(element, {
             slidesPerView: 3,
             spaceBetween: 10,
             navigation: {
                 nextEl: $(element).find('.swiper-button-next'),
-                prevEl: $(element).find('.swiper-button-prev'),
+                prevEl: $(element).find('.swiper-button-prev')
             },
             pagination: {
                 el: $(element).find('.swiper-pagination'),
-                clickable: true,
-            },
+                clickable: true
+            }
         });
     });
 }
 
-
-
-function sliders(){
+function sliders() {
 
     const review = new Swiper('.review__slider', {
         slidesPerView: 4.2,
@@ -475,53 +451,46 @@ function sliders(){
     });
 }
 
-function filterAjax(){
+function filterAjax() {
     page = 1;
-    $('.filter__form input[name="page"]').val(page)
-    let form = $('.filter__form')
-    ajaxSend(form,function (res){
-        $('.post__list > *').remove()
-        $('.post__list ').append(res)
-
-    }, function (){
-        console.log(2222)
-    })
+    $('.filter__form input[name="page"]').val(page);
+    let form = $('.filter__form');
+    ajaxSend(form, function (res) {
+        $('.post__list > *').remove();
+        $('.post__list ').append(res);
+    }, function () {
+        console.log(2222);
+    });
 }
 
-function filter(){
-    $(document).on('click','.filter__clear', function (){
-        $('.filter__item input , .filter__item select').val('')
-        $('.filter__item select').each(function() {
+function filter() {
+    $(document).on('click', '.filter__clear', function () {
+        $('.filter__item input , .filter__item select').val('');
+        $('.filter__item select').each(function () {
             $(this).prop('selectedIndex', 0);
         });
-        $('.filter__item select').trigger('change')
-    })
-    $(document).on('submit','.filter__form', function (e){
-        e.preventDefault()
-        filterAjax()
-    })
-    $(document).on('change','.filter__select select', function (){
-        filterAjax()
-    })
+        $('.filter__item select').trigger('change');
+    });
+    $(document).on('submit', '.filter__form', function (e) {
+        e.preventDefault();
+        filterAjax();
+    });
+    $(document).on('change', '.filter__select select', function () {
+        filterAjax();
+    });
 
-
-
-
-    let searchInput = '.filter__item input[name="search"]'
-    $(document).on('keydown',searchInput , function () {
+    let searchInput = '.filter__item input[name="search"]';
+    $(document).on('keydown', searchInput, function () {
         clearTimeout($(this).data('timer'));
         let timer = setTimeout(function () {
-            filterAjax()
+            filterAjax();
         }, 500);
         $(this).data('timer', timer);
     });
 }
 
-
-
-
-function initSlider(){
-    $('.card__block').each(function(index) {
+function initSlider() {
+    $('.card__block').each(function (index) {
         const sliderContainer = $(this);
         const slider = sliderContainer.find('.card__slider');
 
@@ -540,30 +509,29 @@ function initSlider(){
             effect: 'slide',
             navigation: {
                 nextEl: `.${nextButtonClass}`,
-                prevEl: `.${prevButtonClass}`,
-            },
+                prevEl: `.${prevButtonClass}`
+            }
         });
     });
 }
 
-function appendStar(){
-    $('.card__star').each(function (){
-        let star  = $(this).data('star')
-        for ( let i= 0; i < star; i++){
-            $(this).prepend(`<div class="card__star-item"></div>`)
+function appendStar() {
+    $('.card__star').each(function () {
+        let star = $(this).data('star');
+        for (let i = 0; i < star; i++) {
+            $(this).prepend(`<div class="card__star-item"></div>`);
         }
-    })
+    });
 }
 
-
-function partnersSlider(){
+function partnersSlider() {
     const partners = new Swiper('.partners__slide', {
         slidesPerView: 7,
         spaceBetween: 100,
 
         lazy: {
             loadOnTransitionStart: true,
-            loadPrevNext: true,
+            loadPrevNext: true
         },
         loop: true,
         speed: 1000,
@@ -582,7 +550,7 @@ function partnersSlider(){
             '667': {
                 slidesPerView: 7,
                 spaceBetween: 100,
-                loop: true,
+                loop: true
             }
         }
     });
@@ -590,14 +558,11 @@ function partnersSlider(){
 function changeMob() {
     if (window.innerWidth <= 666) {
 
-
-        initSlider()
-
-    } else{
-        accordion()
+        initSlider();
+    } else {
+        accordion();
     }
 }
-
 
 // function addClassActive(){
 //    $(document).on('click','.choose > *',function (){
@@ -650,63 +615,59 @@ function checkCounters() {
     });
 };
 
-function showMore(){
+function showMore() {
 
-        $('.section__more-btn').on('click', function () {
-            $(this).toggleClass('open')
-            const content = $(this).closest('.section__more').find('.section__form-content');
+    $('.section__more-btn').on('click', function () {
+        $(this).toggleClass('open');
+        const content = $(this).closest('.section__more').find('.section__form-content');
 
-            const items = content.children();
+        const items = content.children();
 
-            if (items.length <= 2) {
-                $(this).hide();
-            }
-            content.toggleClass('expanded');
+        if (items.length <= 2) {
+            $(this).hide();
+        }
+        content.toggleClass('expanded');
 
-
-            if (content.hasClass('expanded')) {
-                $(this).text('Weniger Information');
-            } else {
-                $(this).text('Mehr Information');
-            }
-        });
+        if (content.hasClass('expanded')) {
+            $(this).text('Weniger Information');
+        } else {
+            $(this).text('Mehr Information');
+        }
+    });
 }
 
-
-
 $(document).ready(function () {
-    $('select').select2({})
-    policy()
-    filter()
+    $('select').select2({});
+    policy();
+    filter();
     let subsForm = $('.form__seminar');
     validateForm(subsForm, function () {
         ajaxSend(subsForm, function (res) {
-            toogleModal($('.modal__thank'))
+            toogleModal($('.modal__thank'));
         }, function (error) {
-            toogleModal($('.modal__thank'))
+            toogleModal($('.modal__thank'));
         });
     });
     let seminar = $('.form__seminar-full\n');
     validateForm(seminar, function () {
         ajaxSend(seminar, function (res) {
-            toogleModal($('.modal__thank'))
+            window.location.href = `${res.data.redirect_url}`;
         }, function (error) {
-            toogleModal($('.modal__thank'))
         });
     });
 
-    showMore()
-    menuOpen()
+    showMore();
+    menuOpen();
     changeMob();
-    frontSlider()
+    frontSlider();
     tab();
-    showSearch()
-    loadMore()
-    appendStar()
+    showSearch();
+    loadMore();
+    appendStar();
     partnersSlider();
     counter();
-    sliders()
-    initMap()
+    sliders();
+    initMap();
     $(window).on('load scroll', checkCounters);
 });
 
@@ -714,3 +675,4 @@ $(window).load(function () {});
 
 $(window).resize(function () {});
 $(window).scroll(function () {});
+//# sourceMappingURL=index.js.map

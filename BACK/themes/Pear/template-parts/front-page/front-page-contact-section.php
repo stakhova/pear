@@ -43,17 +43,36 @@ class Front_Page_Contact_Section
                         </div>
 
                     </div>
+                    <style>
+                        .gm-style-iw-chr{
+                           display: none!important;
+                        }
+                        .gm-style-iw-d a{
+                            font: 400 1.2rem / 1.3rem var(--GT) !important;
+                            text-transform: uppercase!important;
+                            color:white;
+                        }
+                        .gm-style-iw-d{
+                            max-height: max-content!important;
+                            padding: 0.8rem 1.2rem!important;
+                        }
+                        .gm-style .gm-style-iw-c, .gm-style .gm-style-iw-tc::after{
+                            background-color:#023D27!important;
+                            padding: 0!important;
+                        }
+
+                    </style>
                     <div class="contact__map">
                         <div class="map__item" id="map"></div>
 
                         <script>
                             let mapIcon = '<?=TEMPLATE_PATH?>/img/map-loc.svg';
 
-                            let positionMaps = {
+                            let positionMaps = [{
                                 lat: <?php echo $this->map['lat']; ?>,
                                 lng: <?php echo $this->map['lng']; ?>,
-                                text: '<a href="<?php echo $this->map_link; ?>">Eexplore on google maps</a>'
-                            }
+                                text: '<a href="<?php echo $this->map_link; ?>">Explore on google maps</a>'
+                            }]
                             console.log(positionMaps);
                             (g => {
                                 var h, a, k, p = "The Google Maps JavaScript API",
