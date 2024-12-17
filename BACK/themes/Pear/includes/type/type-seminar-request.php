@@ -39,8 +39,9 @@ class Type_Seminar_Request
         update_field('email', $email, $post_id);
         update_field('status', 'new', $post_id);
         update_field('count', $count, $post_id);
+        update_field('seminar_id', $seminar_id, $post_id);
 
-        $price = get_field('main_options', $seminar_id)['price'];
+        $price = get_field('main_options', $seminar_id)['price'] * $count;
         $redirect_url = Stripe_Integration::create_payment_link($post_id, $price, 'seminar');
         wp_send_json_success(['redirect_url' => $redirect_url], 200);
     }
@@ -107,7 +108,7 @@ class Type_Seminar_Request
                         'placeholder' => '',
                     ),
                     array(
-                        'key' => 'field_675960asasfasffasf3d95efa',
+                        'key' => 'field_675960asasfassafsafffasf3d95efa',
                         'label' => 'Seminar id',
                         'name' => 'seminar_id',
                         'aria-label' => '',

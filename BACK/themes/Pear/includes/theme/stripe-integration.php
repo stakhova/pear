@@ -54,7 +54,7 @@ class Stripe_Integration
 
     public static function payment_callback()
     {
-        $endpoint_secret = 'whsec_PUxAB4694qaPACZHBLWl6CBnTuiyR6qr';
+        $endpoint_secret = 'whsec_MINnUqDI9tMmaR7IdAnbLSONk1odUGIw';
         $payload = @file_get_contents('php://input');
         $sig_header = $_SERVER['HTTP_STRIPE_SIGNATURE'];
         $event = null;
@@ -76,7 +76,7 @@ class Stripe_Integration
         switch ($event->type) {
             case 'checkout.session.completed':
                 $checkout = $event->data->object->metadata;
-                $order_id = $checkout->course_id;
+                $order_id = $checkout->order_id;
                 $order_type = $checkout->order_type;
 
                 if ($order_type == 'course') {
@@ -108,8 +108,10 @@ class Stripe_Integration
                 if ($order_type == 'seminar') {
                     $seminar_id = get_field('seminar_id', $order_id);
                     $users_count = get_field('main_options', $seminar_id)['number_of_seats'];
-                    $users_count = $users_count - get_field('count', $order_id);
-                    update_field('main_options_number_of_seats', $users_count, $seminar_id);
+                    var_dump($users_count,get_field('count', $order_id));
+                    $new_users_count = $users_count - get_field('count', $order_id);
+                    var_dump($new_users_count);
+                    update_field('main_options_number_of_seats', $new_users_count, $seminar_id);
 
                     update_field('status', 'paid', $order_id);
 
