@@ -2,7 +2,8 @@
 
 class Single_Course_Page_Editor_Section
 {
-    public function __construct() {
+    public function __construct()
+    {
         $section_content = get_field('section_content');
         $this->topics = $section_content['topics'];
         $this->target_group_and_goals = $section_content['target_group_and_goals'];
@@ -15,11 +16,11 @@ class Single_Course_Page_Editor_Section
         <section class="section seminar__editor editor">
             <div class="container">
                 <div class="editor__list">
-                    <?php if (!empty($this->topics)) :?>
+                    <?php if (!empty($this->topics)) : ?>
                         <div class="editor__item">
                             <div class="editor__title">Themen</div>
-                            <?php foreach ($this->topics as $item) : ?>
-                                <div class="editor__content">
+                            <div class="editor__content">
+                                <?php foreach ($this->topics as $item) : ?>
                                     <?php if (!empty($item['title'])) : ?>
                                         <span><strong><?php echo $item['title']; ?></strong></span>
                                     <?php endif; ?>
@@ -30,8 +31,8 @@ class Single_Course_Page_Editor_Section
                                             <?php endforeach; ?>
                                         </ul>
                                     <?php endif; ?>
-                                </div>
-                            <?php endforeach; ?>
+                                <?php endforeach; ?>
+                            </div>
                         </div>
                     <?php endif; ?>
                     <?php if (!empty($this->target_group_and_goals)) : ?>

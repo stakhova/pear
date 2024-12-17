@@ -20,7 +20,7 @@
          <div class="footer__block">
              <div class="footer__item">
                 <?php if (!empty($logotype)) : ?>
-                    <a class="footer__logo img" href="">
+                    <a class="footer__logo img" href="<?php echo home_url(); ?>">
                         <img src="<?php echo $logotype; ?>" alt="">
                     </a>
                  <?php endif; ?>

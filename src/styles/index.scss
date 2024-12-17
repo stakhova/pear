@@ -887,6 +887,7 @@
     top: 0;
     position: absolute;
     z-index: 0;
+    clip-path: ellipse(100% 154% at 100% 50%);
   }
   &__text{
     font: 400 2.4rem / 3.4rem var(--GT);
