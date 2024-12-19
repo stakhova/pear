@@ -638,7 +638,7 @@ function showMore() {
 
 $(document).ready(function () {
     $('select').select2({});
-    policy();
+    // policy();
     filter();
     let subsForm = $('.form__seminar');
     validateForm(subsForm, function () {

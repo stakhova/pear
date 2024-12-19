@@ -94,7 +94,7 @@ $button = $header['button'];
       </div>
   </div>
 
-        <div class="policy">
+        <!-- <div class="policy">
             <button class="policy__close img">
                 <img src="<?=TEMPLATE_PATH?>/img/close.svg" alt="">
             </button>
@@ -110,4 +110,4 @@ $button = $header['button'];
                 <button class="reject">Einstellungen</button>
             </div>
 
-        </div>
+        </div> -->
