@@ -2617,6 +2617,7 @@ label.error{
     justify-content: flex-start;
     & > *{
       width: 100%;
+      max-width: 100%;
     }
   }
   .section__search-input{
@@ -2858,10 +2859,15 @@ label.error{
   }
   .promise__count-wrap{
     flex-wrap: wrap;
+    flex-direction: row;
+    gap:3.2rem;
+  }
+  .promise__count-wrap > *{
+    max-width: calc(50% - 1.6rem);
   }
   .promise__count{
     width: 100%;
-    max-width: 15.1rem;
+    //max-width: 15.1rem;
     gap:0.4rem;
   }
   .place .card__block{
@@ -3074,6 +3080,9 @@ label.error{
   }
   .banner__campus .banner__info{
     gap:1.6rem;
+  }
+  .banner__info{
+    max-width: 100%;
   }
   .banner__campus .section__title{
     margin: 0;

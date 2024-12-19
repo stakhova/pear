@@ -51,10 +51,11 @@ class Front_Page_Contact_Section
                             font: 400 1.2rem / 1.3rem var(--GT) !important;
                             text-transform: uppercase!important;
                             color:white;
-                        }
-                        .gm-style-iw-d{
                             max-height: max-content!important;
                             padding: 0.8rem 1.2rem!important;
+                        }
+                        .gm-style-iw-d{
+
                         }
                         .gm-style .gm-style-iw-c, .gm-style .gm-style-iw-tc::after{
                             background-color:#023D27!important;

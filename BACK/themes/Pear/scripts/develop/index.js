@@ -636,10 +636,24 @@ function showMore() {
     });
 }
 
+function mask(){
+    $('input[name="phone"]').on('input', function () {
+        let val = $(this).val();
+        if (!val.startsWith('+49')) {
+            $(this).val('+49 ' + val.replace(/^\+?[0-9]*/, '')); // Retain only non-country code digits
+        }
+    }).mask('+49 000 00000000', {
+        placeholder: "+49 000 00000000",
+        clearIfNotMatch: true
+    });
+}
+
 $(document).ready(function () {
+    console.log(1234567654323456)
     $('select').select2({});
     policy();
     filter();
+    mask();
     let subsForm = $('.form__seminar');
     validateForm(subsForm, function () {
         ajaxSend(subsForm, function (res) {

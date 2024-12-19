@@ -73,11 +73,11 @@ class Single_Seminar_Page_Editor_Section
                                 <script>
                                     let mapIcon = '<?=TEMPLATE_PATH?>/img/map-loc.svg';
 
-                                    let positionMaps = {
+                                    let positionMaps = [{
                                         lat: <?php echo $this->map['lat']; ?>,
                                         lng: <?php echo $this->map['lng']; ?>,
                                         text: '<a href="<?php echo $this->map_link; ?>">Eexplore on google maps</a>'
-                                    }
+                                    }]
                                     console.log(positionMaps);
                                     (g => {
                                         var h, a, k, p = "The Google Maps JavaScript API",
