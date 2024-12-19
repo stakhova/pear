@@ -11,6 +11,7 @@ class Courses_Page_Content_Section
 
         $args = array(
             'post_type' => 'course',
+            'posts_per_page' => 9999,
         );
 
         if (!empty($this->queried_object->slug)) {

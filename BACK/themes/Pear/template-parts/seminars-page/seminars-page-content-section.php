@@ -34,6 +34,7 @@ class Seminars_Page_Content_Section
 
         $args = array(
             'post_type' => 'seminar',
+            'posts_per_page' => 9999,
         );
 
         if (!empty($this->queried_object->slug)) {
