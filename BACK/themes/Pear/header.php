@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php wp_reset_postdata(); ?>
 <head>
     <meta charset="UTF-8">
-    <title><?php echo get_the_title(); ?></title>
+    <title>Pear</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>

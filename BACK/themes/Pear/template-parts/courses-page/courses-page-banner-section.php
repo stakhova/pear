@@ -3,7 +3,9 @@
 class Courses_Page_Banner_Section
 {
     public function __construct() {
-        $section_banner = get_field('section_banner');
+        wp_reset_postdata();
+
+        $section_banner = get_field('section_banner',Page_Courses::get_ID());
         $this->title = $section_banner['title'];
         $this->text = $section_banner['text'];
     }

@@ -36,7 +36,7 @@ class Type_Front_Request
             'Phone: ' . $phone . '<br>' .
             'Email: ' . $email . '<br>' .
             'Message: ' . $message . '<br>';
-        wp_mail(get_field('managers', Page_Option::get_ID())['emails'], 'New front request #' . $post_id, $massages, $headers);
+        mail(get_field('managers', Page_Option::get_ID())['emails'], 'New front request #' . $post_id, $massages, $headers);
     }
 
     public static function registerPostType()

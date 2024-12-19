@@ -3,6 +3,8 @@
 class Courses_Page_Content_Section
 {
     public function __construct() {
+        wp_reset_postdata();
+
         $this->terms = get_terms( array(
             'taxonomy'   => 'course_type',
             'hide_empty' => false,
@@ -26,6 +28,8 @@ class Courses_Page_Content_Section
         }
         
         $this->query = new WP_Query($args);
+        wp_reset_postdata();
+
     }
 
     public function render()

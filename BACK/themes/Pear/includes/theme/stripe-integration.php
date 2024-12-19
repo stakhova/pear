@@ -102,7 +102,7 @@ class Stripe_Integration
                         'Post code: ' . $post_code . '<br>' .
                         'Phone: ' . $phone . '<br>' .
                         'Email: ' . $email . '<br>';
-                    wp_mail(get_field('managers', Page_Option::get_ID())['emails'], 'New course request #' . $order_id, $massages, $headers);
+                    mail(get_field('managers', Page_Option::get_ID())['emails'], 'New course request #' . $order_id, $massages, $headers);
                 }
 
                 if ($order_type == 'seminar') {
@@ -134,7 +134,7 @@ class Stripe_Integration
                         'Post code: ' . $post_code . '<br>' .
                         'Phone: ' . $phone . '<br>' .
                         'Email: ' . $email . '<br>';
-                    wp_mail(get_field('managers', Page_Option::get_ID())['emails'], 'New seminar request #' . $order_id, $massages, $headers);
+                    mail(get_field('managers', Page_Option::get_ID())['emails'], 'New seminar request #' . $order_id, $massages, $headers);
                 }
         }
     }

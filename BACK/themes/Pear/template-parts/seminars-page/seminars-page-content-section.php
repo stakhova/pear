@@ -80,6 +80,7 @@ class Seminars_Page_Content_Section
         }
 
         $this->query = new WP_Query($args);
+        wp_reset_postdata();
     }
 
     public function render()
