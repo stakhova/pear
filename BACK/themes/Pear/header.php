@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="<?=TEMPLATE_PATH?>/styles/normalize.css">
     <link rel="stylesheet" href="<?=TEMPLATE_PATH?>/styles/critical.css">
     <link rel="stylesheet" href="<?=TEMPLATE_PATH?>/styles/index.css">
+    <?php wp_head(); ?>
 </head>
 <body>
 <?php 
