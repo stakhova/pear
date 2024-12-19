@@ -616,16 +616,21 @@ function checkCounters() {
 };
 
 function showMore() {
+    // Перевірка кількості елементів при завантаженні
+    $('.section__more').each(function () {
+        const content = $(this).find('.section__form-content');
+        const items = content.children();
 
+        if (items.length > 1) {
+            $(this).find('.section__more-btn').show();
+        }
+    });
+
+    // Обробник кліку для кнопки
     $('.section__more-btn').on('click', function () {
         $(this).toggleClass('open');
         const content = $(this).closest('.section__more').find('.section__form-content');
 
-        const items = content.children();
-
-        if (items.length <= 2) {
-            $(this).hide();
-        }
         content.toggleClass('expanded');
 
         if (content.hasClass('expanded')) {

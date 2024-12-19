@@ -43,6 +43,7 @@
       border:0.1rem solid  #0029193D;
       border-radius: 100rem;
       margin-top: 3.2rem;
+      display: none;
       &:after{
         content: '';
         position: absolute;
@@ -1776,6 +1777,8 @@
 }
 
 .contact{
+  padding: 0!important;
+
   .container{
     padding:4rem 3rem 0 ;
   }

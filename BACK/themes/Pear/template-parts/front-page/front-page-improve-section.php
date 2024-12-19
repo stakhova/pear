@@ -44,8 +44,8 @@ class Front_Page_Improve_Section
                         <div class="swiper card__slider">
                             <div class="card__list swiper-wrapper">
                                 <?php foreach ($this->courses as $item) : ?>
-                                    <a href="<?php echo get_the_permalink($item) ?>" class="card__item grey">
-                                        <div class="card__img img">
+                                    <a href="<?php echo get_the_permalink($item) ?>" class="card__item swiper-slide grey">
+                                        <div class="card__img  img">
                                             <img src="<?php echo get_the_post_thumbnail_url($item); ?>" alt="">
                                         </div>
                                         <div class="card__info">

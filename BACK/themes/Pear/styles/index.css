@@ -43,6 +43,7 @@
   border: 0.1rem solid  #0029193D;
   border-radius: 100rem;
   margin-top: 3.2rem;
+  display: none;
 }
 
 .section__more-btn:after {
@@ -2008,6 +2009,9 @@
 .seminar__user h3 {
   font: 500 2.8rem/3.6rem var(--GT);
   letter-spacing: -0.01em;
+}
+.contact{
+  padding: 0!important;
 }
 
 .contact .container {
