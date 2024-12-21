@@ -5,13 +5,19 @@
   font-style: normal;
 }
 
+/*@font-face {*/
+/*  font-family: "GTWalsheimPro";*/
+/*  src: url("../font/GT-Walsheim-Medium.woff2") format("woff2"), url("../font/GT-Walsheim-Medium.woff") format("woff");*/
+/*  font-weight: 500;*/
+/*  font-style: normal;*/
+/*}*/
+
 @font-face {
   font-family: "GTWalsheimPro";
-  src: url("../font/GT-Walsheim-Medium.woff2") format("woff2"), url("../font/GT-Walsheim-Medium.woff") format("woff");
+  src: url("../font/GT-Walsheim-Condensed-Medium.woff2") format("woff2"), url("../font/GT-Walsheim-Condensed-Medium.woff") format("woff");
   font-weight: 500;
   font-style: normal;
 }
-
 @font-face {
   font-family: "GTWalsheimPro";
   src: url("../font/GT-Walsheim-Condensed-Bold.woff2") format("woff2"), url("../font/GT-Walsheim-Condensed-Bold.woff") format("woff");

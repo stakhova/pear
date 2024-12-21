@@ -15,7 +15,10 @@ class Calendar_Page_Form_Section
 
         <section class="section seminar">
             <div class="container">
+                <div class="calendar">
+                    <div id="calendar"></div>
 
+                </div>
                 <div class="section__form">
                     <div class="section__form-info">
                         <div class="section__more">

@@ -32,9 +32,9 @@
   padding: 0 3rem;
 }
 
-.section:last-of-type {
-  padding-bottom: 5.6rem;
-}
+/*.section:last-of-type {*/
+/*  padding-bottom: 5.6rem;*/
+/*}*/
 
 .section__more-btn {
   font: 400 1.6rem/1.9rem var(--GT);
@@ -426,6 +426,9 @@
   background: transparent;
   font: 400 2rem/2.6rem var(--GT);
 }
+.section__search-input input::placeholder{
+  opacity: 0.4;
+}
 
 .section__button {
   display: block;
@@ -521,7 +524,7 @@
   text-transform: uppercase;
   width: -moz-max-content;
   width: max-content;
-  letter-spacing: -0.06rem;
+  letter-spacing: -0.06em;
 }
 
 .section__middle {
@@ -578,7 +581,7 @@
 .header {
   position: absolute;
   width: 100%;
-  z-index: 1;
+  z-index: 3;
 }
 
 .header .container {
@@ -771,7 +774,7 @@
 }
 
 .header__search-list::-webkit-scrollbar-thumb {
-  background-color: var(--color-input);
+  background-color: var(--color-black);
   border-radius: 2rem;
 }
 
@@ -1280,7 +1283,7 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  right: -3.2rem;
+  right: -0.2rem;
   width: 6.4rem;
   height: 6.4rem;
   background: url(../img/star.svg) center/6.4rem 6.4rem no-repeat;
@@ -2181,7 +2184,7 @@
 .form__input label {
   font: 400 1.2rem/1.3rem var(--GT);
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.006em;
   opacity: 0.8;
 }
 
@@ -2828,6 +2831,29 @@ label.error {
   display: none;
 }
 
+.gm-style-iw-chr{
+  display: none!important;
+}
+.gm-style-iw-d a{
+  font: 400 1.2rem / 1.3rem var(--GT) !important;
+  text-transform: uppercase!important;
+  color:white;
+  max-height: max-content!important;
+  padding: 0.8rem 1.2rem!important;
+}
+.gm-style-iw-d{
+  overflow: visible!important;
+  height: 100%;
+  max-height: 3rem!important;
+  min-height:3rem;
+  display: flex;
+  align-items: center ;
+}
+.gm-style .gm-style-iw-c, .gm-style .gm-style-iw-tc::after{
+  background-color:#023D27!important;
+  padding: 0!important;
+}
+
 @media only screen and (max-width: 1440px) {
   .promise .container:before, .promise .container:after, .campus__form .container:before, .campus__form .container:after {
     display: none;
@@ -3007,7 +3033,7 @@ label.error {
   .section__title {
     font-size: 4.8rem;
     line-height: 4.8rem;
-    letter-spacing: -0.2rem;
+    letter-spacing: -0.02em;
   }
   .card__nav {
     display: -ms-flexbox;
@@ -3156,7 +3182,7 @@ label.error {
     border-top-left-radius: 2.4rem;
     border-top-right-radius: 2.4rem;
   }
-  .card__item {
+  .card__item, .card__hover {
     border-radius: 2.4rem;
   }
   .card__hover:after {
@@ -3698,12 +3724,22 @@ label.error {
     content: '';
     position: absolute;
     bottom: -1.7rem;
+    bottom: -1.7rem;
     left: 50%;
     transform: translateX(-50%);
     width: 37.6rem;
     height: 13.2rem;
     background: url(../img/pear-imp.svg) center/37.6rem 13.2rem no-repeat;
     z-index: 1;
+  }
+  .seminar__filter .section__search{
+    max-width: 100%;
+  }
+  .section__banner-seminar-img{
+    border-radius: 0;
+  }
+  .section__category{
+    letter-spacing: -0.04em;
   }
 }
 

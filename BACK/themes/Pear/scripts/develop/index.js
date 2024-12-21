@@ -674,7 +674,6 @@ $(document).ready(function () {
         }, function (error) {
         });
     });
-
     showMore();
     menuOpen();
     changeMob();
@@ -686,7 +685,10 @@ $(document).ready(function () {
     partnersSlider();
     counter();
     sliders();
-    initMap();
+    if( $('#map').length > 0){
+        initMap();
+    }
+
     $(window).on('load scroll', checkCounters);
 });
 

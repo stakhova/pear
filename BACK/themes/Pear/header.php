@@ -10,6 +10,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css"/>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.8/index.min.css" rel="stylesheet" />
+
     <link rel="stylesheet" href="<?=TEMPLATE_PATH?>/styles/normalize.css">
     <link rel="stylesheet" href="<?=TEMPLATE_PATH?>/styles/critical.css">
     <link rel="stylesheet" href="<?=TEMPLATE_PATH?>/styles/index.css">
