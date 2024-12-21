@@ -616,16 +616,21 @@ function checkCounters() {
 };
 
 function showMore() {
+    // Перевірка кількості елементів при завантаженні
+    $('.section__more').each(function () {
+        const content = $(this).find('.section__form-content');
+        const items = content.children();
 
+        if (items.length > 1) {
+            $(this).find('.section__more-btn').show();
+        }
+    });
+
+    // Обробник кліку для кнопки
     $('.section__more-btn').on('click', function () {
         $(this).toggleClass('open');
         const content = $(this).closest('.section__more').find('.section__form-content');
 
-        const items = content.children();
-
-        if (items.length <= 2) {
-            $(this).hide();
-        }
         content.toggleClass('expanded');
 
         if (content.hasClass('expanded')) {
@@ -648,6 +653,79 @@ function mask(){
     });
 }
 
+
+// function calendar(){
+//         //
+//         // const seminarsData = JSON.parse(seminars);
+//         //
+//         // // Перетворення семінарів у формат подій для FullCalendar
+//         // const events = seminarsData.flatMap(seminar => {
+//         //     return seminar.dates.map(event => {
+//         //         const [startTime, endTime] = event.time ? event.time.split(' - ') : [null, null];
+//         //         return {
+//         //             title: seminar.title,
+//         //             start: `${event.date.split('/').reverse().join('-')}${startTime ? `T${startTime}` : ''}`,
+//         //             end: endTime ? `${event.date.split('/').reverse().join('-')}T${endTime}` : null,
+//         //             url: seminar.url,
+//         //             backgroundColor: seminar.color,
+//         //             borderColor: seminar.color
+//         //         };
+//         //     });
+//         // });
+//         //
+//         // var calendarEl = document.getElementById('calendar');
+//         // var calendar = new FullCalendar.Calendar(calendarEl, {
+//         //     initialView: 'dayGridMonth',
+//         //     height: '100%',
+//         //     events: events,
+//         //     eventClick: function (info) {
+//         //         info.jsEvent.preventDefault(); // Забороняємо відкриття за замовчуванням
+//         //         if (info.event.url) {
+//         //             window.open(info.event.url, '_blank');
+//         //         }
+//         //     }
+//         // });
+//         //
+//         // calendar.render();
+//     const seminars = '[{"url":"https://pear.blackbook.dev/seminar/aufbau-und-inhalt-des-produktionslenkungsplans-seminar-fur-anwender/","dates":[{"date":"29/12/2024","time":""},{"date":"30/12/2024","time":""},{"date":"31/12/2024","time":""}],"title":"Aufbau und Inhalt des Produktionslenkungsplans – Seminar für Anwender","plave":"Bamberg","color":"green"},{"url":"https://pear.blackbook.dev/seminar/qualitatsmanagement-beauftragter/","dates":[{"date":"26/12/2024","time":"14:00 - 16:30"}],"title":"Qualitätsmanagement-Beauftragter","plave":"online","color":"yellow"}]';
+//
+//     // Розпарсити JSON
+//     const seminarsData = JSON.parse(seminars);
+//
+//     // Перетворення семінарів у формат подій для FullCalendar
+//     const events = seminarsData.flatMap(seminar => {
+//         return seminar.dates.map(event => {
+//             const [startTime, endTime] = event.time ? event.time.split(' - ') : [null, null];
+//             return {
+//                 title: seminar.title,
+//                 start: `${event.date.split('/').reverse().join('-')}${startTime ? `T${startTime}` : ''}`,
+//                 end: endTime ? `${event.date.split('/').reverse().join('-')}T${endTime}` : null,
+//                 url: seminar.url,
+//                 backgroundColor: seminar.color,
+//                 borderColor: seminar.color
+//             };
+//         });
+//     });
+//
+//     // Ініціалізація FullCalendar
+//     var calendarEl = document.getElementById('calendar');
+//     var calendar = new FullCalendar.Calendar(calendarEl, {
+//         initialView: 'dayGridMonth',
+//         height: '100%',
+//         events: events,
+//         eventClick: function (info) {
+//             info.jsEvent.preventDefault(); // Забороняємо відкриття за замовчуванням
+//             if (info.event.url) {
+//                 window.open(info.event.url, '_blank');
+//             }
+//         }
+//     });
+//
+//
+//     calendar.render();
+// }
+
+
 $(document).ready(function () {
     console.log(1234567654323456)
     $('select').select2({});
@@ -669,7 +747,7 @@ $(document).ready(function () {
         }, function (error) {
         });
     });
-
+    // calendar()
     showMore();
     menuOpen();
     changeMob();
@@ -681,7 +759,10 @@ $(document).ready(function () {
     partnersSlider();
     counter();
     sliders();
-    initMap();
+    if( $('#map').length > 0){
+        initMap();
+    }
+
     $(window).on('load scroll', checkCounters);
 });
 

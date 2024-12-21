@@ -1,0 +1,246 @@
+//= partials/head.html
+
+<div class="wrap">
+  //= partials/header.html
+
+  <section class="section__banner">
+    <div class="container">
+      <div class="section__banner-block">
+        <h1 class="section__title white">Seminare</h1>
+        <p class="section__text white">Entdecken Sie unser vielfältiges Seminarangebot! Ob Managementsysteme, Nachhaltigkeit oder Arbeitssicherheit – bei uns finden Sie praxisorientierte Schulungen, die Sie weiterbringen. Wählen Sie einfach das passende Seminar und sichern Sie sich Ihren Platz!</p>
+        <button class="section__button transparent">Kalender</button>
+      </div>
+    </div>
+  </section>
+  <section class="section calendar">
+    <div class="container">
+
+    <div class="calendar">
+      <div id="calendar"></div>
+
+    </div>
+
+      <div class="section__form">
+        <div class="section__form-info">
+          <div class="section__more">
+            <div class="section__form-content content">
+              <h3>Sie haben nicht das richtige Thema oder Datum gefunden - Kontaktieren Sie uns für ein Inhouse Seminar</h3>
+              <p>Jedes unserer Seminare können Sie auch direkt bei Ihnen im Unternehmen buchen – maßgeschneidert und perfekt auf Ihre Bedürfnisse abgestimmt. Der größte Vorteil: Wir passen die Inhalte im Vorfeld exakt an Ihre Unternehmensanforderungen an, sodass Sie nicht nur Standardwissen, sondern Lösungen erhalten, die für Ihr Geschäft relevant sind.</p>
+              <p>Mit unseren Inhouse-Seminaren sparen Sie sich Anfahrtswege und Schulungsräume – wir kommen zu Ihnen! Dadurch können Ihre Mitarbeiter in ihrer gewohnten Umgebung gezielt weitergebildet werden, mit Inhalten, die individuell auf Ihre Branche, Abläufe und Herausforderungen zugeschnitten sind. So stellen wir sicher, dass das Gelernte sofort in die Praxis umgesetzt werden kann.</p>
+              <p>Maximale Flexibilität, maßgeschneiderte Inhalte und direkter Praxisbezug – machen Sie den nächsten Schritt und buchen Sie Ihr Inhouse-Seminar noch heute!</p>
+            </div>
+            <button class="section__more-btn">Weniger Information</button>
+          </div>
+
+        </div>
+        <form action="" class="form form__seminar">
+          <input type="hidden" name="action" value="seminar">
+          <div class="form__input">
+            <label>voller Name</label>
+            <input type="text" name="name" placeholder="Max Mustermann">
+          </div>
+          <div class="form__input">
+            <label>E-Mail</label>
+            <input type="text" name="email" placeholder="example@mail.com">
+          </div>
+          <div class="form__input">
+            <label>Telefonnummer</label>
+            <input type="text" name="phone" placeholder="+49 XXX XXXXXXXX">
+          </div>
+          <div class="form__input textarea">
+            <label>Deine Anfrage</label>
+            <textarea name="message" placeholder="Ich möchte..."></textarea>
+          </div>
+          <div class="form__checkbox">
+            <input type="checkbox" id="check"  name="policy_terms">
+            <label for="check">Ich habe die <a href="">Datenschutzerklärung </a> gelesen und stimme der Verarbeitung meiner Daten zur Kontaktaufnahme und Bearbeitung meiner Anfrage zu.</label>
+          </div>
+          <button class="section__button primary">Senden</button>
+        </form>
+      </div>
+
+    </div>
+
+
+  </section>
+
+  //= partials/footer.html
+</div>
+
+//= partials/scripts.html
+
+
+<style>
+  .fc-event {
+    line-height: 1.5; /* Зробити висоту тексту однаковою */
+    display: flex;
+    align-items: center;
+  }
+
+  .fc-event-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .fc-timeline-event {
+    height: 40px; /* Встановити однакову висоту для всіх подій */
+  }
+
+  .fc-resourceTimelineDay .fc-event {
+    margin: 2px 0; /* Вирівнювання для кращого вигляду */
+  }
+</style>
+<script>
+  const seminars = [
+    {
+      "url": "https://pear.blackbook.dev/seminar/aufbau-und-inhalt-des-produktionslenkungsplans-seminar-fur-anwender/",
+      "dates": [
+        { "date": "29/12/2024", "time": "14:00 - 16:30" },
+        { "date": "30/12/2024", "time": "12:00 - 16:30" },
+        { "date": "31/12/2024", "time": "10:00 - 12:30" }
+      ],
+      "title": "Aufbau und Inhalt des Produktionslenkungsplans – Seminar für Anwender",
+      "plave": "Bamberg",
+      "color": "green"
+    },
+    {
+      "url": "https://pear.blackbook.dev/seminar/aufbau-und-inhalt-des-produktionslenkungsplans-seminar-fur-anwender/",
+      "dates": [
+        { "date": "29/12/2024", "time": "10:00 - 12:30" },
+        { "date": "30/12/2024", "time": "12:00 - 16:30" },
+        { "date": "31/12/2024", "time": "10:00 - 12:30" }
+      ],
+      "title": "Aufbau und Inhalt des Produktionslenkungsplans – Seminar für Anwender",
+      "plave": "Bamberg",
+      "color": "grey"
+    },
+    {
+      "url": "https://pear.blackbook.dev/seminar/qualitatsmanagement-beauftragter/",
+      "dates": [
+        { "date": "26/12/2024", "time": "14:00 - 16:30" }
+      ],
+      "title": "Qualitätsmanagement-Beauftragter",
+      "plave": "online",
+      "color": "yellow"
+    }
+  ];
+  document.addEventListener('DOMContentLoaded', function () {
+    var calendarEl = document.getElementById('calendar');
+
+    // Перетворення даних семінарів у події для FullCalendar
+    const events = seminars.flatMap(seminar => {
+      return seminar.dates.map((date, index) => {
+        const start = date.date.split('/').reverse().join('-'); // Формат дати ISO
+        const end = seminar.dates.length > 1 && index === seminar.dates.length - 1
+                ? new Date(new Date(start).setDate(new Date(start).getDate() + 1)).toISOString().split('T')[0]
+                : null;
+
+        return {
+          title: seminar.title,
+          start: start,
+          end: end,
+          url: seminar.url,
+          backgroundColor: seminar.color,
+          borderColor: seminar.color,
+          textColor: '#fff',
+          resourceId: seminar.title, // Встановлення title як resourceId для групування
+          extendedProps: {
+            time: date.time,
+            plave: seminar.plave,
+            isFirstDay: index === 0
+          }
+        };
+      });
+    });
+
+    // Ініціалізація FullCalendar з горизонтальним ресурсним видом
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      initialView: 'resourceTimelineDay', // Горизонтальний вигляд з групами
+      resourceAreaHeaderContent: 'Seminars', // Заголовок ресурсу
+      resources: Array.from(new Set(seminars.map(s => ({
+        id: s.title,
+        title: s.title
+      })))), // Унікальні ресурси на основі title
+      events: events,
+      eventContent: function (arg) {
+        const { extendedProps } = arg.event;
+
+        const titleAndPlace = extendedProps.isFirstDay
+                ? `
+            <div style="font-weight: bold; font-size: 1.1em;">
+              ${extendedProps.plave}
+            </div>
+            <div>${arg.event.title}</div>
+          `
+                : '';
+
+        const time = extendedProps.time
+                ? `<div style="font-size: 0.9em; color: #eee;">${extendedProps.time}</div>`
+                : '';
+
+        return { html: `${titleAndPlace}${time}` };
+      },
+      eventClick: function (info) {
+        info.jsEvent.preventDefault();
+        if (info.event.url) {
+          window.open(info.event.url, '_blank');
+        }
+      }
+    });
+
+    calendar.render();
+  });
+
+
+
+
+  // document.addEventListener('DOMContentLoaded', function() {
+  //   var calendarEl = document.getElementById('calendar');
+  //
+  //   // Формуємо масив подій
+  //   const events = seminars.map(seminar => {
+  //     const start = seminar.dates[0].date.split('/').reverse().join('-');
+  //     const end = seminar.dates.length > 1
+  //             ? seminar.dates[seminar.dates.length - 1].date.split('/').reverse().join('-')
+  //             : null;
+  //
+  //     return {
+  //       title: `${seminar.plave}\n${seminar.title}`,
+  //       start: start,
+  //       end: end ? new Date(new Date(end).setDate(new Date(end).getDate() + 1)).toISOString().split('T')[0] : null,
+  //       url: seminar.url,
+  //       backgroundColor: seminar.color,
+  //       borderColor: seminar.color,
+  //       textColor: '#fff',
+  //       display: 'block', // Відображення на всій ширині
+  //       extendedProps: {
+  //         times: seminar.dates.map(d => d.time).filter(t => t !== "").join(", ")
+  //       }
+  //     };
+  //   });
+  //
+  //   // Ініціалізуємо FullCalendar
+  //   var calendar = new FullCalendar.Calendar(calendarEl, {
+  //     initialView: 'dayGridMonth',
+  //     events: events,
+  //     eventContent: function(arg) {
+  //       const { extendedProps } = arg.event;
+  //       const time = extendedProps.times ? `<div>${extendedProps.times}</div>` : '';
+  //       const title = `<div>${arg.event.title}</div>`;
+  //       return { html: `${time}${title}` };
+  //     },
+  //     eventClick: function(info) {
+  //       info.jsEvent.preventDefault();
+  //       if (info.event.url) {
+  //         window.open(info.event.url, '_blank');
+  //       }
+  //     }
+  //   });
+  //
+  //   calendar.render();
+  // });
+</script>
+
+</body>
+</html>
