@@ -91,6 +91,14 @@ class Stripe_Integration
                     $email = get_field('email', $order_id);
                     $course_name = get_field('course_name', $order_id);
 
+                    $user_data = [
+                        'firstName' => $name,
+                        'email' => $email,
+                        'company' => $company,
+                    ];
+
+                    Reatech_Integration::create_user($user_data);
+
                     $headers = 'content-type: text/html';
                     $massages =
                         'Course name: ' . $course_name . '<br>' .
