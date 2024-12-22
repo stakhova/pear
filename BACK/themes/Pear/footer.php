@@ -83,8 +83,16 @@
  <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
 
+
+
  <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.8/index.global.min.js"></script>
+ <!-- DayGrid Plugin (сітка) -->
  <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.8/index.global.min.js"></script>
+ <!-- List Plugin (список) -->
+ <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/list@6.1.8/index.global.min.js"></script>
+ <!-- Interaction Plugin (взаємодія) -->
+ <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/interaction@6.1.8/index.global.min.js"></script>
+
 
  <script type="text/javascript" src="<?= TEMPLATE_PATH ?>/scripts/develop/index.js"></script>
 <?php wp_footer(); ?>

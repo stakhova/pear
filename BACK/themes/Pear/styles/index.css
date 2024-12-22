@@ -402,6 +402,7 @@
   border-radius: 100rem;
   font: 400 2.4rem/2.4rem var(--GT);
   letter-spacing: -0.2rem;
+  min-width: 5.6rem;
 }
 
 .section__search-input {
@@ -425,6 +426,7 @@
   border: none;
   background: transparent;
   font: 400 2rem/2.6rem var(--GT);
+  width: 100%;
 }
 .section__search-input input::placeholder{
   opacity: 0.4;
@@ -2854,6 +2856,21 @@ label.error {
   padding: 0!important;
 }
 
+.calendar{
+  margin: 4rem 0 5.6rem;
+  position: relative;
+  min-height: 10rem;
+}
+
+.calendar__section-title{
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+
+
+
 @media only screen and (max-width: 1440px) {
   .promise .container:before, .promise .container:after, .campus__form .container:before, .campus__form .container:after {
     display: none;
@@ -3026,6 +3043,7 @@ label.error {
   }
   .section__search-input {
     padding: 0;
+    width: calc(100% - 5.6rem);
   }
   .section__search-input:after {
     display: none;
@@ -3139,7 +3157,7 @@ label.error {
         flex-direction: column;
   }
   .seminar .container {
-    padding: 56px 2rem 80px;
+    padding: 5.6rem 2rem 8rem;
   }
   .section__banner:after {
     height: 2rem;
@@ -3152,6 +3170,9 @@ label.error {
     font-size: 1.4rem;
     line-height: 2.1rem;
   }
+  .seminar__filter{
+    gap:1.4rem;
+  }
   .seminar__topic {
     margin: 0 -2rem;
     gap: 0.8rem;
@@ -3159,6 +3180,7 @@ label.error {
     -ms-overflow-style: none;
     /* IE and Edge */
     scrollbar-width: none;
+    padding-bottom: 1rem;
   }
   .seminar__radio-item > * {
     font-size: 1.6rem;
@@ -3740,6 +3762,10 @@ label.error {
   }
   .section__category{
     letter-spacing: -0.04em;
+  }
+  .calendar__section-title{
+    position: relative;
+    text-align: center;
   }
 }
 

@@ -159,7 +159,11 @@ foreach ($query->posts as $post) {
     .fc .fc-daygrid-day.fc-day-today{
         background: transparent;
     }
-    /*.calendar thead tr{*/
+    .fc .fc-daygrid-day.fc-day-today .fc-daygrid-day-number{
+        background: #089946;
+        color:white;
+    }
+        /*.calendar thead tr{*/
     /*    border-color: transparent;*/
     /*}*/
     /*.fc-theme-standard th, .fc-col-header{*/
@@ -187,7 +191,7 @@ foreach ($query->posts as $post) {
     }
 
     .fc .fc-daygrid-day-frame {
-        min-height: auto; /* Adjust to fit content dynamically */
+        min-height: 21.4rem; /* Adjust to fit content dynamically */
     }
 
     .fc .fc-daygrid-day-events {
@@ -222,10 +226,194 @@ foreach ($query->posts as $post) {
         overflow: visible !important; /* Override scroller's default behavior */
     }
 
+
+
+
+
+
+
     .fc .fc-daygrid-day-events > .fc-event {
         white-space: normal; /* Ensure event text wraps if needed */
     }
+    .fc-event {
+        /*display: flex;*/
+        /*align-items: center;*/
+        /*padding: 0.2rem 0.4rem;*/
+        /*border-radius: 0.5rem;*/
+        /*font-size: 1.2rem;*/
+        /*background-color: var(--event-bg-color, #089946); !* Динамічний колір *!*/
+        /*color: #fff;*/
+        /*text-align: center;*/
+    }
 
+    .fc-event .calendar__title {
+        white-space: break-spaces;
+        /*overflow: hidden;*/
+        /*text-overflow: ellipsis;*/
+        /*flex: 1;*/
+    }
+
+    .fc-event .calendar__time {
+        margin-right: 0.5rem;
+    }
+    .fc .fc-toolbar.fc-header-toolbar{
+        display: flex;
+        gap:0.4rem;
+        align-items: center;
+        padding: 1.2rem ;
+        border-radius: 100rem;
+        background: #F2F3F0;
+        margin-left: auto;
+    }
+
+    .fc-toolbar-title{
+        margin: 0!important;
+        min-width: 18rem;
+        font: 400 2.4rem / 2.4rem var(--GT)!important;
+        color:#023D27;
+        text-align: center;
+        letter-spacing: -0.02em;
+    }
+    .fc .fc-button-primary{
+        margin: 0!important; ;
+        background: transparent;
+        width: 3.2rem;
+        height: 3.2rem;
+        color:#023D27;
+        border: none;
+    }
+    .fc .fc-button-primary:hover{
+        background: transparent;
+        color:#023D27;
+    }
+    .fc .fc-button-primary:focus{
+        box-shadow: none;
+    }
+    @media only screen and (max-width: 666px){
+        .fc .fc-list-empty-cushion{
+            font: 500 1.8rem / 2.4rem var(--GT);
+        }
+        .fc-toolbar-chunk{
+            margin: 2rem auto;
+        }
+        .fc-toolbar-chunk{
+            display: block;
+            margin: 0;
+            padding: 0!important;
+        }
+        .fc-event .calendar__time{
+            margin-right: 0;
+        }
+        .fc .fc-toolbar{
+            gap:0.4rem;
+            padding: 1.2rem;
+            border-radius: 100rem;
+            background: #F2F3F0;
+            margin: 2.4rem auto;
+            position: sticky;
+            top: 2rem;
+        }
+        /*.fc-list-day-cushion {*/
+        /*    display: flex;*/
+        /*    align-items: center;*/
+        /*    gap: 0.4rem;*/
+        /*}*/
+
+        /*.fc-list-day-cushion .fc-list-day-text {*/
+        /*    font-size: 1.4rem;*/
+        /*    font-weight: bold;*/
+        /*}*/
+
+        /*.fc-list-day-cushion .fc-list-day-side-text {*/
+        /*    font-size: 1.2rem;*/
+        /*    font-weight: normal;*/
+        /*    text-transform: uppercase;*/
+        /*}*/
+
+        /*!* Приховуємо зайвий текст *!*/
+        /*.fc-list-day-cushion .fc-list-day-text,*/
+        /*.fc-list-day-cushion .fc-list-day-side-text {*/
+        /*    white-space: nowrap;*/
+        /*}*/
+
+        /*!* Прибираємо довгі назви днів тижня *!*/
+        /*.fc-list-day-side-text::after {*/
+        /*    content: attr(aria-label);*/
+        /*    display: none;*/
+        /*}*/
+
+        /*!* Стискаємо текст дня тижня *!*/
+        /*.fc-list-day-side-text {*/
+        /*    content: attr(aria-label);*/
+        /*}*/
+
+        /*.fc-list-day-side-text::before {*/
+        /*    content: attr(aria-label);*/
+        /*    text-transform: uppercase;*/
+        /*}*/
+        .fc-direction-ltr .fc-list-table .fc-list-event-graphic{
+            display: none;
+        }
+
+        .fc-list-day-cushion {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            justify-content: center;
+        }
+
+        .fc-list-day-text {
+            font-size: 1.4rem;
+            font-weight: bold;
+        }
+
+        .fc-list-day-side-text {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+        }
+
+        .fc-list-day-cushion a {
+            white-space: nowrap;
+        }
+        .fc-direction-ltr .fc-list-day-text{
+            float: unset;
+            font: 500 1.6rem / 1.8rem var(--GT);
+            padding: 0.8rem ;
+            min-width: 3.4rem;
+
+            background: #F2F3F0;
+            border-radius: 50%;
+
+        }
+        .fc-theme-standard .fc-list-day-cushion{
+            background: transparent;
+            padding: 1.6rem 0 4rem;
+            position: relative;
+        }
+        .fc-theme-standard .fc-list-day-cushion:after{
+            content: '';
+            position: absolute;
+            bottom: 3.2rem;
+            width: 100vw;
+            height: 0.1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background:#E0E5E3;
+        }
+
+        .calendar tr, .fc-theme-standard .fc-list, .fc-theme-standard td, .fc-theme-standard th{
+            border: none;
+        }
+        .fc .fc-list-table td{
+            padding: 0;
+        }
+        .fc-direction-ltr .fc-list-day-side-text, .fc-direction-rtl .fc-list-day-text{
+            font: 500 2.4rem / 2.4rem var(--GT);
+        }
+        .calendar__info-wrap{
+            margin-bottom: 2.4rem;
+        }
+    }
 </style>
 <script>
     // const seminars = <?php echo json_encode($seminars); ?>;
@@ -236,7 +424,7 @@ foreach ($query->posts as $post) {
             "dates": [
                 { "date": "12/12/2024", "time": "14:00 - 16:30" }
             ],
-            "title": "123 Qualitätsmanagement-Beauftragter",
+            "title": "123 Qualitätsmanagement - Beauftragter",
             "plave": "online",
             "color": "yellow"
         },
@@ -247,16 +435,16 @@ foreach ($query->posts as $post) {
                 { "date": "30/12/2024", "time": "12:00 - 16:30" },
                 { "date": "31/12/2024", "time": "10:00 - 12:30" }
             ],
-            "title": "Aufbau und Inhalt des Produktionslenkungsplans – Seminar für Anwender",
+            "title": "Seminar für Anwender",
             "plave": "Bamberg",
             "color": "green"
         },
         {
             "url": "https://pear.blackbook.dev/seminar/aufbau-und-inhalt-des-produktionslenkungsplans-seminar-fur-anwender/",
             "dates": [
-                { "date": "29/12/2024", "time": "10:00 - 12:30" },
-                { "date": "30/12/2024", "time": "12:00 - 16:30" },
-                { "date": "31/12/2024", "time": "10:00 - 12:30" }
+                { "date": "29/12/2024", "time": "9:00 - 12:30" },
+                { "date": "30/12/2024", "time": "10:00 - 11:30" },
+                { "date": "31/12/2024", "time": "12:00 - 15:30" }
             ],
             "title": "Aufbau und Inhalt des Produktionslenkungsplans – Seminar für Anwender",
             "plave": "Bamberg",
@@ -272,12 +460,66 @@ foreach ($query->posts as $post) {
             "color": "yellow"
         }
     ];
+
+
+    function updateListDayFormat() {
+        if (window.innerWidth < 666) {
+            document.querySelectorAll('.fc-list-day-cushion').forEach(function (cushion) {
+                const dayText = cushion.querySelector('.fc-list-day-text');
+                const daySideText = cushion.querySelector('.fc-list-day-side-text');
+
+                if (dayText && daySideText) {
+                    try {
+                        // Отримуємо дату з атрибута aria-label
+                        const fullDateText = dayText.getAttribute('aria-label');
+
+                        if (fullDateText) {
+                            // Розділяємо текст на компоненти (12. Dezember 2024)
+                            const dateParts = fullDateText.match(/(\d{1,2})\. (\w+) (\d{4})/);
+
+                            if (dateParts) {
+                                const day = parseInt(dateParts[1], 10); // День
+                                const monthName = dateParts[2]; // Назва місяця
+                                const year = parseInt(dateParts[3], 10); // Рік
+
+                                // Масив місяців німецькою
+                                const months = [
+                                    'Januar', 'Februar', 'März', 'April', 'Mai', 'Juni',
+                                    'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'
+                                ];
+
+                                const monthIndex = months.indexOf(monthName);
+
+                                if (monthIndex !== -1) {
+                                    // Створюємо об'єкт дати
+                                    const date = new Date(year, monthIndex, day);
+
+                                    if (!isNaN(date.getTime())) {
+                                        const dayNumber = date.getDate(); // Число
+                                        const dayShort = date.toLocaleDateString('de-DE', { weekday: 'short' }); // Скорочений день тижня
+
+                                        // Оновлюємо текст
+                                        dayText.textContent = `${dayNumber}`; // Відображаємо тільки число
+                                        daySideText.textContent = `${dayShort}`; // Відображаємо скорочений день тижня
+                                    }
+                                }
+                            }
+                        }
+                    } catch (error) {
+                        console.error('Error formatting mobile calendar date:', error);
+                    }
+                }
+            });
+        }
+    }
+
+    // Ініціалізація календаря
     document.addEventListener('DOMContentLoaded', function () {
         var calendarEl = document.getElementById('calendar');
 
         const events = seminars.flatMap(seminar => {
             return seminar.dates.map((date, index) => {
-                const start = date.date.split('/').reverse().join('-'); // Форматування дати до ISO
+                const start = date.date.split('/').reverse().join('-');
                 const end = seminar.dates.length > 1 && index === seminar.dates.length - 1
                     ? new Date(new Date(start).setDate(new Date(start).getDate() + 1)).toISOString().split('T')[0]
                     : null;
@@ -288,58 +530,102 @@ foreach ($query->posts as $post) {
                     end: end,
                     url: seminar.url,
                     textColor: '#fff',
+                    allDay: true,
+                    display: 'block',
                     extendedProps: {
                         time: date.time,
                         plave: seminar.plave,
                         isFirstDay: index === 0,
-                        color: seminar.color // Ensure color is passed here
+                        color: seminar.color
                     }
                 };
             });
         });
 
         var calendar = new FullCalendar.Calendar(calendarEl, {
-            initialView: 'dayGridMonth',
+            initialView: window.innerWidth < 666 ? 'listMonth' : 'dayGridMonth',
             locale: 'de',
             height: 'auto',
             firstDay: 1,
             dayHeaderFormat: { weekday: 'short' },
-            dayCellContent: function (arg) {
-                const dayNumber = arg.date.getDate().toString().padStart(2, '0'); // Додає ведучі нулі до дати
-                return { html: `<div>${dayNumber}</div>` };
-            },
+            displayEventTime: false,
             events: events,
+            headerToolbar: {
+                left: 'prev',
+                center: 'title',
+                right: 'next'
+            },
+            titleFormat: {
+                year: 'numeric',
+                month: 'long'
+            },
             eventContent: function (arg) {
                 const { extendedProps } = arg.event;
-                const starClass = extendedProps.color === 'yellow' ? 'star' : ''; // Check color here
-
-                // Визначення, чи подія вже минула
-                const eventDate = new Date(arg.event.start);
+                const starClass = extendedProps.color === 'yellow' ? 'star' : '';
+                const eventStart = new Date(arg.event.start);
+                const eventEnd = arg.event.end ? new Date(arg.event.end) : null;
                 const today = new Date();
-                today.setHours(0, 0, 0, 0); // Скидання часу для порівняння лише дат
+                today.setHours(0, 0, 0, 0);
 
-                const isPassed = eventDate < today ? 'passed' : '';
+                const isPassed = eventStart < today ? 'passed' : '';
 
-                // Відображаємо title і place тільки на перший день
-                const titleAndPlace = extendedProps.isFirstDay
-                    ? `
-                  <div class="calendar__info ">
-                      <div class="calendar__place ${extendedProps.plave === 'online' ? 'online' : ''}" style="font-weight: bold; font-size: 1.1em;">
-                        ${extendedProps.plave}
-                      </div>
-                      <div class="calendar__title">${arg.event.title}</div>
-                  </div>
-                `
-                    : '';
+                let timeContent = '';
 
-                const time = extendedProps.time
-                    ? `<div class="calendar__time">${extendedProps.time}</div>`
-                    : '';
+                // Якщо подія багатоденна, показуємо діапазон дат для кожного часу
+                if ( eventEnd) {
+                    // Коригуємо eventEnd, віднімаючи 1 день
+                    const correctedEnd = new Date(eventEnd);
+                    correctedEnd.setDate(correctedEnd.getDate() - 1);
+
+                    const startDay = eventStart.getDate();
+                    const endDay = correctedEnd.getDate();
+                    const month = eventStart.toLocaleDateString('de-DE', { month: 'short' });
+                    const year = eventStart.getFullYear().toString().slice(-2);
+
+                    const dateRange = startDay === endDay
+                        ? `${startDay} ${month} ${year}` // Якщо подія одноденна
+                        : `${startDay}-${endDay} ${month} ${year}`; // Якщо подія багатоденна
+                    console.log(4444444, dateRange, startDay, endDay)
+                    timeContent = `
+            <div class="calendar__time">
+                <span class="calendar__time-date"></span> ${extendedProps.time}
+            </div>
+        `;
+                }
+                // Якщо подія одноденна або інші дні в багатоденній події
+                else if (extendedProps.time) {
+                    const day = eventStart.getDate();
+                    const month = eventStart.toLocaleDateString('de-DE', { month: 'short' });
+                    const year = eventStart.getFullYear().toString().slice(-2);
+
+                    timeContent = `
+            <div class="calendar__time">
+                ${extendedProps.time}
+            </div>
+        `;
+                }
+
+                const titleAndPlace = `
+        <div class="calendar__info">
+            <div class="calendar__place ${extendedProps.plave === 'online' ? 'online' : ''}">
+                ${extendedProps.plave}
+            </div>
+            <div class="calendar__title">${arg.event.title}</div>
+        </div>
+    `;
 
                 return {
-                    html: `<div class="calendar__info-wrap ${starClass} ${isPassed}">${time}${titleAndPlace}</div>`
+                    html: `
+            <div class="calendar__info-wrap ${starClass} ${isPassed}">
+                ${timeContent}
+                ${titleAndPlace}
+            </div>
+        `
                 };
-            },
+            }
+
+            ,
+
             eventClick: function (info) {
                 info.jsEvent.preventDefault();
                 if (info.event.url) {
@@ -349,10 +635,26 @@ foreach ($query->posts as $post) {
         });
 
         calendar.render();
+
+        // Викликаємо функцію форматування після рендерингу
+        setTimeout(updateListDayFormat, 100);
+
+        // Слухач для зміни розміру
+        window.addEventListener('resize', function () {
+            if (window.innerWidth < 666) {
+                calendar.changeView('listMonth');
+            } else {
+                calendar.changeView('dayGridMonth');
+            }
+            updateListDayFormat();
+        });
     });
 
 
 </script>
+
+
+
 <?php wp_reset_postdata(); ?>
 <?php (new Calendar_Page_Banner_Section())->render()?>
 <?php (new Calendar_Page_Form_Section())->render()?>

@@ -15,8 +15,34 @@ class Calendar_Page_Form_Section
 
         <section class="section seminar">
             <div class="container">
+                <div class="seminar__filter">
+                    <div class="seminar__topic choose">
+                        <a href="" class="topic__item active">Alle Themen</a>
+                        <a href="" class="topic__item ">Qualität</a>
+                        <a href="" class="topic__item ">Umwelt</a>
+                        <a href="" class="topic__item ">Energie</a>
+                        <a href="" class="topic__item ">Arbeitssicherheit</a>
+                        <a href="" class="topic__item ">Audits</a>
+                        <a href="" class="topic__item ">Nachhaltigkeit</a>
+                        <a href="" class="topic__item ">Datenschutz</a>
+                    </div>
+                    <div class="seminar__filter-flex">
+                        <form class="section__search" action="https://pear.blackbook.dev/">
+                            <input type="hidden" name="post_type" value="seminar">
+                            <div class="section__search-input">
+                                <input type="text" name="s" placeholder="Seminar suchen…">
+                            </div>
+                            <button><span>Suche</span></button>
+                        </form>
+
+                    </div>
+                </div>
                 <div class="calendar">
-                    <div id="calendar"></div>
+                    <h2 class="section__middle calendar__section-title">
+                        Alle Themen
+
+                    </h2>
+                        <div id="calendar"></div>
 
                 </div>
                 <div class="section__form">
