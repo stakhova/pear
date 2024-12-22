@@ -178,9 +178,54 @@ foreach ($query->posts as $post) {
     .fc .fc-daygrid-day-frame{
      min-height: 21.4rem;
     }
-    .fc-today-button{
-        display: none;
+
+
+
+    .fc .fc-daygrid-body {
+        overflow: visible !important; /* Remove scroll behavior */
+        max-height: none !important; /* Remove height limitations */
     }
+
+    .fc .fc-daygrid-day-frame {
+        min-height: auto; /* Adjust to fit content dynamically */
+    }
+
+    .fc .fc-daygrid-day-events {
+        overflow: visible !important; /* Prevent any overflow clipping */
+        max-height: none !important; /* Ensure content expands dynamically */
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem; /* Adjust spacing between events */
+    }
+
+    .fc .fc-daygrid-day {
+        /*height: auto !important; !* Allow each day cell to grow based on content *!*/
+        min-height: 21.4rem;
+    }
+
+    .fc .fc-daygrid-day-top {
+        flex-direction: unset;
+    }
+
+    .fc .fc-daygrid-day-number {
+        padding: 0.8rem;
+        font: 500 1.6rem / 1.7rem var(--GT);
+        background: #F2F3F0;
+        border-radius: 50%;
+        color: #023D27;
+        margin: 0.8rem 1.6rem;
+        min-width: 3.4rem;
+        text-align: center;
+    }
+
+    .fc .fc-scroller-liquid-absolute {
+        overflow: visible !important; /* Override scroller's default behavior */
+    }
+
+    .fc .fc-daygrid-day-events > .fc-event {
+        white-space: normal; /* Ensure event text wraps if needed */
+    }
+
 </style>
 <script>
     // const seminars = <?php echo json_encode($seminars); ?>;
@@ -256,6 +301,7 @@ foreach ($query->posts as $post) {
         var calendar = new FullCalendar.Calendar(calendarEl, {
             initialView: 'dayGridMonth',
             locale: 'de',
+            height: 'auto',
             firstDay: 1,
             dayHeaderFormat: { weekday: 'short' },
             dayCellContent: function (arg) {
