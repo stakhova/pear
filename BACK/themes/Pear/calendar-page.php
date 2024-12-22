@@ -413,6 +413,9 @@ foreach ($query->posts as $post) {
         .calendar__info-wrap{
             margin-bottom: 2.4rem;
         }
+        .calendar tr:hover{
+            background:transparent;
+        }
     }
 </style>
 <script>
@@ -453,6 +456,15 @@ foreach ($query->posts as $post) {
         {
             "url": "https://pear.blackbook.dev/seminar/qualitatsmanagement-beauftragter/",
             "dates": [
+                { "date": "29/12/2024", "time": "09:00 - 16:30" }
+            ],
+            "title": "Qualitätsmanagement-Beauftragter",
+            "plave": "online",
+            "color": "yellow"
+        },
+        {
+            "url": "https://pear.blackbook.dev/seminar/qualitatsmanagement-beauftragter/",
+            "dates": [
                 { "date": "26/12/2024", "time": "14:00 - 16:30" }
             ],
             "title": "Qualitätsmanagement-Beauftragter",
@@ -470,19 +482,16 @@ foreach ($query->posts as $post) {
 
                 if (dayText && daySideText) {
                     try {
-                        // Отримуємо дату з атрибута aria-label
                         const fullDateText = dayText.getAttribute('aria-label');
 
                         if (fullDateText) {
-                            // Розділяємо текст на компоненти (12. Dezember 2024)
                             const dateParts = fullDateText.match(/(\d{1,2})\. (\w+) (\d{4})/);
 
                             if (dateParts) {
-                                const day = parseInt(dateParts[1], 10); // День
-                                const monthName = dateParts[2]; // Назва місяця
-                                const year = parseInt(dateParts[3], 10); // Рік
+                                const day = parseInt(dateParts[1], 10);
+                                const monthName = dateParts[2];
+                                const year = parseInt(dateParts[3], 10);
 
-                                // Масив місяців німецькою
                                 const months = [
                                     'Januar', 'Februar', 'März', 'April', 'Mai', 'Juni',
                                     'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'
@@ -491,16 +500,14 @@ foreach ($query->posts as $post) {
                                 const monthIndex = months.indexOf(monthName);
 
                                 if (monthIndex !== -1) {
-                                    // Створюємо об'єкт дати
                                     const date = new Date(year, monthIndex, day);
 
                                     if (!isNaN(date.getTime())) {
-                                        const dayNumber = date.getDate(); // Число
+                                        const dayNumber = date.getDate();
                                         const dayShort = date.toLocaleDateString('de-DE', { weekday: 'short' }); // Скорочений день тижня
 
-                                        // Оновлюємо текст
-                                        dayText.textContent = `${dayNumber}`; // Відображаємо тільки число
-                                        daySideText.textContent = `${dayShort}`; // Відображаємо скорочений день тижня
+                                        dayText.textContent = `${dayNumber}`;
+                                        daySideText.textContent = `${dayShort}`;
                                     }
                                 }
                             }
@@ -513,11 +520,15 @@ foreach ($query->posts as $post) {
         }
     }
 
-    // Ініціалізація календаря
     document.addEventListener('DOMContentLoaded', function () {
         var calendarEl = document.getElementById('calendar');
 
+        console.log('🔄 Початок генерації подій для календаря');
+
         const events = seminars.flatMap(seminar => {
+            const firstDate = seminar.dates[0]?.date || null;
+            const lastDate = seminar.dates[seminar.dates.length - 1]?.date || null;
+
             return seminar.dates.map((date, index) => {
                 const start = date.date.split('/').reverse().join('-');
                 const end = seminar.dates.length > 1 && index === seminar.dates.length - 1
@@ -536,11 +547,15 @@ foreach ($query->posts as $post) {
                         time: date.time,
                         plave: seminar.plave,
                         isFirstDay: index === 0,
-                        color: seminar.color
+                        color: seminar.color,
+                        firstDate: firstDate,
+                        lastDate: lastDate
                     }
                 };
             });
         });
+        console.log('✅ Генерація подій завершена');
+        console.log(events);
 
         var calendar = new FullCalendar.Calendar(calendarEl, {
             initialView: window.innerWidth < 666 ? 'listMonth' : 'dayGridMonth',
@@ -563,40 +578,42 @@ foreach ($query->posts as $post) {
                 const { extendedProps } = arg.event;
                 const starClass = extendedProps.color === 'yellow' ? 'star' : '';
                 const eventStart = new Date(arg.event.start);
-                const eventEnd = arg.event.end ? new Date(arg.event.end) : null;
                 const today = new Date();
                 today.setHours(0, 0, 0, 0);
+
+                console.log('🔍 Обробка eventContent');
+                console.log(`➡️ Назва події: ${arg.event.title}`);
+                console.log(`✅ Перша дата: ${extendedProps.firstDate}`);
+                console.log(`✅ Остання дата: ${extendedProps.lastDate}`);
 
                 const isPassed = eventStart < today ? 'passed' : '';
 
                 let timeContent = '';
 
-                // Якщо подія багатоденна, показуємо діапазон дат для кожного часу
-                if ( eventEnd) {
-                    // Коригуємо eventEnd, віднімаючи 1 день
-                    const correctedEnd = new Date(eventEnd);
-                    correctedEnd.setDate(correctedEnd.getDate() - 1);
+                // 🎯 Якщо подія багатоденна, показуємо діапазон дат для кожного часу
+                if (extendedProps.firstDate && extendedProps.lastDate && extendedProps.firstDate !== extendedProps.lastDate) {
+                    const firstDateParts = extendedProps.firstDate.split('/');
+                    const lastDateParts = extendedProps.lastDate.split('/');
 
-                    const startDay = eventStart.getDate();
-                    const endDay = correctedEnd.getDate();
-                    const month = eventStart.toLocaleDateString('de-DE', { month: 'short' });
-                    const year = eventStart.getFullYear().toString().slice(-2);
+                    const startDay = parseInt(firstDateParts[0], 10);
+                    const endDay = parseInt(lastDateParts[0], 10);
+                    const startMonth = new Date(`${firstDateParts[2]}-${firstDateParts[1]}-${firstDateParts[0]}`)
+                        .toLocaleDateString('de-DE', { month: 'short' });
+                    const year = firstDateParts[2];
 
-                    const dateRange = startDay === endDay
-                        ? `${startDay} ${month} ${year}` // Якщо подія одноденна
-                        : `${startDay}-${endDay} ${month} ${year}`; // Якщо подія багатоденна
-                    console.log(4444444, dateRange, startDay, endDay)
+                    const dateRange = `${startDay}-${endDay} ${startMonth} ${year}`;
+
+                    console.log(`📊 Діапазон дат: ${dateRange}`);
+
                     timeContent = `
             <div class="calendar__time">
-                <span class="calendar__time-date"></span> ${extendedProps.time}
+                <span class="calendar__time-date">${dateRange}</span> ${extendedProps.time}
             </div>
         `;
                 }
-                // Якщо подія одноденна або інші дні в багатоденній події
+                // 🎯 Якщо подія одноденна
                 else if (extendedProps.time) {
-                    const day = eventStart.getDate();
-                    const month = eventStart.toLocaleDateString('de-DE', { month: 'short' });
-                    const year = eventStart.getFullYear().toString().slice(-2);
+                    console.log(`📅 Одноденна подія: ${extendedProps.time}`);
 
                     timeContent = `
             <div class="calendar__time">
@@ -622,13 +639,12 @@ foreach ($query->posts as $post) {
             </div>
         `
                 };
-            }
-
-            ,
+            },
 
             eventClick: function (info) {
                 info.jsEvent.preventDefault();
                 if (info.event.url) {
+                    console.log(`🔗 Відкриття URL: ${info.event.url}`);
                     window.open(info.event.url, '_blank');
                 }
             }
@@ -636,11 +652,11 @@ foreach ($query->posts as $post) {
 
         calendar.render();
 
-        // Викликаємо функцію форматування після рендерингу
+
         setTimeout(updateListDayFormat, 100);
 
-        // Слухач для зміни розміру
         window.addEventListener('resize', function () {
+            console.log('🔄 Зміна розміру вікна');
             if (window.innerWidth < 666) {
                 calendar.changeView('listMonth');
             } else {
@@ -649,6 +665,7 @@ foreach ($query->posts as $post) {
             updateListDayFormat();
         });
     });
+
 
 
 </script>
