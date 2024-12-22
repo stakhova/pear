@@ -163,12 +163,7 @@ foreach ($query->posts as $post) {
         background: #089946;
         color:white;
     }
-        /*.calendar thead tr{*/
-    /*    border-color: transparent;*/
-    /*}*/
-    /*.fc-theme-standard th, .fc-col-header{*/
-    /*    border: none!important;*/
-    /*}*/
+
     .fc .fc-col-header-cell-cushion{
         font: 400 1.6rem / 1.7rem var(--GT)!important;
         text-transform: uppercase;
@@ -191,15 +186,15 @@ foreach ($query->posts as $post) {
     }
 
     .fc .fc-daygrid-day-frame {
-        min-height: 21.4rem; /* Adjust to fit content dynamically */
+        min-height: 21.4rem;
     }
 
     .fc .fc-daygrid-day-events {
-        overflow: visible !important; /* Prevent any overflow clipping */
-        max-height: none !important; /* Ensure content expands dynamically */
+        overflow: visible !important;
+        max-height: none !important;
         display: flex;
         flex-direction: column;
-        gap: 0.6rem; /* Adjust spacing between events */
+        gap: 2rem;
     }
 
     .fc .fc-daygrid-day {
@@ -248,14 +243,8 @@ foreach ($query->posts as $post) {
 
     .fc-event .calendar__title {
         white-space: break-spaces;
-        /*overflow: hidden;*/
-        /*text-overflow: ellipsis;*/
-        /*flex: 1;*/
     }
 
-    .fc-event .calendar__time {
-        margin-right: 0.5rem;
-    }
     .fc .fc-toolbar.fc-header-toolbar{
         display: flex;
         gap:0.4rem;
@@ -445,6 +434,7 @@ foreach ($query->posts as $post) {
         {
             "url": "https://pear.blackbook.dev/seminar/aufbau-und-inhalt-des-produktionslenkungsplans-seminar-fur-anwender/",
             "dates": [
+                { "date": "28/12/2024", "time": "9:00 - 12:30" },
                 { "date": "29/12/2024", "time": "9:00 - 12:30" },
                 { "date": "30/12/2024", "time": "10:00 - 11:30" },
                 { "date": "31/12/2024", "time": "12:00 - 15:30" }
@@ -574,55 +564,69 @@ foreach ($query->posts as $post) {
                 year: 'numeric',
                 month: 'long'
             },
-            eventContent: function (arg) {
-                const { extendedProps } = arg.event;
-                const starClass = extendedProps.color === 'yellow' ? 'star' : '';
-                const eventStart = new Date(arg.event.start);
-                const today = new Date();
-                today.setHours(0, 0, 0, 0);
+                eventContent: function (arg) {
+                    const { extendedProps } = arg.event;
 
-                console.log('🔍 Обробка eventContent');
-                console.log(`➡️ Назва події: ${arg.event.title}`);
-                console.log(`✅ Перша дата: ${extendedProps.firstDate}`);
-                console.log(`✅ Остання дата: ${extendedProps.lastDate}`);
+                    const eventStart = arg.event.start.toISOString().split('T')[0];
+                    const eventEnd = arg.event.end
+                        ? new Date(arg.event.end - 1).toISOString().split('T')[0] // Останній день
+                        : eventStart;
 
-                const isPassed = eventStart < today ? 'passed' : '';
+                    const firstDate = extendedProps.firstDate
+                        ? extendedProps.firstDate.split('/').reverse().join('-')
+                        : null;
+                    const lastDate = extendedProps.lastDate
+                        ? extendedProps.lastDate.split('/').reverse().join('-')
+                        : null;
 
-                let timeContent = '';
+                    let positionClass = '';
 
-                // 🎯 Якщо подія багатоденна, показуємо діапазон дат для кожного часу
-                if (extendedProps.firstDate && extendedProps.lastDate && extendedProps.firstDate !== extendedProps.lastDate) {
-                    const firstDateParts = extendedProps.firstDate.split('/');
-                    const lastDateParts = extendedProps.lastDate.split('/');
+                    if (firstDate && lastDate) {
+                        if (eventStart === firstDate) {
+                            positionClass = 'start';
+                        } else if (eventStart === lastDate) {
+                            positionClass = 'end';
+                        } else if (eventStart > firstDate && eventStart < lastDate) {
+                            positionClass = 'middle';
+                        }
+                    } else {
+                        positionClass = 'single';
+                    }
 
-                    const startDay = parseInt(firstDateParts[0], 10);
-                    const endDay = parseInt(lastDateParts[0], 10);
-                    const startMonth = new Date(`${firstDateParts[2]}-${firstDateParts[1]}-${firstDateParts[0]}`)
-                        .toLocaleDateString('de-DE', { month: 'short' });
-                    const year = firstDateParts[2];
+                    const starClass = extendedProps.color === 'yellow' ? 'star' : '';
 
-                    const dateRange = `${startDay}-${endDay} ${startMonth} ${year}`;
+                    const today = new Date().toISOString().split('T')[0];
+                    const isPassed = eventStart < today ? 'passed' : '';
 
-                    console.log(`📊 Діапазон дат: ${dateRange}`);
+                    let timeContent = '';
 
-                    timeContent = `
+                    if (firstDate && lastDate && firstDate !== lastDate) {
+                        const firstDateParts = extendedProps.firstDate.split('/');
+                        const lastDateParts = extendedProps.lastDate.split('/');
+
+                        const startDay = parseInt(firstDateParts[0], 10);
+                        const endDay = parseInt(lastDateParts[0], 10);
+                        const startMonth = new Date(`${firstDateParts[2]}-${firstDateParts[1]}-${firstDateParts[0]}`)
+                            .toLocaleDateString('de-DE', { month: 'short' });
+                        const year = firstDateParts[2];
+
+                        const dateRange = `${startDay}-${endDay} ${startMonth} ${year}`;
+
+                        timeContent = `
             <div class="calendar__time">
-                <span class="calendar__time-date">${dateRange}</span> ${extendedProps.time}
+                <span class="calendar__time-date">${dateRange}</span> ${extendedProps.time || ''}
             </div>
         `;
-                }
-                // 🎯 Якщо подія одноденна
-                else if (extendedProps.time) {
-                    console.log(`📅 Одноденна подія: ${extendedProps.time}`);
-
-                    timeContent = `
+                    }
+                    else if (extendedProps.time) {
+                        timeContent = `
             <div class="calendar__time">
                 ${extendedProps.time}
             </div>
         `;
-                }
+                    }
 
-                const titleAndPlace = `
+                    const titleAndPlace = `
         <div class="calendar__info">
             <div class="calendar__place ${extendedProps.plave === 'online' ? 'online' : ''}">
                 ${extendedProps.plave}
@@ -631,15 +635,17 @@ foreach ($query->posts as $post) {
         </div>
     `;
 
-                return {
-                    html: `
-            <div class="calendar__info-wrap ${starClass} ${isPassed}">
+                    return {
+                        html: `
+            <div class="calendar__info-wrap ${positionClass} ${starClass} ${isPassed}">
                 ${timeContent}
                 ${titleAndPlace}
             </div>
         `
-                };
-            },
+                    };
+                },
+
+
 
             eventClick: function (info) {
                 info.jsEvent.preventDefault();
