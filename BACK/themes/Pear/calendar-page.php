@@ -6,6 +6,16 @@ $args = $args = array(
     'post_type' => 'seminar',
     'posts_per_page' => 99999999,
 );
+if (!empty($_GET['theme'])) {
+    $args['tax_query'][] = array(
+        array(
+            'taxonomy' => 'seminar_theme',
+            'field'    => 'slug',
+            'terms'    => array($_GET['theme']),
+            'operator' => 'IN',
+        ),
+    );
+}
 $query = new WP_Query($args);
 $seminars = [];
 foreach ($query->posts as $post) {

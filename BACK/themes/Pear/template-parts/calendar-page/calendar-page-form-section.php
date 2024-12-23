@@ -8,6 +8,11 @@ class Calendar_Page_Form_Section
         $this->form_title = $section_seminars['form_title'];
         $this->form_text = $section_seminars['form_text'];
         $this->policy_text = $section_seminars['policy_text'];
+
+        $this->seminar_theme = get_terms(array(
+            'taxonomy'   => 'seminar_theme',
+            'hide_empty' => false,
+        ));
     }
 
     public function render()
@@ -17,14 +22,10 @@ class Calendar_Page_Form_Section
             <div class="container">
                 <div class="seminar__filter">
                     <div class="seminar__topic choose">
-                        <a href="" class="topic__item active">Alle Themen</a>
-                        <a href="" class="topic__item ">Qualität</a>
-                        <a href="" class="topic__item ">Umwelt</a>
-                        <a href="" class="topic__item ">Energie</a>
-                        <a href="" class="topic__item ">Arbeitssicherheit</a>
-                        <a href="" class="topic__item ">Audits</a>
-                        <a href="" class="topic__item ">Nachhaltigkeit</a>
-                        <a href="" class="topic__item ">Datenschutz</a>
+                        <a href="<?php echo get_the_permalink(Page_Calendar::get_ID()); ?>" class="topic__item <?php echo (Page_Seminars::get_ID() == get_the_ID()) ? 'active' : '' ?>">Alle Themen</a>
+                        <?php foreach ($this->seminar_theme as $term) : ?>
+                            <a href="<?php echo get_the_permalink(Page_Calendar::get_ID()) . '?theme=' . $term->slug; ?>" class="topic__item <?php echo ($_GET['theme'] == $term->term_id) ? 'active' : '' ?>"><?php echo $term->name; ?></a>
+                        <?php endforeach; ?>
                     </div>
                     <div class="seminar__filter-flex">
                         <form class="section__search" action="https://pear.blackbook.dev/">
@@ -42,7 +43,7 @@ class Calendar_Page_Form_Section
                         Alle Themen
 
                     </h2>
-                        <div id="calendar"></div>
+                    <div id="calendar"></div>
 
                 </div>
                 <div class="section__form">
