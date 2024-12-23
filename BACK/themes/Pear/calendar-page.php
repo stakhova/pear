@@ -21,7 +21,7 @@ $seminars = [];
 foreach ($query->posts as $post) {
    
     if (has_term('exklusiv','seminar_type',$post->ID)) {
-        $color = 'yelow';
+        $color = 'yellow';
     } else {
         if (get_field('main_options',$post->ID)['shortly']) {
             $color = 'green';

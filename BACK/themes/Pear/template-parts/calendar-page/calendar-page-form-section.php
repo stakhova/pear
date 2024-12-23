@@ -24,7 +24,7 @@ class Calendar_Page_Form_Section
                     <div class="seminar__topic choose">
                         <a href="<?php echo get_the_permalink(Page_Calendar::get_ID()); ?>" class="topic__item <?php echo (Page_Seminars::get_ID() == get_the_ID()) ? 'active' : '' ?>">Alle Themen</a>
                         <?php foreach ($this->seminar_theme as $term) : ?>
-                            <a href="<?php echo get_the_permalink(Page_Calendar::get_ID()) . '?theme=' . $term->slug; ?>" class="topic__item <?php echo ($_GET['theme'] == $term->term_id) ? 'active' : '' ?>"><?php echo $term->name; ?></a>
+                            <a href="<?php echo get_the_permalink(Page_Calendar::get_ID()) . '?theme=' . $term->slug; ?>" class="topic__item <?php echo ($_GET['theme'] == $term->slug) ? 'active' : '' ?>"><?php echo $term->name; ?></a>
                         <?php endforeach; ?>
                     </div>
                     <div class="seminar__filter-flex">
