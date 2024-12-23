@@ -32,8 +32,12 @@ foreach ($query->posts as $post) {
 
 
 <style>
-
-
+    .fc .fc-daygrid-day-top{
+        margin-bottom: -1.8rem;
+    }
+    .fc-daygrid-day-frame::before{
+        content: none!important;
+    }
     .fc .fc-scroller-liquid-absolute::-webkit-scrollbar {
         background-color: transparent;
         width: 0.2rem;
@@ -110,13 +114,18 @@ foreach ($query->posts as $post) {
         text-overflow: ellipsis;
         word-break: break-word;
     }
-    .calendar__time{
+    .calendar__info-wrap  .calendar__time{
         font: 400 1.2rem / 1.3rem var(--GT)!important;
-        background:#023D27 ;
-        color:white;
         padding: 0.4rem 0.8rem;
         border-radius:  10rem;
         margin-bottom: 0.4rem ;
+        background:#023D27 ;
+        color:white;
+    }
+
+    .calendar__info-wrap.green  .calendar__time{
+        background:#023D27 ;
+        color:white;
     }
     .calendar__info-wrap.star  .calendar__time{
         background: linear-gradient(90deg, #FFE13C 0%, #FED21E 100%);
@@ -255,6 +264,7 @@ foreach ($query->posts as $post) {
         margin-left: auto;
     }
 
+
     .fc-toolbar-title{
         margin: 0!important;
         min-width: 18rem;
@@ -278,6 +288,22 @@ foreach ($query->posts as $post) {
     .fc .fc-button-primary:focus{
         box-shadow: none;
     }
+
+    /*.fc .fc-col-header {*/
+    /*    position: sticky;*/
+    /*    top: 0;*/
+    /*    z-index: 100;*/
+    /*    background: #F2F3F0; !* Колір фону для заголовка *!*/
+    /*    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); !* Легка тінь для відділення заголовка *!*/
+    /*}*/
+
+    /*!* Додаткові стилі для заголовків колонок *!*/
+    /*.fc .fc-col-header-cell {*/
+    /*    font: 500 1.6rem / 1.7rem var(--GT)!important;*/
+    /*    text-transform: uppercase;*/
+    /*    padding: 1.6rem 0.8rem;*/
+    /*    text-align: center;*/
+    /*}*/
     @media only screen and (max-width: 666px){
         .fc .fc-list-empty-cushion{
             font: 500 1.8rem / 2.4rem var(--GT);
@@ -302,44 +328,6 @@ foreach ($query->posts as $post) {
             position: sticky;
             top: 2rem;
         }
-        /*.fc-list-day-cushion {*/
-        /*    display: flex;*/
-        /*    align-items: center;*/
-        /*    gap: 0.4rem;*/
-        /*}*/
-
-        /*.fc-list-day-cushion .fc-list-day-text {*/
-        /*    font-size: 1.4rem;*/
-        /*    font-weight: bold;*/
-        /*}*/
-
-        /*.fc-list-day-cushion .fc-list-day-side-text {*/
-        /*    font-size: 1.2rem;*/
-        /*    font-weight: normal;*/
-        /*    text-transform: uppercase;*/
-        /*}*/
-
-        /*!* Приховуємо зайвий текст *!*/
-        /*.fc-list-day-cushion .fc-list-day-text,*/
-        /*.fc-list-day-cushion .fc-list-day-side-text {*/
-        /*    white-space: nowrap;*/
-        /*}*/
-
-        /*!* Прибираємо довгі назви днів тижня *!*/
-        /*.fc-list-day-side-text::after {*/
-        /*    content: attr(aria-label);*/
-        /*    display: none;*/
-        /*}*/
-
-        /*!* Стискаємо текст дня тижня *!*/
-        /*.fc-list-day-side-text {*/
-        /*    content: attr(aria-label);*/
-        /*}*/
-
-        /*.fc-list-day-side-text::before {*/
-        /*    content: attr(aria-label);*/
-        /*    text-transform: uppercase;*/
-        /*}*/
         .fc-direction-ltr .fc-list-table .fc-list-event-graphic{
             display: none;
         }
@@ -408,60 +396,60 @@ foreach ($query->posts as $post) {
     }
 </style>
 <script>
-    // const seminars = <?php echo json_encode($seminars); ?>;
+    const seminars = <?php echo json_encode($seminars); ?>;
 
-    const seminars = [
-        {
-            "url": "https://pear.blackbook.dev/seminar/qualitatsmanagement-beauftragter/",
-            "dates": [
-                { "date": "12/12/2024", "time": "14:00 - 16:30" }
-            ],
-            "title": "123 Qualitätsmanagement - Beauftragter",
-            "plave": "online",
-            "color": "yellow"
-        },
-        {
-            "url": "https://pear.blackbook.dev/seminar/aufbau-und-inhalt-des-produktionslenkungsplans-seminar-fur-anwender/",
-            "dates": [
-                { "date": "29/12/2024", "time": "14:00 - 16:30" },
-                { "date": "30/12/2024", "time": "12:00 - 16:30" },
-                { "date": "31/12/2024", "time": "10:00 - 12:30" }
-            ],
-            "title": "Seminar für Anwender",
-            "plave": "Bamberg",
-            "color": "green"
-        },
-        {
-            "url": "https://pear.blackbook.dev/seminar/aufbau-und-inhalt-des-produktionslenkungsplans-seminar-fur-anwender/",
-            "dates": [
-                { "date": "28/12/2024", "time": "9:00 - 12:30" },
-                { "date": "29/12/2024", "time": "9:00 - 12:30" },
-                { "date": "30/12/2024", "time": "10:00 - 11:30" },
-                { "date": "31/12/2024", "time": "12:00 - 15:30" }
-            ],
-            "title": "Aufbau und Inhalt des Produktionslenkungsplans – Seminar für Anwender",
-            "plave": "Bamberg",
-            "color": "grey"
-        },
-        {
-            "url": "https://pear.blackbook.dev/seminar/qualitatsmanagement-beauftragter/",
-            "dates": [
-                { "date": "29/12/2024", "time": "09:00 - 16:30" }
-            ],
-            "title": "Qualitätsmanagement-Beauftragter",
-            "plave": "online",
-            "color": "yellow"
-        },
-        {
-            "url": "https://pear.blackbook.dev/seminar/qualitatsmanagement-beauftragter/",
-            "dates": [
-                { "date": "26/12/2024", "time": "14:00 - 16:30" }
-            ],
-            "title": "Qualitätsmanagement-Beauftragter",
-            "plave": "online",
-            "color": "yellow"
-        }
-    ];
+    // const seminars = [
+    //     {
+    //         "url": "https://pear.blackbook.dev/seminar/qualitatsmanagement-beauftragter/",
+    //         "dates": [
+    //             { "date": "12/12/2024", "time": "14:00 - 16:30" }
+    //         ],
+    //         "title": "123 Qualitätsmanagement - Beauftragter",
+    //         "plave": "online",
+    //         "color": "yellow"
+    //     },
+    //     {
+    //         "url": "https://pear.blackbook.dev/seminar/aufbau-und-inhalt-des-produktionslenkungsplans-seminar-fur-anwender/",
+    //         "dates": [
+    //             { "date": "29/12/2024", "time": "14:00 - 16:30" },
+    //             { "date": "30/12/2024", "time": "12:00 - 16:30" },
+    //             { "date": "31/12/2024", "time": "10:00 - 12:30" }
+    //         ],
+    //         "title": "Seminar für Anwender",
+    //         "plave": "Bamberg",
+    //         "color": "green"
+    //     },
+    //     {
+    //         "url": "https://pear.blackbook.dev/seminar/aufbau-und-inhalt-des-produktionslenkungsplans-seminar-fur-anwender/",
+    //         "dates": [
+    //             { "date": "28/12/2024", "time": "9:00 - 12:30" },
+    //             { "date": "29/12/2024", "time": "9:00 - 12:30" },
+    //             { "date": "30/12/2024", "time": "10:00 - 11:30" },
+    //             { "date": "31/12/2024", "time": "12:00 - 15:30" }
+    //         ],
+    //         "title": "Aufbau und Inhalt des Produktionslenkungsplans – Seminar für Anwender",
+    //         "plave": "Bamberg",
+    //         "color": "grey"
+    //     },
+    //     {
+    //         "url": "https://pear.blackbook.dev/seminar/qualitatsmanagement-beauftragter/",
+    //         "dates": [
+    //             { "date": "29/12/2024", "time": "09:00 - 16:30" }
+    //         ],
+    //         "title": "Qualitätsmanagement-Beauftragter",
+    //         "plave": "online",
+    //         "color": "yellow"
+    //     },
+    //     {
+    //         "url": "https://pear.blackbook.dev/seminar/qualitatsmanagement-beauftragter/",
+    //         "dates": [
+    //             { "date": "26/12/2024", "time": "14:00 - 16:30" }
+    //         ],
+    //         "title": "Qualitätsmanagement-Beauftragter",
+    //         "plave": "online",
+    //         "color": "yellow"
+    //     }
+    // ];
 
 
     function updateListDayFormat() {
@@ -594,9 +582,11 @@ foreach ($query->posts as $post) {
                     }
 
                     const starClass = extendedProps.color === 'yellow' ? 'star' : '';
+                    const greenClass = extendedProps.color === 'green' ? 'green' : '';
+                    const isPassed = extendedProps.color === 'grey' ? 'passed' : '';
 
                     const today = new Date().toISOString().split('T')[0];
-                    const isPassed = eventStart < today ? 'passed' : '';
+                    // const isPassed = eventStart < today ? 'passed' : '';
 
                     let timeContent = '';
 
@@ -637,7 +627,7 @@ foreach ($query->posts as $post) {
 
                     return {
                         html: `
-            <div class="calendar__info-wrap ${positionClass} ${starClass} ${isPassed}">
+            <div class="calendar__info-wrap ${positionClass} ${starClass} ${greenClass} ${isPassed}">
                 ${timeContent}
                 ${titleAndPlace}
             </div>
