@@ -29,7 +29,7 @@ class Campus_Page_Banner_Section
                             <h3 class="banner__text"><?php echo $this->text; ?></h3>
                         <?php endif; ?>
                         <?php if (!empty($this->button)) : ?>
-                            <a href="<?php echo $this->button['url']; ?>" class="section__button primary arrow"><?php echo $this->button['title']; ?></a>
+                            <a href="<?php echo $this->button['url']; ?>" target="<?php echo $this->button['target']; ?>" class="section__button primary arrow"><?php echo $this->button['title']; ?></a>
                         <?php endif; ?>
                     </div>
 
