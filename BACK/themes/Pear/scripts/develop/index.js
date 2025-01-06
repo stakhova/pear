@@ -98,9 +98,6 @@ function validateForm(form, func, noreset) {
                 goodEmail: true,
                 email: true
             },
-            phone: {
-                required: true
-            },
             policy_terms: {
                 required: true
             },
@@ -126,9 +123,6 @@ function validateForm(form, func, noreset) {
             email: {
                 required: "Dieses Feld ist erforderlich",
                 email: "Falsche E-Mail"
-            },
-            phone: {
-                required: "Dieses Feld ist erforderlich"
             },
             policy_terms: {
                 required: "Sie müssen die Datenschutzerklärung akzeptieren"
