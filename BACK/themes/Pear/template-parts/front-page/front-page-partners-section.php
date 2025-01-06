@@ -21,8 +21,8 @@ class Front_Page_Partners_Section
                     </div>
 
                     <?php if (!empty($this->items)) : ?>
-                        <div class="swiper partners__slide">
-                            <div class="partners__list swiper-wrapper">
+                        <div class=" partners__slide">
+                            <div class="partners__list ">
                                 <?php foreach ($this->items as $item) : ?>
                                     <div class="partners__item swiper-slide">
                                         <div class="partners__img img ">
