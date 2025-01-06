@@ -7,14 +7,14 @@ class Single_Seminar_Page_Alternative_Section
 
         $args_all = array(
             'post_type' => 'seminar',
-            'posts_per_page' => 3,
+            'posts_per_page' => 99999,
         );
 
         $this->query_all = new WP_Query($args_all);
 
         $args_reg = array(
             'post_type' => 'seminar',
-            'posts_per_page' => 3,
+            'posts_per_page' => 99999,
             'tax_query' => array(
                 array(
                     'taxonomy' => 'seminar_type',
@@ -29,7 +29,7 @@ class Single_Seminar_Page_Alternative_Section
 
         $args_ex = array(
             'post_type' => 'seminar',
-            'posts_per_page' => 3,
+            'posts_per_page' => 99999,
             'tax_query' => array(
                 array(
                     'taxonomy' => 'seminar_type',
