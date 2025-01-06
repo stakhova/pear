@@ -58,16 +58,16 @@ $button = $header['button'];
               </div>
              <div class="header__right">
                  <div class="header__search-wrap">
-                     <form class="header__search">
-                         <input type="hidden" name="action" value="search_header">
-                         <div class="header__search-input">
-                             <input type="text" name="search" placeholder="Suche auf der Website...">
-                         </div>
-                         <button class="header__search-clean" type="button"></button>
-                     </form>
-                     <div class="header__search-result">
-                         
-                         
+                     <div class="container">
+                         <form class="header__search">
+                             <input type="hidden" name="action" value="search_header">
+                             <div class="header__search-input">
+                                 <input type="text" name="search" placeholder="Suche auf der Website...">
+                             </div>
+                             <button class="header__search-clean" type="button"></button>
+                         </form>
+                         <div class="header__search-result">
+                     </div>
                      </div>
                  </div>
                  <button class="header__search-icon ">

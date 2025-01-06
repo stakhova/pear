@@ -223,6 +223,23 @@ function tab() {
     }).eq(0).addClass("active");
 }
 
+
+function changeHeader(){
+    let scrolled = $(window).scrollTop();
+    console.log(1111)
+    if (scrolled > 0) {
+        $('.header').addClass('scroll')
+
+
+    } else {
+
+        $('.header').removeClass('scroll')
+
+    }
+
+
+}
+
 function showSearch() {
 
     $(document).on('click', '.header__search-icon', function () {
@@ -230,9 +247,9 @@ function showSearch() {
             $('.header__search-wrap').toggleClass('active');
             $(this).toggleClass('active');
         } else {
-            $('.header__search-wrap').addClass('active');
-            $(this).hide();
-            $('.header').addClass('active')
+            $('.header__search-wrap').toggleClass('active');
+            $(this).toggleClass('active');
+            $('.header').toggleClass('active')
         }
     });
     let searchInput = '.header__search input[name="search"]';
@@ -503,15 +520,12 @@ function initSlider() {
         const sliderContainer = $(this);
         const slider = sliderContainer.find('.card__slider');
 
-        // Create unique classes for each slider's navigation buttons
         const nextButtonClass = `card__next-${index}`;
         const prevButtonClass = `card__prev-${index}`;
 
-        // Add these unique classes to the next and prev buttons
         sliderContainer.find('.card__next').addClass(nextButtonClass);
         sliderContainer.find('.card__prev').addClass(prevButtonClass);
 
-        // Initialize Swiper with these unique classes for navigation
         new Swiper(slider[0], {
             slidesPerView: 1.06,
             spaceBetween: 8,
@@ -533,54 +547,74 @@ function appendStar() {
     });
 }
 
+
 function partnersSlider() {
     const partners = new Swiper('.partners__slide', {
-        slidesPerView: 7,
+        slidesPerView: 7, // Кількість слайдів автоматична
         spaceBetween: 100,
-
-        lazy: {
-            loadOnTransitionStart: true,
-            loadPrevNext: true
-        },
         loop: true,
-        speed: 1000,
-        effect: 'slide',
+        speed: 3000, // Швидкість прокрутки
         autoplay: {
-            delay: 2000,
-            disableOnInteraction: false
+            delay: 0, // Без затримки
+            disableOnInteraction: false, // Не вимикати autoplay після взаємодії
+            pauseOnMouseEnter: true // Зупиняти при наведенні миші
         },
+        allowTouchMove: false, // Вимкнути ручну прокрутку
+        freeMode: true, // Вільний рух
+        freeModeMomentum: false, // Вимкнути інерцію
         breakpoints: {
-            '0': {
+            0: {
                 slidesPerView: 2.5,
                 centeredSlides: true,
                 spaceBetween: 48
             },
-
-            '667': {
+            667: {
                 slidesPerView: 7,
-                spaceBetween: 100,
-                loop: true
+                spaceBetween: 100
             }
         }
     });
 }
+// function partnersSlider() {
+//     const partners = new Swiper('.partners__slide', {
+//         slidesPerView: 7,
+//         spaceBetween: 100,
+//
+//         lazy: {
+//             loadOnTransitionStart: true,
+//             loadPrevNext: true
+//         },
+//         loop: true,
+//         speed: 1000,
+//         effect: 'slide',
+//         autoplay: {
+//             delay: 2000,
+//             disableOnInteraction: false
+//         },
+//         breakpoints: {
+//             '0': {
+//                 slidesPerView: 2.5,
+//                 centeredSlides: true,
+//                 spaceBetween: 48
+//             },
+//
+//             '667': {
+//                 slidesPerView: 7,
+//                 spaceBetween: 100,
+//                 loop: true
+//             }
+//         }
+//     });
+// }
 function changeMob() {
     if (window.innerWidth <= 666) {
-
         initSlider();
     } else {
         accordion();
     }
 }
 
-// function addClassActive(){
-//    $(document).on('click','.choose > *',function (){
-//
-//        $(this).addClass('active')
-//        $(this).nextAll().removeClass('active')
-//        $(this).nextAll().removeClass('active')
-//    })
-// }
+
 
 
 function checkCounters() {
@@ -625,7 +659,6 @@ function checkCounters() {
 };
 
 function showMore() {
-    // Перевірка кількості елементів при завантаженні
     $('.section__more').each(function () {
         const content = $(this).find('.section__form-content');
         const items = content.children();
@@ -634,8 +667,6 @@ function showMore() {
             $(this).find('.section__more-btn').show();
         }
     });
-
-    // Обробник кліку для кнопки
     $('.section__more-btn').on('click', function () {
         $(this).toggleClass('open');
         const content = $(this).closest('.section__more').find('.section__form-content');
@@ -719,10 +750,12 @@ $(document).ready(function () {
     if( $('#map').length > 0){
         initMap();
     }
-
+    changeHeader()
     $(window).on('load scroll', checkCounters);
 });
-
+$(window).scroll(function () {
+    changeHeader()
+});
 $(window).load(function () {});
 
 $(window).resize(function () {});
