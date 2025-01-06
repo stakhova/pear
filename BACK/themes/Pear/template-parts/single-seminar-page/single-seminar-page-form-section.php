@@ -37,21 +37,21 @@ class Single_Seminar_Page_Form_Section
                                     <?php foreach ($this->dates as $date) : ?>
                                         <?php
                                         $germanMonths = [
-                                            1 => 'JAN.',
-                                            'FEB.',
-                                            'MÄR.',
-                                            'APR.',
+                                            1 => 'JAN',
+                                            'FEB',
+                                            'MÄR',
+                                            'APR',
                                             'MAI',
-                                            'JUN.',
-                                            'JUL.',
-                                            'AUG.',
-                                            'SEP.',
-                                            'OKT.',
-                                            'NOV.',
-                                            'DEZ.'
+                                            'JUN',
+                                            'JUL',
+                                            'AUG',
+                                            'SEP',
+                                            'OKT',
+                                            'NOV',
+                                            'DEZ'
                                         ];
                                         list($day, $month, $year) = explode('/', $date['date']);
-                                        $formattedDate = sprintf("%02d %s %02d", $day, $germanMonths[(int)$month], $year % 100);
+                                        $formattedDate = sprintf("%02d. %s %02d", $day, $germanMonths[(int)$month], $year % 100);
                                         ?>
                                         <p class="registration__item-text"><?php echo $formattedDate; ?></p>
                                     <?php endforeach; ?>

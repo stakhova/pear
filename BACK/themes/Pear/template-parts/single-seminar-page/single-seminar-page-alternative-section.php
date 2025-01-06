@@ -85,29 +85,29 @@ class Single_Seminar_Page_Alternative_Section
                                                 </div>
                                                 <?php
                                                 $germanMonths = [
-                                                    1 => 'JAN.',
-                                                    'FEB.',
-                                                    'MÄR.',
-                                                    'APR.',
+                                                    1 => 'JAN',
+                                                    'FEB',
+                                                    'MÄR',
+                                                    'APR',
                                                     'MAI',
-                                                    'JUN.',
-                                                    'JUL.',
-                                                    'AUG.',
-                                                    'SEP.',
-                                                    'OKT.',
-                                                    'NOV.',
-                                                    'DEZ.'
+                                                    'JUN',
+                                                    'JUL',
+                                                    'AUG',
+                                                    'SEP',
+                                                    'OKT',
+                                                    'NOV',
+                                                    'DEZ'
                                                 ];
                                                 $dates = get_field('main_options', $post->ID)['dates'];
                                                 if (count($dates) == 1) {
                                                     list($day, $month, $year) = explode('/', $dates[0]['date']);
 
-                                                    $formattedDate = sprintf("%02d %s %02d", $day, $germanMonths[(int)$month], $year % 100);
+                                                    $formattedDate = sprintf("%02d. %s %02d", $day, $germanMonths[(int)$month], $year % 100);
                                                 } else {
 
                                                     $formatDate = function ($date) use ($germanMonths) {
                                                         list($day, $month, $year) = explode('/', $date);
-                                                        return sprintf("%02d %s", $day, $germanMonths[(int)$month]);
+                                                        return sprintf("%02d. %s", $day, $germanMonths[(int)$month]);
                                                     };
 
                                                     $formattedDate1 = $formatDate($dates[0]['date']);
@@ -158,29 +158,29 @@ class Single_Seminar_Page_Alternative_Section
                                                 </div>
                                                 <?php
                                                 $germanMonths = [
-                                                    1 => 'JAN.',
-                                                    'FEB.',
-                                                    'MÄR.',
-                                                    'APR.',
+                                                    1 => 'JAN',
+                                                    'FEB',
+                                                    'MÄR',
+                                                    'APR',
                                                     'MAI',
-                                                    'JUN.',
-                                                    'JUL.',
-                                                    'AUG.',
-                                                    'SEP.',
-                                                    'OKT.',
-                                                    'NOV.',
-                                                    'DEZ.'
+                                                    'JUN',
+                                                    'JUL',
+                                                    'AUG',
+                                                    'SEP',
+                                                    'OKT',
+                                                    'NOV',
+                                                    'DEZ'
                                                 ];
                                                 $dates = get_field('main_options', $post->ID)['dates'];
                                                 if (count($dates) == 1) {
                                                     list($day, $month, $year) = explode('/', $dates[0]['date']);
 
-                                                    $formattedDate = sprintf("%02d %s %02d", $day, $germanMonths[(int)$month], $year % 100);
+                                                    $formattedDate = sprintf("%02d. %s %02d", $day, $germanMonths[(int)$month], $year % 100);
                                                 } else {
 
                                                     $formatDate = function ($date) use ($germanMonths) {
                                                         list($day, $month, $year) = explode('/', $date);
-                                                        return sprintf("%02d %s", $day, $germanMonths[(int)$month]);
+                                                        return sprintf("%02d. %s", $day, $germanMonths[(int)$month]);
                                                     };
 
                                                     $formattedDate1 = $formatDate($dates[0]['date']);
@@ -231,29 +231,29 @@ class Single_Seminar_Page_Alternative_Section
                                                 </div>
                                                 <?php
                                                 $germanMonths = [
-                                                    1 => 'JAN.',
-                                                    'FEB.',
-                                                    'MÄR.',
-                                                    'APR.',
+                                                    1 => 'JAN',
+                                                    'FEB',
+                                                    'MÄR',
+                                                    'APR',
                                                     'MAI',
-                                                    'JUN.',
-                                                    'JUL.',
-                                                    'AUG.',
-                                                    'SEP.',
-                                                    'OKT.',
-                                                    'NOV.',
-                                                    'DEZ.'
+                                                    'JUN',
+                                                    'JUL',
+                                                    'AUG',
+                                                    'SEP',
+                                                    'OKT',
+                                                    'NOV',
+                                                    'DEZ'
                                                 ];
                                                 $dates = get_field('main_options', $post->ID)['dates'];
                                                 if (count($dates) == 1) {
                                                     list($day, $month, $year) = explode('/', $dates[0]['date']);
 
-                                                    $formattedDate = sprintf("%02d %s %02d", $day, $germanMonths[(int)$month], $year % 100);
+                                                    $formattedDate = sprintf("%02d. %s %02d", $day, $germanMonths[(int)$month], $year % 100);
                                                 } else {
 
                                                     $formatDate = function ($date) use ($germanMonths) {
                                                         list($day, $month, $year) = explode('/', $date);
-                                                        return sprintf("%02d %s", $day, $germanMonths[(int)$month]);
+                                                        return sprintf("%02d. %s", $day, $germanMonths[(int)$month]);
                                                     };
 
                                                     $formattedDate1 = $formatDate($dates[0]['date']);
