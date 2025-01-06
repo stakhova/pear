@@ -542,33 +542,7 @@ function appendStar() {
 }
 
 
-function partnersSlider() {
-    const partners = new Swiper('.partners__slide', {
-        slidesPerView: 7, // Кількість слайдів автоматична
-        spaceBetween: 100,
-        loop: true,
-        speed: 3000, // Швидкість прокрутки
-        autoplay: {
-            delay: 0, // Без затримки
-            disableOnInteraction: false, // Не вимикати autoplay після взаємодії
-            pauseOnMouseEnter: true // Зупиняти при наведенні миші
-        },
-        allowTouchMove: false, // Вимкнути ручну прокрутку
-        freeMode: true, // Вільний рух
-        freeModeMomentum: false, // Вимкнути інерцію
-        breakpoints: {
-            0: {
-                slidesPerView: 2.5,
-                centeredSlides: true,
-                spaceBetween: 48
-            },
-            667: {
-                slidesPerView: 7,
-                spaceBetween: 100
-            }
-        }
-    });
-}
+
 // function partnersSlider() {
 //     const partners = new Swiper('.partners__slide', {
 //         slidesPerView: 7,
@@ -738,7 +712,7 @@ $(document).ready(function () {
     showSearch();
     loadMore();
     appendStar();
-    partnersSlider();
+    // partnersSlider();
     counter();
     sliders();
     if( $('#map').length > 0){

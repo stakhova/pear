@@ -1967,8 +1967,16 @@
   -ms-flex-pack: center;
       justify-content: center;
 }
-
-.partners__img img {
+.partners__list{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap:8rem;
+}
+.partners__item{
+  width: max-content;
+}
+.partners__img {
   height: 6.4rem;
   width: auto;
   display: block;
@@ -3932,6 +3940,10 @@ label.error {
   }
   .place .section__title, .improve  .section__top-left{
     max-width: 100%;
+  }
+  .partners__list{
+    flex-direction: column;
+    gap:1rem;
   }
 }
 
