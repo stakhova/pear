@@ -153,6 +153,14 @@ function validateForm(form, func, noreset) {
                 error.insertBefore(element);
             }
         },
+        highlight: function (element) {
+            $(element).addClass("error");
+            $(element).closest(".form__input-wrap").addClass("error");
+        },
+        unhighlight: function (element) {
+            $(element).removeClass("error");
+            $(element).closest(".form__input-wrap").removeClass("error");
+        },
         submitHandler: function () {
             func();
             noreset ? null : form[0].reset();
@@ -224,6 +232,7 @@ function showSearch() {
         } else {
             $('.header__search-wrap').addClass('active');
             $(this).hide();
+            $('.header').addClass('active')
         }
     });
     let searchInput = '.header__search input[name="search"]';
@@ -653,12 +662,34 @@ function mask(){
     });
 }
 
+
+function addActiveInput(){
+    $('.section__search-input input').on('focus', function() {
+        $(this).closest('form').addClass('active');
+    });
+
+    $('.section__search-input input').on('blur', function() {
+       $(this).closest('form').removeClass('active');
+    });
+
+    $('.form__input-wrap >  *').on('focus', function() {
+        $(this).closest('.form__input-wrap').addClass('active');
+    });
+
+    $('.form__input-wrap >  *').on('blur', function() {
+        $(this).closest('.form__input-wrap').removeClass('active');
+    });
+
+
+}
+
 $(document).ready(function () {
     console.log(1234567654323456)
     $('select').select2({});
     policy();
     filter();
     mask();
+    addActiveInput()
     let subsForm = $('.form__seminar');
     validateForm(subsForm, function () {
         ajaxSend(subsForm, function (res) {

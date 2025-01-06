@@ -76,7 +76,7 @@ class Single_Seminar_Page_Editor_Section
                                     let positionMaps = [{
                                         lat: <?php echo $this->map['lat']; ?>,
                                         lng: <?php echo $this->map['lng']; ?>,
-                                        text: '<a href="<?php echo $this->map_link; ?>">Eexplore on google maps</a>'
+                                        text: '<a target="_blank" href="<?php echo $this->map_link; ?>">Eexplore on google maps</a>'
                                     }]
                                     console.log(positionMaps);
                                     (g => {

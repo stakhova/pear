@@ -84,32 +84,46 @@ class Single_Seminar_Page_Form_Section
                         <input type="hidden" name="count" value="1">
                         <div class="form__input">
                             <label>voller Name</label>
-                            <input type="text" name="name" placeholder="Max Mustermann">
+                            <div class="form__input-wrap">
+                                <input type="text" name="name" placeholder="Max Mustermann">
+                            </div>
                         </div>
                         <div class="form__flex">
                             <div class="form__input">
                                 <label>Firmenname</label>
-                                <input type="text" name="company" placeholder="Firma">
+                                <div class="form__input-wrap">
+                                    <input type="text" name="company" placeholder="Firma">
+                                </div>
                             </div>
                             <div class="form__input">
                                 <label>Adresse der Firma</label>
-                                <input type="text" name="address" placeholder="Geschäftsadresse">
+                                <div class="form__input-wrap">
+                                    <input type="text" name="address" placeholder="Geschäftsadresse">
+                                </div>
                             </div>
                             <div class="form__input">
                                 <label>Stadt</label>
-                                <input type="text" name="state" placeholder="München">
+                                <div class="form__input-wrap">
+                                    <input type="text" name="state" placeholder="München">
+                                </div>
                             </div>
                             <div class="form__input">
                                 <label>Postleitzahl</label>
-                                <input type="text" name="post_code" placeholder="XXXXX">
+                                <div class="form__input-wrap">
+                                    <input type="text" name="post_code" placeholder="XXXXX">
+                                </div>
                             </div>
                             <div class="form__input">
                                 <label>Telefonnummer</label>
-                                <input type="text" name="phone" placeholder="+49 XXX XXXXXXXX">
+                                <div class="form__input-wrap">
+                                    <input type="text" name="phone" placeholder="+49 XXX XXXXXXXX">
+                                </div>
                             </div>
                             <div class="form__input">
                                 <label>E-Mail</label>
-                                <input type="text" name="email" placeholder="example@mail.com">
+                                <div class="form__input-wrap">
+                                    <input type="text" name="email" placeholder="example@mail.com">
+                                </div>
                             </div>
                         </div>
 

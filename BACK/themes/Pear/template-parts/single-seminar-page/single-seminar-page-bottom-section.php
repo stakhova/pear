@@ -34,19 +34,27 @@ class Single_Seminar_Page_Bottom_Section
                         <input type="hidden" name="action" value="seminars_request">
                         <div class="form__input">
                             <label>voller Name</label>
-                            <input type="text" name="name" placeholder="Max Mustermann">
+                            <div class="form__input-wrap">
+                                <input type="text" name="name" placeholder="Max Mustermann">
+                            </div>
                         </div>
                         <div class="form__input">
                             <label>E-Mail</label>
-                            <input type="text" name="email" placeholder="example@mail.com">
+                            <div class="form__input-wrap">
+                                <input type="text" name="email" placeholder="example@mail.com">
+                            </div>
                         </div>
                         <div class="form__input">
                             <label>Telefonnummer</label>
-                            <input type="text" name="phone" placeholder="+49 XXX XXXXXXXX">
+                            <div class="form__input-wrap">
+                                <input type="text" name="phone" placeholder="+49 XXX XXXXXXXX">
+                            </div>
                         </div>
                         <div class="form__input textarea">
                             <label>Deine Anfrage</label>
-                            <textarea name="message" placeholder="Ich möchte..."></textarea>
+                            <div class="form__input-wrap">
+                                <textarea name="message" placeholder="Ich möchte..."></textarea>
+                            </div>
                         </div>
                         <div class="form__checkbox">
                             <input type="checkbox" id="check1" name="policy_terms">
