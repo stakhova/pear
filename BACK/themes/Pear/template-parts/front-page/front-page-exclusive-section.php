@@ -97,7 +97,7 @@ class Front_Page_Exclusive_Section
                                             ?>
                                             <div class="card__date">
                                                 <span><?php echo $formattedDate; ?></span>
-                                                <span class="card__date-loc"><?php echo get_field('main_options', $post->ID)['venue']; ?></span>
+                                                <span class="card__date-loc <?php echo (get_field('main_options', $post->ID)['venue'] == 'online') ? 'online' : '' ?>"><?php echo get_field('main_options', $post->ID)['venue']; ?></span>
                                             </div>
                                             <h3 class="card__title"><?php echo get_the_title($post->ID); ?>
                                             </h3>
