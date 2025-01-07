@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
 
     <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.8/index.min.css" rel="stylesheet" />
 
-    <!--    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">-->
     <link rel="stylesheet" href="styles/normalize.css">
     <link rel="stylesheet" href="styles/critical.css">
     <link rel="stylesheet" href="styles/index.css">
@@ -241,32 +241,17 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
-<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script>
-<script src="https://cdn.jsdelivr.net/npm/@fullcalendar/resource-timeline@6.1.8/index.global.min.js"></script>
+<!--<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script>-->
+<!--<script src="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.8/index.global.min.js"></script>-->
+
+
+<script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.8/index.global.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.8/index.global.min.js"></script>
 <script type="text/javascript" src="scripts/develop/index.js" ></script>
 
 
-<style>
-  .fc-event {
-    line-height: 1.5; /* Зробити висоту тексту однаковою */
-    display: flex;
-    align-items: center;
-  }
 
-  .fc-event-title {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
 
-  .fc-timeline-event {
-    height: 40px; /* Встановити однакову висоту для всіх подій */
-  }
-
-  .fc-resourceTimelineDay .fc-event {
-    margin: 2px 0; /* Вирівнювання для кращого вигляду */
-  }
-</style>
 <script>
   const seminars = [
     {
@@ -304,10 +289,9 @@
   document.addEventListener('DOMContentLoaded', function () {
     var calendarEl = document.getElementById('calendar');
 
-    // Перетворення даних семінарів у події для FullCalendar
     const events = seminars.flatMap(seminar => {
       return seminar.dates.map((date, index) => {
-        const start = date.date.split('/').reverse().join('-'); // Формат дати ISO
+        const start = date.date.split('/').reverse().join('-'); // Форматування дати до ISO
         const end = seminar.dates.length > 1 && index === seminar.dates.length - 1
                 ? new Date(new Date(start).setDate(new Date(start).getDate() + 1)).toISOString().split('T')[0]
                 : null;
@@ -320,7 +304,6 @@
           backgroundColor: seminar.color,
           borderColor: seminar.color,
           textColor: '#fff',
-          resourceId: seminar.title, // Встановлення title як resourceId для групування
           extendedProps: {
             time: date.time,
             plave: seminar.plave,
@@ -330,25 +313,20 @@
       });
     });
 
-    // Ініціалізація FullCalendar з горизонтальним ресурсним видом
     var calendar = new FullCalendar.Calendar(calendarEl, {
-      initialView: 'resourceTimelineDay', // Горизонтальний вигляд з групами
-      resourceAreaHeaderContent: 'Seminars', // Заголовок ресурсу
-      resources: Array.from(new Set(seminars.map(s => ({
-        id: s.title,
-        title: s.title
-      })))), // Унікальні ресурси на основі title
+      initialView: 'dayGridMonth',
       events: events,
       eventContent: function (arg) {
         const { extendedProps } = arg.event;
 
+        // Відображаємо title і place тільки на перший день
         const titleAndPlace = extendedProps.isFirstDay
                 ? `
-            <div style="font-weight: bold; font-size: 1.1em;">
-              ${extendedProps.plave}
-            </div>
-            <div>${arg.event.title}</div>
-          `
+              <div style="font-weight: bold; font-size: 1.1em;">
+                ${extendedProps.plave}
+              </div>
+              <div>${arg.event.title}</div>
+            `
                 : '';
 
         const time = extendedProps.time
@@ -356,6 +334,18 @@
                 : '';
 
         return { html: `${titleAndPlace}${time}` };
+      },
+      eventRender: function(info) {
+        const event = info.event;
+
+        // Якщо подія охоплює кілька днів, розтягнути її на ці дні
+        if (event.start !== event.end) {
+          const duration = event.end.diff(event.start, 'days') + 1;
+          const width = (100 / duration) + '%'; // Ширина події пропорційно кількості днів
+
+          // Встановлюємо ширину події
+          info.el.style.width = width;
+        }
       },
       eventClick: function (info) {
         info.jsEvent.preventDefault();
