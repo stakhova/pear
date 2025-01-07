@@ -48,13 +48,14 @@ class Front_Page_Contact_Section
 
                         <script>
                             let mapIcon = '<?=TEMPLATE_PATH?>/img/map-loc.svg';
-
-                            let positionMaps = [{
-                                lat: <?php echo $this->map['lat']; ?>,
-                                lng: <?php echo $this->map['lng']; ?>,
-                                text: '<a target="_blank" href="<?php echo $this->map_link; ?>">Explore on google maps</a>'
-                            }]
-                            console.log(positionMaps);
+                            <?php if (!empty($this->map['lat']) and !empty($this->map['lng'])) : ?>
+                                let positionMaps = [{
+                                    lat: <?php echo $this->map['lat']; ?>,
+                                    lng: <?php echo $this->map['lng']; ?>,
+                                    text: '<a target="_blank" href="<?php echo $this->map_link; ?>">Explore on google maps</a>'
+                                }]
+                                console.log(positionMaps);
+                            <?php endif; ?>
                             (g => {
                                 var h, a, k, p = "The Google Maps JavaScript API",
                                     c = "google",
