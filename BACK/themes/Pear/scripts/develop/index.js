@@ -31,8 +31,9 @@ async function initMap() {
     // Встановлення центра карти за першою точкою
     const mapCenter = positionMaps[0];
 
+
     const map = new Map(document.getElementById("map"), {
-        center: { lat: mapCenter.lat, lng: mapCenter.lng },
+        center: { lat: mapCenter.lat ?? 48.5675581 , lng: mapCenter.lng ?? 8.1525694 },
         zoom: 10, // Рівень збільшення
         linksControl: false,
         panControl: false,
@@ -164,6 +165,27 @@ function validateForm(form, func, noreset) {
     //     $(this).valid();
     // });
 };
+
+
+
+
+
+
+// function animateCard(){
+//     let isOpen = false;
+//
+//     // $('#animateCards').on('click', function() {
+//         if (!isOpen) {
+//             $('.competence__item:nth-child(1)').animate({ left: '-120px', top: '-50px', rotate: '-20deg' }, 500);
+//             $('.competence__item:nth-child(2)').animate({ left: '-60px', top: '-25px', rotate: '-10deg' }, 500);
+//             $('.competence__item:nth-child(3)').animate({ left: '60px', top: '-25px', rotate: '10deg' }, 500);
+//             $('.competence__item:nth-child(4)').animate({ left: '120px', top: '-50px', rotate: '20deg' }, 500);
+//         } else {
+//             $('.card').animate({ left: '0', top: '0', rotate: '0deg' }, 500);
+//         }
+//         isOpen = !isOpen;
+//     // });
+// }
 function ajaxSend(form, funcSuccess, funcError) {
     let data = form.serialize();
     console.log(data);
@@ -768,7 +790,7 @@ $(document).ready(function () {
     // partnersSlider();
     counter();
     sliders();
-
+    // animateCard()
     changeHeader()
     $(window).on('load scroll', checkCounters);
     if( $('#map').length > 0){
