@@ -126,15 +126,15 @@ class Single_Seminar_Page_Alternative_Section
                                                     <h3 class="card__title"><?php echo get_the_title($post->ID); ?>
                                                     </h3>
                                                 </div>
-                                                <?php if (!empty(get_field('main_options', $post->ID)['short_description'])) : ?>
-                                                    <div class="card__hover">
+                                                <?php //if (!empty(get_field('main_options', $post->ID)['short_description'])) : ?>
+                                                    <!-- <div class="card__hover">
                                                         <div class="card__hover-content content">
                                                             <h3><?php echo get_the_title($post->ID); ?></h3>
                                                             <?php echo get_field('main_options', $post->ID)['short_description']; ?>
                                                         </div>
 
-                                                    </div>
-                                                <?php endif; ?>
+                                                    </div> -->
+                                                <?php //endif; ?>
                                                 </a>
                                             <?php endforeach; ?>
 
@@ -199,15 +199,15 @@ class Single_Seminar_Page_Alternative_Section
                                                     <h3 class="card__title"><?php echo get_the_title($post->ID); ?>
                                                     </h3>
                                                 </div>
-                                                <?php if (!empty(get_field('main_options', $post->ID)['short_description'])) : ?>
-                                                    <div class="card__hover">
+                                                <?php //if (!empty(get_field('main_options', $post->ID)['short_description'])) : ?>
+                                                    <!-- <div class="card__hover">
                                                         <div class="card__hover-content content">
                                                             <h3><?php echo get_the_title($post->ID); ?></h3>
                                                             <?php echo get_field('main_options', $post->ID)['short_description']; ?>
                                                         </div>
 
-                                                    </div>
-                                                <?php endif; ?>
+                                                    </div> -->
+                                                <?php //endif; ?>
                                                 </a>
                                             <?php endforeach; ?>
 
@@ -272,15 +272,15 @@ class Single_Seminar_Page_Alternative_Section
                                                     <h3 class="card__title"><?php echo get_the_title($post->ID); ?>
                                                     </h3>
                                                 </div>
-                                                <?php if (!empty(get_field('main_options', $post->ID)['short_description'])) : ?>
-                                                    <div class="card__hover">
+                                                <?php //if (!empty(get_field('main_options', $post->ID)['short_description'])) : ?>
+                                                    <!-- <div class="card__hover">
                                                         <div class="card__hover-content content">
                                                             <h3><?php echo get_the_title($post->ID); ?></h3>
                                                             <?php echo get_field('main_options', $post->ID)['short_description']; ?>
                                                         </div>
 
-                                                    </div>
-                                                <?php endif; ?>
+                                                    </div> -->
+                                                <?php //endif; ?>
                                                 </a>
                                             <?php endforeach; ?>
 

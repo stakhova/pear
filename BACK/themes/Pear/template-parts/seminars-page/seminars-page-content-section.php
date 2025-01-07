@@ -176,9 +176,20 @@ class Seminars_Page_Content_Section
 
                     </div>
                 </div>
-                <?php if (!empty($this->query->posts)) : ?>
+                
                     <div class="seminar__card">
                         <div class="card__list seminar__card-list ">
+                            <?php if (!empty($this->queried_object->description)) : ?>
+                                <a class="card__item firsc-card">
+                                    <div class="card__hover">
+                                        <div class="card__hover-content content">
+                                            <h3><?php echo $this->queried_object->name; ?></h3>
+                                            <?php echo $this->queried_object->description; ?>
+                                        </div>
+                                    </div>
+                                </a>
+                            <?php endif; ?>
+                            <?php if (!empty($this->query->posts)) : ?>
                             <?php foreach ($this->query->posts as $post) : ?>
                                 <?php if (has_term('exklusiv','seminar_type',$post->ID)) : ?>
                                     <a href="<?php echo get_the_permalink($post->ID); ?>" class="card__item yellow">
@@ -233,20 +244,20 @@ class Seminars_Page_Content_Section
                                             <h3 class="card__title"><?php echo get_the_title($post->ID); ?>
                                             </h3>
                                         </div>
-                                        <?php if (!empty(get_field('main_options',$post->ID)['short_description'])) : ?>
-                                            <div class="card__hover">
+                                        <?php //if (!empty(get_field('main_options',$post->ID)['short_description'])) : ?>
+                                            <!-- <div class="card__hover">
                                                 <div class="card__hover-content content">
                                                     <h3><?php echo get_the_title($post->ID); ?></h3>
                                                     <?php echo get_field('main_options',$post->ID)['short_description']; ?>
                                                 </div>
 
-                                            </div>
-                                        <?php endif; ?>
+                                            </div> -->
+                                        <?php //endif; ?>
                                         </a>
                                     <?php endforeach; ?>
+                                    <?php endif; ?>
                         </div>
                     </div>
-                <?php endif; ?>
                 <div class="section__form">
                     <div class="section__form-info">
                         <div class="section__more">
