@@ -28,10 +28,7 @@ function policy() {
 
 async function initMap() {
     const { Map } = await google.maps.importLibrary("maps");
-
     const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
-
-
     const mapCenter = positionMaps[0]
 
 
@@ -231,14 +228,10 @@ function changeHeader(){
     if (scrolled > 0) {
         $('.header').addClass('scroll')
 
-
     } else {
 
         $('.header').removeClass('scroll')
-
     }
-
-
 }
 
 function showSearch() {

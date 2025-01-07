@@ -55,7 +55,16 @@ class Front_Page_Contact_Section
                                     text: '<a target="_blank" href="<?php echo $this->map_link; ?>">Explore on google maps</a>'
                                 }]
                                 console.log(positionMaps);
+
+                            <?php else : ?>
+
+                                let positionMaps = [{
+                                    lat: 48.5675581,
+                                    lng: 8.1525694,
+                                    text: '<a target="_blank" href="<?php echo $this->map_link; ?>">Explore on google maps</a>'
+                                    }]
                             <?php endif; ?>
+
                             (g => {
                                 var h, a, k, p = "The Google Maps JavaScript API",
                                     c = "google",
