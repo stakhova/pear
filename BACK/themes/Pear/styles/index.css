@@ -13,6 +13,10 @@
   overflow: hidden;
 }
 
+.wrap__visible{
+  overflow: visible;
+}
+
 .wrap__black .section__text.white {
   color: var(--color-black);
 }
@@ -467,7 +471,7 @@
   position: relative;
   font: 500 2.4rem/2.4rem var(--GTCons);
   white-space: nowrap;
-  /*letter-spacing: -0.02em;*/
+  letter-spacing: -0.048rem;
   position: relative;
 }
 
@@ -1837,10 +1841,12 @@
   position: relative;
 }
 
+
 .campus .card__item {
   width: calc((100% - 4.8rem )/3);
   top: 0 !important;
   transform: none !important;
+  opacity: 1;
 }
 
 .campus .card__img {
@@ -2732,8 +2738,11 @@
 .editor__map {
   border-radius: 3.2rem;
   height: 32rem;
+  width: 100%;
 }
-
+.editor__map > *{
+  border-radius: 3.2rem;
+}
 .alternative .container {
   padding: 5.6rem 3rem 8rem;
 }

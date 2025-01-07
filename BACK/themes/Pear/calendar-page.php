@@ -314,6 +314,25 @@ foreach ($query->posts as $post) {
     /*    padding: 1.6rem 0.8rem;*/
     /*    text-align: center;*/
     /*}*/
+
+    .fc .fc-col-header {
+        position: sticky;
+        top: 5.6rem;
+        z-index: 1000;
+        background: #F2F3F0;
+        border-bottom: 0.1rem solid  #E0E5E3;
+    }
+    .fc .fc-toolbar.fc-header-toolbar{
+        position: sticky;
+        top:0rem;
+    }
+
+    .fc .fc-col-header-cell {
+        font: 500 1.6rem / 1.7rem var(--GT)!important;
+        text-transform: uppercase;
+        padding: 1.6rem 0.8rem;
+        text-align: center;
+    }
     @media only screen and (max-width: 666px){
         .fc .fc-list-empty-cushion{
             font: 500 1.8rem / 2.4rem var(--GT);

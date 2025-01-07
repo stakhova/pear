@@ -24,16 +24,19 @@ function policy() {
     });
 }
 
+
+
 async function initMap() {
     const { Map } = await google.maps.importLibrary("maps");
+
     const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
 
-    // Встановлення центра карти за першою точкою
-    const mapCenter = positionMaps[0];
+
+    const mapCenter = positionMaps[0]
 
 
     const map = new Map(document.getElementById("map"), {
-        center: { lat: mapCenter.lat ?? 48.5675581 , lng: mapCenter.lng ?? 8.1525694 },
+        center: { lat: mapCenter.lat, lng: mapCenter.lng },
         zoom: 10, // Рівень збільшення
         linksControl: false,
         panControl: false,
