@@ -265,13 +265,18 @@ function showSearch() {
         $(searchInput).val('');
 
         $('.header__search-icon').show();
-        if (window.innerWidth > 666) {
-            $('.header__search-wrap').removeClass('active');
-        }
         search();
     });
 }
 
+
+function addClassExlusive(){
+    $('.seminar__radio-item .active').each(function (){
+        if($(this).text() =='Exklusiv' ){
+            $(this).addClass('exksusiv')
+        }
+    })
+}
 function menuOpen() {
     $(document).on('click', '.header__burger', function () {
         console.log(1111);
@@ -626,6 +631,35 @@ function checkCounters() {
     });
 };
 
+
+
+function showAlternative() {
+
+
+    $('.tab__content-item').each(function (){
+        let alternativeCard =  $(this).find('.card__item')
+        console.log(11111,alternativeCard.length)
+        if (alternativeCard.length > 3) {
+            $(this).find('.section__button').addClass('active');
+        }
+    })
+
+
+
+
+    $(document).on('click', '.alternative .section__button', function () {
+        $(this).toggleClass('active');
+        const tab = $(this).closest('.tab__content-item')
+
+        tab.toggleClass('show__more');
+
+        if (tab.hasClass('expanded')) {
+            $(this).text('Weniger anzeigen');
+        } else {
+            $(this).text('Mehr anzeigen');
+        }
+    });
+}
 function showMore() {
     $('.section__more').each(function () {
         const content = $(this).find('.section__form-content');
@@ -671,6 +705,23 @@ function addActiveInput(){
        $(this).closest('form').removeClass('active');
     });
 
+    $('.search__form input').on('focus', function() {
+        $(this).closest('form').addClass('active');
+    });
+
+    $('.search__form input').on('blur', function() {
+        $(this).closest('form').removeClass('active');
+    });
+
+
+    $('.header__search input').on('focus', function() {
+        $(this).closest('form').addClass('active');
+    });
+
+    $('.header__search input').on('blur', function() {
+        $(this).closest('form').removeClass('active');
+    });
+
     $('.form__input-wrap >  *').on('focus', function() {
         $(this).closest('.form__input-wrap').addClass('active');
     });
@@ -688,6 +739,7 @@ $(document).ready(function () {
     policy();
     filter();
     mask();
+    showAlternative()
     addActiveInput()
     let subsForm = $('.form__seminar');
     validateForm(subsForm, function () {
@@ -704,6 +756,7 @@ $(document).ready(function () {
         }, function (error) {
         });
     });
+    addClassExlusive()
     showMore();
     menuOpen();
     changeMob();
@@ -715,11 +768,12 @@ $(document).ready(function () {
     // partnersSlider();
     counter();
     sliders();
+
+    changeHeader()
+    $(window).on('load scroll', checkCounters);
     if( $('#map').length > 0){
         initMap();
     }
-    changeHeader()
-    $(window).on('load scroll', checkCounters);
 });
 $(window).scroll(function () {
     changeHeader()

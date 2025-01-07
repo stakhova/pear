@@ -212,7 +212,7 @@ class Single_Seminar_Page_Alternative_Section
                                             <?php endforeach; ?>
 
                                 </div>
-                                <a href="<?php echo Page_Seminars::get_url() . 'type=regular'; ?>" class="section__button grey">Mehr anzeigen</a>
+                                <button  class="section__button grey">Mehr anzeigen</button>
                             </div>
                         <?php endif; ?>
                         <?php if (!empty($this->query_ex->posts)) : ?>

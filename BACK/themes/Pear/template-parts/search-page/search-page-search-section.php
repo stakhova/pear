@@ -33,7 +33,7 @@ class Search_Page_Search_Section
                     <form class="search__form">
                         <input type="hidden" name="post_type" value="<?php echo $_GET['post_type']; ?>">
                         <div class="search__form-input">
-                            <input type="text" name="s" value="<?php echo $_GET['s']; ?>">
+                            <input type="text" name="s"  placeholder="Suche auf der Website..." value="<?php echo $_GET['s']; ?>">
                         </div>
 
                     </form>
