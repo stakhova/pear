@@ -1986,23 +1986,63 @@
   border: 0.8rem solid var(--color-grey);
 }
 
-.competence__item:nth-child(1) {
+/*.competence__item:nth-child(1) {*/
+/*  transform: rotate(-6deg);*/
+/*}*/
+
+/*.competence__item:nth-child(2) {*/
+/*  top: -3rem;*/
+/*  transform: rotate(-3deg);*/
+/*}*/
+
+/*.competence__item:nth-child(3) {*/
+/*  top: -3rem;*/
+/*  transform: rotate(3deg);*/
+/*}*/
+
+/*.competence__item:nth-child(4) {*/
+/*  transform: rotate(6deg);*/
+/*}*/
+
+
+
+
+/*\\\\\\\\\\\\animate*/
+
+.competence__item {
+  width: calc((100% - 7.2rem) / 4);
+  opacity: 0;
+  transform: translateY(50px) scale(0.9);
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+}
+
+.competence__item.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Збереження ваших трансформацій */
+.competence__item:nth-child(1).visible {
   transform: rotate(-6deg);
 }
 
-.competence__item:nth-child(2) {
+.competence__item:nth-child(2).visible {
   top: -3rem;
   transform: rotate(-3deg);
 }
 
-.competence__item:nth-child(3) {
+.competence__item:nth-child(3).visible {
   top: -3rem;
   transform: rotate(3deg);
 }
 
-.competence__item:nth-child(4) {
+.competence__item:nth-child(4).visible {
   transform: rotate(6deg);
 }
+
+
+
+
 
 .competence__img {
   width: 6.4rem;

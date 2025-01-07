@@ -168,24 +168,6 @@ function validateForm(form, func, noreset) {
 
 
 
-
-
-
-// function animateCard(){
-//     let isOpen = false;
-//
-//     // $('#animateCards').on('click', function() {
-//         if (!isOpen) {
-//             $('.competence__item:nth-child(1)').animate({ left: '-120px', top: '-50px', rotate: '-20deg' }, 500);
-//             $('.competence__item:nth-child(2)').animate({ left: '-60px', top: '-25px', rotate: '-10deg' }, 500);
-//             $('.competence__item:nth-child(3)').animate({ left: '60px', top: '-25px', rotate: '10deg' }, 500);
-//             $('.competence__item:nth-child(4)').animate({ left: '120px', top: '-50px', rotate: '20deg' }, 500);
-//         } else {
-//             $('.card').animate({ left: '0', top: '0', rotate: '0deg' }, 500);
-//         }
-//         isOpen = !isOpen;
-//     // });
-// }
 function ajaxSend(form, funcSuccess, funcError) {
     let data = form.serialize();
     console.log(data);
@@ -754,7 +736,22 @@ function addActiveInput(){
 
 
 }
+function checkScroll() {
+    const competenceBlock = $('.competence .card__list');
+    const competenceItems = $('.competence__item');
+    const blockOffset = competenceBlock.offset().top;
+    const scrollPos = $(window).scrollTop();
+    const windowHeight = $(window).height();
 
+    if (scrollPos + windowHeight > blockOffset + 100) {
+        competenceItems.each(function (index) {
+            const $this = $(this);
+            setTimeout(() => {
+                $this.addClass('visible');
+            }, index * 200);
+        });
+    }
+}
 $(document).ready(function () {
     console.log(1234567654323456)
     $('select').select2({});
@@ -790,12 +787,27 @@ $(document).ready(function () {
     // partnersSlider();
     counter();
     sliders();
-    // animateCard()
     changeHeader()
     $(window).on('load scroll', checkCounters);
     if( $('#map').length > 0){
         initMap();
     }
+
+
+
+
+
+
+
+
+
+
+
+    $(window).on('scroll', checkScroll);
+    checkScroll();
+
+
+
 });
 $(window).scroll(function () {
     changeHeader()
