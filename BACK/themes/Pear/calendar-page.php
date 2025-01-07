@@ -319,7 +319,7 @@ foreach ($query->posts as $post) {
         position: sticky;
         top: 5.6rem;
         z-index: 1000;
-        background: #F2F3F0;
+        background: white;
         border-bottom: 0.1rem solid  #E0E5E3;
     }
     .fc .fc-toolbar.fc-header-toolbar{
