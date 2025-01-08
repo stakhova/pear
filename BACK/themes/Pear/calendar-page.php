@@ -422,6 +422,9 @@ foreach ($query->posts as $post) {
         .calendar tr:hover{
             background:transparent;
         }
+        .fc .fc-toolbar.fc-header-toolbar{
+            width: 100%;
+        }
     }
 </style>
 <script>

@@ -526,8 +526,9 @@ function initSlider() {
         sliderContainer.find('.card__prev').addClass(prevButtonClass);
 
         new Swiper(slider[0], {
-            slidesPerView: 1.06,
+            slidesPerView: 1,
             spaceBetween: 8,
+            // centeredSlides: true,
             effect: 'slide',
             navigation: {
                 nextEl: `.${nextButtonClass}`,
