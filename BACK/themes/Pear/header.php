@@ -33,7 +33,7 @@
         <div class="wrap wrap__black">
         <?php else : ?>
             <?php if (Page_Calendar::get_ID() == get_the_ID()) : ?>
-                <div class="wrap wrap__visible">
+                <div class="wrap__visible">
                 <?php else : ?>
                     <div class="wrap">
                     <?php endif; ?>
@@ -68,7 +68,7 @@
                                         <form class="header__search">
                                             <input type="hidden" name="action" value="search_header">
                                             <div class="header__search-input">
-                                                <input type="text" name="search" placeholder="Suche auf der Website...">
+                                                <input type="text" name="s" placeholder="Suche auf der Website...">
                                             </div>
                                             <button class="header__search-clean" type="button"></button>
                                         </form>

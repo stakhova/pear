@@ -246,7 +246,7 @@ function showSearch() {
             $('.header').toggleClass('active')
         }
     });
-    let searchInput = '.header__search input[name="search"]';
+    let searchInput = '.header__search input[name="s"]';
     $(document).on('keydown', searchInput, function () {
         clearTimeout($(this).data('timer'));
         let timer = setTimeout(function () {
@@ -256,8 +256,8 @@ function showSearch() {
     });
 
     $(document).on('submit', '.header__search', function (e) {
-        e.preventDefault();
-        search();
+        // e.preventDefault();
+        // search();
     });
 
     $(document).on('click', '.header__search-clean', function () {
@@ -288,7 +288,7 @@ function menuOpen() {
 
 function search() {
     let data = $('.header__search').serialize();
-    let searchText = $('.header__search input[name="search"]').val();
+    let searchText = $('.header__search input[name="s"]').val();
     if (searchText.length < 1) {
         $('.header__search-result').hide();
         $('.header__search-clean').hide();
@@ -504,7 +504,7 @@ function filter() {
         filterAjax();
     });
 
-    let searchInput = '.filter__item input[name="search"]';
+    let searchInput = '.filter__item input[name="s"]';
     $(document).on('keydown', searchInput, function () {
         clearTimeout($(this).data('timer'));
         let timer = setTimeout(function () {

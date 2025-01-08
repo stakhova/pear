@@ -13,7 +13,7 @@ class Page_Front
 
     public static function search_header()
     {
-        $search    = $_POST['search'];
+        $search    = $_POST['s'];
         $args = array(
             'post_type' => ['course', 'seminar'],
             'posts_per_page' => 100,

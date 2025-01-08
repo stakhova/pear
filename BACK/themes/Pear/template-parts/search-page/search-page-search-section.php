@@ -7,7 +7,7 @@ class Search_Page_Search_Section
         $type = $_GET['exklusiv'];
 
         $args = array(
-            'post_type' => $post_type,
+            'post_type' => $post_type ?? ['seminar','course'],
             'posts_per_page' => 100,
             's' => $_GET['s']
         );
@@ -21,7 +21,7 @@ class Search_Page_Search_Section
                     'operator' => 'IN',
                 )
             );
-        }
+        } 
         $this->query = new WP_Query($args);
     }
 
