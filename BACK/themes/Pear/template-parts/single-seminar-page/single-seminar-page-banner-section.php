@@ -30,7 +30,7 @@ class Single_Seminar_Page_Banner_Section
                                 <span><?php echo $this->term; ?></span>
                             </div>
                             <div class="banner__tag-item ">
-                                <span>Noch <?php echo $this->number_of_seats; ?> Tage</span>
+                                <span>Noch <?php echo $this->number_of_seats; ?> Orte</span>
                             </div>
                         </div>
                         <h1 class="section__middle"><?php echo get_the_title(); ?></h1>

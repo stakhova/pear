@@ -54,7 +54,7 @@ class Front_Page_Exclusive_Section
                                     <a href="<?php echo get_the_permalink($post->ID); ?>" class="card__item yellow swiper-slide">
                                         <div class="card__img img">
                                             <img src="<?php echo get_the_post_thumbnail_url($post->ID); ?>" alt="">
-                                            <span class="card__flag right"> Noch <?php echo get_field('main_options', $post->ID)['number_of_seats']; ?> Tage</span>
+                                            <span class="card__flag right"> Noch <?php echo get_field('main_options', $post->ID)['number_of_seats']; ?> Orte</span>
                                             <?php if (get_field('shortly', $post->ID)['shortly']) : ?>
                                                 <span class="card__flag left"> in Kürze</span>
                                             <?php endif; ?>

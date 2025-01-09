@@ -80,7 +80,7 @@ class Single_Seminar_Page_Alternative_Section
                                                 <?php endif; ?>
                                                 <div class="card__img img">
                                                     <img src="<?php echo get_the_post_thumbnail_url($post->ID); ?>" alt="">
-                                                    <span class="card__flag right"> Noch <?php echo get_field('main_options', $post->ID)['number_of_seats']; ?> Tage</span>
+                                                    <span class="card__flag right"> Noch <?php echo get_field('main_options', $post->ID)['number_of_seats']; ?> Orte</span>
                                                     <span class="card__flag left"> in Kürze</span>
                                                 </div>
                                                 <?php
@@ -153,7 +153,7 @@ class Single_Seminar_Page_Alternative_Section
                                                 <?php endif; ?>
                                                 <div class="card__img img">
                                                     <img src="<?php echo get_the_post_thumbnail_url($post->ID); ?>" alt="">
-                                                    <span class="card__flag right"> Noch <?php echo get_field('main_options', $post->ID)['number_of_seats']; ?> Tage</span>
+                                                    <span class="card__flag right"> Noch <?php echo get_field('main_options', $post->ID)['number_of_seats']; ?> Orte</span>
                                                     <span class="card__flag left"> in Kürze</span>
                                                 </div>
                                                 <?php
@@ -226,7 +226,7 @@ class Single_Seminar_Page_Alternative_Section
                                                 <?php endif; ?>
                                                 <div class="card__img img">
                                                     <img src="<?php echo get_the_post_thumbnail_url($post->ID); ?>" alt="">
-                                                    <span class="card__flag right"> Noch <?php echo get_field('main_options', $post->ID)['number_of_seats']; ?> Tage</span>
+                                                    <span class="card__flag right"> Noch <?php echo get_field('main_options', $post->ID)['number_of_seats']; ?> Orte</span>
                                                     <span class="card__flag left"> in Kürze</span>
                                                 </div>
                                                 <?php
