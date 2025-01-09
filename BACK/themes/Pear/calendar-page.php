@@ -113,6 +113,11 @@ foreach ($query->posts as $post) {
         gap:0.6rem;
         border-radius: 1.2rem;
         background: #F2F3F0;
+        transition: .2s ease;
+    }
+    .calendar__info:hover{
+        background:#E0E5E3;
+        transition: .2s ease;
     }
     .calendar__title{
         font: 500 1.6rem / 2rem var(--GT)!important;
@@ -155,6 +160,9 @@ foreach ($query->posts as $post) {
     }
     .calendar__info-wrap.star .calendar__info {
         background:  #FFFAE8;
+    }
+    .calendar__info-wrap.star .calendar__info:hover {
+        background:  #FFF3C9;
     }
 
     .calendar__info-wrap.passed  .calendar__time{
