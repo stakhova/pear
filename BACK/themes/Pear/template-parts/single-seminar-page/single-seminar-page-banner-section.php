@@ -38,7 +38,7 @@ class Single_Seminar_Page_Banner_Section
                         <h1 class="section__middle"><?php echo get_the_title(); ?></h1>
                         <div class="registration__flex">
                             <div class="registration__item">
-                                <span class="registration__item-title">rename to Datum</span>
+                                <span class="registration__item-title">Datum</span>
                                 <?php foreach ($this->dates as $date) : ?>
 
                                     <?php
@@ -77,7 +77,7 @@ class Single_Seminar_Page_Banner_Section
                             }
                             ?>
                             <div class="registration__item">
-                                <span class="registration__item-title">rename to Zeiten</span>
+                                <span class="registration__item-title">Zeiten</span>
                                 <?php foreach ($this->dates as $date) : ?>
                                     <p class="registration__item-text"><?php echo $date['time']; ?></p>
                                 <?php endforeach; ?>
