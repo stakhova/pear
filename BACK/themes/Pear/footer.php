@@ -47,7 +47,7 @@
                      <h2 class="section__subtitle">Kontaktinformationen</h2>
                      <div class="footer__list">
                         <?php if (!empty($address['url'])) : ?>
-                            <a class="section__text" href="<?php echo $address['url']; ?>"><?php echo $address['title']; ?></a>
+                            <a class="section__text" href="<?php echo $address['url']; ?>"><?php echo str_replace('|','<br>',$address['title']); ?></a>
                         <?php endif; ?>
                         <?php if (!empty($phone)) : ?>
                             <a class="section__text" href="tel:+<?=preg_replace('/[^\d]/', '', $phone); ?>"><?php echo $phone; ?></a>
