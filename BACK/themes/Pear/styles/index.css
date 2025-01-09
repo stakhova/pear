@@ -218,7 +218,7 @@
 }
 
 .section__banner-seminar .registration__item-text {
-  font: 500 1.6rem/2rem var(--GT);
+  font: 500 1.6rem/2rem var(--GTCons);
   color: var(--color-black);
 }
 
@@ -249,6 +249,16 @@
 
 .section__banner-seminar-button span {
   font: 700 2rem/2.4rem var(--GT);
+}
+
+.price__wrap p{
+  font: 400 1.4rem/1.9rem var(--GT);
+  opacity: 0.6;
+}
+.price__wrap{
+  display: flex;
+  flex-direction: column;
+  gap:0.4rem;
 }
 
 .section__banner-course .card__star {
@@ -532,6 +542,14 @@
 .section__button.grey:hover {
   transition: 0.2s all ease;
   background-color: var(--color-grey-hover);
+}
+
+
+
+.section__button.disabled{
+  opacity: 0.6;
+  background-color:#E0E5E3!important;
+  pointer-events: none;
 }
 .section__title {
   font: 700 8rem/7.2rem var(--GT);
@@ -1081,8 +1099,8 @@
 
 .banner__tag-item > * {
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  font: 400 1.6rem/1.6rem var(--GT);
+  letter-spacing: 0.096rem;
+  font: 400 1.6rem/1.6rem var(--GTCons);
 }
 
 .banner__tag-item .img {
@@ -1505,18 +1523,31 @@
   transition: 0.2s all ease;
 }
 
-.card__item:not(.competence__item):hover {
+.card__img img {
+  transition: 0.2s all ease;
+}
+
+.card__item:hover .card__img img{
+  transition: 0.2s all ease;
+  transform: scale(1.1);
+
+}
+
+.card__item:not(.green):not(.yellow):not(.competence__item):hover {
   box-shadow: 0px 27px 65px 0px rgba(2, 61, 39, 0.05), 0px 12px 26px 0px rgba(2, 61, 39, 0.04), 0px 6px 15px 0px rgba(2, 61, 39, 0.03), 0px 4px 8px 0px rgba(2, 61, 39, 0.03), 0px 2px 4px 0px rgba(2, 61, 39, 0.02), 0px 1px 2px 0px rgba(2, 61, 39, 0.01);
+  transition: 0.2s all ease;
 }
 
 
 .card__item.yellow {
+  transition: background 0.5s ease; /* Перехід лише для фону */
   background: linear-gradient(45.78deg, #FFE13C 0%, #FDC201 80%);
 }
-.card__item.yellow:hover{
-  box-shadow: 0px 27px 65px 0px rgba(61, 52, 7, 0.08), 0px 12px 26px 0px rgba(61, 52, 7, 0.06), 0px 6px 15px 0px rgba(61, 52, 7, 0.04), 0px 4px 8px 0px rgba(61, 52, 7, 0.04), 0px 2px 4px 0px rgba(61, 52, 7, 0.04), 0px 1px 2px 0px rgba(61, 52, 7, 0.01);
-}
 
+.card__item.yellow:hover {
+  transition: background 0.5s ease; /* Перехід залишається плавним */
+  background: linear-gradient(45deg, #FFEC81 0%, #FFDB5B 100%); /* Використання градієнта для плавності */
+}
 
 
 .card__item.yellow .card__flag {
@@ -1528,7 +1559,8 @@
 }
 
 .card__item.green:hover {
-  box-shadow: 0px 27px 65px 0px rgba(2, 61, 39, 0.05), 0px 12px 26px 0px rgba(2, 61, 39, 0.04), 0px 6px 15px 0px rgba(2, 61, 39, 0.03), 0px 4px 8px 0px rgba(2, 61, 39, 0.03), 0px 2px 4px 0px rgba(2, 61, 39, 0.02), 0px 1px 2px 0px rgba(2, 61, 39, 0.01);
+  background-color: #018338;
+  /*box-shadow: 0px 27px 65px 0px rgba(2, 61, 39, 0.05), 0px 12px 26px 0px rgba(2, 61, 39, 0.04), 0px 6px 15px 0px rgba(2, 61, 39, 0.03), 0px 4px 8px 0px rgba(2, 61, 39, 0.03), 0px 2px 4px 0px rgba(2, 61, 39, 0.02), 0px 1px 2px 0px rgba(2, 61, 39, 0.01);*/
 }
 
 .card__item.green .card__title {
@@ -1882,12 +1914,9 @@
 }
 
 .search .container {
-  padding: 12.8rem 2rem 16.8rem;
+  padding: 12.8rem 3rem 16.8rem;
 }
 
-.search__form {
-  margin-bottom: 8rem;
-}
 
 .search__form-input {
   position: relative;
@@ -1928,11 +1957,37 @@
   opacity: 1;
 }
 
-.search__block {
+.search__form{
+  width: 100%;
+}
+.search__block{
+
+}
+.search__block-filter{
+  margin-bottom: 8rem;
+  display: flex;
+  flex-direction:column ;
+  gap:2.4rem
+}
+
+.search__block .search__list {
   max-width: 91.2rem;
   margin: 0 auto;
 }
-
+.search__block-top{
+  display: flex;
+  gap:1.2rem;
+}
+.search__block-top .seminar__radio-item, .search__block-top .seminar__radio-item > *{
+  border-radius: 1.6rem;
+}
+.search__block-top .seminar__radio-item > *{
+  padding: 1.2rem 1.6rem;
+}
+.search__list-empty{
+  text-align: center;
+  font: 500 2.6rem/2.6rem var(--GT);
+}
 .search__item {
   display: -ms-flexbox;
   display: flex;
@@ -2949,8 +3004,9 @@
 }
 
 .registration__item-title {
-  font: 400 1.2rem/1.3rem var(--GT);
-  letter-spacing: 0.06em;
+  font: 400 1.2rem/1.3rem var(--GTCons);
+  letter-spacing: 0.096rem;
+  opacity: 0.8;
   text-transform: uppercase;
 }
 
@@ -3738,9 +3794,7 @@ label.error {
   .search .container {
     padding: 4.8rem 2rem 8rem;
   }
-  .search__form {
-    margin-bottom: 4.8rem;
-  }
+
   .search__list {
     gap: 3.2rem;
   }
@@ -4138,6 +4192,22 @@ label.error {
   }
   .wrap__visible .section__banner .container:before{
     display: none;
+  }
+  .search__block-top{
+    flex-direction: column-reverse;
+  }
+  .search__block-filter{
+    gap:1.2rem;
+    margin-bottom: 4.8rem;
+  }
+  .search__block-filter .seminar__radio{
+    gap:1.2rem;
+  }
+  .search__block-top .seminar__radio-item, .search__block-top .seminar__radio-item > *{
+    border-radius: 0.8rem;
+  }
+  .price__wrap{
+    align-items: center;
   }
 }
 

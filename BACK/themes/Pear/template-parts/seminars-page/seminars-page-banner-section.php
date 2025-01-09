@@ -15,7 +15,7 @@ class Seminars_Page_Banner_Section
     public function render()
     { ?>
 
-        <section class="section__banner">
+        <section class="section__banner section__banner-seminar ">
             <div class="container">
                 <div class="section__banner-block">
                     <?php if (!empty($this->title)) : ?>

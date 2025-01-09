@@ -39,11 +39,11 @@ class Single_Course_Page_Banner_Section
                         <?php endif; ?>
                         <div class="section__banner-seminar-button">
                             <a href="#form" class="section__button primary">Registrieren</a>
-                            <span><?php echo $this->price; ?> Euro</span>
+                            <div class="price__wrap"><span> <?php echo $this->price; ?> Euro    </span> <?php if (!empty($this->price_text)) : ?>
+                                <p><?php echo $this->price_text; ?></p>
+                                <?php endif; ?></div>
                         </div>
-                        <?php if (!empty($this->price_text)) : ?>
-                            <p><?php echo $this->price_text; ?></p>
-                        <?php endif; ?>
+
                     </div>
                     <div class="section__banner-seminar-img img">
                         <img src="<?php echo get_the_post_thumbnail_url(); ?>" alt="">
