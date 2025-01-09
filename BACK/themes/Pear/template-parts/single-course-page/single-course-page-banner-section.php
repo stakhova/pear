@@ -8,6 +8,8 @@ class Single_Course_Page_Banner_Section
         $this->certificate = $main_options['certificate'];
         $this->price = $main_options['price'];
         $this->description = $main_options['description'];
+
+        $this->price_text = get_field('additional_texts',Page_Option::get_ID())['price_text'];
     }
 
     public function render()
@@ -39,7 +41,9 @@ class Single_Course_Page_Banner_Section
                             <a href="#form" class="section__button primary">Registrieren</a>
                             <span><?php echo $this->price; ?> Euro</span>
                         </div>
-
+                        <?php if (!empty($this->price_text)) : ?>
+                            <p><?php echo $this->price_text; ?></p>
+                        <?php endif; ?>
                     </div>
                     <div class="section__banner-seminar-img img">
                         <img src="<?php echo get_the_post_thumbnail_url(); ?>" alt="">

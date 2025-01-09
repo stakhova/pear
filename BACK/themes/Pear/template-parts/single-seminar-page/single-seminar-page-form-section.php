@@ -28,6 +28,7 @@ class Single_Seminar_Page_Form_Section
             $this->old_seminar = false;
         }
 
+        $this->price_text = get_field('additional_texts',Page_Option::get_ID())['price_text'];
     }
 
     public function render()
@@ -161,6 +162,9 @@ class Single_Seminar_Page_Form_Section
                             </div>
 
                         </div>
+                        <?php if (!empty($this->price_text)) : ?>
+                            <p><?php echo $this->price_text; ?></p>
+                        <?php endif; ?>
                     </form>
                 </div>
             </div>

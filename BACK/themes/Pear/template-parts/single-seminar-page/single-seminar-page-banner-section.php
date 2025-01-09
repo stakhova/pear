@@ -11,6 +11,8 @@ class Single_Seminar_Page_Banner_Section
         $this->price = $main_options['price'];
 
         $this->term = get_the_terms(get_the_ID(), 'seminar_theme')[0]->name;
+
+        $this->price_text = get_field('additional_texts',Page_Option::get_ID())['price_text'];
     }
 
     public function render()
@@ -85,6 +87,9 @@ class Single_Seminar_Page_Banner_Section
                             <a href="#form" class="section__button primary <?php echo ($old_seminar ? 'disabled' : '')?>">Registrieren</a>
                             <span><?php echo $this->price; ?> Euro / Person</span>
                         </div>
+                        <?php if (!empty($this->price_text)) : ?>
+                            <p><?php echo $this->price_text; ?></p>
+                        <?php endif; ?>
 
                     </div>
                     <div class="section__banner-seminar-img img">
