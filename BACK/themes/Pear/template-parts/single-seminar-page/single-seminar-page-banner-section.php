@@ -36,7 +36,7 @@ class Single_Seminar_Page_Banner_Section
                         <h1 class="section__middle"><?php echo get_the_title(); ?></h1>
                         <div class="registration__flex">
                             <div class="registration__item">
-                                <span class="registration__item-title">Dates</span>
+                                <span class="registration__item-title">rename to Datum</span>
                                 <?php foreach ($this->dates as $date) : ?>
 
                                     <?php
@@ -60,16 +60,29 @@ class Single_Seminar_Page_Banner_Section
                                     <p class="registration__item-text"><?php echo $formattedDate; ?></p>
                                 <?php endforeach; ?>
                             </div>
+                            <?php 
+                            $dateToCheck = end($this->dates)['date'];
 
+                            $currentDate = date("d/m/Y");
+                            
+                            $timestampToCheck = DateTime::createFromFormat("d/m/Y", $dateToCheck)->getTimestamp();
+                            $currentTimestamp = DateTime::createFromFormat("d/m/Y", $currentDate)->getTimestamp();
+                            
+                            if ($timestampToCheck < $currentTimestamp) {
+                                $old_seminar = true;
+                            } else {
+                                $old_seminar = false;
+                            }
+                            ?>
                             <div class="registration__item">
-                                <span class="registration__item-title">Time</span>
+                                <span class="registration__item-title">rename to Zeiten</span>
                                 <?php foreach ($this->dates as $date) : ?>
                                     <p class="registration__item-text"><?php echo $date['time']; ?></p>
                                 <?php endforeach; ?>
                             </div>
                         </div>
                         <div class="section__banner-seminar-button">
-                            <a href="#form" class="section__button primary">Registrieren</a>
+                            <a href="#form" class="section__button primary <?php echo ($old_seminar ? 'disabled' : '')?>">Registrieren</a>
                             <span><?php echo $this->price; ?> Euro / Person</span>
                         </div>
 

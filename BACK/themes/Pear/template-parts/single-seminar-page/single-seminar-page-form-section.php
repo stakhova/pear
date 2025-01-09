@@ -8,15 +8,32 @@ class Single_Seminar_Page_Form_Section
         $main_options = get_field('main_options');
         $this->dates = $main_options['dates'];
         $this->price = $main_options['price'];
+        $this->dates = $main_options['dates'];
 
         $section_form = get_field('section_form');
         $this->place = $section_form['place'];
+
+        
+        $dateToCheck = end($this->dates)['date'];
+
+        $currentDate = date("d/m/Y");
+        var_dump($dateToCheck,$currentDate);
+        
+        $timestampToCheck = DateTime::createFromFormat("d/m/Y", $dateToCheck)->getTimestamp();
+        $currentTimestamp = DateTime::createFromFormat("d/m/Y", $currentDate)->getTimestamp();
+        
+        if ($timestampToCheck < $currentTimestamp) {
+            $this->old_seminar = true;
+        } else {
+            $this->old_seminar = false;
+        }
 
     }
 
     public function render()
     { ?>
 
+        <?php if (!$this->old_seminar) : ?>
         <section class="section" id="form">
             <div class="container">
                 <div class="section__form grey registration">
@@ -148,5 +165,6 @@ class Single_Seminar_Page_Form_Section
                 </div>
             </div>
         </section>
+        <?php endif; ?>
 <? }
 }
