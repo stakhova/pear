@@ -35,7 +35,7 @@ class Front_Page_Exclusive_Section
                     <div class="section__top-search">
                         <form class="section__search">
                             <input type="hidden" name="post_type" value="seminar">
-                            <input type="hidden" name="type" value="exklusiv">
+                            <input type="hidden" name="seminars_type" value="exklusiv">
                             <div class="section__search-input">
                                 <input type="text" name="s" placeholder="Seminar suchen…">
                             </div>

@@ -168,6 +168,15 @@ class Seminars_Page_Content_Section
                         </div>
                         <form class="section__search" action="<?php echo get_the_permalink(get_option('page_on_front')); ?>">
                             <input type="hidden" name="post_type" value="seminar">
+                            <?php if (!empty($this->queried_object)) : ?>
+                                <input type="hidden" name="seminars_theme" value="<?php echo $this->queried_object->slug; ?>">
+                            <?php endif; ?>
+                            <?php if (!empty($_GET['type'])) : ?>
+                                <input type="hidden" name="seminars_type" value="<?php echo $_GET['type']; ?>">
+                            <?php endif; ?>
+                            <?php if (!empty($_GET['method'])) : ?>
+                                <input type="hidden" name="seminars_method" value="<?php echo $_GET['method']; ?>">
+                            <?php endif; ?>
                             <div class="section__search-input">
                                 <input type="text" name="s" placeholder="Seminar suchen…">
                             </div>

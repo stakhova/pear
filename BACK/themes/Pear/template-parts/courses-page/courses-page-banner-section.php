@@ -8,6 +8,8 @@ class Courses_Page_Banner_Section
         $section_banner = get_field('section_banner',Page_Courses::get_ID());
         $this->title = $section_banner['title'];
         $this->text = $section_banner['text'];
+
+        $this->queried_object = get_queried_object();
     }
 
     public function render()
@@ -24,6 +26,9 @@ class Courses_Page_Banner_Section
                     <?php endif; ?>
                     <form class="section__search" action="<?php echo get_the_permalink(get_option('page_on_front')); ?>">
                         <input type="hidden" name="post_type" value="course">
+                        <?php if (!empty($this->queried_object)) : ?>
+                            <input type="hidden" name="courses_theme" value="<?php echo $this->queried_object->slug; ?>">
+                        <?php endif; ?>
                         <div class="section__search-input">
                             <input type="text" name="s" placeholder="Seminar suchen…">
                         </div>
