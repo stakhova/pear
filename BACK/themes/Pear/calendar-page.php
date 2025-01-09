@@ -542,20 +542,30 @@ foreach ($query->posts as $post) {
 
 
     function updateListDayFormat() {
+        console.log(11113345666)
         if (window.innerWidth < 666) {
+            console.log('before')
             document.querySelectorAll('.fc-list-day-cushion').forEach(function (cushion) {
                 const dayText = cushion.querySelector('.fc-list-day-text');
+                console.log('after')
+                console.log(11111134555669999, dayText)
                 const daySideText = cushion.querySelector('.fc-list-day-side-text');
 
-                if (dayText && daySideText) {
-                    try {
-                        const fullDateText = dayText.getAttribute('aria-label');
+                if (dayText) {
+                    const fullDateText = dayText.getAttribute('aria-label');
+                    console.log(1234, fullDateText)
 
-                        if (fullDateText) {
-                            const dateParts = fullDateText.match(/(\d{1,2})\. (\w+) (\d{4})/);
+                    if (fullDateText) {
+                        const dateParts = fullDateText.match(/(\d{1,2})\. (\w+) (\d{4})/);
 
-                            if (dateParts) {
-                                const day = parseInt(dateParts[1], 10);
+                        if (dateParts) {
+                            const day = parseInt(dateParts[1], 10);
+
+                            console.log(4444, day)
+
+                            dayText.textContent = `${day}`;
+
+                            if (daySideText) {
                                 const monthName = dateParts[2];
                                 const year = parseInt(dateParts[3], 10);
 
@@ -565,25 +575,61 @@ foreach ($query->posts as $post) {
                                 ];
 
                                 const monthIndex = months.indexOf(monthName);
+                                const date = new Date(year, monthIndex, day);
 
-                                if (monthIndex !== -1) {
-                                    const date = new Date(year, monthIndex, day);
-
-                                    if (!isNaN(date.getTime())) {
-                                        const dayNumber = date.getDate();
-                                        const dayShort = date.toLocaleDateString('de-DE', { weekday: 'short' }); // Скорочений день тижня
-
-                                        dayText.textContent = `${dayNumber}`;
-                                        daySideText.textContent = `${dayShort}`;
-                                    }
+                                if (!isNaN(date.getTime())) {
+                                    const dayShort = date.toLocaleDateString('de-DE', { weekday: 'short' });
+                                    daySideText.textContent = dayShort;
                                 }
                             }
                         }
-                    } catch (error) {
-                        console.error('Error formatting mobile calendar date:', error);
                     }
                 }
             });
+
+
+
+            // document.querySelectorAll('.fc-list-day-cushion').forEach(function (cushion) {
+            //     const dayText = cushion.querySelector('.fc-list-day-text');
+            //     const daySideText = cushion.querySelector('.fc-list-day-side-text');
+            //
+            //     if (dayText && daySideText) {
+            //         try {
+            //             const fullDateText = dayText.getAttribute('aria-label');
+            //
+            //             if (fullDateText) {
+            //                 const dateParts = fullDateText.match(/(\d{1,2})\. (\w+) (\d{4})/);
+            //
+            //                 if (dateParts) {
+            //                     const day = parseInt(dateParts[1], 10);
+            //                     const monthName = dateParts[2];
+            //                     const year = parseInt(dateParts[3], 10);
+            //
+            //                     const months = [
+            //                         'Januar', 'Februar', 'März', 'April', 'Mai', 'Juni',
+            //                         'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'
+            //                     ];
+            //
+            //                     const monthIndex = months.indexOf(monthName);
+            //
+            //                     if (monthIndex !== -1) {
+            //                         const date = new Date(year, monthIndex, day);
+            //
+            //                         if (!isNaN(date.getTime())) {
+            //                             const dayNumber = date.getDate();
+            //                             const dayShort = date.toLocaleDateString('de-DE', { weekday: 'short' }); // Скорочений день тижня
+            //
+            //                             dayText.textContent = `${dayNumber}`;
+            //                             daySideText.textContent = `${dayShort}`;
+            //                         }
+            //                     }
+            //                 }
+            //             }
+            //         } catch (error) {
+            //             console.error('Error formatting mobile calendar date:', error);
+            //         }
+            //     }
+            // });
         }
     }
 
@@ -737,8 +783,8 @@ foreach ($query->posts as $post) {
 
         calendar.render();
 
-
-        setTimeout(updateListDayFormat, 100);
+        // updateListDayFormat()
+        setTimeout(updateListDayFormat, 10);
 
         window.addEventListener('resize', function () {
             console.log('🔄 Зміна розміру вікна');
@@ -749,9 +795,15 @@ foreach ($query->posts as $post) {
             }
             updateListDayFormat();
         });
+        document.querySelector('.fc-prev-button').addEventListener('click', function () {
+            console.log(444)
+            setTimeout(updateListDayFormat, 10);
+        });
 
-        console.log(1111)
-        console.log(1111);
+        document.querySelector('.fc-next-button').addEventListener('click', function () {
+            console.log(555)
+            setTimeout(updateListDayFormat, 10);
+        });
 
         // Знаходимо елемент з класом 'fc-header-toolbar'
         const fcHeaderToolbar = document.querySelector('.fc-header-toolbar');
