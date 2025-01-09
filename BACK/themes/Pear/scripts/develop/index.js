@@ -734,20 +734,23 @@ function addActiveInput(){
 
 }
 function checkScroll() {
-    const competenceBlock = $('.competence .card__list');
-    const competenceItems = $('.competence__item');
-    const blockOffset = competenceBlock.offset().top;
-    const scrollPos = $(window).scrollTop();
-    const windowHeight = $(window).height();
+    if($('.competence').length>0){
+        const competenceBlock = $('.competence .card__list');
+        const competenceItems = $('.competence__item');
+        const blockOffset = competenceBlock.offset().top;
+        const scrollPos = $(window).scrollTop();
+        const windowHeight = $(window).height();
 
-    if (scrollPos + windowHeight > blockOffset + 100) {
-        competenceItems.each(function (index) {
-            const $this = $(this);
-            setTimeout(() => {
-                $this.addClass('visible');
-            }, index * 200);
-        });
+        if (scrollPos + windowHeight > blockOffset + 100) {
+            competenceItems.each(function (index) {
+                const $this = $(this);
+                setTimeout(() => {
+                    $this.addClass('visible');
+                }, index * 200);
+            });
+        }
     }
+
 }
 $(document).ready(function () {
     console.log(1234567654323456)
@@ -789,7 +792,6 @@ $(document).ready(function () {
     if( $('#map').length > 0){
         initMap();
     }
-
 
 
 

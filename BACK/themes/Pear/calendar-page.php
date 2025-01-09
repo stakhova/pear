@@ -271,7 +271,8 @@ foreach ($query->posts as $post) {
         padding: 1.2rem ;
         border-radius: 100rem;
         background: #F2F3F0;
-        margin-left: auto;
+        margin:0;
+        /*margin: 1rem 0;*/
     }
 
 
@@ -317,21 +318,55 @@ foreach ($query->posts as $post) {
 
     .fc .fc-col-header {
         position: sticky;
-        top: 5.6rem;
+        top: 12.6rem;
         z-index: 1000;
         background: white;
         border-bottom: 0.1rem solid  #E0E5E3;
     }
     .fc .fc-toolbar.fc-header-toolbar{
         position: sticky;
-        top:0rem;
+        top:8rem;
+        /*background: white;*/
     }
-
+    .fc .fc-scrollgrid-section-header.fc-scrollgrid-section-sticky > *{
+        top:16rem;
+    }
+    .fc .fc-scrollgrid-section-header.fc-scrollgrid-section-sticky > *:after{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 100%;
+        width: 100vw;
+        background-color: white;
+    }
     .fc .fc-col-header-cell {
         font: 500 1.6rem / 1.7rem var(--GT)!important;
         text-transform: uppercase;
         padding: 1.6rem 0.8rem;
         text-align: center;
+    }
+    .calendar__header{
+        background: white;
+        position: sticky;
+        top:5.8rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 10;
+        padding: 3rem 0 2rem;
+    }
+    .calendar__header:after{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 100%;
+        width: 100vw;
+        z-index: -1;
+        background-color: white;
     }
     @media only screen and (max-width: 666px){
         .fc .fc-list-empty-cushion{
@@ -424,6 +459,28 @@ foreach ($query->posts as $post) {
         }
         .fc .fc-toolbar.fc-header-toolbar{
             width: 100%;
+
+        }
+        .calendar__header{
+            flex-direction: column;
+            top:5rem;
+            gap:1rem
+
+        }
+        .fc .fc-list-sticky .fc-list-day > *{
+            top:18rem;
+            z-index: 10;
+        }
+        .fc .fc-list-sticky .fc-list-day > *:before{
+            content: '';
+            position: absolute;
+            bottom: 0;
+            width: 100vw;
+            height: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: -1;
+            background-color: white;
         }
     }
 </style>
@@ -692,8 +749,30 @@ foreach ($query->posts as $post) {
             }
             updateListDayFormat();
         });
-    });
 
+        console.log(1111)
+        console.log(1111);
+
+        // Знаходимо елемент з класом 'fc-header-toolbar'
+        const fcHeaderToolbar = document.querySelector('.fc-header-toolbar');
+
+        if (fcHeaderToolbar) {
+            // Створюємо обгортку <div class="calendar__header"></div>
+            const wrapper = document.createElement('div');
+            wrapper.className = 'calendar__header';
+
+            // Обгортаємо елемент
+            fcHeaderToolbar.parentNode.insertBefore(wrapper, fcHeaderToolbar);
+            wrapper.appendChild(fcHeaderToolbar);
+
+            // Знаходимо елемент з класом 'calendar__section-title'
+            const sectionTitle = document.querySelector('.calendar__section-title');
+            if (sectionTitle) {
+                // Переміщуємо його всередину wrapper на початок
+                wrapper.insertBefore(sectionTitle, wrapper.firstChild);
+            }
+        }
+    });
 
 
 </script>
@@ -704,3 +783,4 @@ foreach ($query->posts as $post) {
 <?php (new Calendar_Page_Banner_Section())->render()?>
 <?php (new Calendar_Page_Form_Section())->render()?>
 <?php get_footer(); ?>
+
