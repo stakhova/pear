@@ -116,9 +116,7 @@ class Stripe_Integration
                 if ($order_type == 'seminar') {
                     $seminar_id = get_field('seminar_id', $order_id);
                     $users_count = get_field('main_options', $seminar_id)['number_of_seats'];
-                    var_dump($users_count,get_field('count', $order_id));
                     $new_users_count = $users_count - get_field('count', $order_id);
-                    var_dump($new_users_count);
                     update_field('main_options_number_of_seats', $new_users_count, $seminar_id);
 
                     update_field('status', 'paid', $order_id);

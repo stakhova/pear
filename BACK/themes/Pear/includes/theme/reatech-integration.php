@@ -66,7 +66,6 @@ class Reatech_Integration
     
         curl_close($ch);
     
-        var_dump(json_decode($response, true));die;
     }
     
 }
