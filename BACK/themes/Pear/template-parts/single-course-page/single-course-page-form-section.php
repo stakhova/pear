@@ -2,13 +2,16 @@
 
 class Single_Course_Page_Form_Section
 {
-    public function __construct() {
+    public function __construct()
+    {
         $main_options = get_field('main_options');
         $this->form_policy_text = $main_options['form_policy_text'];
         $this->theme = $main_options['theme'];
         $this->price = $main_options['price'];
         $this->certificate = $main_options['certificate'];
-        $this->term = wp_get_post_terms(get_the_ID(),'course_type')[0]->name ?? '';
+        $this->term = wp_get_post_terms(get_the_ID(), 'course_type')[0]->name ?? '';
+
+        $this->price_text = get_field('additional_texts', Page_Option::get_ID())['price_text'];
     }
 
     public function render()
@@ -94,7 +97,7 @@ class Single_Course_Page_Form_Section
                         <?php if (!empty($this->form_policy_text)) : ?>
                             <div class="form__checkbox">
                                 <input type="checkbox" id="check" name="policy_terms">
-                                <label for="check"><?php echo str_replace(['<p>','</p>'],['',''],$this->form_policy_text); ?></label>
+                                <label for="check"><?php echo str_replace(['<p>', '</p>'], ['', ''], $this->form_policy_text); ?></label>
                             </div>
                         <?php endif; ?>
                         <div class="form__button">
@@ -109,6 +112,12 @@ class Single_Course_Page_Form_Section
                             </div> -->
 
                         </div>
+                        <?php if (!empty($this->price_text)) : ?>
+                            <div class="price__wrap">
+                                <p><?php echo $this->price_text; ?></p>
+                            </div>
+
+                        <?php endif; ?>
                     </form>
                 </div>
             </div>
