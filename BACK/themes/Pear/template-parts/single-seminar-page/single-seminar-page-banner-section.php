@@ -84,7 +84,7 @@ class Single_Seminar_Page_Banner_Section
                             </div>
                         </div>
                         <div class="section__banner-seminar-button">
-                            <a href="#form" class="section__button primary <?php echo ($old_seminar ? 'disabled' : '')?>">Registrieren</a>
+                            <a href="#form" class="section__button primary <?php echo ($old_seminar ? 'disabled' : '')?>"><?php echo ($old_seminar ? 'Veraltet' : 'Registrieren')?></a>
 
                             <div class="price__wrap"><span><?php echo $this->price; ?> Euro / Person </span>    <?php if (!empty($this->price_text)) : ?>
                                 <p><?php echo $this->price_text; ?></p>
