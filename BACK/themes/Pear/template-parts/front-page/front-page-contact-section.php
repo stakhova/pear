@@ -63,6 +63,7 @@ class Front_Page_Contact_Section
                                     lng: 8.1525694,
                                     text: '<a target="_blank" href="<?php echo $this->map_link; ?>">Explore on google maps</a>'
                                     }]
+                            console.log(positionMaps);
                             <?php endif; ?>
 
                             (g => {
