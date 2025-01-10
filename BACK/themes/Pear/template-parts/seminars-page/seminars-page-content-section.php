@@ -193,7 +193,8 @@ class Seminars_Page_Content_Section
                                     <div class="card__hover">
                                         <div class="card__hover-content content">
                                             <h3><?php echo $this->queried_object->name; ?></h3>
-                                            <?php echo $this->queried_object->description; ?>
+                                            <p><?php echo $this->queried_object->description; ?></p>
+
                                         </div>
                                     </div>
                                 </a>

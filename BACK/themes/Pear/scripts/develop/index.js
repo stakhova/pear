@@ -215,6 +215,12 @@ function counter() {
 }
 
 function tab() {
+    let tabItem = $('.tab__header-item')
+    let tabCount = tabItem.length
+    let tabgap = 8
+
+    tabItem.css('width',`calc((100% - ${tabgap}*${tabCount-1}px)/${tabCount})`)
+
     $(".tab__header-item").click(function () {
         $(".tab__header-item").removeClass("active").eq($(this).index()).addClass("active");
         $(".tab__content-item").hide().eq($(this).index()).fadeIn();

@@ -48,11 +48,16 @@ foreach ($query->posts as $post) {
     .fc-daygrid-day-frame::before{
         content: none!important;
     }
+    .fc .fc-list-event.fc-event-forced-url:hover a{
+        text-decoration: unset;
+    }
     .fc .fc-scroller-liquid-absolute::-webkit-scrollbar {
         background-color: transparent;
         width: 0.2rem;
     }
-
+    .fc .fc-list-event:hover td{
+        background-color: transparent;
+    }
     .fc .fc-scroller-liquid-absolute::-webkit-scrollbar-thumb {
         background-color: var(--color-black);
         border-radius: 2rem;
@@ -362,7 +367,7 @@ foreach ($query->posts as $post) {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        z-index: 10;
+        z-index: 7;
         padding: 3rem 0 2rem;
     }
     .calendar__header:after{
@@ -375,6 +380,32 @@ foreach ($query->posts as $post) {
         width: 100vw;
         z-index: -1;
         background-color: white;
+    }
+    .fc-toolbar-chunk button{
+        transition: .2s ease;
+        position: relative;
+    }
+    .fc-toolbar-chunk button:hover:after{
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        width: 4rem;
+        height: 4rem;
+        border-radius: 50%;
+        background-color: #E6E9E4;
+        z-index: -1;
+    }
+    .fc .fc-button .fc-icon{
+        color:#023D27!important;
+    }
+    .fc .fc-button-primary:not(:disabled).fc-button-active, .fc .fc-button-primary:not(:disabled):active{
+        background-color: transparent;
+        border: none;
+    }
+    .fc .fc-button-primary:not(:disabled).fc-button-active:focus, .fc .fc-button-primary:not(:disabled):active:focus{
+        box-shadow:unset;
     }
     @media only screen and (max-width: 666px){
         .fc .fc-list-empty-cushion{
@@ -436,13 +467,13 @@ foreach ($query->posts as $post) {
         }
         .fc-theme-standard .fc-list-day-cushion{
             background: transparent;
-            padding: 1.6rem 0 4rem;
+            padding: 1.6rem 0 1.6rem;
             position: relative;
         }
         .fc-theme-standard .fc-list-day-cushion:after{
             content: '';
             position: absolute;
-            bottom: 3.2rem;
+            bottom: 0;
             width: 100vw;
             height: 0.1rem;
             left: 50%;
@@ -460,7 +491,7 @@ foreach ($query->posts as $post) {
             font: 500 2.4rem / 2.4rem var(--GT);
         }
         .calendar__info-wrap{
-            margin-bottom: 2.4rem;
+            margin: 2.4rem 0;
         }
         .calendar tr:hover{
             background:transparent;
@@ -494,60 +525,6 @@ foreach ($query->posts as $post) {
 </style>
 <script>
     const seminars = <?php echo json_encode($seminars); ?>;
-
-    // const seminars = [
-    //     {
-    //         "url": "https://pear.blackbook.dev/seminar/qualitatsmanagement-beauftragter/",
-    //         "dates": [
-    //             { "date": "12/12/2024", "time": "14:00 - 16:30" }
-    //         ],
-    //         "title": "123 Qualitätsmanagement - Beauftragter",
-    //         "plave": "online",
-    //         "color": "yellow"
-    //     },
-    //     {
-    //         "url": "https://pear.blackbook.dev/seminar/aufbau-und-inhalt-des-produktionslenkungsplans-seminar-fur-anwender/",
-    //         "dates": [
-    //             { "date": "29/12/2024", "time": "14:00 - 16:30" },
-    //             { "date": "30/12/2024", "time": "12:00 - 16:30" },
-    //             { "date": "31/12/2024", "time": "10:00 - 12:30" }
-    //         ],
-    //         "title": "Seminar für Anwender",
-    //         "plave": "Bamberg",
-    //         "color": "green"
-    //     },
-    //     {
-    //         "url": "https://pear.blackbook.dev/seminar/aufbau-und-inhalt-des-produktionslenkungsplans-seminar-fur-anwender/",
-    //         "dates": [
-    //             { "date": "28/12/2024", "time": "9:00 - 12:30" },
-    //             { "date": "29/12/2024", "time": "9:00 - 12:30" },
-    //             { "date": "30/12/2024", "time": "10:00 - 11:30" },
-    //             { "date": "31/12/2024", "time": "12:00 - 15:30" }
-    //         ],
-    //         "title": "Aufbau und Inhalt des Produktionslenkungsplans – Seminar für Anwender",
-    //         "plave": "Bamberg",
-    //         "color": "grey"
-    //     },
-    //     {
-    //         "url": "https://pear.blackbook.dev/seminar/qualitatsmanagement-beauftragter/",
-    //         "dates": [
-    //             { "date": "29/12/2024", "time": "09:00 - 16:30" }
-    //         ],
-    //         "title": "Qualitätsmanagement-Beauftragter",
-    //         "plave": "online",
-    //         "color": "yellow"
-    //     },
-    //     {
-    //         "url": "https://pear.blackbook.dev/seminar/qualitatsmanagement-beauftragter/",
-    //         "dates": [
-    //             { "date": "26/12/2024", "time": "14:00 - 16:30" }
-    //         ],
-    //         "title": "Qualitätsmanagement-Beauftragter",
-    //         "plave": "online",
-    //         "color": "yellow"
-    //     }
-    // ];
-
 
     function updateListDayFormat() {
         console.log(11113345666)
@@ -695,71 +672,150 @@ foreach ($query->posts as $post) {
                 year: 'numeric',
                 month: 'long'
             },
-                eventContent: function (arg) {
-                    const { extendedProps } = arg.event;
+    //             eventContent: function (arg) {
+    //                 const { extendedProps } = arg.event;
+    //
+    //                 const eventStart = arg.event.start.toISOString().split('T')[0];
+    //                 const eventEnd = arg.event.end
+    //                     ? new Date(arg.event.end - 1).toISOString().split('T')[0] // Останній день
+    //                     : eventStart;
+    //
+    //                 const firstDate = extendedProps.firstDate
+    //                     ? extendedProps.firstDate.split('/').reverse().join('-')
+    //                     : null;
+    //                 const lastDate = extendedProps.lastDate
+    //                     ? extendedProps.lastDate.split('/').reverse().join('-')
+    //                     : null;
+    //
+    //                 let positionClass = '';
+    //
+    //                 if (firstDate && lastDate) {
+    //                     if (eventStart === firstDate) {
+    //                         positionClass = 'start';
+    //                     } else if (eventStart === lastDate) {
+    //                         positionClass = 'end';
+    //                     } else if (eventStart > firstDate && eventStart < lastDate) {
+    //                         positionClass = 'middle';
+    //                     }
+    //                 } else {
+    //                     positionClass = 'single';
+    //                 }
+    //
+    //                 const starClass = extendedProps.color === 'yellow' ? 'star' : '';
+    //                 const greenClass = extendedProps.color === 'green' ? 'green' : '';
+    //                 const isPassed = extendedProps.color === 'grey' ? 'passed' : '';
+    //
+    //                 const today = new Date().toISOString().split('T')[0];
+    //                 // const isPassed = eventStart < today ? 'passed' : '';
+    //
+    //                 let timeContent = '';
+    //
+    //                 if (firstDate && lastDate && firstDate !== lastDate) {
+    //                     const firstDateParts = extendedProps.firstDate.split('/');
+    //                     const lastDateParts = extendedProps.lastDate.split('/');
+    //
+    //                     const startDay = parseInt(firstDateParts[0], 10);
+    //                     const endDay = parseInt(lastDateParts[0], 10);
+    //                     const startMonth = new Date(`${firstDateParts[2]}-${firstDateParts[1]}-${firstDateParts[0]}`)
+    //                         .toLocaleDateString('de-DE', { month: 'short' });
+    //                     const year = firstDateParts[2];
+    //
+    //                     const dateRange = `${startDay}-${endDay} ${startMonth} ${year}`;
+    //
+    //                     timeContent = `
+    //         <div class="calendar__time">
+    //             <span class="calendar__time-date">${dateRange}</span> ${extendedProps.time || ''}
+    //         </div>
+    //     `;
+    //                 }
+    //                 else if (extendedProps.time) {
+    //                     timeContent = `
+    //         <div class="calendar__time">
+    //             ${extendedProps.time}
+    //         </div>
+    //     `;
+    //                 }
+    //
+    //                 const titleAndPlace = `
+    //     <div class="calendar__info">
+    //         <div class="calendar__place ${extendedProps.plave === 'online' ? 'online' : ''}">
+    //             ${extendedProps.plave}
+    //         </div>
+    //         <div class="calendar__title">${arg.event.title}</div>
+    //     </div>
+    // `;
+    //
+    //                 return {
+    //                     html: `
+    //         <div class="calendar__info-wrap ${positionClass} ${starClass} ${greenClass} ${isPassed}">
+    //             ${timeContent}
+    //             ${titleAndPlace}
+    //         </div>
+    //     `
+    //                 };
+    //             },
 
-                    const eventStart = arg.event.start.toISOString().split('T')[0];
-                    const eventEnd = arg.event.end
-                        ? new Date(arg.event.end - 1).toISOString().split('T')[0] // Останній день
-                        : eventStart;
+            eventContent: function (arg) {
+                const { extendedProps, title, url } = arg.event;
 
-                    const firstDate = extendedProps.firstDate
-                        ? extendedProps.firstDate.split('/').reverse().join('-')
-                        : null;
-                    const lastDate = extendedProps.lastDate
-                        ? extendedProps.lastDate.split('/').reverse().join('-')
-                        : null;
+                const eventStart = arg.event.start.toISOString().split('T')[0];
+                const eventEnd = arg.event.end
+                    ? new Date(arg.event.end - 1).toISOString().split('T')[0] // Останній день
+                    : eventStart;
 
-                    let positionClass = '';
+                const firstDate = extendedProps.firstDate
+                    ? extendedProps.firstDate.split('/').reverse().join('-')
+                    : null;
+                const lastDate = extendedProps.lastDate
+                    ? extendedProps.lastDate.split('/').reverse().join('-')
+                    : null;
 
-                    if (firstDate && lastDate) {
-                        if (eventStart === firstDate) {
-                            positionClass = 'start';
-                        } else if (eventStart === lastDate) {
-                            positionClass = 'end';
-                        } else if (eventStart > firstDate && eventStart < lastDate) {
-                            positionClass = 'middle';
-                        }
-                    } else {
-                        positionClass = 'single';
+                let positionClass = '';
+
+                if (firstDate && lastDate) {
+                    if (eventStart === firstDate) {
+                        positionClass = 'start';
+                    } else if (eventStart === lastDate) {
+                        positionClass = 'end';
+                    } else if (eventStart > firstDate && eventStart < lastDate) {
+                        positionClass = 'middle';
                     }
+                } else {
+                    positionClass = 'single';
+                }
 
-                    const starClass = extendedProps.color === 'yellow' ? 'star' : '';
-                    const greenClass = extendedProps.color === 'green' ? 'green' : '';
-                    const isPassed = extendedProps.color === 'grey' ? 'passed' : '';
+                const starClass = extendedProps.color === 'yellow' ? 'star' : '';
+                const greenClass = extendedProps.color === 'green' ? 'green' : '';
+                const isPassed = extendedProps.color === 'grey' ? 'passed' : '';
 
-                    const today = new Date().toISOString().split('T')[0];
-                    // const isPassed = eventStart < today ? 'passed' : '';
+                let timeContent = '';
 
-                    let timeContent = '';
+                if (firstDate && lastDate && firstDate !== lastDate) {
+                    const firstDateParts = extendedProps.firstDate.split('/');
+                    const lastDateParts = extendedProps.lastDate.split('/');
 
-                    if (firstDate && lastDate && firstDate !== lastDate) {
-                        const firstDateParts = extendedProps.firstDate.split('/');
-                        const lastDateParts = extendedProps.lastDate.split('/');
+                    const startDay = parseInt(firstDateParts[0], 10);
+                    const endDay = parseInt(lastDateParts[0], 10);
+                    const startMonth = new Date(`${firstDateParts[2]}-${firstDateParts[1]}-${firstDateParts[0]}`)
+                        .toLocaleDateString('de-DE', { month: 'short' });
+                    const year = firstDateParts[2];
 
-                        const startDay = parseInt(firstDateParts[0], 10);
-                        const endDay = parseInt(lastDateParts[0], 10);
-                        const startMonth = new Date(`${firstDateParts[2]}-${firstDateParts[1]}-${firstDateParts[0]}`)
-                            .toLocaleDateString('de-DE', { month: 'short' });
-                        const year = firstDateParts[2];
+                    const dateRange = `${startDay}-${endDay} ${startMonth} ${year}`;
 
-                        const dateRange = `${startDay}-${endDay} ${startMonth} ${year}`;
-
-                        timeContent = `
+                    timeContent = `
             <div class="calendar__time">
                 <span class="calendar__time-date">${dateRange}</span> ${extendedProps.time || ''}
             </div>
         `;
-                    }
-                    else if (extendedProps.time) {
-                        timeContent = `
+                } else if (extendedProps.time) {
+                    timeContent = `
             <div class="calendar__time">
                 ${extendedProps.time}
             </div>
         `;
-                    }
+                }
 
-                    const titleAndPlace = `
+                const titleAndPlace = `
         <div class="calendar__info">
             <div class="calendar__place ${extendedProps.plave === 'online' ? 'online' : ''}">
                 ${extendedProps.plave}
@@ -768,17 +824,19 @@ foreach ($query->posts as $post) {
         </div>
     `;
 
-                    return {
-                        html: `
-            <div class="calendar__info-wrap ${positionClass} ${starClass} ${greenClass} ${isPassed}">
-                ${timeContent}
-                ${titleAndPlace}
-            </div>
-        `
-                    };
-                },
+                const eventContentHtml = `
+        <div class="calendar__info-wrap ${positionClass} ${starClass} ${greenClass} ${isPassed}">
+            ${timeContent}
+            ${titleAndPlace}
+        </div>
+    `;
 
-
+                return {
+                    html: url
+                        ? `<a href="${url}" target="_blank" class="calendar__event-link">${eventContentHtml}</a>`
+                        : eventContentHtml
+                };
+            },
 
             eventClick: function (info) {
                 info.jsEvent.preventDefault();
