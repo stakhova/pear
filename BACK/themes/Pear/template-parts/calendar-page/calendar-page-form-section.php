@@ -40,7 +40,12 @@ class Calendar_Page_Form_Section
                 </div>
                 <div class="calendar">
                     <h2 class="section__middle calendar__section-title">
-                        Alle Themen
+                        <?php if (empty($_GET['theme'])) : ?>
+                            Alle Themen
+                        <?php else : ?>
+                            <?php $term = get_term_by('slug',$_GET['theme'],'seminar_theme')?>
+                            <?php echo $term->name; ?>
+                        <?php endif; ?>
 
                     </h2>
                     <div id="calendar"></div>
