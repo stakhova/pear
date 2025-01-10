@@ -163,7 +163,10 @@ class Single_Seminar_Page_Form_Section
 
                         </div>
                         <?php if (!empty($this->price_text)) : ?>
-                            <p><?php echo $this->price_text; ?></p>
+                            <div class="price__wrap">
+                                <p ><?php echo $this->price_text; ?></p>
+                            </div>
+
                         <?php endif; ?>
                     </form>
                 </div>

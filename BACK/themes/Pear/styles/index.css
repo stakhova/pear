@@ -3127,6 +3127,12 @@
   width: 65%;
 }
 
+.form__seminar-full .price__wrap{
+  margin-top: -0.4rem;
+}
+.form__seminar-full .price__wrap p{
+  text-align: right;
+}
 .swiper-button-next, .swiper-button-prev {
   right: unset;
   left: unset;
