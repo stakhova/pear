@@ -612,7 +612,7 @@
 .header {
   position: absolute;
   width: 100%;
-  z-index: 3;
+  z-index: 11;
 }
 .header.active {
    position: relative;
@@ -3792,7 +3792,7 @@ label.error {
     margin-bottom: 3.2rem;
   }
   .partners__slide {
-    margin: 0 -2rem;
+    /*margin: 0 -2rem;*/
   }
   .contact .container {
     padding: 4rem 2rem 0;
@@ -4201,8 +4201,27 @@ label.error {
     max-width: 100%;
   }
   .partners__list{
-    flex-direction: column;
-    gap:3rem;
+    /*flex-direction: column;*/
+    gap:2rem;
+    padding-bottom: 2rem;
+    overflow-x: auto;
+  }
+
+  .partners__list::-webkit-scrollbar {
+    background-color: transparent;
+    height: 0.4rem;
+    border-radius: 2rem;
+  }
+
+  .partners__list::-webkit-scrollbar-thumb {
+    background-color: var(--color-black);
+    border-radius: 2rem;
+  }
+  .partners .container{
+    padding: 3.2rem 2rem 1.2rem;
+  }
+  .partners__list > *{
+    width: calc((100% - 4rem)/3);
   }
   .banner__front .container{
     min-height: auto;

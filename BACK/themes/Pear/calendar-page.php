@@ -92,7 +92,7 @@ foreach ($query->posts as $post) {
             text-align: center;
     }
     .calendar__place{
-        font: 400 1.2rem / 1.3rem var(--GT)!important;
+        font: 400 1.2rem / 1.3rem var(--GTCons)!important;
         color:#023D27;
         position: relative;
         padding-left: 1.2rem;
@@ -421,6 +421,16 @@ foreach ($query->posts as $post) {
         }
         .fc-event .calendar__time{
             margin-right: 0;
+        }
+        .calendar__title{
+            font: 400 2rem / 130% var(--GT) !important;
+
+        }
+        .calendar__place{
+            font: 400 1.6rem / 130% var(--GTCons)!important;
+        }
+        .calendar__info-wrap .calendar__time{
+            font: 400 1.6rem / normal var(--GT)!important;
         }
         .fc .fc-toolbar{
             gap:0.4rem;
