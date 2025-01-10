@@ -17,7 +17,6 @@ class Single_Seminar_Page_Form_Section
         $dateToCheck = end($this->dates)['date'];
 
         $currentDate = date("d/m/Y");
-        var_dump($dateToCheck,$currentDate);
         
         $timestampToCheck = DateTime::createFromFormat("d/m/Y", $dateToCheck)->getTimestamp();
         $currentTimestamp = DateTime::createFromFormat("d/m/Y", $currentDate)->getTimestamp();
