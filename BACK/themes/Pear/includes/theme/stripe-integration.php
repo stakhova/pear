@@ -8,16 +8,14 @@ class Stripe_Integration
         add_action('wp_ajax_nopriv_payment_callback', [__CLASS__, 'payment_callback']);
     }
 
-    public static function create_user($user_email, $name, $phome, $order_id, $order_type)
+    public static function create_user($user_email, $name)
     {
+
+
         if (!empty($user_email)) {
             $customer = \Stripe\Customer::create([
                 'email' => $user_email,
                 'name' => $name,
-                'metadata' => [
-                    'order_id' => $order_id,
-                    'order_type' => $order_type
-                ],
             ]);
 
             return $customer->id;
@@ -26,6 +24,10 @@ class Stripe_Integration
 
     public static function create_payment_link($order_id, $price, $order_type)
     {
+        $email = get_field('email', $order_id);
+        $name = get_field('name', $order_id);
+        $customer_id = self::create_user($email, $name);
+
         $session = \Stripe\Checkout\Session::create([
             'payment_method_types' => ['card'],
             'line_items' => [
@@ -41,6 +43,10 @@ class Stripe_Integration
                 ],
             ],
             'mode' => 'payment',
+            'customer' => $customer_id,
+            'payment_intent_data' => [
+                'receipt_email' => $email,
+            ],
             'success_url' => get_the_permalink(Page_Successful_Payment::get_ID()),
             'cancel_url' => get_the_permalink(Page_Failed_Payment::get_ID()),
             'metadata' => [
