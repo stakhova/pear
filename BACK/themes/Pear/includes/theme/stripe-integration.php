@@ -123,6 +123,8 @@ class Stripe_Integration
                     $seminar_id = get_field('seminar_id', $order_id);
                     $users_count = get_field('main_options', $seminar_id)['number_of_seats'];
                     $new_users_count = $users_count - get_field('count', $order_id);
+                    $dates = get_field('main_options', $seminar_id)['dates'];
+
                     update_field('main_options_number_of_seats', $new_users_count, $seminar_id);
 
                     update_field('status', 'paid', $order_id);
@@ -147,7 +149,58 @@ class Stripe_Integration
                         'Phone: ' . $phone . '<br>' .
                         'Email: ' . $email . '<br>';
                     mail(get_field('managers', Page_Option::get_ID())['emails'], 'New seminar request #' . $order_id, $massages, $headers);
+
+                    self::send_seminar_payment_email($email, $name, get_the_title($seminar_id), $dates);
                 }
         }
+    }
+
+
+    public static function send_seminar_payment_email($user_email, $user_name, $seminar_title, $seminar_dates)
+    {
+        $subject = "Erfolgreiche Zahlung für Ihr Seminar";
+
+        $formatted_dates = [];
+        foreach ($seminar_dates as $date) {
+            $date_parts = explode('/', $date['date']); // Розділяємо день, місяць, рік
+            if (count($date_parts) === 3) {
+                $formatted_date = DateTime::createFromFormat('d/m/Y H:i:s', $date['date'] . ' 10:00:00', new DateTimeZone('UTC'));
+                if ($formatted_date) {
+                    $formatted_dates[] = $formatted_date->format('Ymd\THis\Z');
+                }
+            }
+        }
+
+        if (count($formatted_dates) > 1) {
+            $google_calendar_url = "https://www.google.com/calendar/render?action=TEMPLATE" .
+                "&text=" . urlencode($seminar_title) .
+                "&details=Weitere Informationen zum Seminar finden Sie auf unserer Website.";
+            foreach ($formatted_dates as $formatted_date) {
+                $google_calendar_url .= "&dates=" . $formatted_date . "/" . $formatted_date;
+            }
+        } else {
+            $google_calendar_url = "https://www.google.com/calendar/render?action=TEMPLATE" .
+                "&text=" . urlencode($seminar_title) .
+                "&dates=" . $formatted_dates[0] . "/" . $formatted_dates[0] .
+                "&details=Weitere Informationen zum Seminar finden Sie auf unserer Website.";
+        }
+
+        $message = "<p>Hallo " . esc_html($user_name) . ",</p>";
+        $message .= "<p>Ihre Zahlung für das Seminar <strong>" . esc_html($seminar_title) . "</strong> war erfolgreich.</p>";
+        $message .= "<p>Termine:</p><ul>";
+        foreach ($seminar_dates as $date) {
+            $message .= "<li>" . esc_html($date['date']) . "</li>";
+        }
+        $message .= "</ul>";
+        $message .= "<p>Wir freuen uns, Sie dort zu sehen!</p>";
+        $message .= "<p><a href='" . esc_url($google_calendar_url) . "' target='_blank' style='display:inline-block;padding:10px 20px;background:#4285F4;color:#fff;text-decoration:none;border-radius:5px;'>Zum Google Kalender hinzufügen</a></p>";
+        $message .= "<p>Mit freundlichen Grüßen,<br>Ihr Seminar-Team</p>";
+
+        $headers = [
+            'Content-Type: text/html; charset=UTF-8',
+            'From: Ihr Seminar-Team <no-reply@yourwebsite.com>'
+        ];
+
+        wp_mail($user_email, $subject, $message, $headers);
     }
 }
