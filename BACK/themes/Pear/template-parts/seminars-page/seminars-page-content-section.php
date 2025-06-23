@@ -68,16 +68,7 @@ class Seminars_Page_Content_Section
                     'operator' => 'IN',
                 ),
             );
-        } else {
-            $args['tax_query'][] = array(
-                array(
-                    'taxonomy' => 'seminar_conducting_method',
-                    'field'    => 'slug',
-                    'terms'    => array($this->seminar_conducting_method[0]->slug),
-                    'operator' => 'IN',
-                ),
-            );
-        }
+        } 
 
         $this->query = new WP_Query($args);
         wp_reset_postdata();
@@ -140,28 +131,14 @@ class Seminars_Page_Content_Section
                             </div>
                             <div class="seminar__radio-item seminar__radio-two choose">
                                 <?php if (empty($_GET['type'])) : ?>
+                                    <a href="<?php echo $this->current_link; ?>" <?php echo (empty($_GET['method']) ? 'class="active"' : '') ?>>Alle Formate</a>
                                     <?php foreach ($this->seminar_conducting_method as $key => $method) : ?>
-                                        <?php if ($key == 0) : ?>
-                                            <?php if (empty($_GET['method'])) : ?>
-                                                <a href="<?php echo $this->current_link; ?>" class="active"><?php echo $method->name; ?></a>
-                                            <?php else : ?>
-                                                <a href="<?php echo $this->current_link; ?>" <?php echo ($_GET['method'] == $method->slug ? 'class="active"' : '') ?>><?php echo $method->name; ?></a>
-                                            <?php endif;  ?>
-                                        <?php else : ?>
-                                            <a href="<?php echo $this->current_link . '?method=' . $method->slug; ?>" <?php echo ($_GET['method'] == $method->slug ? 'class="active"' : '') ?>><?php echo $method->name; ?></a>
-                                        <?php endif; ?>
+                                        <a href="<?php echo $this->current_link . '?method=' . $method->slug; ?>" <?php echo ($_GET['method'] == $method->slug ? 'class="active"' : '') ?>><?php echo $method->name; ?></a>
                                     <?php endforeach; ?>
                                 <?php else : ?>
+                                    <a href="<?php echo $this->current_link . '?type=' . $_GET['type']; ?>" <?php echo (empty($_GET['method']) ? 'class="active"' : '') ?>>Alle Formate</a>
                                     <?php foreach ($this->seminar_conducting_method as  $key => $method) : ?>
-                                        <?php if ($key == 0) : ?>
-                                            <?php if (empty($_GET['method'])) : ?>
-                                                <a href="<?php echo $this->current_link . '?type=' . $_GET['type']; ?>" class="active"><?php echo $method->name; ?></a>
-                                            <?php else : ?>
-                                                <a href="<?php echo $this->current_link . '?type=' . $_GET['type']; ?>" <?php echo ($_GET['method'] == $method->slug ? 'class="active"' : '') ?>><?php echo $method->name; ?></a>
-                                            <?php endif; ?>
-                                        <?php else : ?>
-                                            <a href="<?php echo $this->current_link . '?type=' . $_GET['type'] . '&method=' . $method->slug; ?>" <?php echo ($_GET['method'] == $method->slug ? 'class="active"' : '') ?>><?php echo $method->name; ?></a>
-                                        <?php endif; ?>
+                                        <a href="<?php echo $this->current_link . '?type=' . $_GET['type'] . '&method=' . $method->slug; ?>" <?php echo ($_GET['method'] == $method->slug ? 'class="active"' : '') ?>><?php echo $method->name; ?></a>
                                     <?php endforeach; ?>
                                 <?php endif; ?>
                             </div>

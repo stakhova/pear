@@ -11,6 +11,10 @@ class Single_Course_Page_Form_Section
         $this->certificate = $main_options['certificate'];
         $this->term = wp_get_post_terms(get_the_ID(), 'course_type')[0]->name ?? '';
 
+        $this->form_title = get_field('section_form')['title'] ? get_field('section_form')['title'] : 'Anmeldung zum Kurs';
+        $this->button_text = get_field('section_form')['button_text'] ? get_field('section_form')['button_text'] : 'Platz sichern';
+
+
         $this->price_text = get_field('additional_texts', Page_Option::get_ID())['price_text'];
     }
 
@@ -21,7 +25,7 @@ class Single_Course_Page_Form_Section
             <div class="container">
                 <div class="section__form grey registration">
                     <div class="section__form-info">
-                        <h3 class="section__form-title">Anmeldung zum Kurs</h3>
+                        <h3 class="section__form-title"><?php echo $this->form_title; ?></h3>
                         <div class="registration__list">
                             <?php if (!empty($this->theme)) : ?>
                                 <div class="registration__item">
@@ -102,7 +106,7 @@ class Single_Course_Page_Form_Section
                         <?php endif; ?>
                         <div class="form__button">
                             <button class="section__button primary " data-price="<?php echo $this->price; ?>">
-                                <p>Platz sichern</p>
+                                <p><?php echo $this->button_text; ?></p>
                                 <div class="price"><span><?php echo $this->price; ?></span> Euro</div>
                             </button>
                             <!-- <div class="form__button-counter">

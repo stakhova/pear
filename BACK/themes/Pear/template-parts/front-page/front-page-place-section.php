@@ -14,6 +14,10 @@ class Front_Page_Place_Section
         $this->form_title = $section_form['title'];
         $this->form_text = $section_form['text'];
         $this->policy_text = $section_form['policy_text'];
+        $this->name = $section_form['Name'];
+        $this->email = $section_form['Email'];
+        $this->field_text = $section_form['field_text'];
+        $this->field_text_placeholder = $section_form['field_text_placeholder'];
     }
 
     public function render()
@@ -131,13 +135,13 @@ class Front_Page_Place_Section
                     <form action="" class="form form__seminar">
                         <input type="hidden" name="action" value="front_request">
                         <div class="form__input">
-                            <label>voller Name</label>
+                            <label><?php echo $this->name; ?></label>
                             <div class="form__input-wrap">
                                 <input type="text" name="name" placeholder="Max Mustermann">
                             </div>
                         </div>
                         <div class="form__input">
-                            <label>E-Mail</label>
+                            <label><?php echo $this->email; ?></label>
                             <div class="form__input-wrap">
                                  <input type="text" name="email" placeholder="example@mail.com">
                             </div>
@@ -149,9 +153,9 @@ class Front_Page_Place_Section
                             </div>
                         </div>
                         <div class="form__input textarea">
-                            <label>Deine Anfrage</label>
+                            <label><?php echo $this->field_text; ?></label>
                             <div class="form__input-wrap">
-                                <textarea name="message" placeholder="Ich möchte..."></textarea>
+                                <textarea name="message" placeholder="<?php echo $this->field_text_placeholder; ?>"></textarea>
                             </div>
                         </div>
                         <div class="form__checkbox">

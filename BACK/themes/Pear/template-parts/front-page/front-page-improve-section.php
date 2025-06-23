@@ -30,7 +30,7 @@ class Front_Page_Improve_Section
                         <form class="section__search">
                             <input type="hidden" name="post_type" value="course">
                             <div class="section__search-input">
-                                <input type="text" name="s" placeholder="Seminar suchen…">
+                                <input type="text" name="s" placeholder="Angebote suchen…">
                             </div>
                             <button><span>Suche</span></button>
                         </form>

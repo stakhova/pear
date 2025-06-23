@@ -64,15 +64,6 @@ class Search_Page_Search_Section
                         'operator' => 'IN',
                     ),
                 );
-            } else {
-                $args['tax_query'][] = array(
-                    array(
-                        'taxonomy' => 'seminar_conducting_method',
-                        'field'    => 'slug',
-                        'terms'    => array($this->seminar_conducting_method[0]->slug),
-                        'operator' => 'IN',
-                    ),
-                );
             }
         }
 
@@ -133,7 +124,7 @@ class Search_Page_Search_Section
                                     $seminars_type = $_GET['seminars_type'] ?? null;
                                     ?>
                                     <a href="<?php echo add_query_params($this->current_link, $base_params); ?>"
-                                        class="<?php echo (empty($seminars_method) && empty($seminars_type)) ? 'active' : ''; ?>">Alle Typen</a>
+                                        class="<?php echo (empty($seminars_type)) ? 'active' : ''; ?>">Alle Typen</a>
                                     <?php foreach ($this->seminar_type as $type) :
                                         $params = array_merge($base_params, ['seminars_type' => $type->slug]);
                                         if (!empty($seminars_method)) {
@@ -149,17 +140,23 @@ class Search_Page_Search_Section
 
                                 <!-- Методи проведення -->
                                 <div class="seminar__radio-item seminar__radio-two choose">
+                                    <?php
+                                    $base_params = ['s' => $_GET['s'], 'post_type' => $_GET['post_type']];
+                                    $seminars_method = $_GET['seminars_method'] ?? null;
+                                    $seminars_type = $_GET['seminars_type'] ?? null;
+                                    ?>
+                                    <a href="<?php echo add_query_params($this->current_link, $base_params); ?>"
+                                        class="<?php echo (empty($seminars_method)) ? 'active' : ''; ?>">Alle Formate</a>
                                     <?php foreach ($this->seminar_conducting_method as $key => $method) :
-                                        $params = $base_params;
+                                        $params = array_merge($base_params, ['seminars_method' => $method->slug]);
+
                                         if (!empty($seminars_type)) {
                                             $params['seminars_type'] = $seminars_type;
                                         }
-                                        if ($key != 0) {
-                                            $params['seminars_method'] = $method->slug;
-                                        }
+
                                     ?>
                                         <a href="<?php echo add_query_params($this->current_link, $params); ?>"
-                                            class="<?php echo ($_GET['seminars_method'] == $method->slug || ($key == 0 && empty($seminars_method))) ? 'active' : ''; ?>">
+                                            class="<?php echo ($_GET['seminars_method'] == $method->slug ) ? 'active' : ''; ?>">
                                             <?php echo $method->name; ?>
                                         </a>
                                     <?php endforeach; ?>
@@ -210,7 +207,11 @@ class Search_Page_Search_Section
                         <?php if (!empty($this->query->posts)) : ?>
                             <?php foreach ($this->query->posts as $post) : ?>
                                 <a href="<?php echo get_the_permalink($post->ID); ?>" class="search__item">
-                                    <p><?php echo ucfirst(get_post_type($post->ID)); ?></p>
+                                    <?php if (get_post_type($post->ID) == 'course') : ?>
+                                        <p>Auditorenfortbildung</p>
+                                    <?php else : ?>
+                                        <p><?php echo ucfirst(get_post_type($post->ID)); ?></p>
+                                    <?php endif; ?>
                                     <h3><?php echo get_the_title($post->ID); ?></h3>
                                 </a>
                             <?php endforeach; ?>
