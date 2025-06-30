@@ -12,7 +12,7 @@ class Single_Course_Page_Form_Section
         $this->term = wp_get_post_terms(get_the_ID(), 'course_type')[0]->name ?? '';
 
         $this->form_title = get_field('section_form')['title'] ? get_field('section_form')['title'] : 'Anmeldung';
-        $this->button_text = get_field('section_form')['button_text'] ? get_field('section_form')['button_text'] : 'Platz sichern';
+        $this->button_text = get_field('section_form')['button_text'] ? get_field('section_form')['button_text'] : 'Anmelden und bezahlen';
 
 
         $this->price_text = get_field('additional_texts', Page_Option::get_ID())['price_text'];
