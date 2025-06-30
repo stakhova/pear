@@ -11,7 +11,7 @@ class Single_Course_Page_Form_Section
         $this->certificate = $main_options['certificate'];
         $this->term = wp_get_post_terms(get_the_ID(), 'course_type')[0]->name ?? '';
 
-        $this->form_title = get_field('section_form')['title'] ? get_field('section_form')['title'] : 'Anmeldung zum Kurs';
+        $this->form_title = get_field('section_form')['title'] ? get_field('section_form')['title'] : 'Anmeldung';
         $this->button_text = get_field('section_form')['button_text'] ? get_field('section_form')['button_text'] : 'Platz sichern';
 
 
@@ -55,7 +55,7 @@ class Single_Course_Page_Form_Section
                         <input type="hidden" name="course_id" value="<?php echo get_the_ID(); ?>">
                         <!-- <input type="hidden" name="count" value="1"> -->
                         <div class="form__input">
-                            <label>voller Name</label>
+                            <label>Vorname</label>
                             <div class="form__input-wrap">
                                 <input type="text" name="name" placeholder="Max Mustermann">
                             </div>
@@ -92,7 +92,7 @@ class Single_Course_Page_Form_Section
                                 </div>
                             </div>
                             <div class="form__input">
-                                <label>E-Mail</label>
+                                <label>E-Mail-Adresse</label>
                                 <div class="form__input-wrap">
                                     <input type="text" name="email" placeholder="example@mail.com">
                                 </div>
