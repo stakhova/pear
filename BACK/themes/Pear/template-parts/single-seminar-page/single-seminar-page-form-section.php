@@ -50,7 +50,7 @@ class Single_Seminar_Page_Form_Section
                             </div>
                             <div class="registration__flex">
                                 <div class="registration__item">
-                                    <span class="registration__item-title">Dates</span>
+                                    <span class="registration__item-title">Datum</span>
                                     <?php foreach ($this->dates as $date) : ?>
                                         <?php
                                         $germanMonths = [
@@ -75,7 +75,7 @@ class Single_Seminar_Page_Form_Section
                                 </div>
 
                                 <div class="registration__item">
-                                    <span class="registration__item-title">Time</span>
+                                    <span class="registration__item-title">Zeit</span>
                                     <?php foreach ($this->dates as $date) : ?>
                                         <p class="registration__item-text"><?php echo $date['time']; ?></p>
                                     <?php endforeach; ?>
@@ -100,7 +100,7 @@ class Single_Seminar_Page_Form_Section
                         <input type="hidden" name="action" value="seminar_request">
                         <input type="hidden" name="count" value="1">
                         <div class="form__input">
-                            <label>voller Name</label>
+                            <label>Vorname und Nachname</label>
                             <div class="form__input-wrap">
                                 <input type="text" name="name" placeholder="Max Mustermann">
                             </div>

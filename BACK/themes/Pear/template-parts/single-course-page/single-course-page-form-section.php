@@ -55,7 +55,7 @@ class Single_Course_Page_Form_Section
                         <input type="hidden" name="course_id" value="<?php echo get_the_ID(); ?>">
                         <!-- <input type="hidden" name="count" value="1"> -->
                         <div class="form__input">
-                            <label>Vorname</label>
+                            <label>Vorname und Nachname</label>
                             <div class="form__input-wrap">
                                 <input type="text" name="name" placeholder="Max Mustermann">
                             </div>

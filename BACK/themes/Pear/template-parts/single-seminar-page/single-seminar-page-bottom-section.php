@@ -33,7 +33,7 @@ class Single_Seminar_Page_Bottom_Section
                     <form action="" class="form form__seminar">
                         <input type="hidden" name="action" value="seminars_request">
                         <div class="form__input">
-                            <label>voller Name</label>
+                            <label>Vorname und Nachname</label>
                             <div class="form__input-wrap">
                                 <input type="text" name="name" placeholder="Max Mustermann">
                             </div>
@@ -51,7 +51,7 @@ class Single_Seminar_Page_Bottom_Section
                             </div>
                         </div>
                         <div class="form__input textarea">
-                            <label>Deine Anfrage</label>
+                            <label>Ihre Anfrage</label>
                             <div class="form__input-wrap">
                                 <textarea name="message" placeholder="Ich möchte..."></textarea>
                             </div>
