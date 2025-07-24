@@ -102,7 +102,7 @@ function validateForm(form, func, noreset) {
             policy_terms: {
                 required: true
             },
-            company: {
+            post_code: {
                 required: true
             },
             address: {
@@ -112,6 +112,9 @@ function validateForm(form, func, noreset) {
                 required: true
             },
             post: {
+                required: true
+            },
+            message: {
                 required: true
             }
 
@@ -128,7 +131,7 @@ function validateForm(form, func, noreset) {
             policy_terms: {
                 required: "Sie müssen die Datenschutzerklärung akzeptieren"
             },
-            company: {
+            post_code: {
                 required: "Dieses Feld ist erforderlich"
             },
             address: {
@@ -138,6 +141,9 @@ function validateForm(form, func, noreset) {
                 required: "Dieses Feld ist erforderlich"
             },
             post: {
+                required: "Dieses Feld ist erforderlich"
+            },
+            message: {
                 required: "Dieses Feld ist erforderlich"
             }
         },

@@ -56,11 +56,11 @@ class Front_Page_Place_Section
                         <div class="swiper card__slider">
                             <div class="card__list swiper-wrapper">
                                 <?php foreach ($this->seminars as $post) : ?>
-                                    <a href="<?php echo get_the_permalink($post->ID); ?>" class="card__item <?php echo (get_field('main_options', $post->ID)['shortly'] ? 'green' : '') ?> swiper-slide">
+                                    <a href="<?php echo get_the_permalink($post->ID); ?>" class="card__item <?php echo (get_field('main_options', $post->ID)['shortly'] ? 'green' : 'grey') ?> swiper-slide">
                                         <div class="card__img img">
                                             <img src="<?php echo get_the_post_thumbnail_url($post->ID); ?>" alt="">
                                             <span class="card__flag right"><?php echo get_field('main_options', $post->ID)['number_of_seats']; ?> Plätze</span>
-                                            <?php if (get_field('shortly', $post->ID)['shortly']) : ?>
+                                            <?php if (get_field('main_options', $post->ID)['shortly']) : ?>
                                                 <span class="card__flag left"> in Kürze</span>
                                             <?php endif; ?>
                                         </div>
@@ -102,7 +102,9 @@ class Front_Page_Place_Section
                                         <div class="card__info">
                                             <div class="card__date">
                                                 <span><?php echo $formattedDate; ?></span>
-                                                <span class="card__date-loc <?php echo (get_field('main_options', $post->ID)['venue'] == 'online') ? 'online' : '' ?>"><?php echo get_field('main_options', $post->ID)['venue']; ?></span>
+                                                <?php if (!empty(get_field('main_options', $post->ID)['venue'])) : ?>
+                                                    <span class="card__date-loc <?php echo (get_field('main_options', $post->ID)['venue'] == 'online') ? 'online' : '' ?>"><?php echo get_field('main_options', $post->ID)['venue']; ?></span>
+                                                <?php endif; ?>
                                             </div>
                                             <h3 class="card__title"><?php echo get_the_title($post->ID); ?>
                                             </h3>
@@ -143,7 +145,7 @@ class Front_Page_Place_Section
                         <div class="form__input">
                             <label><?php echo $this->email; ?></label>
                             <div class="form__input-wrap">
-                                 <input type="text" name="email" placeholder="example@mail.com">
+                                <input type="text" name="email" placeholder="example@mail.com">
                             </div>
                         </div>
                         <div class="form__input">

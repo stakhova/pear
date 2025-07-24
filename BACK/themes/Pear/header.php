@@ -29,7 +29,7 @@
     $menu = $header['menu'];
     $button = $header['button'];
     ?>
-    <?php if (Page_Failed_Payment::get_ID() == get_the_ID() or Page_Successful_Payment::get_ID() == get_the_ID() or (in_array(get_the_ID(), Page_Text::get_IDs())) or is_singular('course') or is_singular('seminar')) : ?>
+    <?php if ((Page_Failed_Payment::get_ID() == get_the_ID() or Page_Successful_Payment::get_ID() == get_the_ID() or (in_array(get_the_ID(), Page_Text::get_IDs())) or is_singular('course') or is_singular('seminar')) and ($_GET['action'] != 'search_header')) : ?>
         <div class="wrap wrap__black">
         <?php else : ?>
             <?php if (Page_Calendar::get_ID() == get_the_ID()) : ?>
@@ -65,7 +65,7 @@
                             <div class="header__right">
                                 <div class="header__search-wrap">
                                     <div class="container">
-                                        <form class="header__search">
+                                        <form class="header__search" action="<?php echo home_url(); ?>">
                                             <input type="hidden" name="action" value="search_header">
                                             <div class="header__search-input">
                                                 <input type="text" name="s" placeholder="Suche auf der Website...">

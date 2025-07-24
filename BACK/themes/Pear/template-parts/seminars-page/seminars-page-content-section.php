@@ -68,7 +68,7 @@ class Seminars_Page_Content_Section
                     'operator' => 'IN',
                 ),
             );
-        } 
+        }
 
         $this->query = new WP_Query($args);
         wp_reset_postdata();
@@ -162,31 +162,33 @@ class Seminars_Page_Content_Section
 
                     </div>
                 </div>
-                
-                    <div class="seminar__card">
-                        <div class="card__list seminar__card-list ">
-                            <?php if (!empty($this->queried_object->description)) : ?>
-                                <a class="card__item firsc-card">
-                                    <div class="card__hover">
-                                        <div class="card__hover-content content">
-                                            <h3><?php echo $this->queried_object->name; ?></h3>
-                                            <p><?php echo $this->queried_object->description; ?></p>
 
-                                        </div>
+                <div class="seminar__card">
+                    <div class="card__list seminar__card-list ">
+                        <?php if (!empty($this->queried_object->description)) : ?>
+                            <a class="card__item firsc-card">
+                                <div class="card__hover">
+                                    <div class="card__hover-content content">
+                                        <h3><?php echo $this->queried_object->name; ?></h3>
+                                        <p><?php echo $this->queried_object->description; ?></p>
+
                                     </div>
-                                </a>
-                            <?php endif; ?>
-                            <?php if (!empty($this->query->posts)) : ?>
+                                </div>
+                            </a>
+                        <?php endif; ?>
+                        <?php if (!empty($this->query->posts)) : ?>
                             <?php foreach ($this->query->posts as $post) : ?>
-                                <?php if (has_term('exklusiv','seminar_type',$post->ID)) : ?>
+                                <?php if (has_term('exklusiv', 'seminar_type', $post->ID)) : ?>
                                     <a href="<?php echo get_the_permalink($post->ID); ?>" class="card__item yellow">
                                     <?php else : ?>
-                                        <a href="<?php echo get_the_permalink($post->ID); ?>" class="card__item <?php echo (get_field('main_options', $post->ID)['shortly'] ? 'green' : 'gray') ?>  ">
+                                        <a href="<?php echo get_the_permalink($post->ID); ?>" class="card__item <?php echo (get_field('main_options', $post->ID)['shortly'] ? 'green' : 'grey') ?>  ">
                                         <?php endif; ?>
                                         <div class="card__img img">
                                             <img src="<?php echo get_the_post_thumbnail_url($post->ID); ?>" alt="">
                                             <span class="card__flag right"><?php echo get_field('main_options', $post->ID)['number_of_seats']; ?> Plätze</span>
-                                            <span class="card__flag left"> in Kürze</span>
+                                            <?php if (get_field('main_options', $post->ID)['shortly']) : ?>
+                                                <span class="card__flag left"> in Kürze</span>
+                                            <?php endif; ?>
                                         </div>
                                         <?php
                                         $germanMonths = [
@@ -226,25 +228,29 @@ class Seminars_Page_Content_Section
                                         <div class="card__info">
                                             <div class="card__date">
                                                 <span><?php echo $formattedDate; ?></span>
-                                                <span class="card__date-loc <?php echo (get_field('main_options', $post->ID)['venue'] == 'online') ? 'online' : '' ?>"><?php echo get_field('main_options', $post->ID)['venue']; ?></span>
+                                                <?php if (!empty(get_field('main_options', $post->ID)['venue'])) : ?>
+                                                    <span class="card__date-loc <?php echo (get_field('main_options', $post->ID)['venue'] == 'online') ? 'online' : '' ?>"><?php echo get_field('main_options', $post->ID)['venue']; ?></span>
+                                                <?php endif; ?>
                                             </div>
                                             <h3 class="card__title"><?php echo get_the_title($post->ID); ?>
                                             </h3>
                                         </div>
-                                        <?php //if (!empty(get_field('main_options',$post->ID)['short_description'])) : ?>
-                                            <!-- <div class="card__hover">
+                                        <?php //if (!empty(get_field('main_options',$post->ID)['short_description'])) : 
+                                        ?>
+                                        <!-- <div class="card__hover">
                                                 <div class="card__hover-content content">
                                                     <h3><?php echo get_the_title($post->ID); ?></h3>
-                                                    <?php echo get_field('main_options',$post->ID)['short_description']; ?>
+                                                    <?php echo get_field('main_options', $post->ID)['short_description']; ?>
                                                 </div>
 
                                             </div> -->
-                                        <?php //endif; ?>
+                                        <?php //endif; 
+                                        ?>
                                         </a>
                                     <?php endforeach; ?>
-                                    <?php endif; ?>
-                        </div>
+                                <?php endif; ?>
                     </div>
+                </div>
                 <div class="section__form">
                     <div class="section__form-info">
                         <div class="section__more">

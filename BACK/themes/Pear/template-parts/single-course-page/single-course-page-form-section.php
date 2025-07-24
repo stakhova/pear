@@ -68,9 +68,9 @@ class Single_Course_Page_Form_Section
                                 </div>
                             </div>
                             <div class="form__input">
-                                <label>Adresse der Firma</label>
+                                <label>Adresse</label>
                                 <div class="form__input-wrap">
-                                    <input type="text" name="address" placeholder="Geschäftsadresse">
+                                    <input type="text" name="address" placeholder="Adresse">
                                 </div>
                             </div>
                             <div class="form__input">

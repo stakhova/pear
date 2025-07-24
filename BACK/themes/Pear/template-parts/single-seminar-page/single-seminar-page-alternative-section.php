@@ -10,7 +10,7 @@ class Single_Seminar_Page_Alternative_Section
         $args_all = array(
             'post_type' => 'seminar',
             'posts_per_page' => 99999,
-            'post__not_in'   => array(get_the_ID()), 
+            'post__not_in'   => array(get_the_ID()),
             's'              => $this->current_post_title,
         );
 
@@ -27,7 +27,7 @@ class Single_Seminar_Page_Alternative_Section
                     'operator' => 'IN',
                 )
             ),
-            'post__not_in'   => array(get_the_ID()), 
+            'post__not_in'   => array(get_the_ID()),
             's'              => $this->current_post_title,
         );
 
@@ -44,12 +44,11 @@ class Single_Seminar_Page_Alternative_Section
                     'operator' => 'IN',
                 )
             ),
-            'post__not_in'   => array(get_the_ID()), 
+            'post__not_in'   => array(get_the_ID()),
             's'              => $this->current_post_title,
         );
 
         $this->query_ex = new WP_Query($args_ex);
-
     }
 
     public function render()
@@ -85,12 +84,14 @@ class Single_Seminar_Page_Alternative_Section
                                             <?php if (has_term('exklusiv', 'seminar_type', $post->ID)) : ?>
                                                 <a href="<?php echo get_the_permalink($post->ID); ?>" class="card__item yellow">
                                                 <?php else : ?>
-                                                    <a href="<?php echo get_the_permalink($post->ID); ?>" class="card__item <?php echo (get_field('main_options', $post->ID)['shortly'] ? 'green' : 'gray') ?>  ">
+                                                    <a href="<?php echo get_the_permalink($post->ID); ?>" class="card__item <?php echo (get_field('main_options', $post->ID)['shortly'] ? 'green' : 'grey') ?>  ">
                                                     <?php endif; ?>
                                                     <div class="card__img img">
                                                         <img src="<?php echo get_the_post_thumbnail_url($post->ID); ?>" alt="">
                                                         <span class="card__flag right"><?php echo get_field('main_options', $post->ID)['number_of_seats']; ?> Plätze</span>
-                                                        <span class="card__flag left"> in Kürze</span>
+                                                        <?php if (get_field('main_options', $post->ID)['shortly']) : ?>
+                                                            <span class="card__flag left"> in Kürze</span>
+                                                        <?php endif; ?>
                                                     </div>
                                                     <?php
                                                     $germanMonths = [
@@ -130,20 +131,24 @@ class Single_Seminar_Page_Alternative_Section
                                                     <div class="card__info">
                                                         <div class="card__date">
                                                             <span><?php echo $formattedDate; ?></span>
-                                                            <span class="card__date-loc <?php echo (get_field('main_options', $post->ID)['venue'] == 'online') ? 'online' : '' ?>"><?php echo get_field('main_options', $post->ID)['venue']; ?></span>
+                                                            <?php if (!empty(get_field('main_options', $post->ID)['venue'])) : ?>
+                                                                <span class="card__date-loc <?php echo (get_field('main_options', $post->ID)['venue'] == 'online') ? 'online' : '' ?>"><?php echo get_field('main_options', $post->ID)['venue']; ?></span>
+                                                            <?php endif; ?>
                                                         </div>
                                                         <h3 class="card__title"><?php echo get_the_title($post->ID); ?>
                                                         </h3>
                                                     </div>
-                                                    <?php //if (!empty(get_field('main_options', $post->ID)['short_description'])) : ?>
-                                                        <!-- <div class="card__hover">
+                                                    <?php //if (!empty(get_field('main_options', $post->ID)['short_description'])) : 
+                                                    ?>
+                                                    <!-- <div class="card__hover">
                                                             <div class="card__hover-content content">
                                                                 <h3><?php echo get_the_title($post->ID); ?></h3>
                                                                 <?php echo get_field('main_options', $post->ID)['short_description']; ?>
                                                             </div>
 
                                                         </div> -->
-                                                    <?php //endif; ?>
+                                                    <?php //endif; 
+                                                    ?>
                                                     </a>
                                                 <?php endforeach; ?>
 
@@ -158,12 +163,14 @@ class Single_Seminar_Page_Alternative_Section
                                             <?php if (has_term('exklusiv', 'seminar_type', $post->ID)) : ?>
                                                 <a href="<?php echo get_the_permalink($post->ID); ?>" class="card__item yellow">
                                                 <?php else : ?>
-                                                    <a href="<?php echo get_the_permalink($post->ID); ?>" class="card__item <?php echo (get_field('main_options', $post->ID)['shortly'] ? 'green' : 'gray') ?>  ">
+                                                    <a href="<?php echo get_the_permalink($post->ID); ?>" class="card__item <?php echo (get_field('main_options', $post->ID)['shortly'] ? 'green' : 'grey') ?>  ">
                                                     <?php endif; ?>
                                                     <div class="card__img img">
                                                         <img src="<?php echo get_the_post_thumbnail_url($post->ID); ?>" alt="">
                                                         <span class="card__flag right"><?php echo get_field('main_options', $post->ID)['number_of_seats']; ?> Plätze</span>
-                                                        <span class="card__flag left"> in Kürze</span>
+                                                        <?php if (get_field('main_options', $post->ID)['shortly']) : ?>
+                                                            <span class="card__flag left"> in Kürze</span>
+                                                        <?php endif; ?>
                                                     </div>
                                                     <?php
                                                     $germanMonths = [
@@ -203,25 +210,29 @@ class Single_Seminar_Page_Alternative_Section
                                                     <div class="card__info">
                                                         <div class="card__date">
                                                             <span><?php echo $formattedDate; ?></span>
-                                                            <span class="card__date-loc <?php echo (get_field('main_options', $post->ID)['venue'] == 'online') ? 'online' : '' ?>"><?php echo get_field('main_options', $post->ID)['venue']; ?></span>
+                                                            <?php if (!empty(get_field('main_options', $post->ID)['venue'])) : ?>
+                                                                <span class="card__date-loc <?php echo (get_field('main_options', $post->ID)['venue'] == 'online') ? 'online' : '' ?>"><?php echo get_field('main_options', $post->ID)['venue']; ?></span>
+                                                            <?php endif; ?>
                                                         </div>
                                                         <h3 class="card__title"><?php echo get_the_title($post->ID); ?>
                                                         </h3>
                                                     </div>
-                                                    <?php //if (!empty(get_field('main_options', $post->ID)['short_description'])) : ?>
-                                                        <!-- <div class="card__hover">
+                                                    <?php //if (!empty(get_field('main_options', $post->ID)['short_description'])) : 
+                                                    ?>
+                                                    <!-- <div class="card__hover">
                                                             <div class="card__hover-content content">
                                                                 <h3><?php echo get_the_title($post->ID); ?></h3>
                                                                 <?php echo get_field('main_options', $post->ID)['short_description']; ?>
                                                             </div>
 
                                                         </div> -->
-                                                    <?php //endif; ?>
+                                                    <?php //endif; 
+                                                    ?>
                                                     </a>
                                                 <?php endforeach; ?>
 
                                     </div>
-                                    <button  class="section__button grey">Mehr anzeigen</button>
+                                    <button class="section__button grey">Mehr anzeigen</button>
                                 </div>
                             <?php endif; ?>
                             <?php if (!empty($this->query_ex->posts)) : ?>
@@ -231,12 +242,14 @@ class Single_Seminar_Page_Alternative_Section
                                             <?php if (has_term('exklusiv', 'seminar_type', $post->ID)) : ?>
                                                 <a href="<?php echo get_the_permalink($post->ID); ?>" class="card__item yellow">
                                                 <?php else : ?>
-                                                    <a href="<?php echo get_the_permalink($post->ID); ?>" class="card__item <?php echo (get_field('main_options', $post->ID)['shortly'] ? 'green' : 'gray') ?>  ">
+                                                    <a href="<?php echo get_the_permalink($post->ID); ?>" class="card__item <?php echo (get_field('main_options', $post->ID)['shortly'] ? 'green' : 'grey') ?>  ">
                                                     <?php endif; ?>
                                                     <div class="card__img img">
                                                         <img src="<?php echo get_the_post_thumbnail_url($post->ID); ?>" alt="">
                                                         <span class="card__flag right"><?php echo get_field('main_options', $post->ID)['number_of_seats']; ?> Plätze</span>
-                                                        <span class="card__flag left"> in Kürze</span>
+                                                        <?php if (get_field('main_options', $post->ID)['shortly']) : ?>
+                                                            <span class="card__flag left"> in Kürze</span>
+                                                        <?php endif; ?>
                                                     </div>
                                                     <?php
                                                     $germanMonths = [
@@ -276,20 +289,24 @@ class Single_Seminar_Page_Alternative_Section
                                                     <div class="card__info">
                                                         <div class="card__date">
                                                             <span><?php echo $formattedDate; ?></span>
-                                                            <span class="card__date-loc <?php echo (get_field('main_options', $post->ID)['venue'] == 'online') ? 'online' : '' ?>"><?php echo get_field('main_options', $post->ID)['venue']; ?></span>
+                                                            <?php if (!empty(get_field('main_options', $post->ID)['venue'])) : ?>
+                                                                <span class="card__date-loc <?php echo (get_field('main_options', $post->ID)['venue'] == 'online') ? 'online' : '' ?>"><?php echo get_field('main_options', $post->ID)['venue']; ?></span>
+                                                            <?php endif; ?>
                                                         </div>
                                                         <h3 class="card__title"><?php echo get_the_title($post->ID); ?>
                                                         </h3>
                                                     </div>
-                                                    <?php //if (!empty(get_field('main_options', $post->ID)['short_description'])) : ?>
-                                                        <!-- <div class="card__hover">
+                                                    <?php //if (!empty(get_field('main_options', $post->ID)['short_description'])) : 
+                                                    ?>
+                                                    <!-- <div class="card__hover">
                                                             <div class="card__hover-content content">
                                                                 <h3><?php echo get_the_title($post->ID); ?></h3>
                                                                 <?php echo get_field('main_options', $post->ID)['short_description']; ?>
                                                             </div>
 
                                                         </div> -->
-                                                    <?php //endif; ?>
+                                                    <?php //endif; 
+                                                    ?>
                                                     </a>
                                                 <?php endforeach; ?>
 

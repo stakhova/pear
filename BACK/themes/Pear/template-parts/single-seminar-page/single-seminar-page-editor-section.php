@@ -2,7 +2,8 @@
 
 class Single_Seminar_Page_Editor_Section
 {
-    public function __construct() {
+    public function __construct()
+    {
         $section_editor = get_field('section_editor');
         $this->place = $section_editor['place'];
         $this->map_link = $section_editor['map_link'];
@@ -30,13 +31,13 @@ class Single_Seminar_Page_Editor_Section
                             </div>
                         <?php endforeach; ?>
                     <?php endif; ?>
-        
+
                     <?php if (!empty($this->certificate)) : ?>
                         <div class="editor__item">
                             <div class="editor__title">Zertifikat</div>
                             <div class="editor__back">
                                 <div class="img">
-                                    <img src="<?=TEMPLATE_PATH?>/img/content.png" alt="">
+                                    <img src="<?= TEMPLATE_PATH ?>/img/content.png" alt="">
                                 </div>
                                 <h2 class="editor__title"><?php echo $this->certificate; ?></h2>
                             </div>
@@ -63,65 +64,67 @@ class Single_Seminar_Page_Editor_Section
                             <?php endif; ?>
                         </div>
                     </div>
-                    <div class="editor__item">
-                        <div class="editor__title">Veranstaltungsort</div>
-                        <div class="editor__content">
-                            <p><?php echo $this->place; ?></p>
-                            <div class="contact__map editor__map">
-                                <div class="map__item" id="map"></div>
+                    <?php if (!empty($this->map['lat'])) : ?>
+                        <div class="editor__item">
+                            <div class="editor__title">Veranstaltungsort</div>
+                            <div class="editor__content">
+                                <p><?php echo $this->place; ?></p>
+                                <div class="contact__map editor__map">
+                                    <div class="map__item" id="map"></div>
 
-                                <script>
-                                    let mapIcon = '<?=TEMPLATE_PATH?>/img/map-loc.svg';
+                                    <script>
+                                        let mapIcon = '<?= TEMPLATE_PATH ?>/img/map-loc.svg';
 
-                                    <?php if (!empty($this->map['lat']) and !empty($this->map['lng'])) : ?>
-                                        let positionMaps = [{
-                                            lat: <?php echo $this->map['lat']; ?>,
-                                            lng: <?php echo $this->map['lng']; ?>,
-                                            text: '<a target="_blank" href="<?php echo $this->map_link; ?>">Explore on google maps</a>'
-                                        }];
+                                        <?php if (!empty($this->map['lat']) and !empty($this->map['lng'])) : ?>
+                                            let positionMaps = [{
+                                                lat: <?php echo $this->map['lat']; ?>,
+                                                lng: <?php echo $this->map['lng']; ?>,
+                                                text: '<a target="_blank" href="<?php echo $this->map_link; ?>">Explore on google maps</a>'
+                                            }];
                                         <?php else : ?>
 
-                                        let positionMaps = [{
-                                            lat: 48.5675581,
-                                            lng: 8.1525694,
-                                            text: '<a target="_blank" href="<?php echo $this->map_link; ?>">Explore on google maps</a>'
-                                        }];
-                                        console.log(positionMaps);
-                                    <?php endif; ?>
-                                    (g => {
-                                        var h, a, k, p = "The Google Maps JavaScript API",
-                                            c = "google",
-                                            l = "importLibrary",
-                                            q = "__ib__",
-                                            m = document,
-                                            b = window;
-                                        b = b[c] || (b[c] = {});
-                                        var d = b.maps || (b.maps = {}),
-                                            r = new Set,
-                                            e = new URLSearchParams,
-                                            u = () => h || (h = new Promise(async (f, n) => {
-                                                await (a = m.createElement("script"));
-                                                e.set("libraries", [...r] + "");
-                                                for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]);
-                                                e.set("callback", c + ".maps." + q);
-                                                a.src = `https://maps.${c}apis.com/maps/api/js?` + e;
-                                                d[q] = f;
-                                                a.onerror = () => h = n(Error(p + " could not load."));
-                                                a.nonce = m.querySelector("script[nonce]")?.nonce || "";
-                                                m.head.append(a)
-                                            }));
-                                        d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n))
-                                    })({
-                                        key: "AIzaSyDgGhu7gVtSqKxCC9tSywaqlPIpufe0CHs",
-                                        v: "weekly",
-                                    });
-                                </script>
+                                            let positionMaps = [{
+                                                lat: 48.5675581,
+                                                lng: 8.1525694,
+                                                text: '<a target="_blank" href="<?php echo $this->map_link; ?>">Explore on google maps</a>'
+                                            }];
+                                            console.log(positionMaps);
+                                        <?php endif; ?>
+                                            (g => {
+                                                var h, a, k, p = "The Google Maps JavaScript API",
+                                                    c = "google",
+                                                    l = "importLibrary",
+                                                    q = "__ib__",
+                                                    m = document,
+                                                    b = window;
+                                                b = b[c] || (b[c] = {});
+                                                var d = b.maps || (b.maps = {}),
+                                                    r = new Set,
+                                                    e = new URLSearchParams,
+                                                    u = () => h || (h = new Promise(async (f, n) => {
+                                                        await (a = m.createElement("script"));
+                                                        e.set("libraries", [...r] + "");
+                                                        for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]);
+                                                        e.set("callback", c + ".maps." + q);
+                                                        a.src = `https://maps.${c}apis.com/maps/api/js?` + e;
+                                                        d[q] = f;
+                                                        a.onerror = () => h = n(Error(p + " could not load."));
+                                                        a.nonce = m.querySelector("script[nonce]")?.nonce || "";
+                                                        m.head.append(a)
+                                                    }));
+                                                d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n))
+                                            })({
+                                                key: "AIzaSyDgGhu7gVtSqKxCC9tSywaqlPIpufe0CHs",
+                                                v: "weekly",
+                                            });
+                                    </script>
 
+
+                                </div>
 
                             </div>
-
                         </div>
-                    </div>
+                    <?php endif; ?>
                 </div>
             </div>
 
