@@ -13,7 +13,7 @@ require_once(get_template_directory() . '/vendor/autoload.php');
 
 function my_acf_google_map_api( $api ){
     
-    $api['key'] = 'AIzaSyDgGhu7gVtSqKxCC9tSywaqlPIpufe0CHs';
+    $api['key'] = 'AIzaSyCEJB7n28bLX63v_VlYbKj2JZ5iu8PN5iI';
     
     return $api;
     

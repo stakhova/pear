@@ -114,7 +114,7 @@ class Single_Seminar_Page_Editor_Section
                                                     }));
                                                 d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n))
                                             })({
-                                                key: "AIzaSyDgGhu7gVtSqKxCC9tSywaqlPIpufe0CHs",
+                                                key: "AIzaSyCEJB7n28bLX63v_VlYbKj2JZ5iu8PN5iI",
                                                 v: "weekly",
                                             });
                                     </script>
