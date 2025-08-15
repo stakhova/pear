@@ -33,11 +33,11 @@ class Stripe_Integration
             'line_items' => [
                 [
                     'price_data' => [
-                        'currency' => 'usd',
+                        'currency' => 'eur',
                         'product_data' => [
                             'name' => 'Order - ' . $order_id,
                         ],
-                        'unit_amount' => $price * 100,
+                        'unit_amount' => $price * 1.19 * 100,
                     ],
                     'quantity' => 1,
                 ],

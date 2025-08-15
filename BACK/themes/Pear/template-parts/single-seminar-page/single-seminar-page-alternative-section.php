@@ -89,7 +89,13 @@ class Single_Seminar_Page_Alternative_Section
                                                     <div class="card__img img">
                                                         <img src="<?php echo get_the_post_thumbnail_url($post->ID); ?>" alt="">
                                                         <span class="card__flag right"><?php echo get_field('main_options', $post->ID)['number_of_seats']; ?> Plätze</span>
-                                                        <?php if (get_field('main_options', $post->ID)['shortly']) : ?>
+                                                        <?php
+                                                        $date_string = get_field('main_options', $post->ID)['dates'][0]['date'];
+                                                        $date = DateTime::createFromFormat('d/m/Y', $date_string);
+                                                        $current_date = new DateTime();
+                                                        $interval = $current_date->diff($date);
+                                                        ?>
+                                                        <?php if ($interval->days <= 21) : ?>
                                                             <span class="card__flag left"> in Kürze</span>
                                                         <?php endif; ?>
                                                     </div>
@@ -168,7 +174,13 @@ class Single_Seminar_Page_Alternative_Section
                                                     <div class="card__img img">
                                                         <img src="<?php echo get_the_post_thumbnail_url($post->ID); ?>" alt="">
                                                         <span class="card__flag right"><?php echo get_field('main_options', $post->ID)['number_of_seats']; ?> Plätze</span>
-                                                        <?php if (get_field('main_options', $post->ID)['shortly']) : ?>
+                                                        <?php
+                                                        $date_string = get_field('main_options', $post->ID)['dates'][0]['date'];
+                                                        $date = DateTime::createFromFormat('d/m/Y', $date_string);
+                                                        $current_date = new DateTime();
+                                                        $interval = $current_date->diff($date);
+                                                        ?>
+                                                        <?php if ($interval->days <= 21) : ?>
                                                             <span class="card__flag left"> in Kürze</span>
                                                         <?php endif; ?>
                                                     </div>
@@ -247,7 +259,13 @@ class Single_Seminar_Page_Alternative_Section
                                                     <div class="card__img img">
                                                         <img src="<?php echo get_the_post_thumbnail_url($post->ID); ?>" alt="">
                                                         <span class="card__flag right"><?php echo get_field('main_options', $post->ID)['number_of_seats']; ?> Plätze</span>
-                                                        <?php if (get_field('main_options', $post->ID)['shortly']) : ?>
+                                                        <?php
+                                                        $date_string = get_field('main_options', $post->ID)['dates'][0]['date'];
+                                                        $date = DateTime::createFromFormat('d/m/Y', $date_string);
+                                                        $current_date = new DateTime();
+                                                        $interval = $current_date->diff($date);
+                                                        ?>
+                                                        <?php if ($interval->days <= 21) : ?>
                                                             <span class="card__flag left"> in Kürze</span>
                                                         <?php endif; ?>
                                                     </div>

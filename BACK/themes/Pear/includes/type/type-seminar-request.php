@@ -23,7 +23,7 @@ class Type_Seminar_Request
         $email = $_POST['email'];
         $seminar_id = $_POST['seminar_id'];
         $count = $_POST['count'];
-        
+
         $post_id = wp_insert_post(array(
             'post_type' => 'seminar_request',
             'post_status' => 'publish',
@@ -40,6 +40,7 @@ class Type_Seminar_Request
         update_field('status', 'new', $post_id);
         update_field('count', $count, $post_id);
         update_field('seminar_id', $seminar_id, $post_id);
+        update_field('seminar_name', get_the_title($seminar_id), $post_id);
 
         $price = get_field('main_options', $seminar_id)['price'] * $count;
         $redirect_url = Stripe_Integration::create_payment_link($post_id, $price, 'seminar');
@@ -111,6 +112,27 @@ class Type_Seminar_Request
                         'key' => 'field_675960asasfassafsafffasf3d95efa',
                         'label' => 'Seminar id',
                         'name' => 'seminar_id',
+                        'aria-label' => '',
+                        'type' => 'text',
+                        'instructions' => '',
+                        'required' => 0,
+                        'conditional_logic' => 0,
+                        'wrapper' => array(
+                            'width' => '',
+                            'class' => '',
+                            'id' => '',
+                        ),
+                        'default_value' => '',
+                        'maxlength' => '',
+                        'allow_in_bindings' => 0,
+                        'placeholder' => '',
+                        'prepend' => '',
+                        'append' => '',
+                    ),
+                    array(
+                        'key' => 'field_675960asasafawfsfassafsafffasf3d95efa',
+                        'label' => 'Seminar name',
+                        'name' => 'seminar_name',
                         'aria-label' => '',
                         'type' => 'text',
                         'instructions' => '',
