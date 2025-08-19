@@ -10,7 +10,7 @@ function policy() {
     }
 
     if (!getCookie('policyAccepted')) {
-        $('.policy').addClass('show').fadeIn(); // Показати банер
+        $('.policy').addClass('show').fadeIn();
     }
 
     $('#accept').click(function () {
@@ -34,7 +34,7 @@ async function initMap() {
 
     const map = new Map(document.getElementById("map"), {
         center: { lat: mapCenter.lat, lng: mapCenter.lng },
-        zoom: 10, // Рівень збільшення
+        zoom: 10,
         linksControl: false,
         panControl: false,
         addressControl: false,
@@ -54,15 +54,12 @@ async function initMap() {
             content: customMarkerImg
         });
 
-        // Створення інформаційного вікна
         const info = new google.maps.InfoWindow({
             content: position.text
         });
 
-        // Завжди відкривати інформаційне вікно
         info.open(map, marker);
 
-        // Додаткові події (опціонально, можна видалити якщо непотрібно)
         marker.addListener("mouseover", () => {
             info.open(map, marker);
         });
@@ -80,6 +77,7 @@ function validateForm(form, func, noreset) {
     form.on("submit", function (e) {
         e.preventDefault();
     });
+
     $.validator.addMethod("goodMessage", function (value, element) {
         return this.optional(element) || /^[\sаА-яЯіІєЄїЇґҐa-zA-Z0-9._-]{2,100}$/i.test(value);
     }, "Ungültiger Name");
@@ -92,9 +90,16 @@ function validateForm(form, func, noreset) {
         rules: {
             name: {
                 required: true
-
+            },
+            "name[]":{
+                required: true
             },
             email: {
+                required: true,
+                goodEmail: true,
+                email: true
+            },
+            "email[]": {
                 required: true,
                 goodEmail: true,
                 email: true
@@ -117,14 +122,19 @@ function validateForm(form, func, noreset) {
             message: {
                 required: true
             }
-
         },
         messages: {
             name: {
                 required: "Dieses Feld ist erforderlich",
-                email: "Ungültiger Name"
+            },
+            "name[]": {
+                required: "Dieses Feld ist erforderlich",
             },
             email: {
+                required: "Dieses Feld ist erforderlich",
+                email: "Falsche E-Mail"
+            },
+            "email[]": {
                 required: "Dieses Feld ist erforderlich",
                 email: "Falsche E-Mail"
             },
@@ -167,10 +177,7 @@ function validateForm(form, func, noreset) {
             noreset ? null : form[0].reset();
         }
     });
-    // form.find('select').on('change', function () {
-    //     $(this).valid();
-    // });
-};
+}
 
 
 
@@ -195,21 +202,24 @@ function ajaxSend(form, funcSuccess, funcError) {
 
 function counter() {
     let price = $('[data-price]').data('price');
+    let form = $('.form__seminar-full')
+
     $(document).on("click", ".form__button-count-minus", function () {
-        const counter = $(".form__button-counter span ");
+        const counter = $(".form__button-counter span");
         let currentValue = parseInt(counter.text());
 
-        console.log(1111);
         if (currentValue > 1) {
             let newValue = currentValue - 1;
             counter.text(newValue);
             $('input[name="count"]').val(newValue);
             $('.price span').text(newValue * price);
+
+            $('.form__block-person .form__flex').last().remove();
         }
+        form.validate();
     });
 
     $(document).on("click", ".form__button-count-plus", function () {
-        console.log(2222);
         const counter = $(".form__button-counter span");
         let currentValue = parseInt(counter.text());
         let newValue = currentValue + 1;
@@ -217,6 +227,26 @@ function counter() {
         counter.text(newValue);
         $('input[name="count"]').val(newValue);
         $('.price span').text(newValue * price);
+
+        let newBlock = `
+            <div class="form__flex" data-count="${newValue}">
+                <div class="form__input">
+                    <label>Vorname und Nachname</label>
+                    <div class="form__input-wrap">
+                        <input type="text" name="name[]" data-name="name" placeholder="Max Mustermann">
+                    </div>
+                </div>
+                <div class="form__input">
+                    <label>E-Mail</label>
+                    <div class="form__input-wrap">
+                        <input type="text" name="email[]" data-email="email" placeholder="example@mail.com">
+                    </div>
+                </div>
+            </div>
+        `;
+        $('.form__block-person').append(newBlock);
+
+        form.validate();
     });
 }
 

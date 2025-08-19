@@ -152,50 +152,87 @@ class Single_Seminar_Page_Form_Section
                                 <input type="hidden" name="seminar_id" value="<?php echo get_the_ID(); ?>">
                                 <input type="hidden" name="action" value="seminar_request">
                                 <input type="hidden" name="count" value="1">
-                                <div class="form__input">
-                                    <label>Vorname und Nachname</label>
-                                    <div class="form__input-wrap">
-                                        <input type="text" name="name" placeholder="Max Mustermann">
+
+
+                                <div class="form__block">
+                                    <h2 class="form__block-title">Rechnungsinformationen</h2>
+                                    <div class="form__flex">
+                                        <div class="form__input">
+                                            <label>Vorname und Nachname</label>
+                                            <div class="form__input-wrap">
+                                                <input type="text" name="name[]"  placeholder="Max Mustermann">
+                                            </div>
+                                        </div>
+                                        <div class="form__input">
+                                            <label>Firmenname</label>
+                                            <div class="form__input-wrap">
+                                                <input type="text" name="company" placeholder="Firma">
+                                            </div>
+                                        </div>
+                                        <div class="form__input">
+                                            <label>Adresse Der firma</label>
+                                            <div class="form__input-wrap">
+                                                <input type="text" name="address" placeholder="Adresse">
+                                            </div>
+                                        </div>
+                                        <div class="form__input">
+                                            <label>Stadt</label>
+                                            <div class="form__input-wrap">
+                                                <input type="text" name="state" placeholder="München">
+                                            </div>
+                                        </div>
+                                        <div class="form__input">
+                                            <label>Postleitzahl</label>
+                                            <div class="form__input-wrap">
+                                                <input type="text" name="post_code" placeholder="XXXXX">
+                                            </div>
+                                        </div>
+                                        <div class="form__input">
+                                            <label>Telefonnummer</label>
+                                            <div class="form__input-wrap">
+                                                <input type="text" name="phone" placeholder="+49 XXX XXXXXXXX">
+                                            </div>
+                                        </div>
+                                        <div class="form__input">
+                                            <label>E-Mail</label>
+                                            <div class="form__input-wrap">
+                                                <input type="text" name="email[]"  placeholder="example@mail.com">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="form__flex">
-                                    <div class="form__input">
-                                        <label>Firmenname</label>
-                                        <div class="form__input-wrap">
-                                            <input type="text" name="company" placeholder="Firma">
+
+
+                                <div class="form__block  form__block-bottom">
+                                    <h2 class="form__block-title">Teilnehmer</h2>
+                                    <div class="form__input ">
+                                        <label>Anzahl der Teilnehmer</label>
+                                        <div class="form__button-counter">
+                                            <div class="form__button-count form__button-count-minus"></div>
+                                            <span>1</span>
+                                            <div class="form__button-count form__button-count-plus"></div>
                                         </div>
                                     </div>
-                                    <div class="form__input">
-                                        <label>Adresse</label>
-                                        <div class="form__input-wrap">
-                                            <input type="text" name="address" placeholder="Adresse">
+
+                                    <div class="form__block-person">
+                                        <div class="form__flex" data-count="1">
+                                        <div class="form__input">
+                                            <label>Vorname und Nachname</label>
+                                            <div class="form__input-wrap">
+                                                <input type="text" name="name[]" placeholder="Max Mustermann">
+                                            </div>
+                                        </div>
+                                        <div class="form__input">
+                                            <label>E-Mail</label>
+                                            <div class="form__input-wrap">
+                                                <input type="text" name="email[]"  placeholder="example@mail.com">
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="form__input">
-                                        <label>Stadt</label>
-                                        <div class="form__input-wrap">
-                                            <input type="text" name="state" placeholder="München">
-                                        </div>
-                                    </div>
-                                    <div class="form__input">
-                                        <label>Postleitzahl</label>
-                                        <div class="form__input-wrap">
-                                            <input type="text" name="post_code" placeholder="XXXXX">
-                                        </div>
-                                    </div>
-                                    <div class="form__input">
-                                        <label>Telefonnummer</label>
-                                        <div class="form__input-wrap">
-                                            <input type="text" name="phone" placeholder="+49 XXX XXXXXXXX">
-                                        </div>
-                                    </div>
-                                    <div class="form__input">
-                                        <label>E-Mail</label>
-                                        <div class="form__input-wrap">
-                                            <input type="text" name="email" placeholder="example@mail.com">
-                                        </div>
                                     </div>
                                 </div>
+
+
 
                                 <div class="form__checkbox">
                                     <input type="checkbox" id="check" name="policy_terms">
@@ -207,11 +244,11 @@ class Single_Seminar_Page_Form_Section
                                         <p>Platz sichern</p>
                                         <div class="price"><span><?php echo $this->price; ?></span> Euro</div>
                                     </button>
-                                    <div class="form__button-counter">
-                                        <div class="form__button-count form__button-count-minus"></div>
-                                        <span>1</span>
-                                        <div class="form__button-count form__button-count-plus"></div>
-                                    </div>
+<!--                                    <button class="section__button primary " data-price="50">-->
+<!--                                        <p>Platz sichern</p>-->
+<!--                                        <div class="price"><span>50</span> Euro</div>-->
+<!--                                    </button>-->
+
 
                                 </div>
                                 <?php if (!empty($this->price_text)) : ?>
