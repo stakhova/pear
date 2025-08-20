@@ -92,7 +92,7 @@ foreach ($query->posts as $post) {
             text-align: center;
     }
     .calendar__place{
-        font: 400 1.2rem / 1.3rem var(--GTCons)!important;
+        font: 400 1.2rem / 1.3rem var(--RobotoCons)!important;
         color:#023D27;
         position: relative;
         padding-left: 1.2rem;
@@ -125,7 +125,7 @@ foreach ($query->posts as $post) {
         transition: .2s ease;
     }
     .calendar__title{
-        font: 500 1.6rem / 2rem var(--GT)!important;
+        font: 500 1.6rem / 2rem var(--Roboto)!important;
         color:#023D27;
         display: -webkit-box;
         -webkit-line-clamp: 3; /* Обмеження до 3 рядків */
@@ -135,7 +135,7 @@ foreach ($query->posts as $post) {
         word-break: break-word;
     }
     .calendar__info-wrap  .calendar__time{
-        font: 400 1.2rem / 1.3rem var(--GT)!important;
+        font: 400 1.2rem / 1.3rem var(--RobotoCons)!important;
         padding: 0.4rem 0.8rem;
         border-radius:  10rem;
         margin-bottom: 0.4rem ;
@@ -423,14 +423,14 @@ foreach ($query->posts as $post) {
             margin-right: 0;
         }
         .calendar__title{
-            font: 400 2rem / 130% var(--GT) !important;
+            font: 400 2rem / 130% var(--Roboto) !important;
 
         }
         .calendar__place{
-            font: 400 1.6rem / 130% var(--GTCons)!important;
+            font: 400 1.6rem / 130% var(--RobotoCons)!important;
         }
         .calendar__info-wrap .calendar__time{
-            font: 400 1.6rem / normal var(--GT)!important;
+            font: 400 1.6rem / normal var(--RobotoCons)!important;
         }
         .fc .fc-toolbar{
             gap:0.4rem;
