@@ -129,25 +129,25 @@ class Stripe_Integration
 
                     update_field('status', 'paid', $order_id);
 
-                    $name = get_field('name', $order_id);
                     $company = get_field('company', $order_id);
                     $address = get_field('address', $order_id);
                     $state = get_field('state', $order_id);
                     $post_code = get_field('post_code', $order_id);
                     $phone = get_field('phone', $order_id);
-                    $email = get_field('email', $order_id);
+                    $names = get_field('names', $order_id);
+                    $emails = get_field('emails', $order_id);
 
                     $headers = 'content-type: text/html';
                     $massages =
                         'Seminar: ' . get_the_title($seminar_id) . '<br>' .
                         'Company: ' . $company . '<br>' .
                         'Address: ' . $address . '<br>' .
-                        'Name: ' . $name . '<br>' .
+                        'Names: ' . $names . '<br>' .
                         'State: ' . $state . '<br>' .
                         'Post code: ' . $post_code . '<br>' .
                         'Post code: ' . $post_code . '<br>' .
                         'Phone: ' . $phone . '<br>' .
-                        'Email: ' . $email . '<br>';
+                        'Emails: ' . $emails . '<br>';
                     mail(get_field('managers', Page_Option::get_ID())['emails'], 'New seminar request #' . $order_id, $massages, $headers);
 
                     self::send_seminar_payment_email($email, $name, get_the_title($seminar_id), $dates);

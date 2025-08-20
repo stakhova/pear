@@ -14,29 +14,31 @@ class Type_Seminar_Request
 
     public static function seminar_request()
     {
-        $name = $_POST['name'];
         $company = $_POST['company'];
         $address = $_POST['address'];
         $state = $_POST['state'];
         $post_code = $_POST['post_code'];
         $phone = $_POST['phone'];
-        $email = $_POST['email'];
         $seminar_id = $_POST['seminar_id'];
         $count = $_POST['count'];
+
+        $emails = $_POST['email'];
+        $names = $_POST['name'];
+
 
         $post_id = wp_insert_post(array(
             'post_type' => 'seminar_request',
             'post_status' => 'publish',
-            'post_title' => $name . ' - ' . $phone,
+            'post_title' => $names[0] . ' - ' . $phone,
         ));
+        update_field('emails', implode(', ',$emails), $post_id);
+        update_field('names', implode(', ',$names), $post_id);
 
-        update_field('name', $name, $post_id);
         update_field('company', $company, $post_id);
         update_field('address', $address, $post_id);
         update_field('state', $state, $post_id);
         update_field('post_code', $post_code, $post_id);
         update_field('phone', $phone, $post_id);
-        update_field('email', $email, $post_id);
         update_field('status', 'new', $post_id);
         update_field('count', $count, $post_id);
         update_field('seminar_id', $seminar_id, $post_id);
@@ -173,8 +175,8 @@ class Type_Seminar_Request
                     ),
                     array(
                         'key' => 'field_675960asfasf3d95efa',
-                        'label' => 'Name',
-                        'name' => 'name',
+                        'label' => 'Names',
+                        'name' => 'names',
                         'aria-label' => '',
                         'type' => 'text',
                         'instructions' => '',
@@ -299,8 +301,8 @@ class Type_Seminar_Request
                     ),
                     array(
                         'key' => 'field_67asfsaf59607d95f00',
-                        'label' => 'Email',
-                        'name' => 'email',
+                        'label' => 'Emails',
+                        'name' => 'emails',
                         'aria-label' => '',
                         'type' => 'text',
                         'instructions' => '',
