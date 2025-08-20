@@ -215,20 +215,6 @@ class Single_Seminar_Page_Form_Section
                                     </div>
 
                                     <div class="form__block-person">
-                                        <div class="form__flex" data-count="1">
-                                        <div class="form__input">
-                                            <label>Vorname und Nachname</label>
-                                            <div class="form__input-wrap">
-                                                <input type="text" name="name[]" placeholder="Max Mustermann">
-                                            </div>
-                                        </div>
-                                        <div class="form__input">
-                                            <label>E-Mail</label>
-                                            <div class="form__input-wrap">
-                                                <input type="text" name="email[]"  placeholder="example@mail.com">
-                                            </div>
-                                        </div>
-                                    </div>
                                     </div>
                                 </div>
 
@@ -244,11 +230,6 @@ class Single_Seminar_Page_Form_Section
                                         <p>Platz sichern</p>
                                         <div class="price"><span><?php echo $this->price; ?></span> Euro</div>
                                     </button>
-<!--                                    <button class="section__button primary " data-price="50">-->
-<!--                                        <p>Platz sichern</p>-->
-<!--                                        <div class="price"><span>50</span> Euro</div>-->
-<!--                                    </button>-->
-
 
                                 </div>
                                 <?php if (!empty($this->price_text)) : ?>
