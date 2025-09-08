@@ -215,6 +215,20 @@ class Single_Seminar_Page_Form_Section
                                     </div>
 
                                     <div class="form__block-person">
+                                        <div class="form__flex" data-count="${newValue}">
+                                            <div class="form__input">
+                                                <label>Vorname und Nachname</label>
+                                                <div class="form__input-wrap">
+                                                    <input type="text" name="name[]" data-name="name" placeholder="Max Mustermann">
+                                                </div>
+                                            </div>
+                                            <div class="form__input">
+                                                <label>E-Mail</label>
+                                                <div class="form__input-wrap">
+                                                    <input type="text" name="email[]" data-email="email" placeholder="example@mail.com">
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
