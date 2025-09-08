@@ -35,7 +35,7 @@ class Stripe_Integration
                     'price_data' => [
                         'currency' => 'eur',
                         'product_data' => [
-                            'name' => 'Order - ' . $order_id,
+                            'name' => 'Order - ' . get_the_title($order_id),
                         ],
                         'unit_amount' => $price * 1.19 * 100,
                     ],
