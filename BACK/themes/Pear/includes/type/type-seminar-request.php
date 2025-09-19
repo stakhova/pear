@@ -31,8 +31,8 @@ class Type_Seminar_Request
             'post_status' => 'publish',
             'post_title' => $names[0] . ' - ' . $phone,
         ));
-        update_field('emails', implode(', ',$emails), $post_id);
-        update_field('names', implode(', ',$names), $post_id);
+        update_field('emails', implode(', ', $emails), $post_id);
+        update_field('names', implode(', ', $names), $post_id);
 
         update_field('company', $company, $post_id);
         update_field('address', $address, $post_id);
@@ -45,7 +45,7 @@ class Type_Seminar_Request
         update_field('seminar_name', get_the_title($seminar_id), $post_id);
 
         $price = get_field('main_options', $seminar_id)['price'] * $count;
-        $redirect_url = Stripe_Integration::create_payment_link($post_id, $price, 'seminar');
+        $redirect_url = Stripe_Integration::create_payment_link($post_id, $price, 'seminar', $seminar_id);
         wp_send_json_success(['redirect_url' => $redirect_url], 200);
     }
 

@@ -41,7 +41,7 @@ class Type_Course_Request
         update_field('status', 'new', $post_id);
 
         $price = get_field('main_options', $course_id)['price'];
-        $redirect_url = Stripe_Integration::create_payment_link($post_id, $price, 'course');
+        $redirect_url = Stripe_Integration::create_payment_link($post_id, $price, 'course', $course_id);
         wp_send_json_success(['redirect_url' => $redirect_url], 200);
     }
 

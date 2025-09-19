@@ -22,7 +22,7 @@ class Stripe_Integration
         }
     }
 
-    public static function create_payment_link($order_id, $price, $order_type)
+    public static function create_payment_link($order_id, $price, $order_type, $page_id)
     {
         $email = get_field('email', $order_id);
         $name = get_field('name', $order_id);
@@ -48,7 +48,7 @@ class Stripe_Integration
                 'receipt_email' => $email,
             ],
             'success_url' => get_the_permalink(Page_Successful_Payment::get_ID()),
-            'cancel_url' => get_the_permalink(Page_Failed_Payment::get_ID()),
+            'cancel_url' => get_the_permalink(Page_Failed_Payment::get_ID()) . '?link=' . $page_id,
             'metadata' => [
                 'order_id' => $order_id,
                 'order_type' => $order_type,
