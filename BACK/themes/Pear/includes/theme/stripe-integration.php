@@ -24,8 +24,8 @@ class Stripe_Integration
 
     public static function create_payment_link($order_id, $price, $order_type, $page_id)
     {
-        $email = get_field('email', $order_id);
-        $name = get_field('name', $order_id);
+        $email = explode(',',get_field('emails', $order_id))[0];
+        $name = explode(',',get_field('names', $order_id))[0];
         $customer_id = self::create_user($email, $name);
 
         $session = \Stripe\Checkout\Session::create([
@@ -35,7 +35,7 @@ class Stripe_Integration
                     'price_data' => [
                         'currency' => 'eur',
                         'product_data' => [
-                            'name' => 'Order - ' . get_the_title($order_id),
+                            'name' => 'Order - ' . get_the_title($page_id),
                         ],
                         'unit_amount' => $price * 1.19 * 100,
                     ],
@@ -60,7 +60,7 @@ class Stripe_Integration
 
     public static function payment_callback()
     {
-        $endpoint_secret = 'whsec_MINnUqDI9tMmaR7IdAnbLSONk1odUGIw';
+        $endpoint_secret = 'whsec_gH1JcsHoP3jiCBZHeu2cwlSqfPMKnrIj';
         $payload = @file_get_contents('php://input');
         $sig_header = $_SERVER['HTTP_STRIPE_SIGNATURE'];
         $event = null;
@@ -150,7 +150,7 @@ class Stripe_Integration
                         'Emails: ' . $emails . '<br>';
                     mail(get_field('managers', Page_Option::get_ID())['emails'], 'New seminar request #' . $order_id, $massages, $headers);
 
-                    self::send_seminar_payment_email($email, $name, get_the_title($seminar_id), $dates);
+                    self::send_seminar_payment_email(explode(',',$emails)[0], $name, get_the_title($seminar_id), $dates);
                 }
         }
     }
@@ -198,7 +198,7 @@ class Stripe_Integration
 
         $headers = [
             'Content-Type: text/html; charset=UTF-8',
-            'From: Ihr Seminar-Team <no-reply@yourwebsite.com>'
+            'From: Ihr Seminar-Team <no-reply@pear-academy.de>'
         ];
 
         wp_mail($user_email, $subject, $message, $headers);

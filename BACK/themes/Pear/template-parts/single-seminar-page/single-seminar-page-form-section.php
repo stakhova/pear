@@ -77,6 +77,9 @@ class Single_Seminar_Page_Form_Section
         );
 
         $this->query_ex = new WP_Query($args_ex);
+
+        $section_seminars = get_field('section_seminars', Page_Seminars::get_ID());
+        $this->policy_text = $section_seminars['policy_text'];
     }
 
     public function render()
@@ -160,7 +163,7 @@ class Single_Seminar_Page_Form_Section
                                         <div class="form__input">
                                             <label>Vorname und Nachname</label>
                                             <div class="form__input-wrap">
-                                                <input type="text" name="name[]"  placeholder="Max Mustermann">
+                                                <input type="text" name="name[]" placeholder="Max Mustermann">
                                             </div>
                                         </div>
                                         <div class="form__input">
@@ -196,7 +199,7 @@ class Single_Seminar_Page_Form_Section
                                         <div class="form__input">
                                             <label>E-Mail</label>
                                             <div class="form__input-wrap">
-                                                <input type="text" name="email[]"  placeholder="example@mail.com">
+                                                <input type="text" name="email[]" placeholder="example@mail.com">
                                             </div>
                                         </div>
                                     </div>
@@ -236,8 +239,7 @@ class Single_Seminar_Page_Form_Section
 
                                 <div class="form__checkbox">
                                     <input type="checkbox" id="check" name="policy_terms">
-                                    <label for="check">Ich habe die <a href="">Datenschutzerklärung </a> gelesen und stimme der Verarbeitung
-                                        meiner Daten zur Kontaktaufnahme und Bearbeitung meiner Anfrage zu.</label>
+                                    <label for="check"><?php echo str_replace(['<p>', '</p>'], ['', ''], $this->policy_text); ?></label>
                                 </div>
                                 <div class="form__button">
                                     <button class="section__button primary " data-price="<?php echo $this->price; ?>">

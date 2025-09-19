@@ -2,7 +2,8 @@
 
 class Campus_Page_Form_Section
 {
-    public function __construct() {
+    public function __construct()
+    {
         $section_content = get_field('section_content');
         $this->form_title = $section_content['form_title'];
         $this->form_text = $section_content['form_text'];
@@ -10,6 +11,9 @@ class Campus_Page_Form_Section
         $this->person_image = $section_content['person_image'];
         $this->person_name = $section_content['person_name'];
         $this->person_position = $section_content['person_position'];
+
+        $section_seminars = get_field('section_seminars', Page_Seminars::get_ID());
+        $this->policy_text = $section_seminars['policy_text'];
     }
 
     public function render()
@@ -17,7 +21,7 @@ class Campus_Page_Form_Section
 
         <section class="section  campus__form ">
             <div class="campus__form-back img">
-                <img src="<?=TEMPLATE_PATH?>/img/campus-top.png" alt="">
+                <img src="<?= TEMPLATE_PATH ?>/img/campus-top.png" alt="">
             </div>
             <div class="container">
                 <div class="section__form">
@@ -40,7 +44,7 @@ class Campus_Page_Form_Section
                                     <img src="<?php echo $this->person_image; ?>" alt="">
                                 </div>
                             <?php endif; ?>
-                            
+
                             <div class="campus__form-person-info">
                                 <?php if (!empty($this->person_name)) : ?>
                                     <h4><?php echo $this->person_name; ?></h4>
@@ -80,7 +84,7 @@ class Campus_Page_Form_Section
                         </div>
                         <div class="form__checkbox">
                             <input type="checkbox" id="check" name="policy_terms">
-                            <label for="check">Ich habe die <a href="">Datenschutzerklärung </a> gelesen und stimme der Verarbeitung meiner Daten zur Kontaktaufnahme und Bearbeitung meiner Anfrage zu.</label>
+                            <label for="check"><?php echo str_replace(['<p>', '</p>'], ['', ''], $this->policy_text); ?></label>
                         </div>
                         <button class="section__button primary">Senden</button>
                     </form>
